@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Inventario Diario</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --green:#00653E;
+    --green-dark:#004A2D;
+    --green-pale:#E7F1EC;
+    --red:#C8102E;
+    --bg:#F6F6F3;
+    --card:#FFFFFF;
+    --ink:#1E2420;
+    --ink-soft:#5B655F;
+    --line:#E3E5E0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding-bottom:96px;
+  }
+  header{
+    background:var(--green);
+    color:#fff;
+    padding:18px 16px 16px;
+    position:sticky;
+    top:0;
+    z-index:10;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  header h1{
+    margin:0;
+    font-size:1.25rem;
+    font-weight:700;
+    letter-spacing:.2px;
+  }
+  header p{
+    margin:2px 0 0;
+    font-size:.8rem;
+    color:#CFE6DA;
+  }
+  .progress-wrap{
+    margin-top:12px;
+    background:rgba(255,255,255,.18);
+    border-radius:999px;
+    height:6px;
+    overflow:hidden;
+  }
+  .progress-bar{
+    height:100%;
+    background:#fff;
+    width:0%;
+    transition:width .2s ease;
+  }
+  .progress-label{
+    font-size:.72rem;
+    color:#CFE6DA;
+    margin-top:6px;
+  }
+  main{
+    padding:14px;
+    max-width:520px;
+    margin:0 auto;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px;
+    margin-bottom:12px;
+  }
+  .card h2{
+    margin:0 0 10px;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--green-dark);
+  }
+  .field{
+    margin-bottom:10px;
+  }
+  .field:last-child{margin-bottom:0;}
+  .field label{
+    display:block;
+    font-size:.75rem;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+  .field input, .field select{
+    width:100%;
+    padding:10px 11px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    font-size:.95rem;
+    background:#fff;
+    color:var(--ink);
+    font-family:inherit;
+  }
+  .field input:focus, .field select:focus{
+    outline:none;
+    border-color:var(--green);
+    box-shadow:0 0 0 3px var(--green-pale);
+  }
+  .row2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  details.section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    margin-bottom:10px;
+    overflow:hidden;
+  }
+  details.section summary{
+    list-style:none;
+    padding:13px 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:.9rem;
+    color:var(--ink);
+  }
+  details.section summary::-webkit-details-marker{display:none;}
+  summary .icon{font-size:1.1rem;}
+  summary .cat-name{flex:1;}
+  summary .badge{
+    font-size:.72rem;
+    font-weight:700;
+    color:var(--green-dark);
+    background:var(--green-pale);
+    padding:3px 9px;
+    border-radius:999px;
+  }
+  summary .chev{
+    color:var(--ink-soft);
+    font-size:.8rem;
+    transition:transform .15s ease;
+  }
+  details[open] summary .chev{transform:rotate(90deg);}
+  .items{
+    border-top:1px solid var(--line);
+  }
+  .item{
+    padding:11px 14px;
+    border-bottom:1px solid var(--line);
+  }
+  .item:last-child{border-bottom:none;}
+  .item-name{
+    font-size:.86rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:1px;
+  }
+  .item-code{
+    font-size:.7rem;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .qty-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+  }
+  .qty-grid div label{
+    display:block;
+    font-size:.65rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-bottom:3px;
+  }
+  .qty-grid input{
+    width:100%;
+    padding:8px 4px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    text-align:center;
+    font-size:.88rem;
+    background:#FAFAF8;
+  }
+  .qty-grid input:focus{
+    outline:none;
+    border-color:var(--green);
+    background:#fff;
+    box-shadow:0 0 0 2px var(--green-pale);
+  }
+  .qty-grid input.filled{
+    border-color:var(--green);
+    background:var(--green-pale);
+    font-weight:700;
+  }
+  .item-total{
+    margin-top:6px;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--green);
+    text-align:right;
+    min-height:16px;
+  }
+  footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:var(--card);
+    border-top:1px solid var(--line);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    display:flex;
+    gap:8px;
+    max-width:520px;
+    margin:0 auto;
+  }
+  .footer-inner{
+    display:flex;
+    gap:8px;
+    width:100%;
+    max-width:520px;
+    margin:0 auto;
+  }
+  .btn{
+    flex:1;
+    border:none;
+    border-radius:11px;
+    padding:13px 10px;
+    font-size:.88rem;
+    font-weight:700;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .btn-primary{
+    background:var(--green);
+    color:#fff;
+    flex:1.5;
+  }
+  .btn-primary:active{background:var(--green-dark);}
+  .btn-secondary{
+    background:var(--green-pale);
+    color:var(--green-dark);
+    flex:1;
+    padding-left:6px;
+    padding-right:6px;
+    font-size:.8rem;
+  }
+  .toast{
+    position:fixed;
+    bottom:78px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--ink);
+    color:#fff;
+    padding:9px 16px;
+    border-radius:999px;
+    font-size:.82rem;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:20;
+  }
+  .toast.show{opacity:1;}
+  .note{
+    font-size:.72rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:6px 0 14px;
+    line-height:1.4;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Control de inventario diario</h1>
+  <p>INVERSIONES BLUMARO, S.A.</p>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="progress-label" id="progressLabel">0 de 0 artículos con datos</div>
+  <div class="progress-label" id="horaInicioLabel"></div>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Datos generales</h2>
+    <div class="row2">
+      <div class="field">
+        <label for="sucursal">Sucursal</label>
+        <select id="sucursal">
+          <option value="">Selecciona una sucursal</option>
+          <optgroup label="Distrito 1">
+            <option>Gómez</option>
+            <option>Sambil</option>
+            <option>Arroyo Hondo</option>
+            <option>Churchill</option>
+            <option>Núñez</option>
+            <option>Rómulo</option>
+            <option>Independencia</option>
+          </optgroup>
+          <optgroup label="Distrito 2">
+            <option>Colina</option>
+            <option>Occidental</option>
+            <option>Paseo 27</option>
+            <option>Jumbo Luperón</option>
+            <option>Portal del Norte</option>
+            <option>La Vega</option>
+            <option>San Francisco</option>
+          </optgroup>
+          <optgroup label="Distrito 3">
+            <option>Plaza Moderna</option>
+            <option>San Isidro</option>
+            <option>Venezuela</option>
+            <option>Mella</option>
+            <option>Charles</option>
+            <option>Jumbo Romana</option>
+            <option>La Romana</option>
+            <option>Higüey</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field">
+        <label for="conteo">N° de conteo</label>
+        <input type="text" id="conteo" placeholder="1">
+      </div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha">
+      </div>
+      <div class="field">
+        <label for="dia">Día</label>
+        <select id="dia">
+          <option value="">—</option>
+          <option>Lunes</option>
+          <option>Martes</option>
+          <option>Miércoles</option>
+          <option>Jueves</option>
+          <option>Viernes</option>
+          <option>Sábado</option>
+          <option>Domingo</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="contadoPor">Contado por</label>
+      <input type="text" id="contadoPor" placeholder="Nombre">
+    </div>
+    <div class="row2" style="margin-top:10px">
+      <button class="btn btn-secondary" id="saveBtn" type="button">💾 Guardar borrador</button>
+      <button class="btn btn-secondary" id="loadBtn" type="button">📂 Cargar borrador</button>
+    </div>
+    <input type="file" id="loadFile" accept="application/json" style="display:none">
+  </div>
+
+  <div id="sections"></div>
+
+  <p class="note">Toca una categoría para expandirla. El mensaje de WhatsApp solo incluye artículos con datos; el PDF muestra la hoja completa, lista para adjuntar o imprimir.</p>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <button class="btn btn-secondary" id="copyBtn">Copiar</button>
+    <button class="btn btn-secondary" id="pdfBtn">Descargar PDF</button>
+    <button class="btn btn-primary" id="sendBtn">Enviar por correo</button>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const defaultFields = [
+  {key:"caja", label:"Caja"},
+  {key:"paq", label:"Paq."},
+  {key:"unid", label:"Unid."},
+  {key:"libras", label:"Libras"},
+];
+
+const carnicoFields = [
+  {key:"caja", label:"Caja"},
+  {key:"paquete", label:"Paquete"},
+  {key:"libra", label:"Libra"},
+];
+
+const masaFields = [
+  {key:"charra", label:"Charra"},
+  {key:"unidades", label:"Unidades"},
+];
+
+const bebidasFields = [
+  {key:"fardo", label:"Fardo"},
+  {key:"unidad", label:"Unidad"},
+];
+
+const salsaFields = [
+  {key:"caja", label:"Caja"},
+  {key:"bolsa", label:"Bolsa"},
+  {key:"libra", label:"Libra"},
+];
+
+const cajasFields = [
+  {key:"paquete", label:"Paquete"},
+  {key:"unidades", label:"Unidades"},
+];
+
+const desechablesFields = [
+  {key:"paquete", label:"Paquete"},
+  {key:"unidad", label:"Unidad"},
+];
+
+const categories = [
+  { name:"Cárnico", icon:"🧊", fields:carnicoFields, items:[
+    {code:"I0030", name:"Queso para pizza 20 lb", factors:{caja:1}},
+    {code:"I0081", name:"Pepperoni", factors:{caja:2}},
+    {code:"", name:"Pollo"},
+    {code:"", name:"Jamón"},
+    {code:"", name:"Tocino"},
+    {code:"", name:"Salchicha"},
+  ]},
+  { name:"Masas y harinas", icon:"🍕", fields:masaFields, items:[
+    {code:"I0020", name:"Masa de 6", factors:{charra:15}},
+    {code:"I0019", name:"Masa de 8", factors:{charra:15}},
+    {code:"I0018", name:"Masa de 12", factors:{charra:11}},
+    {code:"I0017", name:"Masa de 14", factors:{charra:8}},
+    {code:"I0054", name:"Masa sw 16", factors:{charra:6}},
+  ]},
+  { name:"Bebidas", icon:"🧃", fields:bebidasFields, items:[
+    {code:"I0674", name:"Ref doble litro Coca-Cola", factors:{fardo:6}},
+    {code:"I0675", name:"Ref doble litro rojo", factors:{fardo:6}},
+    {code:"I0678", name:"Ref doble litro uva", factors:{fardo:6}},
+    {code:"I0676", name:"Ref doble litro Coca-Cola sin azúcar", factors:{fardo:6}},
+    {code:"I0688", name:"Ref doble litro merengue", factors:{fardo:6}},
+    {code:"I0088", name:"Ref doble litro Sprite", factors:{fardo:6}},
+    {code:"I0099", name:"Ref doble litro naranja", factors:{fardo:6}},
+    {code:"I0680", name:"Ref Coca-Cola 400ml", factors:{fardo:12}},
+    {code:"I0681", name:"Ref Coca-Cola sin azúcar 400ml", factors:{fardo:12}},
+    {code:"I0682", name:"Ref Sprite 400ml", factors:{fardo:12}},
+    {code:"I0683", name:"Ref Country Club frambuesa 400ml", factors:{fardo:12}},
+    {code:"I0684", name:"Ref Country Club uva 400ml", factors:{fardo:12}},
+    {code:"I0685", name:"Ref Country Club naranja 400ml", factors:{fardo:12}},
+    {code:"I0687", name:"Ref Country Club merengue 400ml", factors:{fardo:12}},
+    {code:"I0686", name:"Agua Dasani", factors:{fardo:12}},
+  ]},
+  { name:"Salsas y condimentos", icon:"🥫", fields:salsaFields, items:[
+    {code:"I0021", name:"Salsa pizza", factors:{caja:4}},
+  ]},
+  { name:"Cajas", icon:"📦", fields:cajasFields, items:[
+    {code:"I0552", name:"Caja pizza 6.5\" locales", factors:{paquete:50}},
+    {code:"I0667", name:"Caja pizza 8\" locales", factors:{paquete:50}},
+    {code:"I0668", name:"Caja pizza 12\" locales", factors:{paquete:50}},
+    {code:"I0669", name:"Caja pizza 14\" locales", factors:{paquete:50}},
+    {code:"I0670", name:"Caja pizza 16\" locales", factors:{paquete:50}},
+  ]},
+  { name:"Desechables", icon:"🥤", fields:desechablesFields, items:[
+    {code:"", name:"Servilleta", factors:{paquete:500}},
+    {code:"", name:"Vasos de 7 oz", factors:{paquete:50}},
+  ]},
+];
+
+const sectionsEl = document.getElementById('sections');
+let totalItems = 0;
+const WEIGHT_FIELDS = new Set(['libra','libras']);
+
+function getItemTotal(ci, ii) {
+  const cat = categories[ci];
+  const item = cat.items[ii];
+  const itemFields = cat.fields || defaultFields;
+  const factors = item.factors || {};
+  let total = 0;
+  let hasAny = false;
+  itemFields.forEach(f => {
+    if (WEIGHT_FIELDS.has(f.key)) return;
+    const el = document.getElementById(`q-${ci}-${ii}-${f.key}`);
+    const val = el ? parseInt(el.value, 10) : NaN;
+    if (!isNaN(val)) {
+      hasAny = true;
+      const factor = (factors[f.key] !== undefined) ? factors[f.key] : 1;
+      total += val * factor;
+    }
+  });
+  return { total, hasAny };
+}
+
+function computeItemTotal(ci, ii) {
+  const { total, hasAny } = getItemTotal(ci, ii);
+  const totalEl = document.getElementById(`total-${ci}-${ii}`);
+  if (totalEl) totalEl.textContent = hasAny ? `Total: ${total} unid.` : '';
+}
+
+categories.forEach((cat, ci) => {
+  totalItems += cat.items.length;
+  const details = document.createElement('details');
+  details.className = 'section';
+  if (ci === 0) details.open = true;
+
+  const summary = document.createElement('summary');
+  summary.innerHTML = `<span class="icon">${cat.icon}</span><span class="cat-name">${cat.name}</span><span class="badge" id="badge-${ci}">0/${cat.items.length}</span><span class="chev">›</span>`;
+  details.appendChild(summary);
+
+  const itemsWrap = document.createElement('div');
+  itemsWrap.className = 'items';
+
+  cat.items.forEach((item, ii) => {
+    const itemEl = document.createElement('div');
+    itemEl.className = 'item';
+    const itemFields = cat.fields || defaultFields;
+    const codeHtml = item.code ? `<div class="item-code">${item.code}</div>` : `<div class="item-code">&nbsp;</div>`;
+    let qtyHtml = `<div class="qty-grid" style="grid-template-columns:repeat(${itemFields.length},1fr)">`;
+    itemFields.forEach(f => {
+      const id = `q-${ci}-${ii}-${f.key}`;
+      const isWeight = WEIGHT_FIELDS.has(f.key);
+      const inputAttrs = isWeight
+        ? `inputmode="decimal" min="0" step="0.1"`
+        : `inputmode="numeric" pattern="[0-9]*" min="0" step="1"`;
+      qtyHtml += `<div><label for="${id}">${f.label}</label><input type="number" ${inputAttrs} id="${id}" data-cat="${ci}" data-item="${ii}" data-field="${f.key}"></div>`;
+    });
+    qtyHtml += '</div>';
+    const hasCountFields = itemFields.some(f => !WEIGHT_FIELDS.has(f.key));
+    const totalHtml = hasCountFields ? `<div class="item-total" id="total-${ci}-${ii}"></div>` : '';
+    itemEl.innerHTML = `<div class="item-name">${item.name}</div>${codeHtml}${qtyHtml}${totalHtml}`;
+    itemsWrap.appendChild(itemEl);
+  });
+
+  details.appendChild(itemsWrap);
+  sectionsEl.appendChild(details);
+});
+
+function itemHasData(ci, ii) {
+  const itemFields = categories[ci].fields || defaultFields;
+  return itemFields.some(f => {
+    const el = document.getElementById(`q-${ci}-${ii}-${f.key}`);
+    return el && el.value.trim() !== '';
+  });
+}
+
+function updateProgress() {
+  let filled = 0;
+  categories.forEach((cat, ci) => {
+    let catFilled = 0;
+    cat.items.forEach((item, ii) => {
+      if (itemHasData(ci, ii)) { filled++; catFilled++; }
+    });
+    const badge = document.getElementById(`badge-${ci}`);
+    if (badge) badge.textContent = `${catFilled}/${cat.items.length}`;
+  });
+  const pct = totalItems ? Math.round((filled / totalItems) * 100) : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `${filled} de ${totalItems} artículos con datos`;
+}
+
+sectionsEl.addEventListener('input', (e) => {
+  if (e.target.tagName === 'INPUT') {
+    const isWeight = WEIGHT_FIELDS.has(e.target.dataset.field);
+    if (e.target.type === 'number' && e.target.value.includes('.') && !isWeight) {
+      e.target.value = Math.round(parseFloat(e.target.value)) || '';
+    }
+    e.target.classList.toggle('filled', e.target.value.trim() !== '');
+    updateProgress();
+    const ci = e.target.dataset.cat, ii = e.target.dataset.item;
+    if (ci !== undefined && ii !== undefined) computeItemTotal(Number(ci), Number(ii));
+  }
+});
+
+// Hora de inicio: se captura sola al abrir el formulario, no se puede editar ni borrar
+const horaInicio = new Date();
+function formatHora(d) {
+  return d.toLocaleTimeString('es-DO', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+}
+document.getElementById('horaInicioLabel').textContent = `🕒 Inventario iniciado: ${formatHora(horaInicio)}`;
+
+// Fecha por defecto: hoy, y día calculado automáticamente
+const diasSemana = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const fechaInput = document.getElementById('fecha');
+const diaSelect = document.getElementById('dia');
+const today = new Date();
+fechaInput.value = today.toISOString().slice(0,10);
+diaSelect.value = diasSemana[today.getDay()];
+
+fechaInput.addEventListener('change', () => {
+  if (!fechaInput.value) return;
+  const [y,m,d] = fechaInput.value.split('-').map(Number);
+  const dt = new Date(y, m-1, d);
+  diaSelect.value = diasSemana[dt.getDay()];
+});
+
+function buildMessage() {
+  const sucursal = document.getElementById('sucursal').value.trim();
+  const fecha = fechaInput.value;
+  const dia = diaSelect.value;
+  const conteo = document.getElementById('conteo').value.trim();
+  const contadoPor = document.getElementById('contadoPor').value.trim();
+
+  const lines = [];
+  lines.push('📋 *Inventario diario*');
+  lines.push(`Sucursal: ${sucursal || '—'}`);
+  lines.push(`Fecha: ${fecha || '—'}${dia ? ' (' + dia + ')' : ''}`);
+  lines.push(`N° de conteo: ${conteo || '—'}`);
+  lines.push(`Hora de inicio: ${formatHora(horaInicio)}`);
+  lines.push(`Hora de envío: ${formatHora(new Date())}`);
+  lines.push('');
+
+  categories.forEach((cat, ci) => {
+    const catLines = [];
+    cat.items.forEach((item, ii) => {
+      if (!itemHasData(ci, ii)) return;
+      const parts = [];
+      const itemFields = cat.fields || defaultFields;
+      itemFields.forEach(f => {
+        const el = document.getElementById(`q-${ci}-${ii}-${f.key}`);
+        if (el.value.trim() !== '') parts.push(`${f.label} ${el.value}`);
+      });
+      const { total, hasAny } = getItemTotal(ci, ii);
+      if (hasAny) parts.push(`Total ${total} unid.`);
+      const codeStr = item.code ? ` (${item.code})` : '';
+      catLines.push(`• ${item.name}${codeStr}: ${parts.join(', ')}`);
+    });
+    if (catLines.length) {
+      lines.push(`*${cat.icon} ${cat.name}*`);
+      lines.push(...catLines);
+      lines.push('');
+    }
+  });
+
+  lines.push(`Contado por: ${contadoPor || '—'}`);
+  return lines.join('\n');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+// Dibuja una tabla manualmente (celda por celda) en vez de usar el plugin
+// jspdf-autotable. Esto evita depender de una segunda librería externa:
+// si esa segunda librería no llegaba a cargar (red lenta, WiFi de la
+// sucursal, etc.) el botón fallaba en silencio y no pasaba nada.
+function drawTable(doc, { startY, marginX, tableWidth, colWidths, header, rows, green, greenPale }) {
+  const pageH = doc.internal.pageSize.getHeight();
+  const rowH = 16;
+  const headRowH = 16;
+  let y = startY;
+
+  function colX(idx) {
+    let x = marginX;
+    for (let i = 0; i < idx; i++) x += colWidths[i];
+    return x;
+  }
+
+  function drawHeaderRow() {
+    doc.setFillColor(...greenPale);
+    doc.rect(marginX, y, tableWidth, headRowH, 'F');
+    doc.setDrawColor(217, 217, 217);
+    doc.rect(marginX, y, tableWidth, headRowH, 'S');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.3);
+    doc.setTextColor(0, 74, 45);
+    header.forEach((h, i) => {
+      const x = colX(i);
+      doc.line(x, y, x, y + headRowH);
+      const align = i < 2 ? 'left' : 'center';
+      const tx = align === 'left' ? x + 4 : x + colWidths[i] / 2;
+      doc.text(String(h), tx, y + 11, { align });
+    });
+    doc.line(marginX + tableWidth, y, marginX + tableWidth, y + headRowH);
+    y += headRowH;
+  }
+
+  function ensureSpace(need, isFirstPageBand) {
+    if (y + need > pageH - 40) {
+      doc.addPage();
+      y = 40;
+      drawHeaderRow();
+    }
+  }
+
+  // Título de categoría (banda verde)
+  doc.setFillColor(...green);
+  doc.rect(marginX, y, tableWidth, 18, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.text(header._catTitle, marginX + 5, y + 12.5);
+  y += 18;
+
+  drawHeaderRow();
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(30, 36, 32);
+  rows.forEach(row => {
+    ensureSpace(rowH);
+    doc.setDrawColor(217, 217, 217);
+    doc.rect(marginX, y, tableWidth, rowH, 'S');
+    row.forEach((cell, i) => {
+      const x = colX(i);
+      doc.line(x, y, x, y + rowH);
+      const isLast = i === row.length - 1;
+      doc.setFont('helvetica', isLast && i >= 2 ? 'bold' : 'normal');
+      const align = i < 2 ? 'left' : 'center';
+      const tx = align === 'left' ? x + 4 : x + colWidths[i] / 2;
+      const text = String(cell ?? '');
+      const clipped = doc.splitTextToSize(text, colWidths[i] - (align === 'left' ? 8 : 4))[0] || '';
+      doc.text(clipped, tx, y + 11, { align });
+    });
+    doc.line(marginX + tableWidth, y, marginX + tableWidth, y + rowH);
+    y += rowH;
+  });
+
+  return y;
+}
+
+function buildPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+  const sucursal = document.getElementById('sucursal').value.trim();
+  const fecha = fechaInput.value;
+  const dia = diaSelect.value;
+  const conteo = document.getElementById('conteo').value.trim();
+  const contadoPor = document.getElementById('contadoPor').value.trim();
+  const green = [0, 101, 62];
+  const greenPale = [231, 241, 236];
+  const marginX = 40;
+  const pageW = doc.internal.pageSize.getWidth();
+  const tableWidth = pageW - marginX * 2;
+
+  doc.setFillColor(...green);
+  doc.rect(0, 0, 595, 56, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text('Control de inventario diario', 40, 30);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.text('INVERSIONES BLUMARO, S.A.', 40, 44);
+
+  doc.setTextColor(30, 36, 32);
+  doc.setFontSize(9.5);
+  doc.setFont('helvetica', 'bold');
+  const infoY = 74;
+  doc.text(`Sucursal: ${sucursal || '—'}`, 40, infoY);
+  doc.text(`Fecha: ${fecha || '—'}${dia ? ' (' + dia + ')' : ''}`, 220, infoY);
+  doc.text(`N° de conteo: ${conteo || '—'}`, 420, infoY);
+  doc.text(`Contado por: ${contadoPor || '—'}`, 40, infoY + 16);
+  doc.text(`Hora de inicio: ${formatHora(horaInicio)}`, 220, infoY + 16);
+  doc.text(`Hora de generación del PDF: ${formatHora(new Date())}`, 420, infoY + 16);
+
+  let cursorY = infoY + 32;
+  categories.forEach((cat, ci) => {
+    const catFields = cat.fields || defaultFields;
+    const hasCountFields = catFields.some(f => !WEIGHT_FIELDS.has(f.key));
+
+    // Anchos de columna: Código, Artículo, un ancho fijo por cada campo, y Total si aplica
+    const fieldColW = 55;
+    const totalColW = hasCountFields ? 55 : 0;
+    const codeColW = 50;
+    const nameColW = tableWidth - codeColW - (catFields.length * fieldColW) - totalColW;
+    const colWidths = [codeColW, nameColW, ...catFields.map(() => fieldColW)];
+    if (hasCountFields) colWidths.push(totalColW);
+
+    const header = ['Código', 'Artículo / producto', ...catFields.map(f => f.label), ...(hasCountFields ? ['Total'] : [])];
+    header._catTitle = cat.name.toUpperCase();
+
+    const rows = cat.items.map((item, ii) => {
+      const vals = catFields.map(f => {
+        const el = document.getElementById(`q-${ci}-${ii}-${f.key}`);
+        return el ? el.value.trim() : '';
+      });
+      const row = [item.code || '', item.name, ...vals];
+      if (hasCountFields) {
+        const { total, hasAny } = getItemTotal(ci, ii);
+        row.push(hasAny ? String(total) : '');
+      }
+      return row;
+    });
+
+    // Si la tabla completa no cabe, saltamos de página antes de empezarla
+    const pageH = doc.internal.pageSize.getHeight();
+    if (cursorY + 18 + 16 + 16 > pageH - 40) {
+      doc.addPage();
+      cursorY = 40;
+    }
+
+    cursorY = drawTable(doc, {
+      startY: cursorY,
+      marginX,
+      tableWidth,
+      colWidths,
+      header,
+      rows,
+      green,
+      greenPale,
+    }) + 14;
+  });
+
+  const namePart = (sucursal || 'sucursal').replace(/\s+/g, '_');
+  const fileName = `Inventario_${namePart}_${fecha || 'hoy'}.pdf`;
+
+  // En iPad/iPhone (Safari), la descarga automática suele bloquearse.
+  // Detectamos iOS/iPadOS y, en ese caso, abrimos el PDF en una pestaña
+  // nueva (lector nativo) para que el usuario lo guarde con el botón
+  // de compartir → "Guardar en Archivos". En otros navegadores se
+  // mantiene la descarga automática normal.
+  const isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+    (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+
+  if (isIOS) {
+    const blobUrl = doc.output('bloburl');
+    const win = window.open(blobUrl, '_blank');
+    if (!win) {
+      showToast('Permite ventanas emergentes para ver el PDF, o usa el enlace que aparece abajo.');
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.textContent = 'Toca aquí para abrir el PDF';
+      link.target = '_blank';
+      link.style.cssText = 'display:block;text-align:center;margin-top:8px;color:#00653e;font-weight:bold;';
+      document.getElementById('pdfBtn').insertAdjacentElement('afterend', link);
+    }
+  } else {
+    doc.save(fileName);
+  }
+}
+
+document.getElementById('pdfBtn').addEventListener('click', () => {
+  // Si la librería de PDF no llegó a cargar (sin internet en ese momento),
+  // avisamos y ofrecemos el diálogo de impresión del navegador como respaldo.
+  if (!window.jspdf || !window.jspdf.jsPDF) {
+    showToast('Sin conexión para generar el PDF. En el diálogo, elige "Guardar como PDF".');
+    setTimeout(() => window.print(), 500);
+    return;
+  }
+  try {
+    buildPDF();
+  } catch (e) {
+    showToast('No se pudo generar el PDF. En el diálogo, elige "Guardar como PDF".');
+    setTimeout(() => window.print(), 500);
+  }
+});
+
+document.getElementById('sendBtn').addEventListener('click', () => {
+  const msg = buildMessage();
+  const sucursal = document.getElementById('sucursal').value.trim();
+  const fecha = fechaInput.value;
+  const subject = `Inventario diario - ${sucursal || 'sucursal'}${fecha ? ' - ' + fecha : ''}`;
+  const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
+  window.location.href = url;
+});
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const msg = buildMessage();
+  try {
+    await navigator.clipboard.writeText(msg);
+    showToast('Texto copiado');
+  } catch (err) {
+    showToast('No se pudo copiar automáticamente');
+  }
+});
+
+function buildSaveData() {
+  const data = {
+    sucursal: document.getElementById('sucursal').value,
+    conteo: document.getElementById('conteo').value,
+    fecha: fechaInput.value,
+    dia: diaSelect.value,
+    contadoPor: document.getElementById('contadoPor').value,
+    qty: {}
+  };
+  categories.forEach((cat, ci) => {
+    const itemFields = cat.fields || defaultFields;
+    cat.items.forEach((item, ii) => {
+      itemFields.forEach(f => {
+        const el = document.getElementById(`q-${ci}-${ii}-${f.key}`);
+        if (el && el.value.trim() !== '') data.qty[`${ci}-${ii}-${f.key}`] = el.value;
+      });
+    });
+  });
+  return data;
+}
+
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const data = buildSaveData();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const sucursal = document.getElementById('sucursal').value.trim();
+  const namePart = (sucursal || 'sucursal').replace(/\s+/g, '_');
+  a.href = url;
+  a.download = `Borrador_Inventario_${namePart}_${fechaInput.value || 'hoy'}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  showToast('Borrador guardado');
+});
+
+document.getElementById('loadBtn').addEventListener('click', () => {
+  document.getElementById('loadFile').click();
+});
+
+document.getElementById('loadFile').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      document.getElementById('sucursal').value = data.sucursal || '';
+      document.getElementById('conteo').value = data.conteo || '';
+      if (data.fecha) fechaInput.value = data.fecha;
+      diaSelect.value = data.dia || '';
+      document.getElementById('contadoPor').value = data.contadoPor || '';
+      Object.keys(data.qty || {}).forEach(key => {
+        const el = document.getElementById(`q-${key}`);
+        if (el) {
+          el.value = data.qty[key];
+          el.classList.add('filled');
+        }
+      });
+      categories.forEach((cat, ci) => cat.items.forEach((item, ii) => computeItemTotal(ci, ii)));
+      updateProgress();
+      showToast('Borrador cargado');
+    } catch (err) {
+      showToast('No se pudo leer el archivo');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
+updateProgress();
+</script>
+
+</body>
+</html>
