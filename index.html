@@ -129,10 +129,98 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 @keyframes v10spin{to{transform:rotate(360deg)}}
 .loading-box b{font-size:.8rem}.loading-box small{display:block;color:var(--corp-muted);font-size:.64rem;margin-top:4px}
 .pwa-demo{display:flex;align-items:center;gap:11px}.pwa-icon{width:52px;height:52px;border-radius:15px;background:linear-gradient(145deg,var(--corp),var(--corp2));color:#fff;display:grid;place-items:center;font-weight:900}
-.catalog-table{width:100%;border-collapse:collapse;font-size:.66rem}.catalog-table th,.catalog-table td{padding:8px 6px;border-bottom:1px solid var(--corp-line);text-align:left}.catalog-table th{color:var(--corp);background:var(--corp-soft);position:sticky;top:64px}
+.catalog-table{width:100%;border-collapse:collapse;font-size:.66rem}.catalog-table th,.catalog-table td{padding:8px 6px;border-bottom:1px solid var(--corp-line);text-align:left}.catalog-table th{color:var(--corp);background:var(--corp-soft);position:sticky;top:0;z-index:2}
 .catalog-wrap{overflow:auto;max-height:52vh;border:1px solid var(--corp-line);border-radius:12px}
 .beta-note{font-size:.64rem;color:var(--corp-muted);line-height:1.45}
 @media(max-width:420px){.beta-grid{grid-template-columns:1fr}}
+
+
+/* ===== V10.2 · selección visible + perfil operativo ===== */
+.home-action.primary{
+  background:linear-gradient(145deg,#eef8f2,#e5f3eb)!important;
+  border:1.5px solid #9fcab2!important;
+  color:#163c2b!important;
+  box-shadow:0 7px 22px rgba(7,91,61,.08)!important;
+}
+.home-action.primary h3{color:#123c29!important}
+.home-action.primary p{color:#557165!important}
+.home-action.primary .ico{
+  background:#d9eee3!important;
+  box-shadow:inset 0 0 0 1px #c1dfcf;
+}
+.home-profile{
+  border:1px solid var(--corp-line);
+  background:#fff;
+  border-radius:16px;
+  padding:6px 9px 6px 6px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--ink);
+  font-family:inherit;
+  cursor:pointer;
+  min-width:0;
+  box-shadow:0 4px 14px rgba(20,45,32,.04);
+}
+.home-profile-avatar{
+  width:34px;height:34px;border-radius:11px;
+  display:grid;place-items:center;
+  background:var(--corp-soft);
+  color:var(--corp);
+  font-size:17px;
+  flex:0 0 auto;
+  position:relative;
+}
+.profile-online-dot{
+  position:absolute;
+  width:9px;height:9px;border-radius:50%;
+  right:-1px;bottom:-1px;
+  background:#169b62;
+  border:2px solid #fff;
+}
+.profile-online-dot.offline{background:#d04437}
+.home-profile-copy{min-width:0;text-align:left}
+.home-profile-name{
+  display:block;
+  max-width:125px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size:.69rem;
+  line-height:1.15;
+  font-weight:850;
+}
+.home-profile-role{
+  display:block;
+  max-width:125px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  margin-top:3px;
+  font-size:.57rem;
+  color:var(--corp-muted);
+}
+.profile-form{text-align:left;margin-top:12px}
+.profile-form .field{margin-bottom:10px}
+.profile-form label{font-size:.68rem;color:var(--corp-muted)}
+.profile-form input,.profile-form select{
+  width:100%;padding:11px 12px;border:1px solid var(--corp-line);
+  border-radius:11px;background:#fff;
+}
+.profile-help{font-size:.63rem;color:var(--corp-muted);line-height:1.45;margin-top:8px}
+@media(max-width:390px){
+  .home-profile{padding:5px}
+  .home-profile-copy{display:none}
+}
+
+
+.catalog-table thead th{
+  box-shadow:0 1px 0 var(--corp-line);
+  white-space:nowrap;
+}
+.catalog-wrap{
+  position:relative;
+}
 
 </style></head><body>
 
@@ -140,7 +228,10 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
   <div class="home-shell">
     <div class="home-topbar">
       <div class="home-brand"><div class="home-logo">📦</div><div><h1>Control de Inventarios</h1><p>INVERSIONES BLUMARO, S.A.</p></div></div>
-      <div class="home-online" id="connectionBadge">☁️ En línea</div>
+      <button class="home-profile" id="connectionBadge" type="button" onclick="openProfileEditor()">
+        <span class="home-profile-avatar">👤<span class="profile-online-dot" id="profileOnlineDot"></span></span>
+        <span class="home-profile-copy"><span class="home-profile-name" id="profileNameLabel">Configurar perfil</span><span class="home-profile-role" id="profileRoleLabel">Toca para identificarte</span></span>
+      </button>
     </div>
     <div class="home-hero"><small>Bienvenido</small><h2>¿Qué deseas hacer?</h2><p>Selecciona tu sucursal y comienza un inventario o consulta información anterior.</p></div>
     <div class="home-card"><label for="homeSucursal">Sucursal activa</label><select id="homeSucursal"><option value="">Selecciona una sucursal</option></select></div>
@@ -268,10 +359,6 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
       <h3>Experiencia de carga</h3>
       <div class="beta-note">Las sincronizaciones, cargas de historial y generación de PDF pueden mostrar una pantalla de progreso uniforme.</div>
       <button class="btn btn-secondary" style="margin-top:8px" type="button" onclick="demoLoading()">Ver animación de carga</button>
-    </div>
-    <div class="beta-card">
-      <h3>Respaldo V9 disponible</h3>
-      <div class="beta-note">Borrador automático, modo sin conexión, inventario teórico, PDFs y sincronización actual continúan en el archivo original V9. La V9 se conserva como respaldo por si deseas retirar alguna función de esta versión.</div>
     </div>
   </div>
 </div>
@@ -641,6 +728,64 @@ async function saveCloud(asNew=false,fromPending=false){
 el('cloudSaveBtn').onclick=()=>saveCloud(false);el('cloudNewBtn').onclick=()=>saveCloud(true);el('historyBtn').onclick=()=>getHistory(true).catch(e=>setCloudStatus(e.message,'error'));el('cloudLoadBtn').onclick=()=>loadCloud();sucursalSelect.addEventListener('change',()=>{suggestNextNumber();syncHomeSucursal()});
 
 
+
+const USER_PROFILE_KEY='blumaro_user_profile_v1';
+function getUserProfile(){
+  try{
+    const p=JSON.parse(localStorage.getItem(USER_PROFILE_KEY)||'{}');
+    return {name:String(p.name||'').trim(),role:String(p.role||'').trim()};
+  }catch(_){return {name:'',role:''}}
+}
+function renderUserProfile(){
+  const p=getUserProfile();
+  const n=el('profileNameLabel'),r=el('profileRoleLabel');
+  if(n)n.textContent=p.name||'Configurar perfil';
+  if(r)r.textContent=p.role||'Toca para identificarte';
+  const dot=el('profileOnlineDot');
+  if(dot)dot.classList.toggle('offline',!navigator.onLine);
+}
+function applyProfileToCountedBy(force=false){
+  const p=getUserProfile(),input=el('contadoPor');
+  if(!p.name||!input)return;
+  if(force||!input.value.trim())input.value=p.name;
+}
+function openProfileEditor(){
+  const p=getUserProfile();
+  el('homeModalTitle').textContent='👤 Perfil de usuario';
+  el('homeModalText').innerHTML=
+    `<div class="profile-form">
+      <div class="field"><label>Nombre</label><input id="profileNameInput" type="text" placeholder="Nombre del responsable"></div>
+      <div class="field"><label>Cargo</label>
+        <select id="profileRoleInput">
+          <option value="">Selecciona un cargo</option>
+          <option value="Gerente">Gerente</option>
+          <option value="Team Líder">Team Líder</option>
+          <option value="Gerente de distrito">Gerente de distrito</option>
+        </select>
+      </div>
+      <div class="profile-help">Este nombre se utilizará automáticamente en “Contado por” al comenzar inventarios nuevos.</div>
+    </div>`;
+  el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="saveUserProfile()">Guardar perfil</button>';
+  homeModal.classList.add('show');
+  setTimeout(()=>{
+    const ni=el('profileNameInput'),ri=el('profileRoleInput');
+    if(ni)ni.value=p.name;
+    if(ri)ri.value=p.role;
+    if(ni)ni.focus();
+  },0);
+}
+function saveUserProfile(){
+  const name=(el('profileNameInput')?.value||'').trim();
+  const role=(el('profileRoleInput')?.value||'').trim();
+  if(!name){showToast('Escribe el nombre del responsable');return}
+  if(!role){showToast('Selecciona el cargo');return}
+  localStorage.setItem(USER_PROFILE_KEY,JSON.stringify({name,role}));
+  renderUserProfile();
+  applyProfileToCountedBy(true);
+  closeHomeModal();
+  showToast('Perfil guardado');
+}
+
 const LOCAL_DRAFT_KEY='inventario_auto_draft_v1';
 const PENDING_SYNC_KEY='inventario_pending_sync_v1';
 let localDraftTimer=null,isSyncingPending=false;
@@ -697,13 +842,12 @@ function updatePendingUI(){
   updateConnectionUI();
 }
 function updateConnectionUI(){
-  const online=navigator.onLine,b=el('connectionBadge'),banner=el('offlineBanner'),q=pendingQueue();
-  if(b){
-    b.classList.remove('offline','pending');
-    if(!online){b.textContent='📴 Sin conexión';b.classList.add('offline')}
-    else if(q.length){b.textContent=`☁️ ${q.length} pendiente${q.length>1?'s':''}`;b.classList.add('pending')}
-    else b.textContent='☁️ En línea';
+  const online=navigator.onLine,banner=el('offlineBanner'),q=pendingQueue();
+  const badge=el('connectionBadge');
+  if(badge){
+    badge.title=!online?'Sin conexión':q.length?`${q.length} pendiente(s) de sincronizar`:'En línea';
   }
+  renderUserProfile();
   if(banner)banner.classList.toggle('show',!online);
 }
 function continueLastDraft(){
@@ -747,7 +891,7 @@ document.addEventListener('change',e=>{if(inventoryApp&&!inventoryApp.classList.
 
 const homeScreen=el('homeScreen'),inventoryApp=el('inventoryApp'),homeSucursal=el('homeSucursal'),homeModal=el('homeModal');
 function initHome(){
-  updateDraftUI();updatePendingUI();updateConnectionUI();
+  renderUserProfile();updateDraftUI();updatePendingUI();updateConnectionUI();
   homeSucursal.innerHTML=sucursalSelect.innerHTML;
   homeSucursal.value=sucursalSelect.value||'';
   homeSucursal.addEventListener('change',()=>{sucursalSelect.value=homeSucursal.value;refreshHomeSummary()});
@@ -759,6 +903,8 @@ async function openInventoryFromHome(type){
   const suc=homeSucursal.value.trim();
   if(!suc){showToast('Selecciona una sucursal primero');homeSucursal.focus();return}
   sucursalSelect.value=suc;tipoSelect.value=type;switchType(type,true);
+  applyProfileToCountedBy(true);
+  setInventoryState('Borrador');
   homeScreen.classList.add('is-hidden');inventoryApp.classList.remove('is-hidden');
   window.scrollTo({top:0,behavior:'instant'});
 }
@@ -833,6 +979,8 @@ renderMovements();renderTheory();switchType('Diario',false);initHome();
 // =========================
 const V10_STATE_KEY='inventory_state_v10';
 const V10_MOVES_KEY='independent_movements_v10_fallback';
+const V10_LAST_TRANSFER_PDF_KEY='last_transfer_pdf_v10';
+const V10_LAST_MOVEMENT_ID_KEY='last_movement_id_v10';
 let inventoryState=localStorage.getItem(V10_STATE_KEY)||'Borrador';
 
 function setInventoryState(state){
@@ -904,25 +1052,34 @@ function cacheMovementFallback(m){
 }
 async function saveIndependentMovement(){
   const type=el('betaMoveType').value, code=el('betaMoveProduct').value, qty=el('betaMoveQty').value;
-  if(!qty||Number(qty)<=0){showToast('Indica una cantidad');return}
+  if(!qty||Number(qty)<=0){showToast('Indica una cantidad');return null}
   const p=allBetaProducts('Mensual').find(x=>x.item.code===code);
   const data={
     action:'saveMovement',tipo:type,sucursal:sucursalSelect.value||homeSucursal.value||'',
     sucursalRelacionada:el('betaMoveBranch').value,codigo:code,producto:p?.item.name||code,
     cantidad:Number(qty),unidad:el('betaMoveUnit').value,observacion:el('betaMoveNote').value.trim(),
-    responsable:el('contadoPor')?.value||''
+    responsable:el('contadoPor')?.value||getUserProfile?.().name||''
   };
-  if(!data.sucursal){showToast('Selecciona una sucursal');return}
+  if(!data.sucursal){showToast('Selecciona una sucursal');return null}
   try{
-    showV10Loading('Guardando movimiento…','Registrando en Google Sheets.');
+    showV10Loading('Guardando movimiento…','Registrando primero el movimiento en Google Sheets.');
     const o=await apiPost(data);
+    if(o.id)localStorage.setItem(V10_LAST_MOVEMENT_ID_KEY,o.id);
+    localStorage.removeItem(V10_LAST_TRANSFER_PDF_KEY);
     el('betaMoveQty').value='';el('betaMoveNote').value='';
     await renderIndependentMovements();
-    showToast(o.pdfUrl?'Movimiento y comprobante guardados':'Movimiento guardado');
-    if(o.pdfUrl)window.open(o.pdfUrl,'_blank');
+    showToast('Movimiento guardado en Sheets');
+    return {response:o,data};
   }catch(e){
-    cacheMovementFallback({...data,id:'LOCAL-'+Date.now(),fecha:new Date().toISOString()});
-    showToast('Sin conexión: movimiento guardado localmente');
+    const msg=String(e?.message||e||'Error desconocido');
+    const network=!navigator.onLine||/failed to fetch|network|load failed|fetch/i.test(msg);
+    if(network){
+      cacheMovementFallback({...data,id:'LOCAL-'+Date.now(),fecha:new Date().toISOString()});
+      showToast('Sin conexión: movimiento guardado localmente');
+    }else{
+      showToast('No se pudo guardar: '+msg.slice(0,90));
+    }
+    return null;
   }finally{hideV10Loading()}
 }
 async function renderIndependentMovements(){
@@ -939,8 +1096,40 @@ async function renderIndependentMovements(){
   box.innerHTML=q.slice(0,12).map(m=>`<div class="beta-list-item"><div class="bi">${String(m.tipo).includes('Transfer')?'↔':String(m.tipo).includes('Descarte')?'🗑️':String(m.tipo).includes('Recepción')?'📥':'±'}</div><div style="flex:1"><b>${m.tipo} · ${m.producto}</b><small>${m.cantidad} ${m.unidad||''} · ${m.fecha||''}${m.pdfUrl?' · PDF disponible':''}</small></div>${m.pdfUrl?`<button class="btn btn-secondary" type="button" onclick="window.open('${m.pdfUrl}','_blank')">PDF</button>`:''}</div>`).join('');
 }
 async function generateTransferReceipt(){
-  if(!el('betaMoveType').value.includes('Transferencia')){showToast('Selecciona Transferencia enviada');return}
-  await saveIndependentMovement();
+  let id=localStorage.getItem(V10_LAST_MOVEMENT_ID_KEY)||'';
+  const currentType=el('betaMoveType').value||'';
+
+  if(!id){
+    if(!currentType.includes('Transferencia')){
+      showToast('Selecciona una transferencia, guárdala y luego genera el PDF.');
+      return;
+    }
+    const saved=await saveIndependentMovement();
+    if(!saved?.response?.id)return;
+    id=saved.response.id;
+  }
+
+  const popup=window.open('about:blank','_blank');
+  if(popup){
+    try{popup.document.write('<p style="font-family:Arial;padding:20px">Generando comprobante PDF…</p>')}catch(_){}
+  }
+
+  try{
+    showV10Loading('Generando comprobante…','Creando el PDF en Google Drive.');
+    const o=await apiPost({action:'generateMovementPdf',id});
+    if(!o.pdfUrl)throw new Error('Apps Script no devolvió el enlace del PDF.');
+    localStorage.setItem(V10_LAST_TRANSFER_PDF_KEY,o.pdfUrl);
+    await renderIndependentMovements();
+    if(popup)popup.location.href=o.pdfUrl;
+    else{
+      const w=window.open(o.pdfUrl,'_blank');
+      if(!w)showToast('PDF generado. El navegador bloqueó la nueva ventana.');
+    }
+    showToast('Comprobante PDF generado');
+  }catch(e){
+    if(popup)popup.close();
+    showToast('No se pudo generar PDF: '+String(e?.message||e).slice(0,95));
+  }finally{hideV10Loading()}
 }
 function factorSummary(item,cat){
   const vals=[];
@@ -998,10 +1187,25 @@ async function loadCatalogFromSheets(){
   return false;
 }
 function showV10Loading(title='Cargando…',text='Preparando la información.'){
-  el('v10LoadingTitle').textContent=title;el('v10LoadingText').textContent=text;el('v10Loading').classList.add('show');
+  const overlay=el('v10Loading');
+  el('v10LoadingTitle').textContent=title;
+  el('v10LoadingText').textContent=text;
+  overlay.classList.add('show');
+  overlay.style.display='flex';
+  overlay.style.opacity='1';
 }
-function hideV10Loading(){el('v10Loading').classList.remove('show')}
-function demoLoading(){showV10Loading('Sincronizando con Google…','Consultando Sheets, Drive y movimientos.');setTimeout(hideV10Loading,1400)}
+function hideV10Loading(){
+  const overlay=el('v10Loading');
+  overlay.classList.remove('show');
+  overlay.style.display='none';
+}
+function demoLoading(){
+  showV10Loading('Sincronizando con Google…','Consultando Sheets, Drive y movimientos.');
+  setTimeout(()=>{
+    hideV10Loading();
+    showToast('Animación de carga completada');
+  },2200);
+}
 function showPwaDemo(){
   el('homeModalTitle').textContent='📱 PWA instalable';
   el('homeModalText').innerHTML='La aplicación ya está preparada visualmente para funcionar como PWA. Para que aparezca el botón real de instalación debe publicarse por <b>HTTPS</b> junto con su manifest y service worker; un archivo HTML abierto directamente desde el equipo no puede instalarse como PWA completa.';
