@@ -66,6 +66,74 @@
 .draft-meta{font-size:.68rem;color:var(--ink-soft);margin-top:5px}
 .sync-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#fff1f0;color:#b42318;font-size:.65rem;font-weight:800;margin-left:6px}
 
+
+/* =========================
+   V10 OFICIAL · CAPA VISUAL APP
+   ========================= */
+:root{
+  --corp:#075b3d;--corp2:#0b714b;--corp-soft:#eaf4ef;
+  --corp-bg:#f4f7f5;--corp-line:#dfe7e2;--corp-muted:#68756e;
+  --corp-shadow:0 10px 28px rgba(20,45,32,.08);
+}
+body{background:var(--corp-bg);padding-bottom:92px}
+.home-screen{background:var(--corp-bg)}
+.home-shell{max-width:580px}
+.home-topbar{position:sticky;top:0;z-index:20;background:rgba(244,247,245,.95);backdrop-filter:blur(14px);padding:14px 0 10px}
+.home-brand{gap:11px}.home-logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,var(--corp),var(--corp2));display:grid;place-items:center;box-shadow:var(--corp-shadow)}
+.home-brand h1{font-size:1rem}.home-brand p{font-size:.67rem}
+.home-hero{border-radius:24px;background:linear-gradient(145deg,var(--corp),#06482f);box-shadow:0 16px 38px rgba(7,91,61,.18);padding:22px}
+.home-card,.home-action,.home-tool,.home-recent,.card,details.section{border-color:var(--corp-line);box-shadow:0 5px 18px rgba(20,45,32,.035)}
+.home-action{border-radius:18px}.home-action.primary{background:linear-gradient(145deg,#fff,#f3faf6);border-color:#c9dfd2}
+.home-tool{border-radius:0}.home-tools{border-radius:18px;overflow:hidden;border:1px solid var(--corp-line)}
+.home-tools .home-tool{border:0;border-bottom:1px solid var(--corp-line)}.home-tools .home-tool:last-child{border-bottom:0}
+header{background:linear-gradient(145deg,var(--corp),#06482f)}
+.card,details.section{border-radius:17px}
+.btn{border-radius:11px}
+.btn-primary{background:var(--corp)}
+.app-bottom-nav{
+ position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:70;
+ width:min(100%,580px);display:grid;grid-template-columns:repeat(5,1fr);
+ background:rgba(255,255,255,.97);backdrop-filter:blur(16px);
+ border-top:1px solid var(--corp-line);padding:7px 7px calc(7px + env(safe-area-inset-bottom));
+}
+.app-nav-btn{border:0;background:transparent;color:#87938c;border-radius:12px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.58rem;font-weight:750}
+.app-nav-btn .navico{font-size:19px;line-height:1.1}
+.app-nav-btn.active{background:var(--corp-soft);color:var(--corp)}
+.beta-panel{position:fixed;inset:0;z-index:58;background:var(--corp-bg);display:none;overflow:auto;padding-bottom:96px}
+.beta-panel.show{display:block}
+.beta-shell{max-width:580px;margin:auto;padding:0 14px 26px}
+.beta-top{position:sticky;top:0;z-index:3;background:rgba(244,247,245,.96);backdrop-filter:blur(14px);padding:14px 0 10px;display:flex;align-items:center;justify-content:space-between}
+.beta-top h2{margin:0;font-size:1rem}.beta-top small{display:block;color:var(--corp-muted);font-size:.64rem;margin-top:2px}
+.beta-hero{background:linear-gradient(145deg,var(--corp),#06482f);color:#fff;border-radius:22px;padding:18px;margin:6px 0 14px;box-shadow:0 14px 34px rgba(7,91,61,.17)}
+.beta-hero h3{margin:0 0 5px;font-size:1.15rem}.beta-hero p{margin:0;color:#dcebe4;font-size:.7rem;line-height:1.45}
+.beta-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.beta-card{background:#fff;border:1px solid var(--corp-line);border-radius:17px;padding:13px;margin-bottom:10px}
+.beta-card h3{margin:0 0 10px;font-size:.86rem;color:#06482f}
+.beta-field{margin-bottom:9px}.beta-field label{display:block;font-size:.66rem;color:var(--corp-muted);margin-bottom:4px}.beta-field input,.beta-field select,.beta-search{width:100%;padding:10px 11px;border:1px solid var(--corp-line);border-radius:10px;background:#fff}
+.beta-row{display:flex;gap:8px;align-items:center}.beta-row>*{flex:1}
+.beta-list-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--corp-line)}.beta-list-item:last-child{border-bottom:0}
+.beta-list-item .bi{width:36px;height:36px;border-radius:11px;background:var(--corp-soft);display:grid;place-items:center}
+.beta-list-item b{display:block;font-size:.75rem}.beta-list-item small{display:block;font-size:.62rem;color:var(--corp-muted);margin-top:2px}
+.beta-chip{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:.59rem;font-weight:850;background:var(--corp-soft);color:var(--corp);margin:2px}
+.inv-status-wrap{display:flex;gap:6px;flex-wrap:wrap}
+.inv-status{border:1px solid var(--corp-line);background:#fff;border-radius:999px;padding:7px 10px;font-size:.64rem;font-weight:800;color:#66736c}
+.inv-status.active{background:var(--corp-soft);color:var(--corp);border-color:#bfd9ca}
+.inv-status[data-state="Cerrado"].active{background:#eaf0fb;color:#2457a7;border-color:#cbd7ef}
+.inv-status[data-state="Revisado"].active{background:#edf7ef;color:#0b7a4b;border-color:#cbe3d2}
+.inventory-locked .qty-grid input{pointer-events:none;opacity:.58;background:#f3f5f4}
+.inventory-locked #addMovementBtn{pointer-events:none;opacity:.55}
+.loading-overlay{position:fixed;inset:0;z-index:110;background:rgba(244,247,245,.93);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center}
+.loading-overlay.show{display:flex}
+.loading-box{text-align:center;background:#fff;border:1px solid var(--corp-line);border-radius:20px;padding:24px 30px;box-shadow:var(--corp-shadow)}
+.loading-spin{width:35px;height:35px;border:4px solid #dce8e1;border-top-color:var(--corp);border-radius:50%;animation:v10spin .75s linear infinite;margin:0 auto 10px}
+@keyframes v10spin{to{transform:rotate(360deg)}}
+.loading-box b{font-size:.8rem}.loading-box small{display:block;color:var(--corp-muted);font-size:.64rem;margin-top:4px}
+.pwa-demo{display:flex;align-items:center;gap:11px}.pwa-icon{width:52px;height:52px;border-radius:15px;background:linear-gradient(145deg,var(--corp),var(--corp2));color:#fff;display:grid;place-items:center;font-weight:900}
+.catalog-table{width:100%;border-collapse:collapse;font-size:.66rem}.catalog-table th,.catalog-table td{padding:8px 6px;border-bottom:1px solid var(--corp-line);text-align:left}.catalog-table th{color:var(--corp);background:var(--corp-soft);position:sticky;top:64px}
+.catalog-wrap{overflow:auto;max-height:52vh;border:1px solid var(--corp-line);border-radius:12px}
+.beta-note{font-size:.64rem;color:var(--corp-muted);line-height:1.45}
+@media(max-width:420px){.beta-grid{grid-template-columns:1fr}}
+
 </style></head><body>
 
 <div id="homeScreen" class="home-screen">
@@ -122,6 +190,17 @@
 <header><button class="back-home-btn" id="backHomeBtn" type="button">← Inicio</button><h1 id="pageTitle">Control de inventario diario</h1><p>INVERSIONES BLUMARO, S.A.</p><div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div><div class="progress-label" id="progressLabel"></div><div class="progress-label" id="horaInicioLabel"></div></header>
 <main>
 <div class="card type-card"><h2>Tipo de inventario</h2><div class="field"><select id="tipoInventario"><option value="Diario">Inventario diario</option><option value="Mensual">Inventario mensual</option></select></div><div class="search-count">Al cambiar de tipo, cambia la lista de productos y el historial de Google se consulta por separado.</div></div>
+
+<div class="card" id="inventoryStatusCard">
+  <h2>● Estado del inventario</h2>
+  <div class="inv-status-wrap">
+    <button class="inv-status active" type="button" data-state="Borrador" onclick="setInventoryState('Borrador')">Borrador</button>
+    <button class="inv-status" type="button" data-state="En progreso" onclick="setInventoryState('En progreso')">En progreso</button>
+    <button class="inv-status" type="button" data-state="Cerrado" onclick="setInventoryState('Cerrado')">Cerrado</button>
+    <button class="inv-status" type="button" data-state="Revisado" onclick="setInventoryState('Revisado')">Revisado</button>
+  </div>
+  <div class="beta-note" id="inventoryStateNote" style="margin-top:9px">Borrador: puedes editar el conteo normalmente.</div>
+</div>
 <div class="card"><h2>Datos generales</h2><div class="row2"><div class="field"><label>Sucursal</label><select id="sucursal"><option value="">Selecciona una sucursal</option><optgroup label="Distrito 1"><option>Gómez</option><option>Sambil</option><option>Arroyo Hondo</option><option>Churchill</option><option>Núñez</option><option>Rómulo</option><option>Independencia</option></optgroup><optgroup label="Distrito 2"><option>Colina</option><option>Occidental Mall</option><option>Paseo 27</option><option>Jumbo Luperón</option><option>Portal del Norte</option><option>La Vega</option><option>San Francisco</option></optgroup><optgroup label="Distrito 3"><option>Plaza Moderna</option><option>San Isidro</option><option>Venezuela</option><option>Mella</option><option>Charles</option><option>Jumbo Romana</option><option>La Romana</option><option>Higüey</option></optgroup></select></div><div class="field"><label>N° de conteo</label><input id="conteo" type="text" placeholder="1"></div></div><div class="row2"><div class="field"><label>Fecha</label><input id="fecha" type="date"></div><div class="field"><label>Día</label><select id="dia"><option value="">—</option><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option></select></div></div><div class="field"><label>Contado por</label><input id="contadoPor" placeholder="Nombre"></div><div class="row2"><button class="btn btn-secondary" id="saveBtn">💾 Guardar borrador</button><button class="btn btn-secondary" id="loadBtn">📂 Cargar borrador</button></div><input type="file" id="loadFile" accept="application/json" hidden></div>
 <div class="card"><h2>☁️ Google Sheets</h2><div class="cloud-actions"><button class="btn btn-primary" id="cloudSaveBtn">Guardar / actualizar</button><button class="btn btn-secondary" id="cloudNewBtn">Guardar como nuevo</button><button class="btn btn-secondary" id="historyBtn">Ver historial</button><button class="btn btn-secondary" id="cloudLoadBtn">Cargar este número</button></div><div class="cloud-status" id="cloudStatus">Selecciona una sucursal.</div><div class="history-list" id="historyList"></div></div>
 <div class="card" id="movementsCard">
@@ -147,7 +226,68 @@
 </div>
 <div class="card search-card"><h2>Buscar artículo</h2><input id="searchInput" type="search" placeholder="Escribe nombre o código..."><div class="search-count" id="searchCount"></div></div>
 <div id="sections"></div>
-</main><footer><div class="footer-inner"><button class="btn btn-secondary" id="copyBtn">Copiar</button><button class="btn btn-secondary" id="pdfBtn">Guardar PDF</button><button class="btn btn-primary" id="sendBtn">Enviar correo</button></div></footer></div><div class="toast" id="toast"></div>
+</main><footer><div class="footer-inner"><button class="btn btn-secondary" id="copyBtn">Copiar</button><button class="btn btn-secondary" id="pdfBtn">Guardar PDF</button><button class="btn btn-primary" id="sendBtn">Enviar correo</button></div></footer></div>
+<div id="movementCenterPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top"><div><h2>Centro de movimientos</h2><small>Registro independiente del inventario</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-hero"><h3>Movimientos operativos</h3><p>Registra recepciones, transferencias, descartes o ajustes sin tener que abrir un inventario.</p></div>
+    <div class="beta-card">
+      <h3>Nuevo movimiento</h3>
+      <div class="beta-field"><label>Tipo</label><select id="betaMoveType"><option>Recepción de pedido</option><option>Transferencia enviada</option><option>Descarte / merma</option><option>Ajuste manual</option></select></div>
+      <div class="beta-field"><label>Producto</label><select id="betaMoveProduct"></select></div>
+      <div class="beta-row"><div class="beta-field"><label>Cantidad</label><input id="betaMoveQty" type="number" min="0" step="any" placeholder="0"></div><div class="beta-field"><label>Unidad</label><select id="betaMoveUnit"><option>Unidad</option><option>Paquete</option><option>Caja</option><option>Libra</option><option>Charola</option><option>Fardo</option></select></div></div>
+      <div class="beta-field"><label>Sucursal relacionada</label><select id="betaMoveBranch"></select></div>
+      <div class="beta-field"><label>Observación</label><input id="betaMoveNote" placeholder="Motivo o detalle"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" type="button" onclick="saveIndependentMovement()">Guardar movimiento</button><button class="btn btn-secondary" type="button" onclick="generateTransferReceipt()">Generar comprobante PDF</button></div>
+      <div class="beta-note" style="margin-top:9px">Los movimientos independientes se guardan en la pestaña Movimientos de Google Sheets. Las transferencias generan un comprobante PDF en Drive.</div>
+    </div>
+    <div class="beta-card"><h3>Actividad reciente</h3><div id="betaMovementList"><div class="beta-note">Todavía no hay movimientos independientes registrados.</div></div></div>
+  </div>
+</div>
+
+<div id="catalogPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top"><div><h2>Catálogo de productos</h2><small>Administrado desde Google Sheets</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-hero"><h3>Catálogo central</h3><p>Códigos, nombres, equivalencias y estado Activo/Inactivo se cargan desde la pestaña Catalogo de Google Sheets.</p></div>
+    <div class="beta-card">
+      <div class="beta-row"><input class="beta-search" id="catalogSearch" type="search" placeholder="Buscar código o producto..." oninput="renderBetaCatalog()"><select id="catalogType" onchange="renderBetaCatalog()"><option>Mensual</option><option>Diario</option></select></div>
+      <div style="margin-top:9px"><span class="beta-chip">Fuente: Google Sheets</span><span class="beta-chip">Estado: Activo / Inactivo</span></div>
+    </div>
+    <div class="catalog-wrap"><table class="catalog-table"><thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Equivalencia</th><th>Estado</th></tr></thead><tbody id="catalogBody"></tbody></table></div>
+  </div>
+</div>
+
+<div id="morePanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top"><div><h2>Más</h2><small>Funciones de la aplicación</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-card">
+      <h3>Aplicación instalable</h3>
+      <div class="pwa-demo"><div class="pwa-icon">IB</div><div><b style="font-size:.78rem">Operaciones Blumaro</b><div class="beta-note">La versión PWA se abriría como una app, sin la barra del navegador, cuando esté alojada por HTTPS.</div><button class="btn btn-primary" style="margin-top:8px" type="button" onclick="showPwaDemo()">Probar instalación</button></div></div>
+    </div>
+    <div class="beta-card">
+      <h3>Experiencia de carga</h3>
+      <div class="beta-note">Las sincronizaciones, cargas de historial y generación de PDF pueden mostrar una pantalla de progreso uniforme.</div>
+      <button class="btn btn-secondary" style="margin-top:8px" type="button" onclick="demoLoading()">Ver animación de carga</button>
+    </div>
+    <div class="beta-card">
+      <h3>Respaldo V9 disponible</h3>
+      <div class="beta-note">Borrador automático, modo sin conexión, inventario teórico, PDFs y sincronización actual continúan en el archivo original V9. La V9 se conserva como respaldo por si deseas retirar alguna función de esta versión.</div>
+    </div>
+  </div>
+</div>
+
+<nav class="app-bottom-nav" id="appBottomNav">
+  <button class="app-nav-btn active" data-v10="home" type="button" onclick="v10Navigate('home',this)"><span class="navico">⌂</span><span>Inicio</span></button>
+  <button class="app-nav-btn" data-v10="inventory" type="button" onclick="v10Navigate('inventory',this)"><span class="navico">＋</span><span>Inventario</span></button>
+  <button class="app-nav-btn" data-v10="movements" type="button" onclick="v10Navigate('movements',this)"><span class="navico">↔</span><span>Movimientos</span></button>
+  <button class="app-nav-btn" data-v10="catalog" type="button" onclick="v10Navigate('catalog',this)"><span class="navico">☷</span><span>Catálogo</span></button>
+  <button class="app-nav-btn" data-v10="more" type="button" onclick="v10Navigate('more',this)"><span class="navico">•••</span><span>Más</span></button>
+</nav>
+
+<div class="loading-overlay" id="v10Loading">
+  <div class="loading-box"><div class="loading-spin"></div><b id="v10LoadingTitle">Sincronizando…</b><small id="v10LoadingText">Conectando con Google y preparando la información.</small></div>
+</div>
+<div class="toast" id="toast"></div>
 <script>
 const DATASETS={Mensual:[{"name":"PRODUCTOS FRIOS","icon":"🧊","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0031","name":"Salchicha italiana","factors":{"caja":320,"paquete":80,"unidad":0}},{"code":"I0033","name":"Pollo","factors":{"caja":160,"paquete":80,"unidad":1}},{"code":"I0070","name":"Salchicha de Res","factors":{"caja":96,"paquete":48.0,"unidad":1}},{"code":"I0030","name":"Queso para pizza 20 lb","factors":{"caja":0,"paquete":320,"unidad":1}},{"code":"I0052","name":"STRING CHEESE LATAM CJ/15 LB","factors":{"caja":240,"paquete":240,"unidad":1}},{"code":"I0049","name":"Cheese, three Blend Pizza (Tres Quesos para pizza 2/4 lbs)","factors":{"caja":128,"paquete":32,"unidad":1}},{"code":"I0041","name":"Cheese, Shredded Romano Parmesan (Queso Romano Parmesano Rayado 2/4 lbs)","factors":{"caja":128,"paquete":32,"unidad":1}},{"code":"I0028","name":"TOCINO (BACON) 4/3 LB","factors":{"caja":192,"paquete":48.0,"unidad":1}},{"code":"I0081","name":"Pepperoni","factors":{"caja":400,"paquete":200,"unidad":1}},{"code":"I0029","name":"TOCINO CANADIENSE (CANADIAN BACON)","factors":{"caja":160,"paquete":80.0,"unidad":1}}]},{"name":"MASAS & HARINAS","icon":"📦","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0020","name":"Masa de 16","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0019","name":"Masa de14","factors":{"caja":8,"paquete":1,"unidad":1}},{"code":"I0018","name":"Masa de 8","factors":{"caja":15,"paquete":1,"unidad":1}},{"code":"I0017","name":"Masa de 6","factors":{"caja":15,"paquete":1,"unidad":1}},{"code":"I0054","name":"MASA DE 12","factors":{"caja":9,"paquete":1,"unidad":1}},{"code":"I0032","name":"Crust, 14 inch Thin (Harina Precocida delgada de 14 pulgadas 60/1)","factors":{"caja":60,"paquete":15,"unidad":1}},{"code":"I0024","name":"Dustinator (Harina 25 lb) ","factors":{"caja":400.0,"paquete":16,"unidad":16}}]},{"name":"BEBIDAS","icon":"🧃","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0674","name":"REF DOBLE LITRO COCA COLA","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0675","name":"REF DOBLE LITRO ROJO ","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0678","name":"REF DOBLE LITRO UVA ","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0676","name":"REF DOBLE LITRO COCA C. SIN AZUCAR","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0688","name":"REF DOBLE LITROMERENGUE","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0088","name":"REF DOBLE LITRO SPRITE","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0099","name":"REF DOBLE LITRO NARANJA","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0686","name":"AGUA DASANI","factors":{"caja":12,"paquete":12,"unidad":1}},{"code":"I0680","name":"REF COCA COLA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0681","name":"RED COCA COLA SIN AZUCAL 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0682","name":"REF SPRITE 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0683","name":"REF COUNTRY CLUB FRAMBUESA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0684","name":"REF COUNTRY CLUB UVA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0685","name":"REF COUNTRY CLUB NARANJA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0687","name":"REF RED ROCK MERENGUE 20 Oz","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0771","name":"Coca cola 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0772","name":"Sprite 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0775","name":"Country club naranja 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0773","name":"Country club uva 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0774","name":"Frambuesa 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0776","name":"Country club merengue 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}}]},{"name":"VEGETALES","icon":"🥬","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0065","name":"TOMATE LBS","factors":{"caja":16,"paquete":1,"unidad":16}},{"code":"I0067","name":"CEBOLLA LBS","factors":{"caja":16,"paquete":1,"unidad":16}},{"code":"I0066","name":"PIMENTON","factors":{"caja":16,"paquete":1,"unidad":16}}]},{"name":"SALSAS & CONDIMENTOS","icon":"🥫","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0021","name":"Salsa de tomate para Pizza (Masterbag 4/8,8lbs)","factors":{"caja":564,"paquete":141,"unidad":1}},{"code":"I0035","name":"SAUCE GARLIC JUG (JUGO SALSA AJO) 2/1","factors":{"caja":272,"paquete":128,"unidad":16}},{"code":"I0038","name":"GARLIC PARMESAN SAUCE (SALSA AJO PARMESANA) 2/1 GL","factors":{"caja":272,"paquete":128,"unidad":16}},{"code":"I0036","name":"Sauce, Garlic Cup (Salsa de ajo indiv 160/1)","factors":{"caja":160,"paquete":1,"unidad":1}},{"code":"I0037","name":"SAUCE BBQ (SALSA BBQ POUCH) 8/64 OZ","factors":{"caja":512,"paquete":64,"unidad":16}},{"code":"I0044","name":"Spinach Alfredo Sauce, Shelf S (Salsa de Espinaca Alfredo 8/3 lbs)","factors":{"caja":96,"paquete":32,"unidad":16}},{"code":"I0014","name":"Oregano (BALDON)","factors":{"caja":76.8,"paquete":3.2,"unidad":1}},{"code":"I0025","name":"Olive, Black (Aceitunas negras 10/33oz)","factors":{"caja":330.0,"paquete":33,"unidad":16}},{"code":"I0040","name":"Pineapple (Piña 12 / 30 oz) ","factors":{"caja":648,"paquete":108.0,"unidad":16}},{"code":"I0048","name":"Pepper, Pepperoncini (Pimientos  pequeños 6 / 5 lbs )","factors":{"caja":480,"paquete":80.0,"unidad":16}},{"code":"I0008","name":"Maiz La Famosa 24/1","factors":{"caja":360,"paquete":15.0,"unidad":16}}]},{"name":"TOPPINGS / SYRUPS","icon":"🍰","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0026","name":"Cinnamon Spread (Aderezo de Canela 15 lbs) (Cubetas)","factors":{"caja":240.0,"paquete":16,"unidad":1}},{"code":"I0027","name":"Drizzle (Azucar para postre 22 lb) (Cubetas)","factors":{"caja":352.0,"paquete":16,"unidad":1}},{"code":"I0053","name":"Topping, Crisp (Topping de Harina crujiente para postre 20 lbs)","factors":{"caja":320,"paquete":16,"unidad":1}},{"code":"I0069","name":"Galletas con Chispas de Chocolate","factors":{"caja":24,"paquete":1,"unidad":1}},{"code":"I0050","name":"BIZCOCHO BRAWNIE C/ 18 DE 16","factors":{"caja":18,"paquete":1,"unidad":1}}]},{"name":"ENVASES","icon":"📦","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0552","name":"CAJA PIZZA 6.5\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0667","name":"CAJA PIZZA 8\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0668","name":"CAJA PIZZA 12\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0669","name":"CAJA PIZZA 14\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0670","name":"CAJA PIZZA 16\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0541","name":"PLATOS VERDE PJ #9 (Plates, Paper 9 Round) 500/1","factors":{"caja":500,"paquete":125,"unidad":1}},{"code":"I0113","name":"SELLOS DE SEGURIDAD","factors":{"caja":2000,"paquete":1,"unidad":1}},{"code":"I0056","name":"Envases Nudos de Ajo","factors":{"caja":150,"paquete":1,"unidad":1}},{"code":"I0055","name":"Bandejas Breadstrick (Tray, garlic breadstick) 300/1","factors":{"caja":150,"paquete":75,"unidad":1}}]},{"name":"BOLSAS","icon":"🛍️","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0064","name":"Bolsas (Bag, Tee Shirt) 1000/1 (Plastica)","factors":{"caja":1000,"paquete":1,"unidad":1}}]},{"name":"ARTICULOS DE PAPEL","icon":"📄","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0057","name":"Hojas de Aluminio 12 x 18 (Foil, Wing Sheets 12 X 18) 1000/1","factors":{"caja":1000,"paquete":500,"unidad":1}},{"code":"I0061","name":"Hojas 6.5 pulgs para horneado (Sheets, 6.5 Inch Baking) 2000/1","factors":{"caja":2000,"paquete":1,"unidad":1}},{"code":"I0062","name":"Hojas 10 pulgs para horneado (Sheets, 10 Inch Baking) 1000/1","factors":{"caja":1000,"paquete":1,"unidad":1}},{"code":"I0004","name":"Servilletas RD","factors":{"caja":500,"paquete":750.0,"unidad":1}},{"code":"I0500","name":"LABELS THERMAL DIRECT","factors":{"caja":10800,"paquete":900,"unidad":1}},{"code":"I0106","name":"Papel Termico para printer","factors":{"caja":60,"paquete":5,"unidad":1}}]},{"name":"ARTICULOS PLASTICOS","icon":"🥤","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0073","name":"TAPAS PLASTICAS DE 12 ONZ (RD)","factors":{"caja":1000,"paquete":100,"unidad":1}},{"code":"I0551","name":"VASOS CORTESIA 7 OZ","factors":{"caja":1000,"paquete":50,"unidad":1}},{"code":"I0058","name":"vasos para salsa 2 oz","factors":{"caja":250,"paquete":125,"unidad":1}},{"code":"I0011","name":"Gorros Desechables","factors":{"caja":100,"paquete":100,"unidad":1}}]},{"name":"ARTICULOS QUIMICOS","icon":"🧪","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0104","name":"EC-20 ( SINK SANITIZER) POTE DE 1 LB","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0122","name":"ECO-GUARD SANITIZANTE/DESINFECTANTE","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0107","name":"Ecogrese-33 (DESGRASANTE LIQUIDO para Limpiar Horno).","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0108","name":"DYNA-3000 (DESGRASANTE MULTIUSO)","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0548","name":"QUICK-FOAM (JABON LAVA PLATOS)","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0110","name":"BACTERY (JABON ANTIBACTERIAL)","factors":{"caja":1,"paquete":1,"unidad":1}}]},{"name":"ARTICULOS DE LIMPIEZA","icon":"🧹","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0071","name":"BOLSAS DE BASURA","factors":{"caja":100,"paquete":100,"unidad":1}},{"code":"I0102","name":"PAPEL TOALLA FAMILIA PRECORT (73667) 120 M 6/1","factors":{"caja":12,"paquete":6,"unidad":1}}]}],Diario:[{"name":"Cárnico","icon":"🧊","unit":"oz","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"libra","label":"Libra"}],"items":[{"code":"I0030","name":"Queso para pizza 20 lb","factors":{"caja":0,"paquete":320,"libra":16}},{"code":"I0081","name":"Pepperoni","factors":{"caja":400,"paquete":200,"libra":16}},{"code":"I0033","name":"Pollo","factors":{"caja":160,"paquete":80,"libra":16}},{"code":"","name":"Jamón","factors":{"caja":null,"paquete":null,"libra":16},"note":"Sin equivalencia de caja/paquete en el inventario mensual"},{"code":"I0028","name":"Tocino","factors":{"caja":192,"paquete":48,"libra":16}},{"code":"I0031","name":"Salchicha italiana","factors":{"caja":320,"paquete":80,"libra":16}},{"code":"I0070","name":"Salchicha de res","factors":{"caja":96,"paquete":48,"libra":16}}]},{"name":"Masas y harinas","icon":"🍕","unit":"unid.","fields":[{"key":"charra","label":"Charra"},{"key":"unidades","label":"Unidades"}],"items":[{"code":"I0020","name":"Masa de 16","factors":{"charra":6,"unidades":1}},{"code":"I0019","name":"Masa de 14","factors":{"charra":8,"unidades":1}},{"code":"I0018","name":"Masa de 8","factors":{"charra":15,"unidades":1}},{"code":"I0017","name":"Masa de 6","factors":{"charra":15,"unidades":1}},{"code":"I0054","name":"Masa de 12","factors":{"charra":9,"unidades":1}}]},{"name":"Bebidas","icon":"🧃","unit":"unid.","fields":[{"key":"fardo","label":"Fardo"},{"key":"unidad","label":"Unidad"}],"items":[{"code":"I0674","name":"Ref doble litro Coca-Cola","factors":{"fardo":6,"unidad":1}},{"code":"I0675","name":"Ref doble litro rojo","factors":{"fardo":6,"unidad":1}},{"code":"I0678","name":"Ref doble litro uva","factors":{"fardo":6,"unidad":1}},{"code":"I0676","name":"Ref doble litro Coca-Cola sin azúcar","factors":{"fardo":6,"unidad":1}},{"code":"I0688","name":"Ref doble litro merengue","factors":{"fardo":6,"unidad":1}},{"code":"I0088","name":"Ref doble litro Sprite","factors":{"fardo":6,"unidad":1}},{"code":"I0099","name":"Ref doble litro naranja","factors":{"fardo":6,"unidad":1}},{"code":"I0680","name":"Ref Coca-Cola 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0681","name":"Ref Coca-Cola sin azúcar 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0682","name":"Ref Sprite 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0683","name":"Ref Country Club frambuesa 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0684","name":"Ref Country Club uva 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0685","name":"Ref Country Club naranja 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0687","name":"Ref Country Club merengue 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0686","name":"Agua Dasani","factors":{"fardo":12,"unidad":1}},{"code":"I0771","name":"Coca-Cola 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0772","name":"Sprite 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0775","name":"Country Club naranja 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0773","name":"Country Club uva 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0774","name":"Frambuesa 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0776","name":"Country Club merengue 1.25L","factors":{"fardo":6,"unidad":1}}]},{"name":"Salsas y condimentos","icon":"🥫","unit":"oz","fields":[{"key":"caja","label":"Caja"},{"key":"bolsa","label":"Bolsa"},{"key":"libra","label":"Libra"}],"items":[{"code":"I0021","name":"Salsa pizza","factors":{"caja":564,"bolsa":141,"libra":16}}]},{"name":"Cajas","icon":"📦","unit":"unid.","fields":[{"key":"paquete","label":"Paquete"},{"key":"unidades","label":"Unidades"}],"items":[{"code":"I0552","name":"Caja pizza 6.5\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0667","name":"Caja pizza 8\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0668","name":"Caja pizza 12\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0669","name":"Caja pizza 14\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0670","name":"Caja pizza 16\" locales","factors":{"paquete":50,"unidades":1}}]},{"name":"Desechables","icon":"🥤","unit":"unid.","fields":[{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"items":[{"code":"I0004","name":"Servilleta","factors":{"paquete":500,"unidad":1}},{"code":"I0551","name":"Vasos de 7 oz","factors":{"paquete":50,"unidad":1}}]}]};
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyk3e35qzu4CuK7qbI_m7d0A7WFBHsP0upKHIogYGLugvBL4icIGrQ6gwxKYLpw-p2zAw/exec';
@@ -171,8 +311,8 @@ searchInput.addEventListener('input',()=>{const v=captureValues();renderSections
 function switchType(type,clear=true){categories=DATASETS[type];el('pageTitle').textContent=`Control de inventario ${type.toLowerCase()}`;searchInput.value='';if(clear){conteoInput.value='';movements=[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory()}historyList.classList.remove('show');renderSections();setCloudStatus(`Modo ${type}. Selecciona una sucursal para sugerir el próximo número.`);if(sucursalSelect.value)suggestNextNumber()}
 tipoSelect.addEventListener('change',()=>switchType(currentType(),true));
 const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],today=new Date();fechaInput.value=today.toISOString().slice(0,10);diaSelect.value=dias[today.getDay()];fechaInput.addEventListener('change',()=>{if(fechaInput.value){const[y,m,d]=fechaInput.value.split('-').map(Number);diaSelect.value=dias[new Date(y,m-1,d).getDay()]}});el('horaInicioLabel').textContent=`🕒 Inventario iniciado: ${formatHora(horaInicio)}`;
-function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,qty:{},movimientos:movements.map(x=>({...x})),comparacion:{base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows.map(x=>({...x}))}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));return d}
-function applyRecord(d){if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
+function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,estado:inventoryState||'Borrador',qty:{},movimientos:movements.map(x=>({...x})),comparacion:{base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows.map(x=>({...x}))}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));return d}
+function applyRecord(d){if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];if(d.estado)setInventoryState(d.estado);previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
 el('saveBtn').addEventListener('click',()=>{const d=buildSaveData(),u=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=`Borrador_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_${d.fecha||'hoy'}.json`;a.click();URL.revokeObjectURL(u);showToast('Borrador guardado')});el('loadBtn').addEventListener('click',()=>el('loadFile').click());el('loadFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{applyRecord(JSON.parse(r.result));showToast('Borrador cargado')}catch(err){showToast('Archivo no válido')}};r.readAsText(f);e.target.value=''});
 
 function allInventoryProducts(){
@@ -687,4 +827,196 @@ async function showDashboardInfo(){
   }
 }
 renderMovements();renderTheory();switchType('Diario',false);initHome();
-</script></body></html>
+
+// =========================
+// V10 OFICIAL · EXPERIENCIA APP
+// =========================
+const V10_STATE_KEY='inventory_state_v10';
+const V10_MOVES_KEY='independent_movements_v10_fallback';
+let inventoryState=localStorage.getItem(V10_STATE_KEY)||'Borrador';
+
+function setInventoryState(state){
+  inventoryState=state;
+  localStorage.setItem(V10_STATE_KEY,state);
+  document.querySelectorAll('.inv-status').forEach(b=>b.classList.toggle('active',b.dataset.state===state));
+  const note=el('inventoryStateNote');
+  const notes={
+    'Borrador':'Borrador: puedes editar el conteo normalmente.',
+    'En progreso':'En progreso: el inventario está siendo contado actualmente.',
+    'Cerrado':'Cerrado: cantidades y movimientos quedan bloqueados hasta cambiar el estado explícitamente.',
+    'Revisado':'Revisado: inventario marcado como validado. Para editar, cambia primero el estado.'
+  };
+  if(note)note.textContent=notes[state]||state;
+  inventoryApp.classList.toggle('inventory-locked',state==='Cerrado'||state==='Revisado');
+  showToast(`Estado: ${state}`);
+}
+
+function showBetaPanel(name){
+  ['movementCenterPanel','catalogPanel','morePanel'].forEach(id=>el(id)?.classList.remove('show'));
+  if(name==='movements'){el('movementCenterPanel').classList.add('show');populateBetaMovementForm()}
+  if(name==='catalog'){el('catalogPanel').classList.add('show');renderBetaCatalog()}
+  if(name==='more')el('morePanel').classList.add('show');
+}
+
+function setV10Nav(name){
+  document.querySelectorAll('.app-nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.v10===name));
+}
+
+function v10Navigate(name,btn){
+  showBetaPanel('');
+  setV10Nav(name);
+  if(name==='home'){goHome();return}
+  if(name==='inventory'){
+    if(inventoryApp.classList.contains('is-hidden')){
+      const t=tipoSelect?.value||'Diario';
+      openInventoryFromHome(t);
+    }
+    setInventoryState(inventoryState);
+    return;
+  }
+  if(name==='movements'){showBetaPanel('movements');return}
+  if(name==='catalog'){showBetaPanel('catalog');return}
+  if(name==='more'){showBetaPanel('more');return}
+}
+
+function allBetaProducts(type='Mensual'){
+  const out=[];
+  (DATASETS[type]||[]).forEach((cat,ci)=>{
+    (cat.items||[]).forEach((item,ii)=>out.push({cat:cat.name,catObj:cat,item,ci,ii}));
+  });
+  return out;
+}
+function populateBetaMovementForm(){
+  const prod=el('betaMoveProduct'),branch=el('betaMoveBranch');
+  if(prod){
+    prod.innerHTML=allBetaProducts('Mensual').map(x=>`<option value="${x.item.code}">${x.item.code} · ${x.item.name}</option>`).join('');
+  }
+  if(branch){
+    branch.innerHTML=[...sucursalSelect.options].filter(o=>o.value).map(o=>`<option value="${o.value}">${o.textContent}</option>`).join('');
+  }
+  renderIndependentMovements();
+}
+function betaMoves(){
+  try{return JSON.parse(localStorage.getItem(V10_MOVES_KEY)||'[]')}catch(_){return []}
+}
+function cacheMovementFallback(m){
+  const q=betaMoves();q.unshift(m);localStorage.setItem(V10_MOVES_KEY,JSON.stringify(q.slice(0,50)));
+}
+async function saveIndependentMovement(){
+  const type=el('betaMoveType').value, code=el('betaMoveProduct').value, qty=el('betaMoveQty').value;
+  if(!qty||Number(qty)<=0){showToast('Indica una cantidad');return}
+  const p=allBetaProducts('Mensual').find(x=>x.item.code===code);
+  const data={
+    action:'saveMovement',tipo:type,sucursal:sucursalSelect.value||homeSucursal.value||'',
+    sucursalRelacionada:el('betaMoveBranch').value,codigo:code,producto:p?.item.name||code,
+    cantidad:Number(qty),unidad:el('betaMoveUnit').value,observacion:el('betaMoveNote').value.trim(),
+    responsable:el('contadoPor')?.value||''
+  };
+  if(!data.sucursal){showToast('Selecciona una sucursal');return}
+  try{
+    showV10Loading('Guardando movimiento…','Registrando en Google Sheets.');
+    const o=await apiPost(data);
+    el('betaMoveQty').value='';el('betaMoveNote').value='';
+    await renderIndependentMovements();
+    showToast(o.pdfUrl?'Movimiento y comprobante guardados':'Movimiento guardado');
+    if(o.pdfUrl)window.open(o.pdfUrl,'_blank');
+  }catch(e){
+    cacheMovementFallback({...data,id:'LOCAL-'+Date.now(),fecha:new Date().toISOString()});
+    showToast('Sin conexión: movimiento guardado localmente');
+  }finally{hideV10Loading()}
+}
+async function renderIndependentMovements(){
+  const box=el('betaMovementList');if(!box)return;
+  let q=[];
+  try{
+    if(navigator.onLine){
+      const d=await apiGet({action:'movements',sucursal:sucursalSelect.value||homeSucursal.value||''});
+      q=d.records||[];
+    }
+  }catch(_){}
+  if(!q.length)q=betaMoves();
+  if(!q.length){box.innerHTML='<div class="beta-note">Todavía no hay movimientos independientes registrados.</div>';return}
+  box.innerHTML=q.slice(0,12).map(m=>`<div class="beta-list-item"><div class="bi">${String(m.tipo).includes('Transfer')?'↔':String(m.tipo).includes('Descarte')?'🗑️':String(m.tipo).includes('Recepción')?'📥':'±'}</div><div style="flex:1"><b>${m.tipo} · ${m.producto}</b><small>${m.cantidad} ${m.unidad||''} · ${m.fecha||''}${m.pdfUrl?' · PDF disponible':''}</small></div>${m.pdfUrl?`<button class="btn btn-secondary" type="button" onclick="window.open('${m.pdfUrl}','_blank')">PDF</button>`:''}</div>`).join('');
+}
+async function generateTransferReceipt(){
+  if(!el('betaMoveType').value.includes('Transferencia')){showToast('Selecciona Transferencia enviada');return}
+  await saveIndependentMovement();
+}
+function factorSummary(item,cat){
+  const vals=[];
+  (cat.fields||[]).forEach(f=>{
+    const n=item.factors?.[f.key];
+    if(n!==undefined&&n!==null)vals.push(`${f.label} ${n}`);
+  });
+  return vals.slice(0,2).join(' · ');
+}
+function renderBetaCatalog(){
+  const type=el('catalogType')?.value||'Mensual',q=(el('catalogSearch')?.value||'').trim().toLowerCase();
+  const rows=allBetaProducts(type).filter(x=>!q||(x.item.code+' '+x.item.name+' '+x.cat).toLowerCase().includes(q));
+  el('catalogBody').innerHTML=rows.map(x=>`<tr><td>${x.item.code||''}</td><td>${x.item.name}</td><td>${x.cat}</td><td>${factorSummary(x.item,x.catObj)||'—'}</td><td><span class="beta-chip">Activo</span></td></tr>`).join('');
+}
+
+function flattenEmbeddedCatalog(){
+  const rows=[];
+  Object.entries(DATASETS).forEach(([tipo,cats])=>{
+    (cats||[]).forEach(cat=>(cat.items||[]).forEach(item=>rows.push({
+      tipo,categoria:cat.name,icono:cat.icon||'',unidad:cat.unit||'',fields:cat.fields||[],
+      codigo:item.code||'',producto:item.name||'',factors:item.factors||{},activo:true
+    })));
+  });
+  return rows;
+}
+function buildDatasetsFromCatalog(records){
+  const grouped={Mensual:[],Diario:[]},maps={Mensual:{},Diario:{}};
+  (records||[]).filter(r=>r.activo!==false).forEach(r=>{
+    const tipo=r.tipo==='Diario'?'Diario':'Mensual';
+    const key=r.categoria||'Sin categoría';
+    let cat=maps[tipo][key];
+    if(!cat){
+      cat={name:key,icon:r.icono||'📦',unit:r.unidad||'',fields:Array.isArray(r.fields)?r.fields:[],items:[]};
+      maps[tipo][key]=cat;grouped[tipo].push(cat);
+    }
+    cat.items.push({code:r.codigo||'',name:r.producto||'',factors:r.factors||{}});
+  });
+  ['Mensual','Diario'].forEach(t=>{if(grouped[t].length){DATASETS[t].splice(0,DATASETS[t].length,...grouped[t])}});
+}
+async function loadCatalogFromSheets(){
+  if(!navigator.onLine)return false;
+  try{
+    let d=await apiGet({action:'catalog'});
+    if(!(d.records||[]).length){
+      await apiPost({action:'initCatalog',records:flattenEmbeddedCatalog()});
+      d=await apiGet({action:'catalog'});
+    }
+    if((d.records||[]).length){
+      buildDatasetsFromCatalog(d.records);
+      switchType(currentType(),false);
+      renderBetaCatalog();
+      return true;
+    }
+  }catch(e){console.warn('Catálogo Sheets no disponible; usando respaldo embebido.',e)}
+  return false;
+}
+function showV10Loading(title='Cargando…',text='Preparando la información.'){
+  el('v10LoadingTitle').textContent=title;el('v10LoadingText').textContent=text;el('v10Loading').classList.add('show');
+}
+function hideV10Loading(){el('v10Loading').classList.remove('show')}
+function demoLoading(){showV10Loading('Sincronizando con Google…','Consultando Sheets, Drive y movimientos.');setTimeout(hideV10Loading,1400)}
+function showPwaDemo(){
+  el('homeModalTitle').textContent='📱 PWA instalable';
+  el('homeModalText').innerHTML='La aplicación ya está preparada visualmente para funcionar como PWA. Para que aparezca el botón real de instalación debe publicarse por <b>HTTPS</b> junto con su manifest y service worker; un archivo HTML abierto directamente desde el equipo no puede instalarse como PWA completa.';
+  el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="closeHomeModal()">Entendido</button>';
+  homeModal.classList.add('show');
+}
+document.addEventListener('DOMContentLoaded',async()=>{
+  setInventoryState(inventoryState);
+  await loadCatalogFromSheets();
+  await renderIndependentMovements();
+});
+
+</script><script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+}
+</script>
+</body></html>
