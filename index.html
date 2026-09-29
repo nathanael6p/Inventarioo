@@ -3,21 +3,157 @@
 <style>
 :root{--green:#00653E;--green-dark:#004A2D;--green-pale:#E7F1EC;--red:#C8102E;--bg:#F6F6F3;--card:#fff;--ink:#1E2420;--ink-soft:#5B655F;--line:#E3E5E0}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:96px}header{background:var(--green);color:#fff;padding:16px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08)}header h1{margin:0;font-size:1.2rem}header p{margin:2px 0 0;font-size:.8rem;color:#CFE6DA}.progress-wrap{margin-top:10px;background:rgba(255,255,255,.18);border-radius:999px;height:6px;overflow:hidden}.progress-bar{height:100%;background:#fff;width:0;transition:.2s}.progress-label{font-size:.72rem;color:#CFE6DA;margin-top:5px}main{padding:14px;max-width:560px;margin:auto}.card,details.section{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px}.card{padding:14px}.card h2{margin:0 0 10px;font-size:.95rem;color:var(--green-dark)}.field{margin-bottom:10px}.field label{display:block;font-size:.75rem;color:var(--ink-soft);margin-bottom:4px}.field input,.field select,.search-card input{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;font-size:.95rem;background:#fff;color:var(--ink)}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-card{border:2px solid var(--green)}.type-card select{font-weight:700;color:var(--green-dark)}details.section{overflow:hidden}details.section summary{list-style:none;padding:13px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:.9rem}details.section summary::-webkit-details-marker{display:none}summary .cat-name{flex:1}summary .badge{font-size:.72rem;color:var(--green-dark);background:var(--green-pale);padding:3px 9px;border-radius:999px}.items{border-top:1px solid var(--line)}.item{padding:11px 14px;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.item-name{font-size:.86rem;font-weight:600}.item-code,.item-note,.equiv{font-size:.7rem;color:var(--ink-soft);margin-top:2px}.item-note{color:#8a5b00}.qty-grid{display:grid;gap:6px;margin-top:8px}.qty-grid label{display:block;font-size:.65rem;color:var(--ink-soft);text-align:center;margin-bottom:3px}.qty-grid input{width:100%;padding:8px 4px;border:1px solid var(--line);border-radius:8px;text-align:center;font-size:.88rem;background:#FAFAF8}.qty-grid input.filled{border-color:var(--green);background:var(--green-pale);font-weight:700}.item-total{margin-top:6px;font-size:12.5px;font-weight:700;color:var(--green);text-align:right;min-height:16px}.btn{border:0;border-radius:11px;padding:12px 9px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit}.btn-primary{background:var(--green);color:#fff}.btn-secondary{background:var(--green-pale);color:var(--green-dark)}.cloud-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cloud-status{font-size:.74rem;color:var(--ink-soft);margin-top:8px;line-height:1.4}.cloud-status.ok{color:var(--green-dark);font-weight:600}.cloud-status.error{color:var(--red);font-weight:600}.history-list{margin-top:10px;display:none;border-top:1px solid var(--line);padding-top:8px;max-height:260px;overflow:auto}.history-list.show{display:block}.history-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.history-meta,.search-count{font-size:.72rem;color:var(--ink-soft)}.history-load{border:1px solid var(--line);background:#fff;color:var(--green-dark);border-radius:8px;padding:7px 10px;font-weight:700}footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:15}.footer-inner{display:flex;gap:8px;max-width:560px;margin:auto}.footer-inner .btn{flex:1}.footer-inner .btn-primary{flex:1.4}.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px;font-size:.82rem;opacity:0;pointer-events:none;transition:.2s;z-index:30}.toast.show{opacity:1}@media(max-width:390px){.row2{grid-template-columns:1fr}}
+
+/* ===== Pantalla inicial oficial ===== */
+.home-shell{max-width:560px;margin:0 auto;padding:18px 14px 34px;min-height:100vh;background:linear-gradient(180deg,#eef5f1 0,#f6f6f3 240px)}
+.home-topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.home-brand{display:flex;align-items:center;gap:11px;min-width:0}.home-logo{width:46px;height:46px;border-radius:14px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:23px;box-shadow:0 8px 30px rgba(0,0,0,.07);flex:none}.home-brand h1{font-size:1.05rem;line-height:1.15;margin:0}.home-brand p{margin:4px 0 0;font-size:.72rem;color:var(--ink-soft)}
+.home-online{font-size:.68rem;color:var(--green-dark);background:var(--green-pale);padding:6px 9px;border-radius:999px;font-weight:700;white-space:nowrap}
+.home-hero{background:var(--green);color:#fff;border-radius:22px;padding:20px;box-shadow:0 14px 36px rgba(0,101,62,.18);margin-bottom:14px}.home-hero small{font-size:.72rem;color:#cfe6da}.home-hero h2{font-size:1.35rem;margin:4px 0 7px}.home-hero p{margin:0;font-size:.82rem;color:#d7ebe1;line-height:1.45}
+.home-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 4px 18px rgba(0,0,0,.03);margin-bottom:12px}.home-card label{display:block;font-size:.73rem;color:var(--ink-soft);margin-bottom:6px}.home-card select{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;font-size:.95rem;color:var(--ink)}
+.home-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.home-action{border:1px solid var(--line);background:#fff;border-radius:18px;padding:16px 14px;text-align:left;min-height:132px;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.03);font-family:inherit;color:var(--ink)}.home-action:active{transform:scale(.985)}.home-action.primary{background:var(--green);color:#fff;border-color:var(--green)}.home-action .ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--green-pale);margin-bottom:14px}.home-action.primary .ico{background:rgba(255,255,255,.15)}.home-action h3{margin:0 0 5px;font-size:.95rem}.home-action p{margin:0;font-size:.72rem;color:var(--ink-soft);line-height:1.35}.home-action.primary p{color:#d7ebe1}
+.home-section-title{display:flex;align-items:center;justify-content:space-between;margin:17px 2px 9px}.home-section-title h3{margin:0;font-size:.9rem}.home-section-title span{font-size:.7rem;color:var(--ink-soft)}
+.home-tools{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.home-tool{width:100%;border:0;background:#fff;display:flex;align-items:center;gap:11px;padding:13px 14px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;font-family:inherit;color:var(--ink)}.home-tool:last-child{border-bottom:none}.home-tool .ico{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--green-pale);font-size:17px;flex:none}.home-tool .txt{flex:1}.home-tool .txt b{display:block;font-size:.83rem}.home-tool .txt small{font-size:.69rem;color:var(--ink-soft)}.home-tool .arrow{color:#9aa19c;font-size:18px}
+.home-recent{margin-top:13px;padding:13px 14px;border-radius:16px;background:#eef6f2;border:1px solid #d7e9df}.home-recent .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}.home-recent b{font-size:.8rem}.home-badge{font-size:.65rem;padding:4px 7px;border-radius:999px;background:#fff;color:var(--green-dark);font-weight:700}.home-recent p{margin:0;font-size:.71rem;color:var(--ink-soft);line-height:1.45}
+.inventory-app.is-hidden{display:none}.home-screen.is-hidden{display:none}.back-home-btn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.14);color:#fff;border-radius:9px;padding:6px 10px;font-size:.72rem;font-weight:700;cursor:pointer;margin-bottom:10px}
+.home-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:80;padding:18px;align-items:center;justify-content:center}.home-modal.show{display:flex}.home-modal-card{width:min(100%,420px);background:#fff;border-radius:20px;padding:18px;box-shadow:0 18px 55px rgba(0,0,0,.18)}.home-modal-card h3{margin:0 0 6px;color:var(--green-dark)}.home-modal-card p{font-size:.78rem;color:var(--ink-soft);line-height:1.45;margin:0 0 14px}.home-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.home-modal-close{margin-top:9px;width:100%;border:0;background:#f1f2ef;color:var(--ink-soft);border-radius:10px;padding:10px;font-weight:700}
+@media(max-width:390px){.home-actions{grid-template-columns:1fr}.home-action{min-height:auto}.home-online{display:none}}
+
+/* ===== Movimientos de inventario ===== */
+.movement-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.movement-actions .btn{flex:1;min-width:170px}
+.movement-help{font-size:.72rem;color:var(--ink-soft);line-height:1.4;margin-top:8px}
+.movement-list{margin-top:10px;border-top:1px solid var(--line);padding-top:4px}
+.movement-empty{font-size:.74rem;color:var(--ink-soft);padding:9px 0}
+.movement-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);align-items:start}
+.movement-row:last-child{border-bottom:0}
+.movement-row strong{display:block;font-size:.82rem;color:var(--ink)}
+.movement-meta{font-size:.7rem;color:var(--ink-soft);line-height:1.4;margin-top:3px}
+.movement-remove{border:1px solid #efd4d9;background:#fff5f6;color:var(--red);border-radius:8px;padding:6px 8px;font-weight:700;cursor:pointer}
+.movement-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:100;padding:16px;align-items:center;justify-content:center}
+.movement-modal.show{display:flex}
+.movement-modal-card{width:min(100%,500px);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;padding:17px;box-shadow:0 18px 60px rgba(0,0,0,.22)}
+.movement-modal-card h3{margin:0 0 12px;color:var(--green-dark)}
+.movement-modal-card textarea{width:100%;min-height:76px;resize:vertical;padding:10px 11px;border:1px solid var(--line);border-radius:9px;font-family:inherit;font-size:.9rem}
+.movement-modal-footer{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+
+
+/* ===== Etapa 2: inventario teórico y diferencias ===== */
+.theory-card{border:1px solid #d8e7df;background:#fbfdfc}
+.theory-head{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.theory-head h2{margin-bottom:3px}
+.theory-status{font-size:.72rem;color:var(--ink-soft);line-height:1.4}
+.theory-btn{border:0;border-radius:10px;padding:9px 11px;background:var(--green-pale);color:var(--green-dark);font-weight:700;cursor:pointer;white-space:nowrap}
+.theory-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.theory-stat{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px;text-align:center}
+.theory-stat strong{display:block;font-size:1rem;color:var(--green-dark)}
+.theory-stat span{font-size:.63rem;color:var(--ink-soft)}
+.theory-table-wrap{overflow:auto;margin-top:10px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.theory-table{width:100%;border-collapse:collapse;min-width:520px;font-size:.72rem}
+.theory-table th,.theory-table td{padding:8px 7px;border-bottom:1px solid var(--line);text-align:right}
+.theory-table th:first-child,.theory-table td:first-child{text-align:left}
+.theory-table th{background:var(--green-pale);color:var(--green-dark);font-size:.66rem}
+.theory-table tr:last-child td{border-bottom:0}
+.diff-neg{color:#b42318;font-weight:700}.diff-pos{color:#087443;font-weight:700}.diff-zero{color:var(--ink-soft);font-weight:700}
+.theory-empty{padding:12px;font-size:.73rem;color:var(--ink-soft)}
+
+
+/* ===== Borrador automático + modo sin conexión ===== */
+.home-online.offline{background:#fff1f0;color:#b42318}
+.home-online.pending{background:#fff7e6;color:#9a6700}
+.offline-banner{display:none;margin:0 0 12px;padding:10px 12px;border-radius:12px;background:#fff7e6;border:1px solid #f2d49b;color:#7a4e00;font-size:.73rem;line-height:1.4}
+.offline-banner.show{display:block}
+.draft-meta{font-size:.68rem;color:var(--ink-soft);margin-top:5px}
+.sync-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#fff1f0;color:#b42318;font-size:.65rem;font-weight:800;margin-left:6px}
+
 </style></head><body>
-<header><h1 id="pageTitle">Control de inventario diario</h1><p>INVERSIONES BLUMARO, S.A.</p><div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div><div class="progress-label" id="progressLabel"></div><div class="progress-label" id="horaInicioLabel"></div></header>
+
+<div id="homeScreen" class="home-screen">
+  <div class="home-shell">
+    <div class="home-topbar">
+      <div class="home-brand"><div class="home-logo">📦</div><div><h1>Control de Inventarios</h1><p>INVERSIONES BLUMARO, S.A.</p></div></div>
+      <div class="home-online" id="connectionBadge">☁️ En línea</div>
+    </div>
+    <div class="home-hero"><small>Bienvenido</small><h2>¿Qué deseas hacer?</h2><p>Selecciona tu sucursal y comienza un inventario o consulta información anterior.</p></div>
+    <div class="home-card"><label for="homeSucursal">Sucursal activa</label><select id="homeSucursal"><option value="">Selecciona una sucursal</option></select></div>
+    <div class="home-actions">
+      <button class="home-action primary" type="button" onclick="openInventoryFromHome('Diario')"><div class="ico">📋</div><h3>Inventario diario</h3><p>Conteo rápido de los productos principales de operación.</p></button>
+      <button class="home-action" type="button" onclick="openInventoryFromHome('Mensual')"><div class="ico">🗓️</div><h3>Inventario mensual</h3><p>Conteo completo de todos los productos y suministros.</p></button>
+    </div>
+    <div class="home-section-title"><h3>Herramientas</h3><span>Acceso rápido</span></div>
+    <div class="home-tools">
+      <button class="home-tool" id="continueDraftBtn" type="button" onclick="continueLastDraft()"><div class="ico">📝</div><div class="txt"><b>Continuar último borrador</b><small id="continueDraftText">No hay borradores locales todavía</small></div><div class="arrow">›</div></button>
+      <button class="home-tool" id="syncPendingBtn" type="button" onclick="syncNextPending()"><div class="ico">☁️</div><div class="txt"><b>Sincronizar pendientes <span class="sync-count" id="pendingCount" style="display:none">0</span></b><small id="pendingText">No hay inventarios pendientes</small></div><div class="arrow">›</div></button>
+      <button class="home-tool" type="button" onclick="showHistoryChooser()"><div class="ico">🕘</div><div class="txt"><b>Historial de inventarios</b><small>Buscar, cargar o abrir PDF anteriores</small></div><div class="arrow">›</div></button>
+      <button class="home-tool" type="button" onclick="showDashboardInfo()"><div class="ico">📊</div><div class="txt"><b>Resumen / Dashboard</b><small>Actividad y estado de la sucursal seleccionada</small></div><div class="arrow">›</div></button>
+    </div>
+    <div class="home-recent"><div class="top"><b>Actividad de la sucursal</b><span class="home-badge" id="homeSummaryBadge">—</span></div><p id="homeSummaryText">Selecciona una sucursal para consultar su actividad.</p></div>
+  </div>
+</div>
+<div id="homeModal" class="home-modal" onclick="if(event.target===this)closeHomeModal()"><div class="home-modal-card"><h3 id="homeModalTitle">Historial</h3><p id="homeModalText">Selecciona el tipo de inventario que quieres consultar.</p><div id="homeModalActions" class="home-modal-actions"></div><button class="home-modal-close" type="button" onclick="closeHomeModal()">Cerrar</button></div></div>
+
+<div id="movementModal" class="movement-modal" onclick="if(event.target===this)closeMovementModal()">
+  <div class="movement-modal-card">
+    <h3>🔄 Registrar movimiento</h3>
+    <div class="field"><label>Tipo de movimiento</label><select id="movementType">
+      <option value="Recepción de pedido">Recepción de pedido</option>
+      <option value="Transferencia enviada">Transferencia a otra sucursal</option>
+      <option value="Transferencia recibida">Recepción desde otra sucursal</option>
+      <option value="Descarte / merma">Descarte / merma</option>
+      <option value="Ajuste manual">Ajuste manual</option>
+    </select></div>
+    <div class="field"><label>Producto</label><select id="movementProduct"></select></div>
+    <div class="row2">
+      <div class="field"><label>Cantidad</label><input id="movementQty" type="number" min="0" step="any" inputmode="decimal" placeholder="0"></div>
+      <div class="field"><label>Presentación</label><select id="movementUnit"></select></div>
+    </div>
+    <div class="field" id="movementBranchWrap"><label id="movementBranchLabel">Sucursal relacionada</label><select id="movementBranch"></select></div>
+    <div class="field" id="movementAdjustmentWrap" style="display:none"><label>Sentido del ajuste</label><select id="movementAdjustment"><option value="+">Entrada (+)</option><option value="-">Salida (-)</option></select></div>
+    <div class="field"><label>Responsable</label><input id="movementResponsible" type="text" placeholder="Nombre"></div>
+    <div class="field"><label>Motivo / observación</label><textarea id="movementNote" placeholder="Ej.: apoyo a otra sucursal, producto averiado, pedido recibido..."></textarea></div>
+    <div class="movement-modal-footer">
+      <button class="btn btn-secondary" type="button" onclick="closeMovementModal()">Cancelar</button>
+      <button class="btn btn-primary" id="saveMovementBtn" type="button">Guardar movimiento</button>
+    </div>
+  </div>
+</div>
+
+<div id="inventoryApp" class="inventory-app is-hidden">
+<header><button class="back-home-btn" id="backHomeBtn" type="button">← Inicio</button><h1 id="pageTitle">Control de inventario diario</h1><p>INVERSIONES BLUMARO, S.A.</p><div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div><div class="progress-label" id="progressLabel"></div><div class="progress-label" id="horaInicioLabel"></div></header>
 <main>
 <div class="card type-card"><h2>Tipo de inventario</h2><div class="field"><select id="tipoInventario"><option value="Diario">Inventario diario</option><option value="Mensual">Inventario mensual</option></select></div><div class="search-count">Al cambiar de tipo, cambia la lista de productos y el historial de Google se consulta por separado.</div></div>
 <div class="card"><h2>Datos generales</h2><div class="row2"><div class="field"><label>Sucursal</label><select id="sucursal"><option value="">Selecciona una sucursal</option><optgroup label="Distrito 1"><option>Gómez</option><option>Sambil</option><option>Arroyo Hondo</option><option>Churchill</option><option>Núñez</option><option>Rómulo</option><option>Independencia</option></optgroup><optgroup label="Distrito 2"><option>Colina</option><option>Occidental Mall</option><option>Paseo 27</option><option>Jumbo Luperón</option><option>Portal del Norte</option><option>La Vega</option><option>San Francisco</option></optgroup><optgroup label="Distrito 3"><option>Plaza Moderna</option><option>San Isidro</option><option>Venezuela</option><option>Mella</option><option>Charles</option><option>Jumbo Romana</option><option>La Romana</option><option>Higüey</option></optgroup></select></div><div class="field"><label>N° de conteo</label><input id="conteo" type="text" placeholder="1"></div></div><div class="row2"><div class="field"><label>Fecha</label><input id="fecha" type="date"></div><div class="field"><label>Día</label><select id="dia"><option value="">—</option><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option></select></div></div><div class="field"><label>Contado por</label><input id="contadoPor" placeholder="Nombre"></div><div class="row2"><button class="btn btn-secondary" id="saveBtn">💾 Guardar borrador</button><button class="btn btn-secondary" id="loadBtn">📂 Cargar borrador</button></div><input type="file" id="loadFile" accept="application/json" hidden></div>
 <div class="card"><h2>☁️ Google Sheets</h2><div class="cloud-actions"><button class="btn btn-primary" id="cloudSaveBtn">Guardar / actualizar</button><button class="btn btn-secondary" id="cloudNewBtn">Guardar como nuevo</button><button class="btn btn-secondary" id="historyBtn">Ver historial</button><button class="btn btn-secondary" id="cloudLoadBtn">Cargar este número</button></div><div class="cloud-status" id="cloudStatus">Selecciona una sucursal.</div><div class="history-list" id="historyList"></div></div>
+<div class="card" id="movementsCard">
+  <h2>🔄 Movimientos del inventario</h2>
+  <div class="movement-actions"><button class="btn btn-primary" id="addMovementBtn" type="button">+ Registrar movimiento</button></div>
+  <div class="movement-help">Registra pedidos recibidos, transferencias, descartes/mermas o ajustes. En esta primera etapa solo se documentan; todavía no alteran automáticamente el conteo.</div>
+  <div class="movement-list" id="movementList"><div class="movement-empty">No hay movimientos registrados.</div></div>
+</div>
+<div class="card theory-card" id="theoryCard">
+  <div class="theory-head">
+    <div>
+      <h2>📊 Inventario teórico y diferencias</h2>
+      <div class="theory-status" id="theoryStatus">Se calculará usando el inventario anterior de la misma sucursal y tipo.</div>
+    </div>
+    <button class="theory-btn" id="refreshTheoryBtn" type="button">Actualizar</button>
+  </div>
+  <div class="theory-summary">
+    <div class="theory-stat"><strong id="theoryCompared">0</strong><span>Comparados</span></div>
+    <div class="theory-stat"><strong id="theoryShort">0</strong><span>Faltantes</span></div>
+    <div class="theory-stat"><strong id="theoryOver">0</strong><span>Sobrantes</span></div>
+  </div>
+  <div class="theory-table-wrap"><div class="theory-empty" id="theoryEmpty">Todavía no hay una base cargada.</div><table class="theory-table" id="theoryTable" style="display:none"><thead><tr><th>Producto</th><th>Anterior</th><th>Mov.</th><th>Teórico</th><th>Contado</th><th>Diferencia</th></tr></thead><tbody id="theoryBody"></tbody></table></div>
+</div>
 <div class="card search-card"><h2>Buscar artículo</h2><input id="searchInput" type="search" placeholder="Escribe nombre o código..."><div class="search-count" id="searchCount"></div></div>
 <div id="sections"></div>
-</main><footer><div class="footer-inner"><button class="btn btn-secondary" id="copyBtn">Copiar</button><button class="btn btn-secondary" id="pdfBtn">Guardar PDF</button><button class="btn btn-primary" id="sendBtn">Enviar correo</button></div></footer><div class="toast" id="toast"></div>
+</main><footer><div class="footer-inner"><button class="btn btn-secondary" id="copyBtn">Copiar</button><button class="btn btn-secondary" id="pdfBtn">Guardar PDF</button><button class="btn btn-primary" id="sendBtn">Enviar correo</button></div></footer></div><div class="toast" id="toast"></div>
 <script>
 const DATASETS={Mensual:[{"name":"PRODUCTOS FRIOS","icon":"🧊","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0031","name":"Salchicha italiana","factors":{"caja":320,"paquete":80,"unidad":0}},{"code":"I0033","name":"Pollo","factors":{"caja":160,"paquete":80,"unidad":1}},{"code":"I0070","name":"Salchicha de Res","factors":{"caja":96,"paquete":48.0,"unidad":1}},{"code":"I0030","name":"Queso para pizza 20 lb","factors":{"caja":0,"paquete":320,"unidad":1}},{"code":"I0052","name":"STRING CHEESE LATAM CJ/15 LB","factors":{"caja":240,"paquete":240,"unidad":1}},{"code":"I0049","name":"Cheese, three Blend Pizza (Tres Quesos para pizza 2/4 lbs)","factors":{"caja":128,"paquete":32,"unidad":1}},{"code":"I0041","name":"Cheese, Shredded Romano Parmesan (Queso Romano Parmesano Rayado 2/4 lbs)","factors":{"caja":128,"paquete":32,"unidad":1}},{"code":"I0028","name":"TOCINO (BACON) 4/3 LB","factors":{"caja":192,"paquete":48.0,"unidad":1}},{"code":"I0081","name":"Pepperoni","factors":{"caja":400,"paquete":200,"unidad":1}},{"code":"I0029","name":"TOCINO CANADIENSE (CANADIAN BACON)","factors":{"caja":160,"paquete":80.0,"unidad":1}}]},{"name":"MASAS & HARINAS","icon":"📦","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0020","name":"Masa de 16","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0019","name":"Masa de14","factors":{"caja":8,"paquete":1,"unidad":1}},{"code":"I0018","name":"Masa de 8","factors":{"caja":15,"paquete":1,"unidad":1}},{"code":"I0017","name":"Masa de 6","factors":{"caja":15,"paquete":1,"unidad":1}},{"code":"I0054","name":"MASA DE 12","factors":{"caja":9,"paquete":1,"unidad":1}},{"code":"I0032","name":"Crust, 14 inch Thin (Harina Precocida delgada de 14 pulgadas 60/1)","factors":{"caja":60,"paquete":15,"unidad":1}},{"code":"I0024","name":"Dustinator (Harina 25 lb) ","factors":{"caja":400.0,"paquete":16,"unidad":16}}]},{"name":"BEBIDAS","icon":"🧃","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0674","name":"REF DOBLE LITRO COCA COLA","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0675","name":"REF DOBLE LITRO ROJO ","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0678","name":"REF DOBLE LITRO UVA ","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0676","name":"REF DOBLE LITRO COCA C. SIN AZUCAR","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0688","name":"REF DOBLE LITROMERENGUE","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0088","name":"REF DOBLE LITRO SPRITE","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0099","name":"REF DOBLE LITRO NARANJA","factors":{"caja":6,"paquete":1,"unidad":1}},{"code":"I0686","name":"AGUA DASANI","factors":{"caja":12,"paquete":12,"unidad":1}},{"code":"I0680","name":"REF COCA COLA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0681","name":"RED COCA COLA SIN AZUCAL 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0682","name":"REF SPRITE 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0683","name":"REF COUNTRY CLUB FRAMBUESA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0684","name":"REF COUNTRY CLUB UVA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0685","name":"REF COUNTRY CLUB NARANJA 400ML","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0687","name":"REF RED ROCK MERENGUE 20 Oz","factors":{"caja":12,"paquete":1,"unidad":1}},{"code":"I0771","name":"Coca cola 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0772","name":"Sprite 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0775","name":"Country club naranja 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0773","name":"Country club uva 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0774","name":"Frambuesa 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}},{"code":"I0776","name":"Country club merengue 1.25L","factors":{"caja":6,"paquete":6,"unidad":1}}]},{"name":"VEGETALES","icon":"🥬","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0065","name":"TOMATE LBS","factors":{"caja":16,"paquete":1,"unidad":16}},{"code":"I0067","name":"CEBOLLA LBS","factors":{"caja":16,"paquete":1,"unidad":16}},{"code":"I0066","name":"PIMENTON","factors":{"caja":16,"paquete":1,"unidad":16}}]},{"name":"SALSAS & CONDIMENTOS","icon":"🥫","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0021","name":"Salsa de tomate para Pizza (Masterbag 4/8,8lbs)","factors":{"caja":564,"paquete":141,"unidad":1}},{"code":"I0035","name":"SAUCE GARLIC JUG (JUGO SALSA AJO) 2/1","factors":{"caja":272,"paquete":128,"unidad":16}},{"code":"I0038","name":"GARLIC PARMESAN SAUCE (SALSA AJO PARMESANA) 2/1 GL","factors":{"caja":272,"paquete":128,"unidad":16}},{"code":"I0036","name":"Sauce, Garlic Cup (Salsa de ajo indiv 160/1)","factors":{"caja":160,"paquete":1,"unidad":1}},{"code":"I0037","name":"SAUCE BBQ (SALSA BBQ POUCH) 8/64 OZ","factors":{"caja":512,"paquete":64,"unidad":16}},{"code":"I0044","name":"Spinach Alfredo Sauce, Shelf S (Salsa de Espinaca Alfredo 8/3 lbs)","factors":{"caja":96,"paquete":32,"unidad":16}},{"code":"I0014","name":"Oregano (BALDON)","factors":{"caja":76.8,"paquete":3.2,"unidad":1}},{"code":"I0025","name":"Olive, Black (Aceitunas negras 10/33oz)","factors":{"caja":330.0,"paquete":33,"unidad":16}},{"code":"I0040","name":"Pineapple (Piña 12 / 30 oz) ","factors":{"caja":648,"paquete":108.0,"unidad":16}},{"code":"I0048","name":"Pepper, Pepperoncini (Pimientos  pequeños 6 / 5 lbs )","factors":{"caja":480,"paquete":80.0,"unidad":16}},{"code":"I0008","name":"Maiz La Famosa 24/1","factors":{"caja":360,"paquete":15.0,"unidad":16}}]},{"name":"TOPPINGS / SYRUPS","icon":"🍰","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0026","name":"Cinnamon Spread (Aderezo de Canela 15 lbs) (Cubetas)","factors":{"caja":240.0,"paquete":16,"unidad":1}},{"code":"I0027","name":"Drizzle (Azucar para postre 22 lb) (Cubetas)","factors":{"caja":352.0,"paquete":16,"unidad":1}},{"code":"I0053","name":"Topping, Crisp (Topping de Harina crujiente para postre 20 lbs)","factors":{"caja":320,"paquete":16,"unidad":1}},{"code":"I0069","name":"Galletas con Chispas de Chocolate","factors":{"caja":24,"paquete":1,"unidad":1}},{"code":"I0050","name":"BIZCOCHO BRAWNIE C/ 18 DE 16","factors":{"caja":18,"paquete":1,"unidad":1}}]},{"name":"ENVASES","icon":"📦","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0552","name":"CAJA PIZZA 6.5\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0667","name":"CAJA PIZZA 8\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0668","name":"CAJA PIZZA 12\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0669","name":"CAJA PIZZA 14\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0670","name":"CAJA PIZZA 16\" LOCALES","factors":{"caja":50,"paquete":1,"unidad":1}},{"code":"I0541","name":"PLATOS VERDE PJ #9 (Plates, Paper 9 Round) 500/1","factors":{"caja":500,"paquete":125,"unidad":1}},{"code":"I0113","name":"SELLOS DE SEGURIDAD","factors":{"caja":2000,"paquete":1,"unidad":1}},{"code":"I0056","name":"Envases Nudos de Ajo","factors":{"caja":150,"paquete":1,"unidad":1}},{"code":"I0055","name":"Bandejas Breadstrick (Tray, garlic breadstick) 300/1","factors":{"caja":150,"paquete":75,"unidad":1}}]},{"name":"BOLSAS","icon":"🛍️","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0064","name":"Bolsas (Bag, Tee Shirt) 1000/1 (Plastica)","factors":{"caja":1000,"paquete":1,"unidad":1}}]},{"name":"ARTICULOS DE PAPEL","icon":"📄","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0057","name":"Hojas de Aluminio 12 x 18 (Foil, Wing Sheets 12 X 18) 1000/1","factors":{"caja":1000,"paquete":500,"unidad":1}},{"code":"I0061","name":"Hojas 6.5 pulgs para horneado (Sheets, 6.5 Inch Baking) 2000/1","factors":{"caja":2000,"paquete":1,"unidad":1}},{"code":"I0062","name":"Hojas 10 pulgs para horneado (Sheets, 10 Inch Baking) 1000/1","factors":{"caja":1000,"paquete":1,"unidad":1}},{"code":"I0004","name":"Servilletas RD","factors":{"caja":500,"paquete":750.0,"unidad":1}},{"code":"I0500","name":"LABELS THERMAL DIRECT","factors":{"caja":10800,"paquete":900,"unidad":1}},{"code":"I0106","name":"Papel Termico para printer","factors":{"caja":60,"paquete":5,"unidad":1}}]},{"name":"ARTICULOS PLASTICOS","icon":"🥤","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0073","name":"TAPAS PLASTICAS DE 12 ONZ (RD)","factors":{"caja":1000,"paquete":100,"unidad":1}},{"code":"I0551","name":"VASOS CORTESIA 7 OZ","factors":{"caja":1000,"paquete":50,"unidad":1}},{"code":"I0058","name":"vasos para salsa 2 oz","factors":{"caja":250,"paquete":125,"unidad":1}},{"code":"I0011","name":"Gorros Desechables","factors":{"caja":100,"paquete":100,"unidad":1}}]},{"name":"ARTICULOS QUIMICOS","icon":"🧪","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0104","name":"EC-20 ( SINK SANITIZER) POTE DE 1 LB","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0122","name":"ECO-GUARD SANITIZANTE/DESINFECTANTE","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0107","name":"Ecogrese-33 (DESGRASANTE LIQUIDO para Limpiar Horno).","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0108","name":"DYNA-3000 (DESGRASANTE MULTIUSO)","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0548","name":"QUICK-FOAM (JABON LAVA PLATOS)","factors":{"caja":1,"paquete":1,"unidad":1}},{"code":"I0110","name":"BACTERY (JABON ANTIBACTERIAL)","factors":{"caja":1,"paquete":1,"unidad":1}}]},{"name":"ARTICULOS DE LIMPIEZA","icon":"🧹","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"unit":"oz","items":[{"code":"I0071","name":"BOLSAS DE BASURA","factors":{"caja":100,"paquete":100,"unidad":1}},{"code":"I0102","name":"PAPEL TOALLA FAMILIA PRECORT (73667) 120 M 6/1","factors":{"caja":12,"paquete":6,"unidad":1}}]}],Diario:[{"name":"Cárnico","icon":"🧊","unit":"oz","fields":[{"key":"caja","label":"Caja"},{"key":"paquete","label":"Paquete"},{"key":"libra","label":"Libra"}],"items":[{"code":"I0030","name":"Queso para pizza 20 lb","factors":{"caja":0,"paquete":320,"libra":16}},{"code":"I0081","name":"Pepperoni","factors":{"caja":400,"paquete":200,"libra":16}},{"code":"I0033","name":"Pollo","factors":{"caja":160,"paquete":80,"libra":16}},{"code":"","name":"Jamón","factors":{"caja":null,"paquete":null,"libra":16},"note":"Sin equivalencia de caja/paquete en el inventario mensual"},{"code":"I0028","name":"Tocino","factors":{"caja":192,"paquete":48,"libra":16}},{"code":"I0031","name":"Salchicha italiana","factors":{"caja":320,"paquete":80,"libra":16}},{"code":"I0070","name":"Salchicha de res","factors":{"caja":96,"paquete":48,"libra":16}}]},{"name":"Masas y harinas","icon":"🍕","unit":"unid.","fields":[{"key":"charra","label":"Charra"},{"key":"unidades","label":"Unidades"}],"items":[{"code":"I0020","name":"Masa de 16","factors":{"charra":6,"unidades":1}},{"code":"I0019","name":"Masa de 14","factors":{"charra":8,"unidades":1}},{"code":"I0018","name":"Masa de 8","factors":{"charra":15,"unidades":1}},{"code":"I0017","name":"Masa de 6","factors":{"charra":15,"unidades":1}},{"code":"I0054","name":"Masa de 12","factors":{"charra":9,"unidades":1}}]},{"name":"Bebidas","icon":"🧃","unit":"unid.","fields":[{"key":"fardo","label":"Fardo"},{"key":"unidad","label":"Unidad"}],"items":[{"code":"I0674","name":"Ref doble litro Coca-Cola","factors":{"fardo":6,"unidad":1}},{"code":"I0675","name":"Ref doble litro rojo","factors":{"fardo":6,"unidad":1}},{"code":"I0678","name":"Ref doble litro uva","factors":{"fardo":6,"unidad":1}},{"code":"I0676","name":"Ref doble litro Coca-Cola sin azúcar","factors":{"fardo":6,"unidad":1}},{"code":"I0688","name":"Ref doble litro merengue","factors":{"fardo":6,"unidad":1}},{"code":"I0088","name":"Ref doble litro Sprite","factors":{"fardo":6,"unidad":1}},{"code":"I0099","name":"Ref doble litro naranja","factors":{"fardo":6,"unidad":1}},{"code":"I0680","name":"Ref Coca-Cola 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0681","name":"Ref Coca-Cola sin azúcar 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0682","name":"Ref Sprite 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0683","name":"Ref Country Club frambuesa 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0684","name":"Ref Country Club uva 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0685","name":"Ref Country Club naranja 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0687","name":"Ref Country Club merengue 400ml","factors":{"fardo":12,"unidad":1}},{"code":"I0686","name":"Agua Dasani","factors":{"fardo":12,"unidad":1}},{"code":"I0771","name":"Coca-Cola 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0772","name":"Sprite 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0775","name":"Country Club naranja 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0773","name":"Country Club uva 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0774","name":"Frambuesa 1.25L","factors":{"fardo":6,"unidad":1}},{"code":"I0776","name":"Country Club merengue 1.25L","factors":{"fardo":6,"unidad":1}}]},{"name":"Salsas y condimentos","icon":"🥫","unit":"oz","fields":[{"key":"caja","label":"Caja"},{"key":"bolsa","label":"Bolsa"},{"key":"libra","label":"Libra"}],"items":[{"code":"I0021","name":"Salsa pizza","factors":{"caja":564,"bolsa":141,"libra":16}}]},{"name":"Cajas","icon":"📦","unit":"unid.","fields":[{"key":"paquete","label":"Paquete"},{"key":"unidades","label":"Unidades"}],"items":[{"code":"I0552","name":"Caja pizza 6.5\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0667","name":"Caja pizza 8\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0668","name":"Caja pizza 12\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0669","name":"Caja pizza 14\" locales","factors":{"paquete":50,"unidades":1}},{"code":"I0670","name":"Caja pizza 16\" locales","factors":{"paquete":50,"unidades":1}}]},{"name":"Desechables","icon":"🥤","unit":"unid.","fields":[{"key":"paquete","label":"Paquete"},{"key":"unidad","label":"Unidad"}],"items":[{"code":"I0004","name":"Servilleta","factors":{"paquete":500,"unidad":1}},{"code":"I0551","name":"Vasos de 7 oz","factors":{"paquete":50,"unidad":1}}]}]};
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyk3e35qzu4CuK7qbI_m7d0A7WFBHsP0upKHIogYGLugvBL4icIGrQ6gwxKYLpw-p2zAw/exec';
 const APPS_SCRIPT_KEY='#Esperanza2026';
 const el=id=>document.getElementById(id), sectionsEl=el('sections'), searchInput=el('searchInput'), tipoSelect=el('tipoInventario'), sucursalSelect=el('sucursal'), conteoInput=el('conteo'), fechaInput=el('fecha'), diaSelect=el('dia');
-let categories=DATASETS.Diario,totalItems=0; const horaInicio=new Date();
+let categories=DATASETS.Diario,totalItems=0,movements=[],previousBaseline=null,comparisonRows=[]; const horaInicio=new Date();
 function formatHora(d){return d.toLocaleTimeString('es-DO',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true})}
 function fmtNum(v){const n=Number(v);return Number.isFinite(n)?(Number.isInteger(n)?String(n):n.toFixed(2).replace(/0+$/,'').replace(/\.$/,'')):''}
 function showToast(m){const t=el('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
@@ -30,31 +166,525 @@ function captureValues(){const out={};document.querySelectorAll('input[data-cat]
 function restoreValues(vals){Object.entries(vals||{}).forEach(([k,v])=>{const e=el('q-'+k);if(e){e.value=v;e.classList.toggle('filled',String(v).trim()!=='')}});categories.forEach((c,ci)=>c.items.forEach((_,ii)=>computeItemTotal(ci,ii)));updateProgress()}
 function renderSections(preserved={}){const q=searchInput.value.trim().toLowerCase();sectionsEl.innerHTML='';totalItems=0;let shown=0;categories.forEach((cat,ci)=>{totalItems+=cat.items.length;const visible=cat.items.map((x,ii)=>[x,ii]).filter(([x])=>!q||(x.name+' '+(x.code||'')).toLowerCase().includes(q));shown+=visible.length;if(!visible.length&&q)return;const d=document.createElement('details');d.className='section';d.open=q?true:ci===0;const s=document.createElement('summary');s.innerHTML=`<span>${cat.icon}</span><span class="cat-name">${cat.name}</span><span class="badge" id="badge-${ci}">0/${cat.items.length}</span><span>›</span>`;d.appendChild(s);const w=document.createElement('div');w.className='items';visible.forEach(([item,ii])=>{const div=document.createElement('div');div.className='item';const eq=factorText(item,cat),note=item.note?`<div class="item-note">⚠ ${item.note}</div>`:'';let qh=`<div class="qty-grid" style="grid-template-columns:repeat(${cat.fields.length},1fr)">`;cat.fields.forEach(f=>{const id=`q-${ci}-${ii}-${f.key}`;qh+=`<div><label for="${id}">${f.label}</label><input type="number" inputmode="decimal" min="0" step="any" id="${id}" data-cat="${ci}" data-item="${ii}" data-field="${f.key}"></div>`});qh+='</div>';div.innerHTML=`<div class="item-name">${item.name}</div><div class="item-code">${item.code||'&nbsp;'}</div>${eq?`<div class="equiv">${eq}</div>`:''}${note}${qh}<div class="item-total" id="total-${ci}-${ii}"></div>`;w.appendChild(div)});d.appendChild(w);sectionsEl.appendChild(d)});el('searchCount').textContent=q?`${shown} artículos encontrados de ${totalItems}`:`${totalItems} artículos`;restoreValues(preserved)}
 function updateProgress(){let filled=0;categories.forEach((cat,ci)=>{let cf=0;cat.items.forEach((_,ii)=>{if(itemHasData(ci,ii)){filled++;cf++}});const b=el(`badge-${ci}`);if(b)b.textContent=`${cf}/${cat.items.length}`});el('progressBar').style.width=(totalItems?Math.round(filled/totalItems*100):0)+'%';el('progressLabel').textContent=`${filled} de ${totalItems} artículos con datos`}
-sectionsEl.addEventListener('input',e=>{if(e.target.matches('input[data-cat]')){e.target.classList.toggle('filled',e.target.value.trim()!=='');computeItemTotal(+e.target.dataset.cat,+e.target.dataset.item);updateProgress()}});
+sectionsEl.addEventListener('input',e=>{if(e.target.matches('input[data-cat]')){e.target.classList.toggle('filled',e.target.value.trim()!=='');computeItemTotal(+e.target.dataset.cat,+e.target.dataset.item);updateProgress();calculateComparison()}});
 searchInput.addEventListener('input',()=>{const v=captureValues();renderSections(v)});
-function switchType(type,clear=true){categories=DATASETS[type];el('pageTitle').textContent=`Control de inventario ${type.toLowerCase()}`;searchInput.value='';if(clear)conteoInput.value='';historyList.classList.remove('show');renderSections();setCloudStatus(`Modo ${type}. Selecciona una sucursal para sugerir el próximo número.`);if(sucursalSelect.value)suggestNextNumber()}
+function switchType(type,clear=true){categories=DATASETS[type];el('pageTitle').textContent=`Control de inventario ${type.toLowerCase()}`;searchInput.value='';if(clear){conteoInput.value='';movements=[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory()}historyList.classList.remove('show');renderSections();setCloudStatus(`Modo ${type}. Selecciona una sucursal para sugerir el próximo número.`);if(sucursalSelect.value)suggestNextNumber()}
 tipoSelect.addEventListener('change',()=>switchType(currentType(),true));
 const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],today=new Date();fechaInput.value=today.toISOString().slice(0,10);diaSelect.value=dias[today.getDay()];fechaInput.addEventListener('change',()=>{if(fechaInput.value){const[y,m,d]=fechaInput.value.split('-').map(Number);diaSelect.value=dias[new Date(y,m-1,d).getDay()]}});el('horaInicioLabel').textContent=`🕒 Inventario iniciado: ${formatHora(horaInicio)}`;
-function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,qty:{}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));return d}
-function applyRecord(d){if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'})}
+function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,qty:{},movimientos:movements.map(x=>({...x})),comparacion:{base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows.map(x=>({...x}))}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));return d}
+function applyRecord(d){if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
 el('saveBtn').addEventListener('click',()=>{const d=buildSaveData(),u=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=`Borrador_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_${d.fecha||'hoy'}.json`;a.click();URL.revokeObjectURL(u);showToast('Borrador guardado')});el('loadBtn').addEventListener('click',()=>el('loadFile').click());el('loadFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{applyRecord(JSON.parse(r.result));showToast('Borrador cargado')}catch(err){showToast('Archivo no válido')}};r.readAsText(f);e.target.value=''});
-function buildMessage(){const d=buildSaveData(),lines=[`📋 *Inventario ${d.tipo.toLowerCase()}*`,`Sucursal: ${d.sucursal||'—'}`,`Fecha: ${d.fecha||'—'}${d.dia?' ('+d.dia+')':''}`,`N° de conteo: ${d.conteo||'—'}`,`Hora de inicio: ${formatHora(horaInicio)}`,''];categories.forEach((cat,ci)=>{const ls=[];cat.items.forEach((item,ii)=>{if(!itemHasData(ci,ii))return;const p=[];cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')p.push(`${f.label} ${e.value}`)});const t=getItemTotal(ci,ii);if(t.hasKnown)p.push(`Total ${fmtNum(t.total)} ${cat.unit}`);ls.push(`• ${item.name}${item.code?' ('+item.code+')':''}: ${p.join(', ')}`)});if(ls.length)lines.push(`*${cat.icon} ${cat.name}*`,...ls,'')});lines.push(`Contado por: ${d.contadoPor||'—'}`);return lines.join('\n')}
+
+function allInventoryProducts(){
+  const out=[];
+  categories.forEach((cat,ci)=>cat.items.forEach((item,ii)=>out.push({
+    ci,ii,code:item.code||'',name:item.name,cat:cat.name,
+    fields:(cat.fields||[]).map(f=>({key:f.key,label:f.label}))
+  })));
+  return out;
+}
+function fillMovementBranches(){
+  const s=el('movementBranch'),current=sucursalSelect.value;
+  s.innerHTML='<option value="">— No aplica —</option>';
+  Array.from(sucursalSelect.options).forEach(o=>{
+    if(o.value && o.value!==current){
+      const n=document.createElement('option');n.value=o.value;n.textContent=o.textContent;s.appendChild(n);
+    }
+  });
+}
+function fillMovementProducts(){
+  const s=el('movementProduct');s.innerHTML='<option value="">Selecciona un producto</option>';
+  allInventoryProducts().forEach(p=>{
+    const o=document.createElement('option');
+    o.value=`${p.ci}|${p.ii}`;o.textContent=`${p.name}${p.code?' ('+p.code+')':''}`;s.appendChild(o);
+  });
+  el('movementUnit').innerHTML='<option value="">Selecciona producto primero</option>';
+}
+function updateMovementUnits(){
+  const raw=el('movementProduct').value,s=el('movementUnit');s.innerHTML='';
+  if(!raw){s.innerHTML='<option value="">Selecciona producto primero</option>';return}
+  const [ci,ii]=raw.split('|').map(Number),cat=categories[ci],item=cat.items[ii];
+  (cat.fields||[]).forEach(f=>{const o=document.createElement('option');o.value=f.key;o.textContent=f.label;s.appendChild(o)});
+  const base=document.createElement('option');base.value='__base__';base.textContent=`Otra / ${cat.unit}`;s.appendChild(base);
+}
+function updateMovementTypeUI(){
+  const t=el('movementType').value,wrap=el('movementBranchWrap'),lab=el('movementBranchLabel'),adj=el('movementAdjustmentWrap');
+  adj.style.display=t==='Ajuste manual'?'block':'none';
+  if(t==='Transferencia enviada'){wrap.style.display='block';lab.textContent='Sucursal destino'}
+  else if(t==='Transferencia recibida'){wrap.style.display='block';lab.textContent='Sucursal origen'}
+  else{wrap.style.display='none';el('movementBranch').value=''}
+}
+function openMovementModal(){
+  if(!sucursalSelect.value){showToast('Selecciona una sucursal primero');return}
+  fillMovementProducts();fillMovementBranches();
+  el('movementType').value='Recepción de pedido';el('movementQty').value='';el('movementNote').value='';
+  el('movementResponsible').value=el('contadoPor').value||'';el('movementAdjustment').value='+';
+  updateMovementTypeUI();el('movementModal').classList.add('show');
+}
+function closeMovementModal(){el('movementModal').classList.remove('show')}
+function movementSign(m){
+  if(m.tipo==='Recepción de pedido'||m.tipo==='Transferencia recibida')return '+';
+  if(m.tipo==='Transferencia enviada'||m.tipo==='Descarte / merma')return '-';
+  return m.ajuste||'±';
+}
+
+function qtyTotalFromObject(ci,ii,qty){
+  const cat=categories[ci],item=cat?.items?.[ii];if(!cat||!item)return {total:0,hasAny:false,hasKnown:false};
+  let total=0,hasAny=false,hasKnown=false;
+  (cat.fields||[]).forEach(f=>{
+    const raw=qty?.[`${ci}-${ii}-${f.key}`],v=parseFloat(raw);
+    if(Number.isFinite(v)){hasAny=true;const fac=Number(item.factors?.[f.key]);if(Number.isFinite(fac)){total+=v*fac;hasKnown=true}}
+  });
+  return {total,hasAny,hasKnown};
+}
+function movementDeltaBase(m){
+  let base=Number(m.cantidadBase);
+  if(!Number.isFinite(base)){
+    const ci=Number(m.ci),ii=Number(m.ii),cat=categories[ci],item=cat?.items?.[ii];
+    if(cat&&item){
+      const key=m.campoMovimiento;
+      let fac=key==='__base__'?1:Number(item.factors?.[key]);
+      if(!Number.isFinite(fac)){
+        const f=(cat.fields||[]).find(x=>x.label===m.presentacion);
+        fac=f?Number(item.factors?.[f.key]):NaN;
+      }
+      if(Number.isFinite(fac))base=Number(m.cantidad||0)*fac;
+    }
+  }
+  if(!Number.isFinite(base))return 0;
+  const sign=movementSign(m);
+  return sign==='-'?-base:base;
+}
+function movementDeltaForItem(ci,ii){
+  const item=categories[ci].items[ii];
+  return movements.reduce((sum,m)=>{
+    const same=(Number(m.ci)===ci&&Number(m.ii)===ii)||(m.codigo&&item.code&&String(m.codigo)===String(item.code))||(!item.code&&m.producto===item.name);
+    return same?sum+movementDeltaBase(m):sum;
+  },0);
+}
+function calculateComparison(){
+  comparisonRows=[];
+  if(!previousBaseline?.qty){renderTheory();return comparisonRows}
+  categories.forEach((cat,ci)=>cat.items.forEach((item,ii)=>{
+    const prev=qtyTotalFromObject(ci,ii,previousBaseline.qty);
+    const current=getItemTotal(ci,ii);
+    const mov=movementDeltaForItem(ci,ii);
+    if(!prev.hasKnown && !current.hasKnown && !mov)return;
+    const anterior=prev.hasKnown?prev.total:0;
+    const teorico=anterior+mov;
+    const contado=current.hasKnown?current.total:null;
+    const diferencia=contado===null?null:contado-teorico;
+    comparisonRows.push({ci,ii,producto:item.name,codigo:item.code||'',unidad:cat.unit,anterior,mov,teorico,contado,diferencia});
+  }));
+  renderTheory();return comparisonRows;
+}
+function renderTheory(){
+  const status=el('theoryStatus'),body=el('theoryBody'),table=el('theoryTable'),empty=el('theoryEmpty');
+  if(!status||!body)return;
+  if(!previousBaseline){
+    status.textContent='Se calculará usando el inventario anterior de la misma sucursal y tipo.';
+    table.style.display='none';empty.style.display='block';empty.textContent='Todavía no hay una base cargada.';
+    el('theoryCompared').textContent='0';el('theoryShort').textContent='0';el('theoryOver').textContent='0';return;
+  }
+  status.textContent=`Base: ${previousBaseline.tipo||currentType()} · Inventario ${previousBaseline.conteo}${previousBaseline.fecha?' · '+previousBaseline.fecha:''}`;
+  body.innerHTML='';
+  const rows=comparisonRows.filter(r=>r.contado!==null||Math.abs(r.mov)>0.000001);
+  let short=0,over=0,compared=0;
+  rows.forEach(r=>{
+    if(r.contado!==null){compared++;if(r.diferencia<-.000001)short++;else if(r.diferencia>.000001)over++}
+    const tr=document.createElement('tr');
+    const diff=r.diferencia===null?'—':fmtNum(r.diferencia);
+    const cls=r.diferencia===null?'':r.diferencia<-.000001?'diff-neg':r.diferencia>.000001?'diff-pos':'diff-zero';
+    tr.innerHTML=`<td>${r.producto}${r.codigo?' <small>('+r.codigo+')</small>':''}</td><td>${fmtNum(r.anterior)} ${r.unidad}</td><td>${r.mov>=0?'+':''}${fmtNum(r.mov)} ${r.unidad}</td><td>${fmtNum(r.teorico)} ${r.unidad}</td><td>${r.contado===null?'—':fmtNum(r.contado)+' '+r.unidad}</td><td class="${cls}">${diff==='—'?diff:diff+' '+r.unidad}</td>`;
+    body.appendChild(tr);
+  });
+  el('theoryCompared').textContent=String(compared);el('theoryShort').textContent=String(short);el('theoryOver').textContent=String(over);
+  if(rows.length){table.style.display='table';empty.style.display='none'}else{table.style.display='none';empty.style.display='block';empty.textContent='La base está cargada, pero aún no hay conteos o movimientos para comparar.'}
+}
+async function loadPreviousBaseline(silent=false){
+  const suc=sucursalSelect.value.trim(),tipo=currentType(),current=conteoInput.value.trim();
+  if(!suc){previousBaseline=null;comparisonRows=[];renderTheory();if(!silent)showToast('Selecciona una sucursal');return null}
+  try{
+    if(!silent)el('theoryStatus').textContent='Buscando inventario anterior…';
+    const list=await apiGet({action:'list',sucursal:suc,tipo});
+    const records=(list.records||[]).filter(r=>String(r.conteo)!==String(current));
+    const currentNum=parseInt(current,10);
+    const candidates=records.map(r=>({...r,_n:parseInt(String(r.conteo).match(/\d+/)?.[0]||'',10)}))
+      .filter(r=>Number.isFinite(r._n)&&(!Number.isFinite(currentNum)||r._n<currentNum))
+      .sort((a,b)=>b._n-a._n);
+    const prev=candidates[0];
+    if(!prev){previousBaseline=null;comparisonRows=[];renderTheory();if(!silent)showToast('No hay inventario anterior para usar como base');return null}
+    const loaded=await apiGet({action:'load',sucursal:suc,tipo,conteo:String(prev.conteo)});
+    previousBaseline=loaded.record||null;
+    calculateComparison();
+    return previousBaseline;
+  }catch(e){
+    previousBaseline=null;comparisonRows=[];renderTheory();
+    if(!silent)showToast(e.message);return null;
+  }
+}
+
+function renderMovements(){
+  const box=el('movementList');if(!box)return;
+  if(!movements.length){box.innerHTML='<div class="movement-empty">No hay movimientos registrados.</div>';calculateComparison();return}
+  box.innerHTML='';
+  movements.forEach((m,i)=>{
+    const r=document.createElement('div');r.className='movement-row';
+    const l=document.createElement('div'),sign=movementSign(m);
+    l.innerHTML=`<strong>${sign} ${m.tipo} · ${m.producto}</strong><div class="movement-meta">${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}<br>${m.fechaHora||''}${m.responsable?' · '+m.responsable:''}${m.observacion?'<br>'+m.observacion:''}</div>`;
+    const b=document.createElement('button');b.className='movement-remove';b.type='button';b.textContent='Quitar';b.onclick=()=>{movements.splice(i,1);renderMovements();calculateComparison();scheduleAutoDraft()};
+    r.append(l,b);box.appendChild(r);
+  });
+  calculateComparison();
+}
+function saveMovement(){
+  const raw=el('movementProduct').value,qty=parseFloat(el('movementQty').value),tipo=el('movementType').value;
+  if(!raw)return showToast('Selecciona un producto');
+  if(!Number.isFinite(qty)||qty<=0)return showToast('Indica una cantidad válida');
+  const [ci,ii]=raw.split('|').map(Number),cat=categories[ci],item=cat.items[ii];
+  const related=el('movementBranch').value;
+  if((tipo==='Transferencia enviada'||tipo==='Transferencia recibida')&&!related)return showToast('Selecciona la sucursal relacionada');
+  const fieldKey=el('movementUnit').value||'__base__';
+  const field=cat.fields.find(f=>f.key===fieldKey);
+  const factor=fieldKey==='__base__'?1:Number(item.factors?.[fieldKey]);
+  if(!Number.isFinite(factor))return showToast('Ese producto no tiene equivalencia configurada para esa presentación');
+  const now=new Date();
+  movements.push({
+    tipo,producto:item.name,codigo:item.code||'',ci,ii,campoMovimiento:fieldKey,
+    cantidad:qty,presentacion:field?field.label:cat.unit,factorBase:factor,cantidadBase:qty*factor,unidadBase:cat.unit,
+    sucursalRelacionada:related||'',ajuste:tipo==='Ajuste manual'?el('movementAdjustment').value:'',
+    responsable:el('movementResponsible').value.trim(),observacion:el('movementNote').value.trim(),
+    fechaHora:now.toLocaleString('es-DO',{dateStyle:'short',timeStyle:'short'})
+  });
+  renderMovements();calculateComparison();scheduleAutoDraft();closeMovementModal();showToast('Movimiento registrado');
+}
+el('addMovementBtn').addEventListener('click',openMovementModal);
+el('movementProduct').addEventListener('change',updateMovementUnits);
+el('movementType').addEventListener('change',updateMovementTypeUI);
+el('saveMovementBtn').addEventListener('click',saveMovement);el('refreshTheoryBtn').addEventListener('click',()=>loadPreviousBaseline(false));
+
+function buildMessage(){const d=buildSaveData(),lines=[`📋 *Inventario ${d.tipo.toLowerCase()}*`,`Sucursal: ${d.sucursal||'—'}`,`Fecha: ${d.fecha||'—'}${d.dia?' ('+d.dia+')':''}`,`N° de conteo: ${d.conteo||'—'}`,`Hora de inicio: ${formatHora(horaInicio)}`,''];categories.forEach((cat,ci)=>{const ls=[];cat.items.forEach((item,ii)=>{if(!itemHasData(ci,ii))return;const p=[];cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')p.push(`${f.label} ${e.value}`)});const t=getItemTotal(ci,ii);if(t.hasKnown)p.push(`Total ${fmtNum(t.total)} ${cat.unit}`);ls.push(`• ${item.name}${item.code?' ('+item.code+')':''}: ${p.join(', ')}`)});if(ls.length)lines.push(`*${cat.icon} ${cat.name}*`,...ls,'')});if(previousBaseline&&comparisonRows.some(r=>r.contado!==null)){const diffs=comparisonRows.filter(r=>r.contado!==null&&Math.abs(r.diferencia)>.000001);lines.push(`*📊 Comparación vs. inventario ${previousBaseline.conteo}*`);if(diffs.length){diffs.forEach(r=>lines.push(`• ${r.producto}: teórico ${fmtNum(r.teorico)} ${r.unidad}, contado ${fmtNum(r.contado)} ${r.unidad}, diferencia ${r.diferencia>0?'+':''}${fmtNum(r.diferencia)} ${r.unidad}`))}else lines.push('• Sin diferencias en los artículos comparados.');lines.push('')}if(d.movimientos.length){lines.push('*🔄 MOVIMIENTOS REGISTRADOS*');d.movimientos.forEach(m=>lines.push(`• ${movementSign(m)} ${m.tipo}: ${m.producto} — ${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}${m.observacion?' · '+m.observacion:''}`));lines.push('')}lines.push(`Contado por: ${d.contadoPor||'—'}`);return lines.join('\n')}
 el('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(buildMessage());showToast('Texto copiado')}catch(e){showToast('No se pudo copiar')}});el('sendBtn').addEventListener('click',()=>{const d=buildSaveData();location.href=`mailto:?subject=${encodeURIComponent(`Inventario ${d.tipo.toLowerCase()} - ${d.sucursal||'sucursal'} - ${d.fecha||''}`)}&body=${encodeURIComponent(buildMessage())}`});
-function buildPDFDoc(){const{jsPDF}=window.jspdf,doc=new jsPDF({unit:'pt',format:'a4'}),d=buildSaveData(),green=[0,101,62],pale=[231,241,236],margin=38,pageW=doc.internal.pageSize.getWidth(),pageH=doc.internal.pageSize.getHeight();doc.setFillColor(...green);doc.rect(0,0,pageW,58,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text(`Control de inventario ${d.tipo.toLowerCase()}`,margin,31);doc.setFontSize(9);doc.text('INVERSIONES BLUMARO, S.A.',margin,45);doc.setTextColor(30,36,32);doc.setFontSize(9);doc.text(`Sucursal: ${d.sucursal||'—'}`,margin,77);doc.text(`Fecha: ${d.fecha||'—'}`,220,77);doc.text(`N.º: ${d.conteo||'—'}`,430,77);doc.text(`Contado por: ${d.contadoPor||'—'}`,margin,91);let y=108;categories.forEach((cat,ci)=>{const cols=['Código','Artículo',...cat.fields.map(f=>f.label),'Total'],fieldW=48,totalW=62,codeW=48,nameW=pageW-margin*2-codeW-fieldW*cat.fields.length-totalW,widths=[codeW,nameW,...cat.fields.map(()=>fieldW),totalW];if(y+50>pageH-35){doc.addPage();y=35}doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(cat.name.toUpperCase(),margin+4,y+12);y+=18;doc.setFillColor(...pale);doc.rect(margin,y,pageW-margin*2,16,'F');doc.setTextColor(0,74,45);doc.setFontSize(7.5);let x=margin;cols.forEach((h,i)=>{doc.text(h,x+3,y+11);x+=widths[i]});y+=16;cat.items.forEach((item,ii)=>{if(y+15>pageH-35){doc.addPage();y=35}const vals=cat.fields.map(f=>el(`q-${ci}-${ii}-${f.key}`)?.value||''),t=getItemTotal(ci,ii),row=[item.code||'',item.name,...vals,t.hasKnown?fmtNum(t.total):''];doc.setTextColor(30,36,32);doc.setFont('helvetica','normal');doc.setFontSize(7);x=margin;row.forEach((v,i)=>{const txt=doc.splitTextToSize(String(v),widths[i]-6)[0]||'';doc.text(txt,x+3,y+10);x+=widths[i]});doc.setDrawColor(220);doc.line(margin,y+14,pageW-margin,y+14);y+=15});y+=8});const fn=`Inventario_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_N${d.conteo||'sin_numero'}_${d.fecha||'hoy'}.pdf`;return{doc,fn}}
+function buildPDFDoc(){
+  const{jsPDF}=window.jspdf,doc=new jsPDF({unit:'pt',format:'a4'}),d=buildSaveData(),green=[0,101,62],pale=[231,241,236],margin=38,pageW=doc.internal.pageSize.getWidth(),pageH=doc.internal.pageSize.getHeight();
+  function newPage(){doc.addPage();return 35}
+  doc.setFillColor(...green);doc.rect(0,0,pageW,58,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text(`Control de inventario ${d.tipo.toLowerCase()}`,margin,31);doc.setFontSize(9);doc.text('INVERSIONES BLUMARO, S.A.',margin,45);
+  doc.setTextColor(30,36,32);doc.setFontSize(9);doc.text(`Sucursal: ${d.sucursal||'—'}`,margin,77);doc.text(`Fecha: ${d.fecha||'—'}`,220,77);doc.text(`N.º: ${d.conteo||'—'}`,430,77);doc.text(`Contado por: ${d.contadoPor||'—'}`,margin,91);
+  let y=108;
+  categories.forEach((cat,ci)=>{
+    const cols=['Código','Artículo',...cat.fields.map(f=>f.label),'Total'],fieldW=48,totalW=62,codeW=48,nameW=pageW-margin*2-codeW-fieldW*cat.fields.length-totalW,widths=[codeW,nameW,...cat.fields.map(()=>fieldW),totalW];
+    if(y+50>pageH-35)y=newPage();
+    doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(cat.name.toUpperCase(),margin+4,y+12);y+=18;
+    doc.setFillColor(...pale);doc.rect(margin,y,pageW-margin*2,16,'F');doc.setTextColor(0,74,45);doc.setFontSize(7.5);let x=margin;cols.forEach((h,i)=>{doc.text(h,x+3,y+11);x+=widths[i]});y+=16;
+    cat.items.forEach((item,ii)=>{
+      if(y+15>pageH-35)y=newPage();
+      const vals=cat.fields.map(f=>el(`q-${ci}-${ii}-${f.key}`)?.value||''),t=getItemTotal(ci,ii),row=[item.code||'',item.name,...vals,t.hasKnown?fmtNum(t.total):''];
+      doc.setTextColor(30,36,32);doc.setFont('helvetica','normal');doc.setFontSize(7);x=margin;
+      row.forEach((v,i)=>{const txt=doc.splitTextToSize(String(v),widths[i]-6)[0]||'';doc.text(txt,x+3,y+10);x+=widths[i]});
+      doc.setDrawColor(220);doc.line(margin,y+14,pageW-margin,y+14);y+=15;
+    });y+=8;
+  });
+  const compRows=(comparisonRows||[]).filter(r=>r.contado!==null||Math.abs(r.mov)>0.000001);
+  if(previousBaseline&&compRows.length){
+    if(y+60>pageH-35)y=newPage();
+    doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('INVENTARIO TEÓRICO Y DIFERENCIAS',margin+4,y+12);y+=24;
+    doc.setTextColor(30,36,32);doc.setFontSize(7.4);doc.setFont('helvetica','normal');
+    doc.text(`Base: ${previousBaseline.tipo||d.tipo} · Inventario ${previousBaseline.conteo}${previousBaseline.fecha?' · '+previousBaseline.fecha:''}`,margin+4,y);y+=12;
+    const headers=['Artículo','Anterior','Mov.','Teórico','Contado','Dif.'],w=[190,58,52,58,58,58];
+    doc.setFillColor(...pale);doc.rect(margin,y,pageW-margin*2,15,'F');doc.setTextColor(0,74,45);doc.setFont('helvetica','bold');let xx=margin;
+    headers.forEach((h,i)=>{doc.text(h,xx+3,y+10);xx+=w[i]});y+=15;
+    compRows.forEach(r=>{
+      if(y+15>pageH-35)y=newPage();
+      const vals=[r.producto,fmtNum(r.anterior),`${r.mov>=0?'+':''}${fmtNum(r.mov)}`,fmtNum(r.teorico),r.contado===null?'—':fmtNum(r.contado),r.diferencia===null?'—':fmtNum(r.diferencia)];
+      doc.setTextColor(30,36,32);doc.setFont('helvetica','normal');doc.setFontSize(6.8);xx=margin;
+      vals.forEach((v,i)=>{const t=doc.splitTextToSize(String(v),w[i]-5)[0]||'';doc.text(t,xx+3,y+10);xx+=w[i]});
+      doc.setDrawColor(225);doc.line(margin,y+14,pageW-margin,y+14);y+=15;
+    });y+=8;
+  }
+  if(d.movimientos.length){
+    if(y+60>pageH-35)y=newPage();
+    doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('MOVIMIENTOS REGISTRADOS',margin+4,y+12);y+=26;
+    d.movimientos.forEach(m=>{
+      const sign=movementSign(m),line1=`${sign} ${m.tipo} · ${m.producto}${m.codigo?' ('+m.codigo+')':''}`,line2=`${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}${m.responsable?' · '+m.responsable:''}`,line3=`${m.fechaHora||''}${m.observacion?' · '+m.observacion:''}`;
+      const lines=[line1,line2,line3].filter(Boolean).flatMap(t=>doc.splitTextToSize(t,pageW-margin*2-12));
+      const need=lines.length*10+8;if(y+need>pageH-35)y=newPage();
+      doc.setTextColor(30,36,32);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text(lines[0]||'',margin+4,y);doc.setFont('helvetica','normal');doc.setFontSize(7.3);
+      for(let i=1;i<lines.length;i++)doc.text(lines[i],margin+4,y+i*10);
+      y+=need;doc.setDrawColor(225);doc.line(margin,y-3,pageW-margin,y-3);
+    });
+  }
+  const fn=`Inventario_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_N${d.conteo||'sin_numero'}_${d.fecha||'hoy'}.pdf`;return{doc,fn}
+}
 function buildPDF(){const{doc,fn}=buildPDFDoc();doc.save(fn)}
 function buildPdfPayload(){if(!window.jspdf?.jsPDF)throw new Error('No se pudo cargar la librería de PDF.');const{doc,fn}=buildPDFDoc();const dataUri=doc.output('datauristring');return{pdfName:fn,pdfBase64:dataUri.substring(dataUri.indexOf(',')+1)}}
 el('pdfBtn').addEventListener('click',()=>{if(!window.jspdf?.jsPDF){showToast('Sin conexión para generar PDF');return}try{buildPDF()}catch(e){showToast('No se pudo generar el PDF')}});
 const cloudStatus=el('cloudStatus'),historyList=el('historyList');
 function setCloudStatus(m,t=''){cloudStatus.textContent=m;cloudStatus.className='cloud-status'+(t?' '+t:'')}
-function apiUrl(p={}){const u=new URL(APPS_SCRIPT_URL);u.searchParams.set('key',APPS_SCRIPT_KEY);Object.entries(p).forEach(([k,v])=>u.searchParams.set(k,v??''));return u.toString()}
-async function parseApiResponse(r){const txt=await r.text();let d;try{d=JSON.parse(txt)}catch(_){throw new Error('Apps Script no respondió con JSON. Verifica la implementación /exec y el acceso público.')}if(!d.ok)throw new Error(d.error||'Error de Google');return d}
-async function apiGet(p){const r=await fetch(apiUrl(p),{cache:'no-store'});return parseApiResponse(r)}
-async function apiPost(d){const r=await fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...d,key:APPS_SCRIPT_KEY})});return parseApiResponse(r)}
+function apiUrl(p={}){
+  const parts=[`key=${encodeURIComponent(APPS_SCRIPT_KEY)}`];
+  Object.entries(p).forEach(([k,v])=>{
+    if(v!==undefined&&v!==null)parts.push(`${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`);
+  });
+  return `${APPS_SCRIPT_URL}?${parts.join('&')}`;
+}
+async function parseApiResponse(r){
+  const txt=await r.text();let d;
+  try{d=JSON.parse(txt)}
+  catch(_){
+    const clean=txt.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,180);
+    throw new Error(`Apps Script devolvió una respuesta no válida (${r.status}). ${clean||'Revisa la implementación.'}`);
+  }
+  if(!d.ok)throw new Error(d.error||'Error de Google');
+  return d;
+}
+async function apiGet(p){
+  const url=apiUrl(p);
+  const r=await fetch(url,{method:'GET',cache:'no-store',redirect:'follow',credentials:'omit'});
+  return parseApiResponse(r);
+}
+async function apiPost(d){
+  const r=await fetch(APPS_SCRIPT_URL,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({...d,key:APPS_SCRIPT_KEY}),
+    cache:'no-store',
+    redirect:'follow',
+    credentials:'omit'
+  });
+  return parseApiResponse(r);
+}
 function numericConteos(rs){return rs.map(r=>parseInt(String(r.conteo).match(/\d+/)?.[0]||'',10)).filter(Number.isFinite)}
 async function getHistory(show=true){const suc=sucursalSelect.value.trim(),tipo=currentType();if(!suc){setCloudStatus('Selecciona una sucursal primero.','error');return[]}setCloudStatus(`Consultando inventarios ${tipo.toLowerCase()}…`);const d=await apiGet({action:'list',sucursal:suc,tipo}),rs=d.records||[];rs.sort((a,b)=>(parseInt(b.conteo)||0)-(parseInt(a.conteo)||0));if(show){historyList.innerHTML='';if(!rs.length)historyList.innerHTML='<div class="history-meta">No hay inventarios guardados de este tipo.</div>';rs.forEach(r=>{const row=document.createElement('div');row.className='history-row';const left=document.createElement('div');left.innerHTML=`<strong>${r.tipo||tipo} · Inventario ${r.conteo}</strong><div class="history-meta">${r.sucursal||suc}${r.fecha?' · '+r.fecha:''}${r.contadoPor?' · '+r.contadoPor:''}</div>`;row.appendChild(left);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='6px';const b=document.createElement('button');b.className='history-load';b.textContent='Cargar';b.onclick=()=>loadCloud(r.conteo);actions.appendChild(b);if(r.pdfUrl){const p=document.createElement('button');p.className='history-load';p.textContent='PDF';p.onclick=()=>window.open(r.pdfUrl,'_blank');actions.appendChild(p)}row.appendChild(actions);historyList.appendChild(row)});historyList.classList.add('show')}setCloudStatus(`${rs.length} inventario(s) ${tipo.toLowerCase()} encontrado(s).`,'ok');return rs}
-async function suggestNextNumber(){if(!sucursalSelect.value){conteoInput.value='';return}try{const rs=await getHistory(false),ns=numericConteos(rs);conteoInput.value=String(ns.length?Math.max(...ns)+1:1);setCloudStatus(`Próximo ${currentType().toLowerCase()} para ${sucursalSelect.value}: ${conteoInput.value}`,'ok')}catch(e){setCloudStatus(e.message,'error')}}
-async function loadCloud(num){const suc=sucursalSelect.value.trim(),tipo=currentType(),conteo=String(num??conteoInput.value).trim();if(!suc||!conteo)return setCloudStatus('Indica sucursal y número.','error');try{setCloudStatus('Cargando…');const d=await apiGet({action:'load',sucursal:suc,conteo,tipo});applyRecord(d.record);setCloudStatus(d.record.pdfUrl?'Inventario cargado. PDF disponible en el historial.':'Inventario cargado.','ok')}catch(e){setCloudStatus(e.message,'error')}}
-async function saveCloud(asNew=false){let d=buildSaveData();if(!d.sucursal)return setCloudStatus('Selecciona una sucursal.','error');try{if(asNew){const rs=await getHistory(false),ns=numericConteos(rs);d.conteo=String(ns.length?Math.max(...ns)+1:1);conteoInput.value=d.conteo}if(!d.conteo)return setCloudStatus('Indica un número o usa Guardar como nuevo.','error');setCloudStatus('Generando PDF y guardando en Google…');d=buildSaveData();const pdf=buildPdfPayload();const o=await apiPost({...d,...pdf,action:'save'});setCloudStatus(`${o.message} ${d.tipo} · ${d.sucursal} · N.º ${d.conteo}`,'ok');showToast(o.message);historyList.classList.remove('show')}catch(e){setCloudStatus(e.message,'error')}}
-el('cloudSaveBtn').onclick=()=>saveCloud(false);el('cloudNewBtn').onclick=()=>saveCloud(true);el('historyBtn').onclick=()=>getHistory(true).catch(e=>setCloudStatus(e.message,'error'));el('cloudLoadBtn').onclick=()=>loadCloud();sucursalSelect.addEventListener('change',suggestNextNumber);
-switchType('Diario',false);
+async function suggestNextNumber(){if(!sucursalSelect.value){conteoInput.value='';previousBaseline=null;comparisonRows=[];renderTheory();return}try{const rs=await getHistory(false),ns=numericConteos(rs);conteoInput.value=String(ns.length?Math.max(...ns)+1:1);await loadPreviousBaseline(true);setCloudStatus(`Próximo ${currentType().toLowerCase()} para ${sucursalSelect.value}: ${conteoInput.value}`,'ok')}catch(e){setCloudStatus(e.message,'error')}}
+async function loadCloud(num){const suc=sucursalSelect.value.trim(),tipo=currentType(),conteo=String(num??conteoInput.value).trim();if(!suc||!conteo)return setCloudStatus('Indica sucursal y número.','error');try{setCloudStatus('Cargando…');const d=await apiGet({action:'load',sucursal:suc,conteo,tipo});applyRecord(d.record);await loadPreviousBaseline(true);setCloudStatus(d.record.pdfUrl?'Inventario cargado. PDF disponible en el historial.':'Inventario cargado.','ok')}catch(e){setCloudStatus(e.message,'error')}}
+async function saveCloud(asNew=false,fromPending=false){
+  let d=buildSaveData();
+  if(!d.sucursal)return setCloudStatus('Selecciona una sucursal.','error');
+
+  if(!navigator.onLine){
+    if(asNew&&!d.conteo)return setCloudStatus('Sin conexión: necesito un número de inventario antes de dejarlo pendiente.','error');
+    queuePendingDraft(d,asNew);
+    saveAutoDraft();
+    setCloudStatus('Sin conexión. Inventario guardado localmente y pendiente de sincronizar.','error');
+    showToast('Guardado en este dispositivo');
+    return {queued:true};
+  }
+
+  try{
+    if(asNew){
+      const rs=await getHistory(false),ns=numericConteos(rs);
+      d.conteo=String(ns.length?Math.max(...ns)+1:1);conteoInput.value=d.conteo;
+    }
+    if(!d.conteo)return setCloudStatus('Indica un número o usa Guardar como nuevo.','error');
+    setCloudStatus(fromPending?'Sincronizando pendiente…':'Calculando teórico, generando PDF y guardando en Google…');
+    await loadPreviousBaseline(true);calculateComparison();
+    d=buildSaveData();
+    d.comparacion={base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows};
+    const pdf=buildPdfPayload();
+    const o=await apiPost({...d,...pdf,action:'save'});
+    setCloudStatus(`${o.message} ${d.tipo} · ${d.sucursal} · N.º ${d.conteo}`,'ok');
+    showToast(o.message);historyList.classList.remove('show');
+    const savedKey=[d.tipo,d.sucursal,d.conteo||'sin-numero'].join('|');removePending(savedKey);saveAutoDraft();
+    return o;
+  }catch(e){
+    const likelyNetwork=!navigator.onLine||/fetch|network|failed|load/i.test(String(e.message||e));
+    if(likelyNetwork&&!fromPending){
+      queuePendingDraft(buildSaveData(),asNew);saveAutoDraft();updateConnectionUI();
+      setCloudStatus('No se pudo conectar. El inventario quedó pendiente de sincronizar.','error');
+      showToast('Guardado localmente');
+      return {queued:true};
+    }
+    setCloudStatus(e.message,'error');
+    throw e;
+  }
+}
+el('cloudSaveBtn').onclick=()=>saveCloud(false);el('cloudNewBtn').onclick=()=>saveCloud(true);el('historyBtn').onclick=()=>getHistory(true).catch(e=>setCloudStatus(e.message,'error'));el('cloudLoadBtn').onclick=()=>loadCloud();sucursalSelect.addEventListener('change',()=>{suggestNextNumber();syncHomeSucursal()});
+
+
+const LOCAL_DRAFT_KEY='inventario_auto_draft_v1';
+const PENDING_SYNC_KEY='inventario_pending_sync_v1';
+let localDraftTimer=null,isSyncingPending=false;
+
+function safeLocalGet(key,fallback){
+  try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch(_){return fallback}
+}
+function safeLocalSet(key,value){
+  try{localStorage.setItem(key,JSON.stringify(value));return true}catch(_){return false}
+}
+function hasMeaningfulDraft(d){
+  if(!d)return false;
+  return !!(d.sucursal||d.conteo||d.contadoPor||Object.keys(d.qty||{}).length||(d.movimientos||[]).length);
+}
+function saveAutoDraft(){
+  try{
+    const d=buildSaveData();
+    if(!hasMeaningfulDraft(d))return;
+    const pack={savedAt:new Date().toISOString(),data:d};
+    safeLocalSet(LOCAL_DRAFT_KEY,pack);
+    updateDraftUI();
+  }catch(_){}
+}
+function scheduleAutoDraft(){
+  clearTimeout(localDraftTimer);
+  localDraftTimer=setTimeout(saveAutoDraft,500);
+}
+function getLastDraft(){return safeLocalGet(LOCAL_DRAFT_KEY,null)}
+function pendingQueue(){const q=safeLocalGet(PENDING_SYNC_KEY,[]);return Array.isArray(q)?q:[]}
+function savePendingQueue(q){safeLocalSet(PENDING_SYNC_KEY,q);updatePendingUI()}
+function queuePendingDraft(d,asNew=false){
+  const q=pendingQueue();
+  const key=[d.tipo,d.sucursal,d.conteo||'sin-numero'].join('|');
+  const item={id:key,queuedAt:new Date().toISOString(),asNew:!!asNew,data:d};
+  const idx=q.findIndex(x=>x.id===key);
+  if(idx>=0)q[idx]=item;else q.push(item);
+  savePendingQueue(q);
+  return item;
+}
+function removePending(id){
+  savePendingQueue(pendingQueue().filter(x=>x.id!==id));
+}
+function updateDraftUI(){
+  const p=getLastDraft(),txt=el('continueDraftText');
+  if(!txt)return;
+  if(!p?.data){txt.textContent='No hay borradores locales todavía';return}
+  const d=p.data,dt=new Date(p.savedAt);
+  txt.textContent=`${d.tipo||'Inventario'} · ${d.sucursal||'Sin sucursal'}${d.conteo?' · N.º '+d.conteo:''} · ${dt.toLocaleString('es-DO',{dateStyle:'short',timeStyle:'short'})}`;
+}
+function updatePendingUI(){
+  const q=pendingQueue(),count=el('pendingCount'),txt=el('pendingText');
+  if(count){count.textContent=String(q.length);count.style.display=q.length?'inline-flex':'none'}
+  if(txt)txt.textContent=q.length?`${q.length} inventario(s) esperando conexión`:'No hay inventarios pendientes';
+  updateConnectionUI();
+}
+function updateConnectionUI(){
+  const online=navigator.onLine,b=el('connectionBadge'),banner=el('offlineBanner'),q=pendingQueue();
+  if(b){
+    b.classList.remove('offline','pending');
+    if(!online){b.textContent='📴 Sin conexión';b.classList.add('offline')}
+    else if(q.length){b.textContent=`☁️ ${q.length} pendiente${q.length>1?'s':''}`;b.classList.add('pending')}
+    else b.textContent='☁️ En línea';
+  }
+  if(banner)banner.classList.toggle('show',!online);
+}
+function continueLastDraft(){
+  const p=getLastDraft();
+  if(!p?.data){showToast('No hay borrador local para continuar');return}
+  const d=p.data;
+  if(d.sucursal)homeSucursal.value=d.sucursal;
+  tipoSelect.value=d.tipo&&DATASETS[d.tipo]?d.tipo:'Diario';
+  homeScreen.classList.add('is-hidden');inventoryApp.classList.remove('is-hidden');updateConnectionUI();scheduleAutoDraft();
+  applyRecord(d);
+  syncHomeSucursal();
+  if(navigator.onLine)loadPreviousBaseline(true).catch(()=>{});
+  showToast('Borrador recuperado');
+}
+async function syncNextPending(){
+  const q=pendingQueue();
+  if(!q.length){showToast('No hay inventarios pendientes');return}
+  if(!navigator.onLine){showToast('Todavía no hay conexión a internet');return}
+  if(isSyncingPending)return;
+  isSyncingPending=true;
+  const item=q[0];
+  try{
+    const d=item.data;
+    if(d.sucursal)homeSucursal.value=d.sucursal;
+    tipoSelect.value=d.tipo&&DATASETS[d.tipo]?d.tipo:'Diario';
+    homeScreen.classList.add('is-hidden');inventoryApp.classList.remove('is-hidden');
+    applyRecord(d);syncHomeSucursal();
+    setCloudStatus('Sincronizando inventario pendiente…');
+    await saveCloud(false,true);
+    removePending(item.id);
+    showToast('Inventario pendiente sincronizado');
+    updatePendingUI();
+  }catch(e){
+    setCloudStatus(`No se pudo sincronizar: ${e.message}`,'error');
+  }finally{isSyncingPending=false}
+}
+window.addEventListener('online',()=>{updateConnectionUI();updatePendingUI();showToast('Conexión restablecida. Puedes sincronizar los pendientes.')});
+window.addEventListener('offline',()=>{updateConnectionUI();showToast('Sin conexión. El inventario seguirá guardándose en este dispositivo.')});
+document.addEventListener('input',e=>{if(inventoryApp&&!inventoryApp.classList.contains('is-hidden'))scheduleAutoDraft()});
+document.addEventListener('change',e=>{if(inventoryApp&&!inventoryApp.classList.contains('is-hidden'))scheduleAutoDraft()});
+
+const homeScreen=el('homeScreen'),inventoryApp=el('inventoryApp'),homeSucursal=el('homeSucursal'),homeModal=el('homeModal');
+function initHome(){
+  updateDraftUI();updatePendingUI();updateConnectionUI();
+  homeSucursal.innerHTML=sucursalSelect.innerHTML;
+  homeSucursal.value=sucursalSelect.value||'';
+  homeSucursal.addEventListener('change',()=>{sucursalSelect.value=homeSucursal.value;refreshHomeSummary()});
+  el('backHomeBtn').addEventListener('click',goHome);
+  refreshHomeSummary();
+}
+function syncHomeSucursal(){if(homeSucursal&&homeSucursal.value!==sucursalSelect.value)homeSucursal.value=sucursalSelect.value}
+async function openInventoryFromHome(type){
+  const suc=homeSucursal.value.trim();
+  if(!suc){showToast('Selecciona una sucursal primero');homeSucursal.focus();return}
+  sucursalSelect.value=suc;tipoSelect.value=type;switchType(type,true);
+  homeScreen.classList.add('is-hidden');inventoryApp.classList.remove('is-hidden');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function goHome(){
+  saveAutoDraft();syncHomeSucursal();inventoryApp.classList.add('is-hidden');homeScreen.classList.remove('is-hidden');updateDraftUI();updatePendingUI();updateConnectionUI();
+  historyList.classList.remove('show');window.scrollTo({top:0,behavior:'instant'});refreshHomeSummary();
+}
+function closeHomeModal(){homeModal.classList.remove('show')}
+function showHistoryChooser(){
+  if(!homeSucursal.value){showToast('Selecciona una sucursal primero');return}
+  el('homeModalTitle').textContent='🕘 Historial de inventarios';
+  el('homeModalText').textContent=`¿Qué historial deseas consultar para ${homeSucursal.value}?`;
+  el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="openHistoryFromHome(\'Diario\')">📋 Diario</button><button class="btn btn-secondary" type="button" onclick="openHistoryFromHome(\'Mensual\')">🗓️ Mensual</button>';
+  homeModal.classList.add('show');
+}
+async function openHistoryFromHome(type){closeHomeModal();await openInventoryFromHome(type);try{await getHistory(true)}catch(e){setCloudStatus(e.message,'error')}}
+async function refreshHomeSummary(){
+  const suc=homeSucursal?.value?.trim();if(!suc){el('homeSummaryBadge').textContent='—';el('homeSummaryText').textContent='Selecciona una sucursal para consultar su actividad.';return}
+  el('homeSummaryBadge').textContent='…';el('homeSummaryText').textContent='Consultando actividad…';
+  try{
+    const [d,m]=await Promise.all([apiGet({action:'list',sucursal:suc,tipo:'Diario'}),apiGet({action:'list',sucursal:suc,tipo:'Mensual'})]);
+    const diarios=d.records||[],mensuales=m.records||[];const all=[...diarios.map(x=>({...x,_tipo:'Diario'})),...mensuales.map(x=>({...x,_tipo:'Mensual'}))];
+    all.sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||''))||(parseInt(b.conteo)||0)-(parseInt(a.conteo)||0));
+    el('homeSummaryBadge').textContent=`${diarios.length + mensuales.length} guardados`;
+    if(all.length){const r=all[0];el('homeSummaryText').textContent=`Último: ${r.tipo||r._tipo} · Inventario ${r.conteo}${r.fecha?' · '+r.fecha:''}${r.contadoPor?' · '+r.contadoPor:''}`}
+    else el('homeSummaryText').textContent='Todavía no hay inventarios guardados para esta sucursal.';
+  }catch(e){el('homeSummaryBadge').textContent='Sin conexión';el('homeSummaryText').textContent='No se pudo consultar la actividad. Puedes entrar al inventario normalmente.'}
+}
+async function showDashboardInfo(){
+  const suc=homeSucursal.value.trim();
+  if(!suc){showToast('Selecciona una sucursal primero');return}
+  el('homeModalTitle').textContent='📊 Resumen mensual';
+  el('homeModalText').textContent='Consultando el último resumen mensual…';
+  el('homeModalActions').innerHTML='';
+  homeModal.classList.add('show');
+  try{
+    const d=await apiGet({action:'monthlySummary',sucursal:suc});
+    if(!d.periodo){
+      el('homeModalText').textContent='Todavía no se ha generado ningún resumen mensual automático.';
+      el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="closeHomeModal()">Cerrar</button>';
+      return;
+    }
+    const r=d.record;
+    if(!r){
+      el('homeModalText').textContent=`No hay actividad de ${suc} en el resumen ${d.periodo}.`;
+    }else{
+      el('homeModalText').innerHTML=
+        `<b>${suc} · ${d.periodo}</b><br><br>`+
+        `📋 Inventarios diarios: <b>${r['Diarios']||0}</b><br>`+
+        `🗓️ Inventarios mensuales: <b>${r['Mensuales']||0}</b><br>`+
+        `🔄 Movimientos: <b>${r['Movimientos']||0}</b><br>`+
+        `📥 Recepciones: <b>${r['Recepciones']||0}</b><br>`+
+        `➡️ Transferencias enviadas: <b>${r['Transf. enviadas']||0}</b><br>`+
+        `⬅️ Transferencias recibidas: <b>${r['Transf. recibidas']||0}</b><br>`+
+        `🗑️ Descartes / mermas: <b>${r['Descartes / mermas']||0}</b><br>`+
+        `🛠️ Ajustes: <b>${r['Ajustes']||0}</b><br><br>`+
+        `Último diario: <b>${r['Último diario']||'—'}</b>${r['Fecha último diario']?' · '+r['Fecha último diario']:''}<br>`+
+        `Último mensual: <b>${r['Último mensual']||'—'}</b>${r['Fecha último mensual']?' · '+r['Fecha último mensual']:''}`;
+    }
+    el('homeModalActions').innerHTML=d.pdfUrl
+      ? `<a class="btn btn-primary" href="${d.pdfUrl}" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">Abrir PDF del resumen</a><button class="btn btn-secondary" type="button" onclick="closeHomeModal()">Cerrar</button>`
+      : '<button class="btn btn-primary" type="button" onclick="closeHomeModal()">Cerrar</button>';
+  }catch(e){
+    el('homeModalText').textContent=`No se pudo consultar el resumen mensual: ${e.message}`;
+    el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="closeHomeModal()">Cerrar</button>';
+  }
+}
+renderMovements();renderTheory();switchType('Diario',false);initHome();
 </script></body></html>
