@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title>Control de Inventarios</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title>V10.17.1 Oficial Ventas · Control de Inventarios</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 :root{--green:#00653E;--green-dark:#004A2D;--green-pale:#E7F1EC;--red:#C8102E;--bg:#F6F6F3;--card:#fff;--ink:#1E2420;--ink-soft:#5B655F;--line:#E3E5E0}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:96px}header{background:var(--green);color:#fff;padding:16px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08)}header h1{margin:0;font-size:1.2rem}header p{margin:2px 0 0;font-size:.8rem;color:#CFE6DA}.progress-wrap{margin-top:10px;background:rgba(255,255,255,.18);border-radius:999px;height:6px;overflow:hidden}.progress-bar{height:100%;background:#fff;width:0;transition:.2s}.progress-label{font-size:.72rem;color:#CFE6DA;margin-top:5px}main{padding:14px;max-width:560px;margin:auto}.card,details.section{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px}.card{padding:14px}.card h2{margin:0 0 10px;font-size:.95rem;color:var(--green-dark)}.field{margin-bottom:10px}.field label{display:block;font-size:.75rem;color:var(--ink-soft);margin-bottom:4px}.field input,.field select,.search-card input{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;font-size:.95rem;background:#fff;color:var(--ink)}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-card{border:2px solid var(--green)}.type-card select{font-weight:700;color:var(--green-dark)}details.section{overflow:hidden}details.section summary{list-style:none;padding:13px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:.9rem}details.section summary::-webkit-details-marker{display:none}summary .cat-name{flex:1}summary .badge{font-size:.72rem;color:var(--green-dark);background:var(--green-pale);padding:3px 9px;border-radius:999px}.items{border-top:1px solid var(--line)}.item{padding:11px 14px;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.item-name{font-size:.86rem;font-weight:600}.item-code,.item-note,.equiv{font-size:.7rem;color:var(--ink-soft);margin-top:2px}.item-note{color:#8a5b00}.qty-grid{display:grid;gap:6px;margin-top:8px}.qty-grid label{display:block;font-size:.65rem;color:var(--ink-soft);text-align:center;margin-bottom:3px}.qty-grid input{width:100%;padding:8px 4px;border:1px solid var(--line);border-radius:8px;text-align:center;font-size:.88rem;background:#FAFAF8}.qty-grid input.filled{border-color:var(--green);background:var(--green-pale);font-weight:700}.item-total{margin-top:6px;font-size:12.5px;font-weight:700;color:var(--green);text-align:right;min-height:16px}.btn{border:0;border-radius:11px;padding:12px 9px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit}.btn-primary{background:var(--green);color:#fff}.btn-secondary{background:var(--green-pale);color:var(--green-dark)}.cloud-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cloud-status{font-size:.74rem;color:var(--ink-soft);margin-top:8px;line-height:1.4}.cloud-status.ok{color:var(--green-dark);font-weight:600}.cloud-status.error{color:var(--red);font-weight:600}.history-list{margin-top:10px;display:none;border-top:1px solid var(--line);padding-top:8px;max-height:260px;overflow:auto}.history-list.show{display:block}.history-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.history-meta,.search-count{font-size:.72rem;color:var(--ink-soft)}.history-load{border:1px solid var(--line);background:#fff;color:var(--green-dark);border-radius:8px;padding:7px 10px;font-weight:700}footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:15}.footer-inner{display:flex;gap:8px;max-width:560px;margin:auto}.footer-inner .btn{flex:1}.footer-inner .btn-primary{flex:1.4}.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px;font-size:.82rem;opacity:0;pointer-events:none;transition:.2s;z-index:30}.toast.show{opacity:1}@media(max-width:390px){.row2{grid-template-columns:1fr}}
@@ -92,7 +92,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 .btn-primary{background:var(--corp)}
 .app-bottom-nav{
  position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:70;
- width:min(100%,580px);display:grid;grid-template-columns:repeat(5,1fr);
+ width:min(100%,580px);display:grid;grid-template-columns:repeat(6,1fr);
  background:rgba(255,255,255,.97);backdrop-filter:blur(16px);
  border-top:1px solid var(--corp-line);padding:7px 7px calc(7px + env(safe-area-inset-bottom));
 }
@@ -222,7 +222,90 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
   position:relative;
 }
 
-</style></head><body>
+
+/* V10.6: Teórico separado, protección y catálogo actualizable */
+#theoryPanel .theory-card{margin:0;background:#fff}
+#theoryPanel .theory-table-wrap{max-height:58vh;overflow:auto}
+#theoryPanel .theory-table thead th{position:sticky;top:0;z-index:2}
+
+
+/* ===== V10.7 OFICIAL · REPORTES / RESPALDOS / ROLES / VERSIONES ===== */
+.v107-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.v107-card{background:#fff;border:1px solid var(--corp-line);border-radius:16px;padding:13px}
+.v107-card strong{display:block;font-size:1.15rem;color:var(--corp)}
+.v107-card span{font-size:.62rem;color:var(--corp-muted)}
+.v107-table{width:100%;border-collapse:collapse;font-size:.64rem}
+.v107-table th,.v107-table td{padding:7px;border-bottom:1px solid var(--corp-line);text-align:left}
+.v107-table th{background:var(--corp-soft);color:var(--corp)}
+.v107-backup{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--corp-line)}
+.v107-backup:last-child{border-bottom:0}
+.v107-version{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--corp-line)}
+.v107-version:last-child{border-bottom:0}
+.v107-version b{font-size:.72rem}
+.v107-version small{display:block;font-size:.61rem;color:var(--corp-muted);margin-top:3px;line-height:1.4}
+.v107-badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:.58rem;font-weight:850;background:#eef3f0;color:#496057}
+.v107-badge.ok{background:#edf7ef;color:#0b7a4b}
+.v107-badge.warn{background:#fff4df;color:#946000}
+.v107-role-perms{margin-top:10px;background:#f8fbf9;border:1px solid var(--corp-line);border-radius:12px;padding:10px}
+.v107-role-perms b{font-size:.68rem}
+.v107-role-perms ul{margin:6px 0 0 18px;padding:0;font-size:.62rem;color:var(--corp-muted);line-height:1.55}
+.v107-lock{opacity:.48!important;pointer-events:none!important}
+@media(max-width:420px){.v107-grid{grid-template-columns:1fr}}
+
+
+/* ===== V10.12 · HISTORIAL / REPORTES DE MOVIMIENTOS ===== */
+.mov-report-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.mov-report-field label{display:block;font-size:.65rem;color:var(--corp-muted);margin-bottom:4px}
+.mov-report-field input,.mov-report-field select{width:100%;padding:10px;border:1px solid var(--corp-line);border-radius:10px;background:#fff}
+.mov-report-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.mov-report-stat{background:#f8fbf9;border:1px solid var(--corp-line);border-radius:13px;padding:10px}
+.mov-report-stat strong{display:block;font-size:1rem;color:var(--corp)}.mov-report-stat span{font-size:.57rem;color:var(--corp-muted)}
+.mov-report-table-wrap{overflow:auto;border:1px solid var(--corp-line);border-radius:13px;max-height:48vh}
+.mov-report-table{width:100%;border-collapse:collapse;min-width:900px;font-size:.62rem}
+.mov-report-table th,.mov-report-table td{padding:7px 6px;border-bottom:1px solid var(--corp-line);text-align:left;vertical-align:top}
+.mov-report-table th{position:sticky;top:0;z-index:2;background:var(--corp-soft);color:var(--corp)}
+.mov-tag{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:.55rem;font-weight:850}
+.mov-tag.sent{background:#fff1ef;color:#b42318}.mov-tag.received{background:#edf7ef;color:#0b7a4b}.mov-tag.other{background:#eef3f0;color:#496057}
+@media(max-width:520px){.mov-report-grid{grid-template-columns:1fr}.mov-report-summary{grid-template-columns:1fr 1fr}}
+
+
+/* ===== V10.15 BETA · CONTROL DE VENTAS ===== */
+.sales-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
+.sales-kpi{background:#fff;border:1px solid var(--corp-line);border-radius:15px;padding:12px}
+.sales-kpi strong{display:block;font-size:1.05rem;color:var(--corp);line-height:1.15}
+.sales-kpi span{display:block;font-size:.58rem;color:var(--corp-muted);margin-top:4px}
+.sales-kpi small{display:block;font-size:.56rem;color:#748078;margin-top:3px}
+.sales-progress{height:12px;background:#e7ece9;border-radius:999px;overflow:hidden;margin:9px 0 4px}
+.sales-progress>div{height:100%;background:var(--corp);width:0;transition:.25s}
+.sales-plan-table-wrap,.sales-history-wrap{overflow:auto;border:1px solid var(--corp-line);border-radius:13px;background:#fff;max-height:48vh}
+.sales-plan-table,.sales-history{width:100%;border-collapse:collapse;min-width:680px;font-size:.63rem}
+.sales-plan-table th,.sales-plan-table td,.sales-history th,.sales-history td{padding:8px 7px;border-bottom:1px solid var(--corp-line);text-align:left;vertical-align:middle}
+.sales-plan-table th,.sales-history th{position:sticky;top:0;background:var(--corp-soft);color:var(--corp);z-index:2}
+.sales-plan-table input{width:115px;padding:7px;border:1px solid var(--corp-line);border-radius:8px}
+.sales-pill{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:.55rem;font-weight:850}
+.sales-pill.ok{background:#edf7ef;color:#0b7a4b}.sales-pill.bad{background:#fff1ef;color:#b42318}.sales-pill.pending{background:#f3f5f4;color:#68736d}
+.sales-month-head{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
+.sales-month-head .beta-field{flex:1;min-width:145px;margin-bottom:0}
+.sales-note{font-size:.61rem;color:var(--corp-muted);line-height:1.45}
+.sales-daily-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.sales-projection{background:linear-gradient(145deg,var(--corp),#06482f);color:#fff;border-radius:16px;padding:14px;margin-bottom:10px}
+.sales-projection strong{font-size:1.2rem;display:block}.sales-projection small{font-size:.61rem;color:#dcebe4}
+.sales-pmix-placeholder{border:1px dashed #b8cfc2;background:#f8fbf9;border-radius:14px;padding:14px}
+.sales-pmix-placeholder b{display:block;font-size:.76rem;color:var(--corp)}
+.sales-pmix-placeholder p{font-size:.62rem;color:var(--corp-muted);margin:5px 0 0;line-height:1.45}
+@media(min-width:760px){
+  .sales-kpis{grid-template-columns:repeat(4,1fr)}
+  .sales-daily-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:520px){
+  .app-bottom-nav{grid-template-columns:repeat(6,1fr)}
+  .app-nav-btn{font-size:.52rem}
+  .app-nav-btn .navico{font-size:17px}
+  .sales-daily-grid{grid-template-columns:1fr}
+}
+
+</style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head><body>
 
 <div id="homeScreen" class="home-screen">
   <div class="home-shell">
@@ -245,6 +328,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
       <button class="home-tool" id="syncPendingBtn" type="button" onclick="syncNextPending()"><div class="ico">☁️</div><div class="txt"><b>Sincronizar pendientes <span class="sync-count" id="pendingCount" style="display:none">0</span></b><small id="pendingText">No hay inventarios pendientes</small></div><div class="arrow">›</div></button>
       <button class="home-tool" type="button" onclick="showHistoryChooser()"><div class="ico">🕘</div><div class="txt"><b>Historial de inventarios</b><small>Buscar, cargar o abrir PDF anteriores</small></div><div class="arrow">›</div></button>
       <button class="home-tool" type="button" onclick="showDashboardInfo()"><div class="ico">📊</div><div class="txt"><b>Resumen / Dashboard</b><small>Actividad y estado de la sucursal seleccionada</small></div><div class="arrow">›</div></button>
+      <button class="home-tool" type="button" onclick="v10Navigate('sales')"><div class="ico">💰</div><div class="txt"><b>Ventas y metas</b><small>Plan mensual, ventas diarias y cumplimiento</small></div><div class="arrow">›</div></button>
     </div>
     <div class="home-recent"><div class="top"><b>Actividad de la sucursal</b><span class="home-badge" id="homeSummaryBadge">—</span></div><p id="homeSummaryText">Selecciona una sucursal para consultar su actividad.</p></div>
   </div>
@@ -300,7 +384,192 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
   <div class="movement-help">Registra pedidos recibidos, transferencias, descartes/mermas o ajustes. En esta primera etapa solo se documentan; todavía no alteran automáticamente el conteo.</div>
   <div class="movement-list" id="movementList"><div class="movement-empty">No hay movimientos registrados.</div></div>
 </div>
-<div class="card theory-card" id="theoryCard">
+<div class="card search-card"><h2>Buscar artículo</h2><input id="searchInput" type="search" placeholder="Escribe nombre o código..."><div class="search-count" id="searchCount"></div></div>
+<div id="sections"></div>
+</main><footer><div class="footer-inner"><button class="btn btn-secondary" id="copyBtn">Copiar</button><button class="btn btn-secondary" id="pdfBtn">Guardar PDF</button><button class="btn btn-primary" id="sendBtn">Enviar correo</button></div></footer></div>
+
+
+
+<div id="salesPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top">
+      <div><h2>Ventas y metas</h2><small>V10.17.1 Oficial · Ventas ordenadas</small></div>
+      <button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button>
+    </div>
+
+    <div class="beta-hero">
+      <h3>Control diario de ventas</h3>
+      <p>Registra el plan mensual, metas diarias, venta total, Net Sales y transacciones. El sistema calcula cumplimiento, ticket promedio y proyección del mes, y guarda la información en Google Sheets.</p>
+    </div>
+
+    <div class="beta-card">
+      <div class="sales-month-head">
+        <div class="beta-field"><label>Sucursal</label><select id="salesBranch"></select></div>
+        <div class="beta-field"><label>Mes</label><input id="salesMonth" type="month"></div>
+        <div class="beta-field"><label>Plan de venta mensual (RD$)</label><input id="salesMonthlyPlan" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn btn-primary" type="button" onclick="saveSalesMonthlyPlan()">Guardar plan mensual</button>
+        <button class="btn btn-secondary" type="button" onclick="syncSalesFromCloud()">Actualizar resumen</button>
+      </div>
+      <div class="sales-sync-note" id="salesSyncStatus">Ventas: preparado para sincronizar con Google Sheets.</div>
+    </div>
+
+
+    <div class="beta-card">
+      <h3>Importar reporte semanal</h3>
+
+      <button class="btn btn-primary" id="weeklyReportDrop" type="button"
+        onclick="el('weeklyReportFile').click()"
+        style="width:100%;padding:14px 16px;font-size:.78rem;border-radius:12px">
+        📊 Cargar reporte semanal
+      </button>
+
+      <input id="weeklyReportFile" type="file"
+        accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
+        style="display:none"
+        onchange="handleWeeklySalesReport(this.files[0])">
+
+      <div id="weeklyReportStatus" class="sales-note" style="margin-top:8px;text-align:center">
+        Ningún archivo cargado
+      </div>
+
+      <div id="weeklyReportPreview" style="display:none;margin-top:11px">
+        <div class="week-import-summary" id="weeklyReportSummary"></div>
+        <div class="week-preview-wrap" style="margin-top:10px">
+          <table class="week-preview">
+            <thead>
+              <tr>
+                <th>Fecha</th><th>Día</th><th>Sucursal encontrada</th>
+                <th>Plan 2026</th><th>Venta real 2026</th><th>Transacciones</th><th>Ticket prom.</th>
+              </tr>
+            </thead>
+            <tbody id="weeklyReportBody"></tbody>
+          </table>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn btn-primary" type="button" onclick="applyWeeklyPlans()">Aplicar los 7 planes diarios</button>
+          <button class="btn btn-secondary" type="button" onclick="clearWeeklyReport()">Cancelar importación</button>
+        </div>
+        <div class="sales-note" style="margin-top:7px">
+          En esta beta el botón aplica solamente los <b>planes diarios</b>. Las ventas reales, transacciones y ticket se muestran para validar que estamos leyendo correctamente el archivo, pero no se guardan automáticamente.
+        </div>
+      </div>
+    </div>
+
+    <div class="sales-kpis" id="salesKpis"></div>
+    <div class="sales-projection" id="salesProjection">
+      <small>Proyección del mes</small><strong>RD$ 0.00</strong><small>Registra ventas para comenzar la proyección.</small>
+    </div>
+
+
+    <div class="beta-card">
+      <h3>Analizar período específico</h3>
+      <div class="sales-note" style="margin-bottom:9px">
+        Revisa una semana, varios días específicos o cuánto tienes planificado vender en un período futuro.
+      </div>
+      <div class="sales-range-grid">
+        <div class="beta-field"><label>Desde</label><input id="salesRangeFrom" type="date"></div>
+        <div class="beta-field"><label>Hasta</label><input id="salesRangeTo" type="date"></div>
+        <div class="beta-field" style="display:flex;align-items:end"><button class="btn btn-primary" style="width:100%" type="button" onclick="analyzeSalesRange()">Analizar período</button></div>
+        <div class="beta-field" style="display:flex;align-items:end"><button class="btn btn-secondary" style="width:100%" type="button" onclick="setNextSalesWeek()">Próxima semana</button></div>
+      </div>
+      <div id="salesRangeResults" style="display:none">
+        <div class="sales-range-results" id="salesRangeStats"></div>
+        <div class="sales-range-detail" id="salesRangeDetail"></div>
+      </div>
+    </div>
+
+    <div class="beta-card">
+      <h3>Registrar venta diaria</h3>
+      <div class="sales-daily-grid">
+        <div class="beta-field"><label>Fecha</label><input id="salesDate" type="date"></div>
+        <div class="beta-field"><label>Plan del día (RD$)</label><input id="salesDailyPlan" type="number" min="0" step="1" placeholder="0"></div>
+        <div class="beta-field"><label>Venta total / Gross (RD$)</label><input id="salesGross" type="number" min="0" step="0.01" placeholder="0.00"></div>
+        <div class="beta-field"><label>Net Sales automático (RD$)</label><input id="salesNet" type="number" min="0" step="0.01" placeholder="0.00" readonly></div>
+        <div class="beta-field"><label>Transacciones</label><input id="salesTransactions" type="number" min="0" step="1" placeholder="0"></div>
+      </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" type="button" onclick="saveDailySale()">Guardar venta del día</button>
+        <button class="btn btn-secondary" type="button" onclick="clearDailySaleForm()">Limpiar</button>
+      </div>
+      <div class="sales-note" id="salesDailyPreview" style="margin-top:9px">Completa el Net Sales y las transacciones para ver el ticket promedio y cumplimiento.</div>
+    </div>
+
+    <div class="beta-card">
+      <h3>Planes diarios del mes</h3>
+      <div class="sales-note" style="margin-bottom:9px">Puedes cargar todas las metas del mes de una vez. Los planes se guardan por sucursal y mes.</div>
+      <div class="sales-plan-table-wrap">
+        <table class="sales-plan-table">
+          <thead><tr><th>Fecha</th><th>Día</th><th>Plan diario (RD$)</th><th>Net Sales</th><th>Cumplimiento</th></tr></thead>
+          <tbody id="salesPlanBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:9px"><button class="btn btn-primary" type="button" onclick="saveAllDailyPlans()">Guardar planes diarios</button></div>
+    </div>
+
+    <div class="section"><h2>Historial del mes</h2><small>Resultados registrados</small></div>
+    <div class="sales-history-wrap">
+      <table class="sales-history">
+        <thead><tr><th>Fecha</th><th>Plan</th><th>Venta total</th><th>Net Sales</th><th>Trans.</th><th>Ticket prom.</th><th>% Meta</th><th></th></tr></thead>
+        <tbody id="salesHistoryBody"></tbody>
+      </table>
+    </div>
+
+    <div class="section"><h2>Product Mix</h2><small>Siguiente etapa</small></div>
+    <div class="sales-pmix-placeholder">
+      <b>📄 Product Mix del día</b>
+      <p>La sección queda reservada para asociar el PMIX a cada fecha. Primero vamos a pulir ventas y metas; después conectaremos el lector del Product Mix y, más adelante, el consumo teórico de inventario.</p>
+    </div>
+  </div>
+</div>
+<div id="reportsOfficialPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top"><div><h2>Centro de reportes</h2><small>Inventarios, movimientos y diferencias</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-hero"><h3>Reportes operativos</h3><p>Consulta información por sucursal y exporta una vista en PDF o CSV.</p></div>
+    <div class="beta-card">
+      <div class="beta-row">
+        <div class="beta-field"><label>Sucursal</label><select id="v107ReportBranch"></select></div>
+        <div class="beta-field"><label>Tipo de reporte</label><select id="v107ReportType"><option value="inventories">Inventarios</option><option value="movements">Movimientos</option><option value="differences">Diferencias actuales</option></select></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" type="button" onclick="generateV107ReportPreview()">Vista previa</button>
+        <button class="btn btn-secondary" type="button" onclick="exportV107CSV()">Exportar CSV</button>
+        <button class="btn btn-secondary" type="button" onclick="exportV107PDF()">Exportar PDF</button>
+      </div>
+    </div>
+    <div class="beta-card" id="v107ReportPreview"><div class="beta-note">Genera una vista previa para comenzar.</div></div>
+  </div>
+</div>
+
+<div id="backupOfficialPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top"><div><h2>Centro de respaldos</h2><small>Puntos de restauración locales</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-hero"><h3>Protección adicional</h3><p>Crea una copia manual del inventario actual antes de cambios importantes y restáurala cuando la necesites.</p></div>
+    <div class="beta-card"><button class="btn btn-primary" type="button" onclick="createV107BackupPoint()">Crear punto de restauración ahora</button></div>
+    <div class="beta-card" id="v107BackupList"></div>
+  </div>
+</div>
+
+<div id="versionOfficialPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top"><div><h2>Versión y cambios</h2><small>Historial de la aplicación</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-hero"><h3>Versión oficial 10.7</h3><p>Registro de cambios para saber qué se añadió o corrigió en cada versión.</p></div>
+    <div class="beta-card" id="v107VersionLog"></div>
+  </div>
+</div>
+
+<div id="theoryPanel" class="beta-panel">
+  <div class="beta-shell">
+    <div class="beta-top">
+      <div><h2>Inventario teórico</h2><small>Comparación y diferencias separadas del conteo</small></div>
+      <button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button>
+    </div>
+    <div class="beta-hero">
+      <h3>Teórico vs. contado</h3>
+      <p>Esta vista no modifica las cantidades que escribiste. Solo compara el inventario anterior, movimientos y conteo actual.</p>
+    </div>
+    <div class="card theory-card" id="theoryCard">
   <div class="theory-head">
     <div>
       <h2>📊 Inventario teórico y diferencias</h2>
@@ -315,16 +584,18 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
   </div>
   <div class="theory-table-wrap"><div class="theory-empty" id="theoryEmpty">Todavía no hay una base cargada.</div><table class="theory-table" id="theoryTable" style="display:none"><thead><tr><th>Producto</th><th>Anterior</th><th>Mov.</th><th>Teórico</th><th>Contado</th><th>Diferencia</th></tr></thead><tbody id="theoryBody"></tbody></table></div>
 </div>
-<div class="card search-card"><h2>Buscar artículo</h2><input id="searchInput" type="search" placeholder="Escribe nombre o código..."><div class="search-count" id="searchCount"></div></div>
-<div id="sections"></div>
-</main><footer><div class="footer-inner"><button class="btn btn-secondary" id="copyBtn">Copiar</button><button class="btn btn-secondary" id="pdfBtn">Guardar PDF</button><button class="btn btn-primary" id="sendBtn">Enviar correo</button></div></footer></div>
+
+  </div>
+</div>
+
 <div id="movementCenterPanel" class="beta-panel">
   <div class="beta-shell">
     <div class="beta-top"><div><h2>Centro de movimientos</h2><small>Registro independiente del inventario</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
     <div class="beta-hero"><h3>Movimientos operativos</h3><p>Registra recepciones, transferencias, descartes o ajustes sin tener que abrir un inventario.</p></div>
     <div class="beta-card">
       <h3>Nuevo movimiento</h3>
-      <div class="beta-field"><label>Tipo</label><select id="betaMoveType"><option>Recepción de pedido</option><option>Transferencia enviada</option><option>Descarte / merma</option><option>Ajuste manual</option></select></div>
+      <div class="beta-field"><label>Tipo</label><select id="betaMoveType"><option>Recepción de pedido</option><option>Transferencia enviada</option><option>Transferencia recibida</option><option>Descarte / merma</option><option>Ajuste manual</option></select></div>
+      <div class="beta-field"><label>Fecha del movimiento</label><input id="betaMoveDate" type="date"></div>
       <div class="beta-field"><label>Producto</label><select id="betaMoveProduct"></select></div>
       <div class="beta-row"><div class="beta-field"><label>Cantidad</label><input id="betaMoveQty" type="number" min="0" step="any" placeholder="0"></div><div class="beta-field"><label>Unidad</label><select id="betaMoveUnit"><option>Unidad</option><option>Paquete</option><option>Caja</option><option>Libra</option><option>Charola</option><option>Fardo</option></select></div></div>
       <div class="beta-field"><label>Sucursal relacionada</label><select id="betaMoveBranch"></select></div>
@@ -333,6 +604,43 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
       <div class="beta-note" style="margin-top:9px">Los movimientos independientes se guardan en la pestaña Movimientos de Google Sheets. Las transferencias generan un comprobante PDF en Drive.</div>
     </div>
     <div class="beta-card"><h3>Actividad reciente</h3><div id="betaMovementList"><div class="beta-note">Todavía no hay movimientos independientes registrados.</div></div></div>
+
+    <div class="beta-card">
+      <h3>Historial / Reporte de movimientos</h3>
+      <div class="beta-note" style="margin-bottom:10px">Filtra un período y genera un PDF únicamente con los movimientos que quieres consultar.</div>
+      <div class="mov-report-grid">
+        <div class="mov-report-field"><label>Desde</label><input id="movReportFrom" type="date"></div>
+        <div class="mov-report-field"><label>Hasta</label><input id="movReportTo" type="date"></div>
+        <div class="mov-report-field"><label>Tipo</label>
+          <select id="movReportType">
+            <option value="">Todos los movimientos</option>
+            <option value="TRANSFERENCIAS">Transferencias enviadas + recibidas</option>
+            <option value="Transferencia enviada">Transferencias enviadas</option>
+            <option value="Transferencia recibida">Transferencias recibidas</option>
+            <option value="Recepción de pedido">Recepciones</option>
+            <option value="Descarte / merma">Descartes / mermas</option>
+            <option value="Ajuste manual">Ajustes</option>
+          </select>
+        </div>
+        <div class="mov-report-field"><label>Producto</label><input id="movReportProduct" type="search" placeholder="Código o producto"></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn btn-primary" type="button" onclick="loadMovementReport()">Buscar movimientos</button>
+        <button class="btn btn-secondary" type="button" onclick="generateMovementReportPDF()">Generar PDF filtrado</button>
+        <button class="btn btn-secondary" type="button" onclick="clearMovementReportFilters()">Limpiar filtros</button>
+      </div>
+      <div class="mov-report-summary" id="movReportSummary" style="display:none"></div>
+      <div id="movReportStatus" class="beta-note" style="margin-top:9px">Selecciona un rango de fechas para consultar.</div>
+    </div>
+
+    <div id="movReportResults" style="display:none">
+      <div class="mov-report-table-wrap">
+        <table class="mov-report-table">
+          <thead><tr><th>Fecha movimiento</th><th>Tipo</th><th>Producto</th><th>Cantidad</th><th>Origen</th><th>Destino</th><th>Responsable</th><th>Observación</th></tr></thead>
+          <tbody id="movReportBody"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -343,6 +651,10 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
     <div class="beta-card">
       <div class="beta-row"><input class="beta-search" id="catalogSearch" type="search" placeholder="Buscar código o producto..." oninput="renderBetaCatalog()"><select id="catalogType" onchange="renderBetaCatalog()"><option>Mensual</option><option>Diario</option></select></div>
       <div style="margin-top:9px"><span class="beta-chip">Fuente: Google Sheets</span><span class="beta-chip">Estado: Activo / Inactivo</span></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px">
+        <button class="btn btn-primary" type="button" onclick="refreshCatalogManual()">🔄 Actualizar catálogo</button>
+        <span class="beta-note" id="catalogRefreshStatus">Carga automática al abrir un inventario nuevo.</span>
+      </div>
     </div>
     <div class="catalog-wrap"><table class="catalog-table"><thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Equivalencia</th><th>Estado</th></tr></thead><tbody id="catalogBody"></tbody></table></div>
   </div>
@@ -350,7 +662,31 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 
 <div id="morePanel" class="beta-panel">
   <div class="beta-shell">
-    <div class="beta-top"><div><h2>Más</h2><small>Funciones de la aplicación</small></div><button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-top"><div><h2>Más</h2><small>Funciones de la aplicación</small></div>
+    <div class="beta-card">
+      <h3>Administración</h3>
+      <div class="beta-grid">
+        <button class="btn btn-secondary" type="button" onclick="openV107Reports()">📄 Centro de reportes</button>
+        <button class="btn btn-secondary" type="button" onclick="openV107Backups()">💾 Respaldos</button>
+        <button class="btn btn-secondary" type="button" onclick="openProfileEditor()">👤 Perfil y permisos</button>
+        <button class="btn btn-secondary" type="button" onclick="openV107Versions()">ℹ️ Versión / cambios</button>
+      </div>
+    </div>
+<button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button></div>
+    <div class="beta-card">
+      <h3>Catálogo de productos</h3>
+      <div class="beta-note">Consulta y actualiza productos, códigos, equivalencias y estado directamente desde Google Sheets.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn btn-secondary" type="button" onclick="showBetaPanel('catalog');setV10Nav('more')">Abrir catálogo</button>
+        <button class="btn btn-primary" type="button" onclick="refreshCatalogManual()">🔄 Actualizar catálogo</button>
+      </div>
+    </div>
+    <div class="beta-card">
+      <h3>Recuperación de emergencia</h3>
+      <div class="beta-note">Guarda localmente varias copias recientes de inventarios que ya tenían cantidades, para protegerte ante un redibujado o cierre accidental.</div>
+      <button class="btn btn-secondary" style="margin-top:8px" type="button" onclick="showBetaPanel('');recoverLatestSnapshot()">Recuperar última copia</button>
+    </div>
+
     <div class="beta-card">
       <h3>Aplicación instalable</h3>
       <div class="pwa-demo"><div class="pwa-icon">IB</div><div><b style="font-size:.78rem">Operaciones Blumaro</b><div class="beta-note">La versión PWA se abriría como una app, sin la barra del navegador, cuando esté alojada por HTTPS.</div><button class="btn btn-primary" style="margin-top:8px" type="button" onclick="showPwaDemo()">Probar instalación</button></div></div>
@@ -366,8 +702,9 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 <nav class="app-bottom-nav" id="appBottomNav">
   <button class="app-nav-btn active" data-v10="home" type="button" onclick="v10Navigate('home',this)"><span class="navico">⌂</span><span>Inicio</span></button>
   <button class="app-nav-btn" data-v10="inventory" type="button" onclick="v10Navigate('inventory',this)"><span class="navico">＋</span><span>Inventario</span></button>
+  <button class="app-nav-btn" data-v10="theory" type="button" onclick="v10Navigate('theory',this)"><span class="navico">≠</span><span>Teórico</span></button>
   <button class="app-nav-btn" data-v10="movements" type="button" onclick="v10Navigate('movements',this)"><span class="navico">↔</span><span>Movimientos</span></button>
-  <button class="app-nav-btn" data-v10="catalog" type="button" onclick="v10Navigate('catalog',this)"><span class="navico">☷</span><span>Catálogo</span></button>
+  <button class="app-nav-btn" data-v10="sales" type="button" onclick="v10Navigate('sales',this)"><span class="navico">＄</span><span>Ventas</span></button>
   <button class="app-nav-btn" data-v10="more" type="button" onclick="v10Navigate('more',this)"><span class="navico">•••</span><span>Más</span></button>
 </nav>
 
@@ -395,11 +732,11 @@ function renderSections(preserved={}){const q=searchInput.value.trim().toLowerCa
 function updateProgress(){let filled=0;categories.forEach((cat,ci)=>{let cf=0;cat.items.forEach((_,ii)=>{if(itemHasData(ci,ii)){filled++;cf++}});const b=el(`badge-${ci}`);if(b)b.textContent=`${cf}/${cat.items.length}`});el('progressBar').style.width=(totalItems?Math.round(filled/totalItems*100):0)+'%';el('progressLabel').textContent=`${filled} de ${totalItems} artículos con datos`}
 sectionsEl.addEventListener('input',e=>{if(e.target.matches('input[data-cat]')){e.target.classList.toggle('filled',e.target.value.trim()!=='');computeItemTotal(+e.target.dataset.cat,+e.target.dataset.item);updateProgress();calculateComparison()}});
 searchInput.addEventListener('input',()=>{const v=captureValues();renderSections(v)});
-function switchType(type,clear=true){categories=DATASETS[type];el('pageTitle').textContent=`Control de inventario ${type.toLowerCase()}`;searchInput.value='';if(clear){conteoInput.value='';movements=[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory()}historyList.classList.remove('show');renderSections();setCloudStatus(`Modo ${type}. Selecciona una sucursal para sugerir el próximo número.`);if(sucursalSelect.value)suggestNextNumber()}
+function switchType(type,clear=true){if(clear)saveEmergencySnapshot('antes de cambiar tipo');categories=DATASETS[type];el('pageTitle').textContent=`Control de inventario ${type.toLowerCase()}`;searchInput.value='';if(clear){conteoInput.value='';movements=[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory()}historyList.classList.remove('show');renderSections();setCloudStatus(`Modo ${type}. Selecciona una sucursal para sugerir el próximo número.`);if(sucursalSelect.value)suggestNextNumber()}
 tipoSelect.addEventListener('change',()=>switchType(currentType(),true));
 const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],today=new Date();fechaInput.value=today.toISOString().slice(0,10);diaSelect.value=dias[today.getDay()];fechaInput.addEventListener('change',()=>{if(fechaInput.value){const[y,m,d]=fechaInput.value.split('-').map(Number);diaSelect.value=dias[new Date(y,m-1,d).getDay()]}});el('horaInicioLabel').textContent=`🕒 Inventario iniciado: ${formatHora(horaInicio)}`;
 function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,estado:inventoryState||'Borrador',qty:{},movimientos:movements.map(x=>({...x})),comparacion:{base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows.map(x=>({...x}))}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));return d}
-function applyRecord(d){if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];if(d.estado)setInventoryState(d.estado);previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
+function applyRecord(d){saveEmergencySnapshot('antes de cargar otro inventario');if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];if(d.estado)setInventoryState(d.estado);previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
 el('saveBtn').addEventListener('click',()=>{const d=buildSaveData(),u=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=`Borrador_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_${d.fecha||'hoy'}.json`;a.click();URL.revokeObjectURL(u);showToast('Borrador guardado')});el('loadBtn').addEventListener('click',()=>el('loadFile').click());el('loadFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{applyRecord(JSON.parse(r.result));showToast('Borrador cargado')}catch(err){showToast('Archivo no válido')}};r.readAsText(f);e.target.value=''});
 
 function allInventoryProducts(){
@@ -593,54 +930,151 @@ el('saveMovementBtn').addEventListener('click',saveMovement);el('refreshTheoryBt
 function buildMessage(){const d=buildSaveData(),lines=[`📋 *Inventario ${d.tipo.toLowerCase()}*`,`Sucursal: ${d.sucursal||'—'}`,`Fecha: ${d.fecha||'—'}${d.dia?' ('+d.dia+')':''}`,`N° de conteo: ${d.conteo||'—'}`,`Hora de inicio: ${formatHora(horaInicio)}`,''];categories.forEach((cat,ci)=>{const ls=[];cat.items.forEach((item,ii)=>{if(!itemHasData(ci,ii))return;const p=[];cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')p.push(`${f.label} ${e.value}`)});const t=getItemTotal(ci,ii);if(t.hasKnown)p.push(`Total ${fmtNum(t.total)} ${cat.unit}`);ls.push(`• ${item.name}${item.code?' ('+item.code+')':''}: ${p.join(', ')}`)});if(ls.length)lines.push(`*${cat.icon} ${cat.name}*`,...ls,'')});if(previousBaseline&&comparisonRows.some(r=>r.contado!==null)){const diffs=comparisonRows.filter(r=>r.contado!==null&&Math.abs(r.diferencia)>.000001);lines.push(`*📊 Comparación vs. inventario ${previousBaseline.conteo}*`);if(diffs.length){diffs.forEach(r=>lines.push(`• ${r.producto}: teórico ${fmtNum(r.teorico)} ${r.unidad}, contado ${fmtNum(r.contado)} ${r.unidad}, diferencia ${r.diferencia>0?'+':''}${fmtNum(r.diferencia)} ${r.unidad}`))}else lines.push('• Sin diferencias en los artículos comparados.');lines.push('')}if(d.movimientos.length){lines.push('*🔄 MOVIMIENTOS REGISTRADOS*');d.movimientos.forEach(m=>lines.push(`• ${movementSign(m)} ${m.tipo}: ${m.producto} — ${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}${m.observacion?' · '+m.observacion:''}`));lines.push('')}lines.push(`Contado por: ${d.contadoPor||'—'}`);return lines.join('\n')}
 el('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(buildMessage());showToast('Texto copiado')}catch(e){showToast('No se pudo copiar')}});el('sendBtn').addEventListener('click',()=>{const d=buildSaveData();location.href=`mailto:?subject=${encodeURIComponent(`Inventario ${d.tipo.toLowerCase()} - ${d.sucursal||'sucursal'} - ${d.fecha||''}`)}&body=${encodeURIComponent(buildMessage())}`});
 function buildPDFDoc(){
-  const{jsPDF}=window.jspdf,doc=new jsPDF({unit:'pt',format:'a4'}),d=buildSaveData(),green=[0,101,62],pale=[231,241,236],margin=38,pageW=doc.internal.pageSize.getWidth(),pageH=doc.internal.pageSize.getHeight();
-  function newPage(){doc.addPage();return 35}
-  doc.setFillColor(...green);doc.rect(0,0,pageW,58,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text(`Control de inventario ${d.tipo.toLowerCase()}`,margin,31);doc.setFontSize(9);doc.text('INVERSIONES BLUMARO, S.A.',margin,45);
-  doc.setTextColor(30,36,32);doc.setFontSize(9);doc.text(`Sucursal: ${d.sucursal||'—'}`,margin,77);doc.text(`Fecha: ${d.fecha||'—'}`,220,77);doc.text(`N.º: ${d.conteo||'—'}`,430,77);doc.text(`Contado por: ${d.contadoPor||'—'}`,margin,91);
-  let y=108;
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'pt',format:'a4'});
+  const d=buildSaveData();
+  const pageW=doc.internal.pageSize.getWidth(),pageH=doc.internal.pageSize.getHeight();
+  const C={green:[31,84,58],green2:[43,113,78],red:[211,51,38],cream:[247,243,234],white:[255,255,255],pale:[230,239,233],dark:[36,43,39],gray:[112,108,101],line:[222,216,204]};
+  const margin=42,contentW=pageW-margin*2;
+  const profile=(typeof getUserProfile==='function'?getUserProfile():{})||{};
+  const role=profile.role||'—';
+  const estado=(typeof inventoryState!=='undefined'&&inventoryState)?inventoryState:(d.estado||'En progreso');
+  let y=0;
+
+  function fillPage(){doc.setFillColor(...C.cream);doc.rect(0,0,pageW,pageH,'F')}
+  function addFooter(){
+    const pages=doc.internal.getNumberOfPages();
+    for(let p=1;p<=pages;p++){
+      doc.setPage(p);
+      doc.setFillColor(...C.green);doc.rect(0,pageH-28,pageW,28,'F');
+      doc.setTextColor(225,236,230);doc.setFont('helvetica','normal');doc.setFontSize(6.8);
+      doc.text('Operaciones Blumaro · Sistema interno de inventarios',margin,pageH-11);
+      doc.text(`Página ${p} de ${pages}`,pageW-margin,pageH-11,{align:'right'});
+    }
+  }
+  function newPage(){doc.addPage();fillPage();y=38}
+  function ensure(h){if(y+h>pageH-48)newPage()}
+  function sectionTitle(title){
+    ensure(30);doc.setTextColor(...C.green);doc.setFont('helvetica','bold');doc.setFontSize(10.5);doc.text(title.toUpperCase(),margin,y+11);
+    doc.setFillColor(...C.red);doc.roundedRect(margin,y+17,58,3,1.5,1.5,'F');y+=33;
+  }
+  function roundedCard(x,yy,w,h){doc.setFillColor(...C.white);doc.setDrawColor(...C.line);doc.roundedRect(x,yy,w,h,12,12,'FD')}
+  function metaCard(x,yy,w,label,value,valueColor=C.green){
+    roundedCard(x,yy,w,54);doc.setTextColor(...C.gray);doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.text(label.toUpperCase(),x+12,yy+18);
+    doc.setTextColor(...valueColor);doc.setFontSize(9);doc.text(String(value||'—'),x+12,yy+38,{maxWidth:w-24});
+  }
+  function tableHeader(cols,widths){
+    doc.setFillColor(...C.pale);doc.roundedRect(margin,y,contentW,22,7,7,'F');
+    doc.setTextColor(...C.green);doc.setFont('helvetica','bold');doc.setFontSize(6.8);let x=margin;
+    cols.forEach((h,i)=>{doc.text(String(h),x+6,y+14,{maxWidth:widths[i]-10});x+=widths[i]});y+=22;
+  }
+  function tableRow(vals,widths,opts={}){
+    const maxLines=Math.max(...vals.map((v,i)=>doc.splitTextToSize(String(v??''),widths[i]-10).length));
+    const h=Math.max(19,maxLines*8+8);ensure(h+2);
+    doc.setFillColor(...(opts.fill||C.white));doc.rect(margin,y,contentW,h,'F');
+    doc.setDrawColor(...C.line);doc.line(margin,y+h,pageW-margin,y+h);
+    let x=margin;doc.setFont('helvetica','normal');doc.setFontSize(6.6);
+    vals.forEach((v,i)=>{
+      const col=(opts.colors&&opts.colors[i])||C.dark;doc.setTextColor(...col);
+      if(opts.boldCols&&opts.boldCols.includes(i))doc.setFont('helvetica','bold');else doc.setFont('helvetica','normal');
+      const lines=doc.splitTextToSize(String(v??''),widths[i]-10);doc.text(lines,x+6,y+12,{lineHeightFactor:1.15});x+=widths[i];
+    });y+=h;
+  }
+
+  // Cabecera principal
+  fillPage();
+  doc.setFillColor(...C.red);doc.rect(0,0,18,145,'F');
+  doc.setFillColor(...C.green);doc.rect(18,0,pageW-18,145,'F');
+  doc.setFillColor(...C.green2);doc.roundedRect(margin,25,64,64,17,17,'F');
+  doc.setTextColor(...C.white);doc.setFont('helvetica','bold');doc.setFontSize(18);doc.text('IB',margin+32,65,{align:'center'});
+  doc.setFontSize(15);doc.text('INVERSIONES BLUMARO, S.A.',margin+82,48);
+  doc.setFontSize(10);doc.text(`CONTROL DE INVENTARIO ${String(d.tipo||'').toUpperCase()}`,margin+82,70);
+  doc.setFont('helvetica','normal');doc.setFontSize(7.2);doc.setTextColor(222,235,227);doc.text('Documento interno de control de inventario',margin+82,90);
+  doc.setTextColor(...C.white);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text(`INV-${String(d.tipo||'I').charAt(0).toUpperCase()}-${d.conteo||'—'}`,pageW-margin,48,{align:'right'});
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.text(d.fecha||'—',pageW-margin,70,{align:'right'});
+
+  // Tarjetas superiores
+  y=145;const gap=9,cw=(contentW-gap*3)/4,cy=y+12;
+  metaCard(margin,cy,cw,'Sucursal',d.sucursal||'—');
+  metaCard(margin+(cw+gap),cy,cw,'Estado',estado,estado==='Cerrado'||estado==='Revisado'?C.red:C.green);
+  metaCard(margin+(cw+gap)*2,cy,cw,'Contado por',d.contadoPor||'—');
+  metaCard(margin+(cw+gap)*3,cy,cw,'Rol',role);
+  y=cy+78;
+
+  // Conteo real
+  sectionTitle('Conteo del inventario');
   categories.forEach((cat,ci)=>{
-    const cols=['Código','Artículo',...cat.fields.map(f=>f.label),'Total'],fieldW=48,totalW=62,codeW=48,nameW=pageW-margin*2-codeW-fieldW*cat.fields.length-totalW,widths=[codeW,nameW,...cat.fields.map(()=>fieldW),totalW];
-    if(y+50>pageH-35)y=newPage();
-    doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(cat.name.toUpperCase(),margin+4,y+12);y+=18;
-    doc.setFillColor(...pale);doc.rect(margin,y,pageW-margin*2,16,'F');doc.setTextColor(0,74,45);doc.setFontSize(7.5);let x=margin;cols.forEach((h,i)=>{doc.text(h,x+3,y+11);x+=widths[i]});y+=16;
+    const dataRows=[];
     cat.items.forEach((item,ii)=>{
-      if(y+15>pageH-35)y=newPage();
-      const vals=cat.fields.map(f=>el(`q-${ci}-${ii}-${f.key}`)?.value||''),t=getItemTotal(ci,ii),row=[item.code||'',item.name,...vals,t.hasKnown?fmtNum(t.total):''];
-      doc.setTextColor(30,36,32);doc.setFont('helvetica','normal');doc.setFontSize(7);x=margin;
-      row.forEach((v,i)=>{const txt=doc.splitTextToSize(String(v),widths[i]-6)[0]||'';doc.text(txt,x+3,y+10);x+=widths[i]});
-      doc.setDrawColor(220);doc.line(margin,y+14,pageW-margin,y+14);y+=15;
-    });y+=8;
+      if(!itemHasData(ci,ii))return;
+      const vals=cat.fields.map(f=>el(`q-${ci}-${ii}-${f.key}`)?.value||'');
+      const t=getItemTotal(ci,ii);
+      dataRows.push([item.code||'',item.name,...vals,t.hasKnown?`${fmtNum(t.total)} ${cat.unit}`:'']);
+    });
+    if(!dataRows.length)return;
+    ensure(52);
+    doc.setTextColor(...C.green);doc.setFont('helvetica','bold');doc.setFontSize(8.3);doc.text(cat.name.toUpperCase(),margin,y+9);y+=16;
+    const fieldCount=cat.fields.length,codeW=45,totalW=74,fieldW=fieldCount?46:0,nameW=contentW-codeW-totalW-fieldW*fieldCount;
+    const widths=[codeW,nameW,...cat.fields.map(()=>fieldW),totalW];
+    tableHeader(['Código','Producto',...cat.fields.map(f=>f.label),'Total'],widths);
+    dataRows.forEach((r,i)=>tableRow(r,widths,{fill:i%2?C.cream:C.white,boldCols:[1]}));
+    y+=14;
   });
+
+  // Teórico y diferencias
   const compRows=(comparisonRows||[]).filter(r=>r.contado!==null||Math.abs(r.mov)>0.000001);
   if(previousBaseline&&compRows.length){
-    if(y+60>pageH-35)y=newPage();
-    doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('INVENTARIO TEÓRICO Y DIFERENCIAS',margin+4,y+12);y+=24;
-    doc.setTextColor(30,36,32);doc.setFontSize(7.4);doc.setFont('helvetica','normal');
-    doc.text(`Base: ${previousBaseline.tipo||d.tipo} · Inventario ${previousBaseline.conteo}${previousBaseline.fecha?' · '+previousBaseline.fecha:''}`,margin+4,y);y+=12;
-    const headers=['Artículo','Anterior','Mov.','Teórico','Contado','Dif.'],w=[190,58,52,58,58,58];
-    doc.setFillColor(...pale);doc.rect(margin,y,pageW-margin*2,15,'F');doc.setTextColor(0,74,45);doc.setFont('helvetica','bold');let xx=margin;
-    headers.forEach((h,i)=>{doc.text(h,xx+3,y+10);xx+=w[i]});y+=15;
-    compRows.forEach(r=>{
-      if(y+15>pageH-35)y=newPage();
-      const vals=[r.producto,fmtNum(r.anterior),`${r.mov>=0?'+':''}${fmtNum(r.mov)}`,fmtNum(r.teorico),r.contado===null?'—':fmtNum(r.contado),r.diferencia===null?'—':fmtNum(r.diferencia)];
-      doc.setTextColor(30,36,32);doc.setFont('helvetica','normal');doc.setFontSize(6.8);xx=margin;
-      vals.forEach((v,i)=>{const t=doc.splitTextToSize(String(v),w[i]-5)[0]||'';doc.text(t,xx+3,y+10);xx+=w[i]});
-      doc.setDrawColor(225);doc.line(margin,y+14,pageW-margin,y+14);y+=15;
-    });y+=8;
+    sectionTitle('Inventario teórico y diferencias');
+    roundedCard(margin,y,contentW,30);doc.setTextColor(...C.gray);doc.setFont('helvetica','normal');doc.setFontSize(7);
+    doc.text(`Base: ${previousBaseline.tipo||d.tipo} · Inventario ${previousBaseline.conteo}${previousBaseline.fecha?' · '+previousBaseline.fecha:''}`,margin+12,y+19);y+=40;
+    const w=[155,62,54,62,62,62];
+    tableHeader(['Producto','Anterior','Mov.','Teórico','Contado','Dif.'],w);
+    let diffCount=0;
+    compRows.forEach((r,i)=>{
+      const diff=r.diferencia===null?null:Number(r.diferencia);if(diff!==null&&Math.abs(diff)>.000001)diffCount++;
+      const vals=[r.producto,fmtNum(r.anterior),`${r.mov>=0?'+':''}${fmtNum(r.mov)}`,fmtNum(r.teorico),r.contado===null?'—':fmtNum(r.contado),diff===null?'—':`${diff>0?'+':''}${fmtNum(diff)}`];
+      const colors=[C.dark,C.dark,C.dark,C.dark,C.dark,(diff!==null&&Math.abs(diff)>.000001)?C.red:C.dark];
+      tableRow(vals,w,{fill:i%2?C.cream:C.white,colors,boldCols:[0,5]});
+    });
+    y+=14;ensure(58);roundedCard(margin,y,contentW,54);
+    doc.setTextColor(...C.gray);doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.text('RESUMEN DE DIFERENCIAS',margin+14,y+18);
+    doc.setTextColor(...C.green);doc.setFontSize(10);doc.text(`${diffCount} producto${diffCount===1?'':'s'} con diferencia`,margin+14,y+39);
+    doc.setTextColor(...C.red);doc.setFontSize(8.5);doc.text(diffCount?'Requiere revisión':'Sin diferencias',pageW-margin-14,y+39,{align:'right'});y+=70;
   }
+
+  // Movimientos
   if(d.movimientos.length){
-    if(y+60>pageH-35)y=newPage();
-    doc.setFillColor(...green);doc.rect(margin,y,pageW-margin*2,18,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('MOVIMIENTOS REGISTRADOS',margin+4,y+12);y+=26;
+    sectionTitle('Movimientos registrados');
     d.movimientos.forEach(m=>{
-      const sign=movementSign(m),line1=`${sign} ${m.tipo} · ${m.producto}${m.codigo?' ('+m.codigo+')':''}`,line2=`${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}${m.responsable?' · '+m.responsable:''}`,line3=`${m.fechaHora||''}${m.observacion?' · '+m.observacion:''}`;
-      const lines=[line1,line2,line3].filter(Boolean).flatMap(t=>doc.splitTextToSize(t,pageW-margin*2-12));
-      const need=lines.length*10+8;if(y+need>pageH-35)y=newPage();
-      doc.setTextColor(30,36,32);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text(lines[0]||'',margin+4,y);doc.setFont('helvetica','normal');doc.setFontSize(7.3);
-      for(let i=1;i<lines.length;i++)doc.text(lines[i],margin+4,y+i*10);
-      y+=need;doc.setDrawColor(225);doc.line(margin,y-3,pageW-margin,y-3);
+      const detail=`${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}`;
+      const obs=[m.responsable,m.fechaHora,m.observacion].filter(Boolean).join(' · ');
+      const h=obs?48:38;ensure(h+8);roundedCard(margin,y,contentW,h);
+      doc.setTextColor(...C.green);doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.text(String(m.tipo||'Movimiento'),margin+12,y+16,{maxWidth:130});
+      doc.setTextColor(...C.dark);doc.setFont('helvetica','normal');doc.text(`${m.producto}${m.codigo?' ('+m.codigo+')':''}`,margin+145,y+16,{maxWidth:190});
+      const negative=/Transferencia enviada|Descarte|merma/i.test(m.tipo||'');doc.setTextColor(...(negative?C.red:C.green));doc.setFont('helvetica','bold');doc.text(detail,pageW-margin-12,y+16,{align:'right',maxWidth:150});
+      if(obs){doc.setTextColor(...C.gray);doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.text(doc.splitTextToSize(obs,contentW-24),margin+12,y+32,{lineHeightFactor:1.1})}
+      y+=h+9;
     });
   }
-  const fn=`Inventario_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_N${d.conteo||'sin_numero'}_${d.fecha||'hoy'}.pdf`;return{doc,fn}
+
+  // Observaciones derivadas de movimientos
+  const observations=d.movimientos.map(m=>m.observacion).filter(Boolean);
+  if(observations.length){
+    sectionTitle('Observaciones');
+    const text=observations.map((o,i)=>`${i+1}. ${o}`).join('   ');
+    const lines=doc.splitTextToSize(text,contentW-28),h=Math.max(54,lines.length*9+26);ensure(h+10);roundedCard(margin,y,contentW,h);
+    doc.setTextColor(...C.gray);doc.setFont('helvetica','normal');doc.setFontSize(7);doc.text(lines,margin+14,y+20,{lineHeightFactor:1.25});y+=h+18;
+  }
+
+  // Firmas
+  ensure(72);const sigW=(contentW-44)/2;
+  doc.setDrawColor(...C.line);doc.line(margin,y+28,margin+sigW,y+28);doc.line(pageW-margin-sigW,y+28,pageW-margin,y+28);
+  doc.setTextColor(...C.gray);doc.setFont('helvetica','bold');doc.setFontSize(6.3);doc.text('CONTADO POR',margin,y+43);doc.text('REVISADO POR',pageW-margin-sigW,y+43);
+  doc.setTextColor(...C.green);doc.setFontSize(8);doc.text(d.contadoPor||'—',margin,y+59);doc.setTextColor(...C.gray);doc.text(estado==='Revisado'?(profile.name||'Revisado'):'Pendiente',pageW-margin-sigW,y+59);
+
+  addFooter();
+  const fn=`Inventario_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_N${d.conteo||'sin_numero'}_${d.fecha||'hoy'}.pdf`;
+  return{doc,fn}
 }
 function buildPDF(){const{doc,fn}=buildPDFDoc();doc.save(fn)}
 function buildPdfPayload(){if(!window.jspdf?.jsPDF)throw new Error('No se pudo cargar la librería de PDF.');const{doc,fn}=buildPDFDoc();const dataUri=doc.output('datauristring');return{pdfName:fn,pdfBase64:dataUri.substring(dataUri.indexOf(',')+1)}}
@@ -763,14 +1197,16 @@ function openProfileEditor(){
           <option value="Gerente de distrito">Gerente de distrito</option>
         </select>
       </div>
-      <div class="profile-help">Este nombre se utilizará automáticamente en “Contado por” al comenzar inventarios nuevos.</div>
+      <div class="v107-role-perms" id="v107RolePermissions"></div>
+      <div class="profile-help">Este nombre se utilizará automáticamente en “Contado por”. El cargo también controla permisos dentro de la aplicación.</div>
     </div>`;
   el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="saveUserProfile()">Guardar perfil</button>';
   homeModal.classList.add('show');
   setTimeout(()=>{
     const ni=el('profileNameInput'),ri=el('profileRoleInput');
     if(ni)ni.value=p.name;
-    if(ri)ri.value=p.role;
+    if(ri){ri.value=p.role;ri.onchange=()=>renderV107RolePermissions(ri.value)}
+    renderV107RolePermissions(p.role);
     if(ni)ni.focus();
   },0);
 }
@@ -782,8 +1218,48 @@ function saveUserProfile(){
   localStorage.setItem(USER_PROFILE_KEY,JSON.stringify({name,role}));
   renderUserProfile();
   applyProfileToCountedBy(true);
+  applyV107Permissions();
   closeHomeModal();
   showToast('Perfil guardado');
+}
+
+
+const INVENTORY_SNAPSHOTS_KEY='inventario_snapshots_v10_5';
+function inventorySnapshotData(){
+  try{return buildSaveData()}catch(_){return null}
+}
+function snapshotHasCount(d){
+  return !!(d && d.qty && Object.keys(d.qty).length);
+}
+function saveEmergencySnapshot(reason='auto'){
+  const d=inventorySnapshotData();
+  if(!snapshotHasCount(d))return;
+  let arr=[];
+  try{arr=JSON.parse(localStorage.getItem(INVENTORY_SNAPSHOTS_KEY)||'[]')}catch(_){}
+  if(!Array.isArray(arr))arr=[];
+  const sig=JSON.stringify(d.qty);
+  if(arr[0] && arr[0].signature===sig && arr[0].data?.sucursal===d.sucursal && arr[0].data?.conteo===d.conteo)return;
+  arr.unshift({
+    savedAt:new Date().toISOString(),
+    reason,
+    signature:sig,
+    data:d
+  });
+  localStorage.setItem(INVENTORY_SNAPSHOTS_KEY,JSON.stringify(arr.slice(0,12)));
+}
+function latestEmergencySnapshot(){
+  try{
+    const arr=JSON.parse(localStorage.getItem(INVENTORY_SNAPSHOTS_KEY)||'[]');
+    return Array.isArray(arr)&&arr.length?arr[0]:null;
+  }catch(_){return null}
+}
+function recoverLatestSnapshot(){
+  const s=latestEmergencySnapshot();
+  if(!s?.data){showToast('No hay copia de emergencia disponible');return}
+  homeScreen.classList.add('is-hidden');
+  inventoryApp.classList.remove('is-hidden');
+  applyRecord(s.data);
+  showToast('Copia de emergencia recuperada');
 }
 
 const LOCAL_DRAFT_KEY='inventario_auto_draft_v1';
@@ -806,6 +1282,7 @@ function saveAutoDraft(){
     if(!hasMeaningfulDraft(d))return;
     const pack={savedAt:new Date().toISOString(),data:d};
     safeLocalSet(LOCAL_DRAFT_KEY,pack);
+    saveEmergencySnapshot('autoguardado');
     updateDraftUI();
   }catch(_){}
 }
@@ -902,6 +1379,9 @@ function syncHomeSucursal(){if(homeSucursal&&homeSucursal.value!==sucursalSelect
 async function openInventoryFromHome(type){
   const suc=homeSucursal.value.trim();
   if(!suc){showToast('Selecciona una sucursal primero');homeSucursal.focus();return}
+  showV10Loading('Preparando inventario…','Actualizando el catálogo desde Google Sheets.');
+  await ensureCatalogReady(true);
+  hideV10Loading();
   sucursalSelect.value=suc;tipoSelect.value=type;switchType(type,true);
   applyProfileToCountedBy(true);
   setInventoryState('Borrador');
@@ -977,6 +1457,749 @@ renderMovements();renderTheory();switchType('Diario',false);initHome();
 // =========================
 // V10 OFICIAL · EXPERIENCIA APP
 // =========================
+
+const V107_BACKUP_KEY='blumaro_restore_points_v107';
+
+function v107Permissions(role=getUserProfile().role){
+  const all={
+    'Team Líder':{
+      canCount:true,canMove:true,canClose:false,canReview:false,canReports:false,
+      items:['Crear y editar inventarios','Registrar movimientos','Usar catálogo y modo offline']
+    },
+    'Gerente':{
+      canCount:true,canMove:true,canClose:true,canReview:false,canReports:true,
+      items:['Todo lo de Team Líder','Cerrar inventarios','Usar centro de reportes','Crear/restaurar respaldos']
+    },
+    'Gerente de distrito':{
+      canCount:true,canMove:true,canClose:true,canReview:true,canReports:true,
+      items:['Acceso completo','Cerrar y revisar inventarios','Ver reportes','Restaurar respaldos','Supervisión general']
+    }
+  };
+  return all[role]||{canCount:true,canMove:true,canClose:false,canReview:false,canReports:false,items:['Perfil sin permisos administrativos asignados']};
+}
+
+function renderV107RolePermissions(role){
+  const box=el('v107RolePermissions');if(!box)return;
+  const p=v107Permissions(role);
+  box.innerHTML=`<b>Permisos de ${role||'este perfil'}</b><ul>${p.items.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+}
+
+function applyV107Permissions(){
+  const p=v107Permissions();
+  document.querySelectorAll('[data-state="Cerrado"]').forEach(b=>{
+    b.classList.toggle('v107-lock',!p.canClose);
+    b.title=p.canClose?'':'Solo Gerente o Gerente de distrito puede cerrar';
+  });
+  document.querySelectorAll('[data-state="Revisado"]').forEach(b=>{
+    b.classList.toggle('v107-lock',!p.canReview);
+    b.title=p.canReview?'':'Solo Gerente de distrito puede revisar';
+  });
+}
+
+function v107RequireReports(){
+  const p=v107Permissions();
+  if(!p.canReports){
+    showToast('Tu cargo no tiene permiso para abrir reportes');
+    return false;
+  }
+  return true;
+}
+
+function openV107Reports(){
+  if(!v107RequireReports())return;
+  showBetaPanel('reports107');initV107Reports();
+}
+function openV107Backups(){
+  const p=v107Permissions();
+  if(!p.canClose){
+    showToast('Solo Gerente o Gerente de distrito puede usar restauración');
+    return;
+  }
+  showBetaPanel('backup107');renderV107Backups();
+}
+function openV107Versions(){
+  showBetaPanel('version107');renderV107VersionLog();
+}
+
+function initV107Reports(){
+  const sel=el('v107ReportBranch');if(!sel)return;
+  sel.innerHTML='<option value="">Todas las sucursales</option>'+[...homeSucursal.options].filter(o=>o.value).map(o=>`<option value="${o.value}">${o.textContent}</option>`).join('');
+}
+
+async function buildV107ReportData(){
+  const branch=el('v107ReportBranch').value;
+  const type=el('v107ReportType').value;
+
+  if(type==='differences'){
+    return (comparisonRows||[]).map(r=>({
+      producto:r.name||r.producto||r.code||'',
+      codigo:r.code||r.codigo||'',
+      teorico:r.theoretical??r.teorico??'',
+      contado:r.counted??r.contado??'',
+      diferencia:r.diff??r.diferencia??0
+    }));
+  }
+
+  if(type==='movements'){
+    try{
+      const d=await apiGet({action:'movements',sucursal:branch});
+      return d.records||[];
+    }catch(_){return []}
+  }
+
+  const rows=[];
+  const branches=branch?[branch]:[...homeSucursal.options].map(o=>o.value).filter(Boolean);
+  for(const b of branches){
+    for(const t of ['Diario','Mensual']){
+      try{
+        const d=await apiGet({action:'list',sucursal:b,tipo:t});
+        (d.records||[]).forEach(r=>rows.push(r));
+      }catch(_){}
+    }
+  }
+  return rows;
+}
+
+async function generateV107ReportPreview(){
+  if(!v107RequireReports())return;
+  const data=await buildV107ReportData(),box=el('v107ReportPreview');
+  box.innerHTML=`<b style="font-size:.78rem">${data.length} registro(s)</b><div class="beta-note" style="margin:4px 0 10px">Vista previa de los primeros 20 registros.</div><div style="overflow:auto"><pre style="white-space:pre-wrap;font-size:.62rem">${escapeV107(JSON.stringify(data.slice(0,20),null,2))}</pre></div>`;
+}
+
+async function exportV107CSV(){
+  if(!v107RequireReports())return;
+  const data=await buildV107ReportData();
+  if(!data.length){showToast('No hay datos para exportar');return}
+  const keys=[...new Set(data.flatMap(x=>Object.keys(x)))];
+  const esc=v=>`"${String(v??'').replaceAll('"','""')}"`;
+  const csv=[keys.map(esc).join(','),...data.map(r=>keys.map(k=>esc(typeof r[k]==='object'?JSON.stringify(r[k]):r[k])).join(','))].join('\n');
+  const blob=new Blob(["\ufeff"+csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`Reporte_${Date.now()}.csv`;a.click();URL.revokeObjectURL(a.href);
+}
+
+async function exportV107PDF(){
+  if(!v107RequireReports())return;
+  const data=await buildV107ReportData();
+  if(!data.length){showToast('No hay datos para exportar');return}
+  const {jsPDF}=window.jspdf||{};
+  if(!jsPDF){showToast('Generador PDF no disponible');return}
+  const doc=new jsPDF();
+  doc.setFontSize(14);doc.text('INVERSIONES BLUMARO, S.A.',14,16);
+  doc.setFontSize(11);doc.text('CENTRO DE REPORTES · V10.7',14,24);
+  doc.setFontSize(7);
+  const text=JSON.stringify(data.slice(0,30),null,2);
+  const lines=doc.splitTextToSize(text,180);
+  doc.text(lines,14,34);
+  doc.save(`Reporte_${Date.now()}.pdf`);
+}
+
+function v107Backups(){
+  try{return JSON.parse(localStorage.getItem(V107_BACKUP_KEY)||'[]')}catch(_){return []}
+}
+function createV107BackupPoint(){
+  const p=v107Permissions();
+  if(!p.canClose){showToast('No tienes permiso para crear puntos de restauración');return}
+  let data=null;try{data=buildSaveData()}catch(_){}
+  if(!data || !data.sucursal){showToast('Abre un inventario antes de crear el respaldo');return}
+  const arr=v107Backups();
+  arr.unshift({id:'BK-'+Date.now(),savedAt:new Date().toISOString(),data});
+  localStorage.setItem(V107_BACKUP_KEY,JSON.stringify(arr.slice(0,15)));
+  renderV107Backups();
+  showToast('Punto de restauración creado');
+}
+function restoreV107Backup(id){
+  const p=v107Permissions();
+  if(!p.canClose){showToast('No tienes permiso para restaurar');return}
+  const b=v107Backups().find(x=>x.id===id);if(!b)return;
+  saveEmergencySnapshot('antes de restaurar respaldo');
+  showBetaPanel('');
+  homeScreen.classList.add('is-hidden');
+  inventoryApp.classList.remove('is-hidden');
+  applyRecord(b.data);
+  setV10Nav('inventory');
+  showToast('Respaldo restaurado');
+}
+function renderV107Backups(){
+  const box=el('v107BackupList');if(!box)return;
+  const arr=v107Backups();
+  if(!arr.length){box.innerHTML='<div class="beta-note">Todavía no hay puntos de restauración manuales.</div>';return}
+  box.innerHTML=arr.map(b=>`<div class="v107-backup"><div><b style="font-size:.72rem">${b.data.tipo||'Inventario'} · ${b.data.sucursal||'—'} · N.º ${b.data.conteo||'—'}</b><div class="beta-note">${new Date(b.savedAt).toLocaleString('es-DO')}</div></div><button class="btn btn-secondary" onclick="restoreV107Backup('${b.id}')">Restaurar</button></div>`).join('');
+}
+
+function renderV107VersionLog(){
+  const log=[
+    ['V10.7','Centro de reportes, roles y permisos, centro de respaldos y registro de versiones.'],
+    ['V10.6','Catálogo actualizable manualmente desde Google Sheets y actualización al abrir inventarios nuevos.'],
+    ['V10.5','Protección contra pérdida de conteos, copias de emergencia e inventario teórico separado.'],
+    ['V10.4','Movimientos independientes y comprobantes PDF de transferencia.'],
+    ['V10.3','Corrección visual del encabezado del catálogo.'],
+    ['V10.2','Perfil de usuario y autocompletado de “Contado por”.'],
+    ['V10.1','Correcciones del PDF de transferencias y animación de carga.']
+  ];
+  el('v107VersionLog').innerHTML=log.map((x,i)=>`<div class="v107-version"><div><b>${x[0]}</b><small>${x[1]}</small></div>${i===0?'<span class="v107-badge ok">Actual</span>':''}</div>`).join('');
+}
+
+function escapeV107(s){
+  return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+
+
+// =========================
+// V10.17 OFICIAL · VENTAS
+// Google Sheets = fuente permanente; localStorage = respaldo/cache.
+// =========================
+
+// =========================
+// V10.16 · IMPORTADOR REPORTE SEMANAL PJ
+// =========================
+let weeklyReportRows=[];
+let weeklyReportMeta={fileName:'',sheetName:'',branchRequested:'',branchFound:'',week:''};
+
+function normalizeStoreName(v){
+  return String(v||'')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g,' ')
+    .replace(/\b(papa johns|pj)\b/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+function excelSerialToISO(serial){
+  if(serial instanceof Date && !isNaN(serial)) {
+    const y=serial.getFullYear(),m=String(serial.getMonth()+1).padStart(2,'0'),d=String(serial.getDate()).padStart(2,'0');
+    return `${y}-${m}-${d}`;
+  }
+  const n=Number(serial);
+  if(!Number.isFinite(n))return '';
+  const utc=Math.round((n-25569)*86400*1000);
+  const dt=new Date(utc);
+  return `${dt.getUTCFullYear()}-${String(dt.getUTCMonth()+1).padStart(2,'0')}-${String(dt.getUTCDate()).padStart(2,'0')}`;
+}
+function wholePeso(n){
+  const x=Number(n||0);
+  return Number.isFinite(x)?Math.trunc(x):0;
+}
+function moneyPlain(n){
+  return Number(n||0).toLocaleString('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:2});
+}
+function findBestStoreName(allStores,requested){
+  const nr=normalizeStoreName(requested);
+  if(!nr)return '';
+  let exact=allStores.find(s=>normalizeStoreName(s)===nr);
+  if(exact)return exact;
+  let partial=allStores.find(s=>{
+    const ns=normalizeStoreName(s);
+    return ns.includes(nr)||nr.includes(ns);
+  });
+  if(partial)return partial;
+  // Token overlap fallback
+  const rt=new Set(nr.split(' ').filter(Boolean));
+  let best='',score=0;
+  allStores.forEach(s=>{
+    const st=normalizeStoreName(s).split(' ').filter(Boolean);
+    const hits=st.filter(x=>rt.has(x)).length;
+    const sc=hits/Math.max(1,Math.max(st.length,rt.size));
+    if(sc>score){score=sc;best=s}
+  });
+  return score>=0.5?best:'';
+}
+function parseWeeklyPJWorkbook(workbook,requestedBranch){
+  const sheetName=workbook.SheetNames.find(n=>normalizeStoreName(n)==='diario semana') ||
+                  workbook.SheetNames.find(n=>normalizeStoreName(n).includes('diario semana'));
+  if(!sheetName)throw new Error('No encontré la hoja "Diario Semana".');
+  const ws=workbook.Sheets[sheetName];
+  const data=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});
+  const weekdays=['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
+  const blocks=[];
+
+  for(let r=0;r<data.length;r++){
+    const row=data[r]||[];
+    const day=normalizeStoreName(row[9]); // Columna J
+    if(weekdays.includes(day)){
+      const date=excelSerialToISO(row[10]); // K
+      let headerRow=-1;
+      for(let h=r+1;h<Math.min(data.length,r+4);h++){
+        const maybe=String((data[h]||[])[12]||'').toLowerCase();
+        if(maybe.includes('plan de ventas 2026')){headerRow=h;break}
+      }
+      if(headerRow<0)continue;
+      blocks.push({day,date,dayRow:r,headerRow});
+    }
+  }
+  if(!blocks.length)throw new Error('No pude detectar los bloques de lunes a domingo.');
+
+  // Stores discovered from all 7 blocks, col J.
+  const storeSet=new Set();
+  blocks.forEach((b,idx)=>{
+    const end=idx+1<blocks.length?blocks[idx+1].dayRow:data.length;
+    for(let r=b.headerRow+1;r<end;r++){
+      const name=(data[r]||[])[9];
+      if(typeof name==='string' && name.trim() && !weekdays.includes(normalizeStoreName(name))){
+        const nm=name.trim();
+        if(!/total|restaurant|tienda|semana/i.test(nm))storeSet.add(nm);
+      }
+    }
+  });
+  const stores=[...storeSet];
+  const found=findBestStoreName(stores,requestedBranch);
+  if(!found){
+    const sample=stores.slice(0,12).join(', ');
+    throw new Error(`No encontré la sucursal "${requestedBranch}" en el archivo. Ejemplos disponibles: ${sample}`);
+  }
+  const nf=normalizeStoreName(found);
+  const out=[];
+
+  blocks.forEach((b,idx)=>{
+    const end=idx+1<blocks.length?blocks[idx+1].dayRow:data.length;
+    let matched=null;
+    for(let r=b.headerRow+1;r<end;r++){
+      const row=data[r]||[];
+      if(normalizeStoreName(row[9])===nf){matched=row;break}
+    }
+    if(matched){
+      out.push({
+        date:b.date,
+        day:b.day.charAt(0).toUpperCase()+b.day.slice(1),
+        store:String(matched[9]||found),
+        plan:wholePeso(matched[12]),          // M Plan de ventas 2026 · pesos enteros
+        real:Number(matched[10]||0),          // K Ventas Reales 2026
+        transactions:Number(matched[15]||0),  // P #Transac. 2026
+        ticket:(typeof matched[18]==='number'?Number(matched[18]):0) // S Ticket promedio 2026
+      });
+    }
+  });
+  if(!out.length)throw new Error('Encontré la sucursal, pero no pude extraer sus datos diarios.');
+
+  return {sheetName,rows:out,branchFound:found,stores};
+}
+async function handleWeeklySalesReport(file){
+  if(!file)return;
+  if(!window.XLSX){
+    el('weeklyReportStatus').textContent='No se pudo cargar el lector de Excel. Verifica que tengas conexión a internet y vuelve a abrir la beta.';
+    showToast('No se pudo cargar el lector Excel');
+    return;
+  }
+  const requested=el('salesBranch')?.value||homeSucursal?.value||sucursalSelect?.value||'';
+  if(!requested){showToast('Primero selecciona tu sucursal');el('weeklyReportFile').value='';return}
+
+  el('weeklyReportStatus').textContent='Leyendo el reporte semanal…';
+  showV10Loading('Leyendo Excel…','Buscando la sucursal y el Plan de ventas 2026.');
+  try{
+    const buf=await file.arrayBuffer();
+    const workbook=XLSX.read(buf,{type:'array',cellDates:false});
+    const parsed=parseWeeklyPJWorkbook(workbook,requested);
+    weeklyReportRows=parsed.rows;
+    weeklyReportMeta={
+      fileName:file.name,sheetName:parsed.sheetName,
+      branchRequested:requested,branchFound:parsed.branchFound,
+      week:weeklyReportRows.length?`${weeklyReportRows[0].date} → ${weeklyReportRows[weeklyReportRows.length-1].date}`:''
+    };
+    renderWeeklyReportPreview();
+    showToast(`Reporte leído · ${parsed.branchFound}`);
+  }catch(err){
+    weeklyReportRows=[];
+    el('weeklyReportPreview').style.display='none';
+    el('weeklyReportStatus').textContent='Error: '+String(err.message||err);
+    showToast('No se pudo interpretar el reporte');
+  }finally{hideV10Loading()}
+}
+function renderWeeklyReportPreview(){
+  const body=el('weeklyReportBody');
+  const totalPlan=weeklyReportRows.reduce((a,r)=>a+Number(r.plan||0),0);
+  const totalReal=weeklyReportRows.reduce((a,r)=>a+Number(r.real||0),0);
+  const totalTx=weeklyReportRows.reduce((a,r)=>a+Number(r.transactions||0),0);
+  body.innerHTML=weeklyReportRows.map(r=>`
+    <tr>
+      <td>${r.date||'—'}</td>
+      <td>${r.day||'—'}</td>
+      <td><span class="week-match">${r.store}</span></td>
+      <td><b>${Number(r.plan||0).toLocaleString('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:0})}</b></td>
+      <td>${r.real?moneyPlain(r.real):'—'}</td>
+      <td>${r.transactions?Math.round(r.transactions).toLocaleString('es-DO'):'—'}</td>
+      <td>${r.ticket?moneyPlain(r.ticket):'—'}</td>
+    </tr>`).join('');
+  el('weeklyReportSummary').innerHTML=[
+    [`${weeklyReportRows.length}/7`,'Días encontrados'],
+    [Number(totalPlan||0).toLocaleString('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:0}),'Plan de la semana'],
+    [weeklyReportMeta.branchFound,'Sucursal encontrada']
+  ].map(x=>`<div><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join('');
+  el('weeklyReportStatus').innerHTML=
+    `<b>${weeklyReportMeta.fileName}</b> · Hoja: ${weeklyReportMeta.sheetName} · ${weeklyReportMeta.week}`;
+  el('weeklyReportPreview').style.display='block';
+}
+async function applyWeeklyPlans(){
+  if(!weeklyReportRows.length){showToast('Primero carga un reporte semanal');return}
+  const requested=el('salesBranch')?.value||'';
+  if(normalizeStoreName(requested)!==normalizeStoreName(weeklyReportMeta.branchRequested)){
+    showToast('La sucursal seleccionada cambió. Vuelve a cargar el reporte.');return;
+  }
+  const db=loadSalesStore(),allRecords=[];let applied=0;
+  weeklyReportRows.forEach(r=>{
+    if(!r.date||!Number.isFinite(Number(r.plan)))return;
+    const month=r.date.slice(0,7),k=salesKey(requested,month);
+    if(!db[k])db[k]={branch:requested,month,monthlyPlan:0,dailyPlans:{},sales:{}};
+    if(!db[k].dailyPlans)db[k].dailyPlans={};
+    const plan=wholePeso(r.plan);db[k].dailyPlans[r.date]=plan;
+    allRecords.push({fecha:r.date,plan});applied++;
+  });
+  saveSalesStore(db);
+  if(weeklyReportRows[0]?.date)el('salesMonth').value=weeklyReportRows[0].date.slice(0,7);
+  renderSalesModuleLocal();
+  try{
+    setSalesSyncStatus('Ventas: guardando planes importados…');
+    await apiPost({action:'saveSalesDailyPlans',sucursal:requested,records:allRecords});
+    setSalesSyncStatus('Ventas: reporte semanal aplicado y guardado en Sheets ✅');
+    showToast(`${applied} planes diarios aplicados`);
+  }catch(e){
+    setSalesSyncStatus('Ventas: planes importados guardados localmente; pendiente de sincronizar');
+    showToast(`${applied} planes aplicados localmente`);
+  }
+  el('weeklyReportStatus').innerHTML+=` · <b>${applied} planes aplicados ✅</b>`;
+}
+function clearWeeklyReport(){
+  weeklyReportRows=[];
+  weeklyReportMeta={fileName:'',sheetName:'',branchRequested:'',branchFound:'',week:''};
+  if(el('weeklyReportFile'))el('weeklyReportFile').value='';
+  el('weeklyReportPreview').style.display='none';
+  el('weeklyReportStatus').textContent='No se ha cargado ningún reporte semanal.';
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  const drop=el('weeklyReportDrop');
+  if(drop){
+    ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag')}));
+    ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag')}));
+    drop.addEventListener('drop',e=>{
+      const f=e.dataTransfer?.files?.[0];
+      if(f)handleWeeklySalesReport(f);
+    });
+  }
+});
+
+const SALES_STORAGE_KEY='blumaro_sales_beta_v1015';
+const SALES_CLOUD_ENABLED=true;
+const salesMoney=n=>Number(n||0).toLocaleString('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:2});
+const salesNum=n=>Number(n||0);
+const salesPad=n=>String(n).padStart(2,'0');
+
+function salesToday(){
+  const d=new Date();return `${d.getFullYear()}-${salesPad(d.getMonth()+1)}-${salesPad(d.getDate())}`;
+}
+function salesCurrentMonth(){return salesToday().slice(0,7)}
+function loadSalesStore(){
+  try{return JSON.parse(localStorage.getItem(SALES_STORAGE_KEY)||'{}')||{}}catch(e){return{}}
+}
+function saveSalesStore(db){localStorage.setItem(SALES_STORAGE_KEY,JSON.stringify(db))}
+function salesKey(branch,month){return `${branch}__${month}`}
+function getSalesBucket(branch,month,create=false){
+  const db=loadSalesStore(),k=salesKey(branch,month);
+  if(!db[k]&&create)db[k]={branch,month,monthlyPlan:0,dailyPlans:{},sales:{}};
+  return {db,k,bucket:db[k]||{branch,month,monthlyPlan:0,dailyPlans:{},sales:{}}};
+}
+
+function setSalesSyncStatus(msg){
+  if(el('salesSyncStatus'))el('salesSyncStatus').textContent=msg;
+}
+function salesBucketHasData(bucket){
+  return !!(salesNum(bucket?.monthlyPlan)>0 || Object.keys(bucket?.dailyPlans||{}).length || Object.keys(bucket?.sales||{}).length);
+}
+async function fetchSalesCloud(branch,month){
+  return apiGet({action:'salesData',sucursal:branch,mes:month});
+}
+async function uploadLocalSalesBucket(branch,month,bucket){
+  if(!salesBucketHasData(bucket))return false;
+  await apiPost({action:'saveSalesMonthlyPlan',sucursal:branch,mes:month,planMensual:salesNum(bucket.monthlyPlan)});
+  const plans=Object.entries(bucket.dailyPlans||{}).map(([fecha,plan])=>({fecha,plan:Math.trunc(salesNum(plan))}));
+  if(plans.length)await apiPost({action:'saveSalesDailyPlans',sucursal:branch,records:plans});
+  const sales=Object.values(bucket.sales||{});
+  for(const r of sales){
+    await apiPost({
+      action:'saveDailySale',sucursal:branch,fecha:r.date,
+      planDiario:Math.trunc(salesNum(bucket.dailyPlans?.[r.date])),
+      ventaTotal:salesNum(r.gross),netSales:salesNum(r.net),
+      transacciones:Math.round(salesNum(r.transactions))
+    });
+  }
+  return true;
+}
+function mergeCloudIntoLocal(branch,month,cloud){
+  const x=getSalesBucket(branch,month,true);
+  x.bucket.monthlyPlan=salesNum(cloud.monthlyPlan);
+  x.bucket.dailyPlans={};
+  (cloud.dailyPlans||[]).forEach(r=>{if(r.fecha)x.bucket.dailyPlans[r.fecha]=Math.trunc(salesNum(r.plan))});
+  x.bucket.sales={};
+  (cloud.sales||[]).forEach(r=>{
+    if(!r.fecha)return;
+    x.bucket.sales[r.fecha]={
+      date:r.fecha,gross:salesNum(r.ventaTotal),net:salesNum(r.netSales),
+      transactions:Math.round(salesNum(r.transacciones)),note:r.observacion||''
+    };
+    if(salesNum(r.planDiario)>0)x.bucket.dailyPlans[r.fecha]=Math.trunc(salesNum(r.planDiario));
+  });
+  x.db[x.k]=x.bucket;saveSalesStore(x.db);
+  return x.bucket;
+}
+async function syncSalesFromCloud({silent=false}={}){
+  const {branch,month}=salesSelected();
+  if(!branch||!month)return;
+  try{
+    setSalesSyncStatus('Ventas: sincronizando con Google Sheets…');
+    const local=getSalesBucket(branch,month,false).bucket;
+    let cloud=await fetchSalesCloud(branch,month);
+    const cloudHasData=salesNum(cloud.monthlyPlan)>0 || (cloud.dailyPlans||[]).length || (cloud.sales||[]).length;
+    if(!cloudHasData && salesBucketHasData(local)){
+      await uploadLocalSalesBucket(branch,month,local);
+      cloud=await fetchSalesCloud(branch,month);
+      if(!silent)showToast('Datos de Ventas de la beta migrados a Sheets ✅');
+    }
+    mergeCloudIntoLocal(branch,month,cloud);
+    setSalesSyncStatus('Ventas: sincronizado con Google Sheets ✅');
+    renderSalesModuleLocal();
+  }catch(err){
+    setSalesSyncStatus('Ventas: usando copia local · '+String(err.message||err));
+    if(!silent)showToast('No se pudo sincronizar Ventas; se mantiene la copia local');
+  }
+}
+
+function salesSelected(){
+  const branch=el('salesBranch')?.value||homeSucursal?.value||sucursalSelect?.value||'';
+  const month=el('salesMonth')?.value||salesCurrentMonth();
+  return {branch,month};
+}
+function initSalesModule(){
+  const sb=el('salesBranch');
+  if(sb){
+    sb.innerHTML=sucursalSelect.innerHTML;
+    sb.value=homeSucursal?.value||sucursalSelect.value||'';
+    if(!sb.dataset.bound){
+      sb.addEventListener('change',()=>{if(homeSucursal)homeSucursal.value=sb.value;if(sucursalSelect)sucursalSelect.value=sb.value;renderSalesModuleLocal();syncSalesFromCloud({silent:true})});
+      sb.dataset.bound='1';
+    }
+  }
+  if(!el('salesMonth').value)el('salesMonth').value=salesCurrentMonth();
+  if(!el('salesDate').value)el('salesDate').value=salesToday();
+  if(!el('salesMonth').dataset.bound){
+    el('salesMonth').addEventListener('change',()=>{renderSalesModuleLocal();syncSalesFromCloud({silent:true})});
+    el('salesMonth').dataset.bound='1';
+  }
+  ['salesDailyPlan','salesGross','salesTransactions'].forEach(id=>{
+    if(el(id)&&!el(id).dataset.bound){el(id).addEventListener('input',updateDailySalesPreview);el(id).dataset.bound='1'}
+  });
+  if(el('salesDate')&&!el('salesDate').dataset.bound){
+    el('salesDate').addEventListener('change',loadDailySaleIntoForm);el('salesDate').dataset.bound='1';
+  }
+  renderSalesModuleLocal();
+  syncSalesFromCloud({silent:true});
+}
+function daysInSalesMonth(month){
+  const [y,m]=month.split('-').map(Number);return new Date(y,m,0).getDate();
+}
+function dayNameES(dateStr){
+  const d=new Date(dateStr+'T12:00:00');
+  return d.toLocaleDateString('es-DO',{weekday:'short'}).replace('.','');
+}
+async function saveSalesMonthlyPlan(){
+  const {branch,month}=salesSelected();
+  if(!branch){showToast('Selecciona una sucursal');return}
+  const plan=Math.trunc(salesNum(el('salesMonthlyPlan').value));
+  const x=getSalesBucket(branch,month,true);
+  x.bucket.monthlyPlan=plan;x.db[x.k]=x.bucket;saveSalesStore(x.db);
+  renderSalesModuleLocal();
+  try{
+    setSalesSyncStatus('Ventas: guardando plan mensual…');
+    await apiPost({action:'saveSalesMonthlyPlan',sucursal:branch,mes:month,planMensual:plan});
+    setSalesSyncStatus('Ventas: plan mensual guardado en Sheets ✅');
+    showToast('Plan mensual guardado');
+  }catch(e){
+    setSalesSyncStatus('Ventas: plan mensual pendiente en copia local');
+    showToast('Plan guardado localmente; no se pudo sincronizar');
+  }
+}
+async function saveDailySale(){
+  const {branch,month}=salesSelected(),date=el('salesDate').value;
+  if(!branch){showToast('Selecciona una sucursal');return}
+  if(!date){showToast('Selecciona una fecha');return}
+  if(date.slice(0,7)!==month){showToast('La fecha debe pertenecer al mes seleccionado');return}
+  const x=getSalesBucket(branch,month,true);
+  const plan=Math.trunc(salesNum(el('salesDailyPlan').value));
+  if(plan>0)x.bucket.dailyPlans[date]=plan;
+  const calc=recalcNetSalesFromGross();
+  const rec={date,gross:calc.gross,net:calc.net,transactions:Math.max(0,Math.round(salesNum(el('salesTransactions').value))),note:''};
+  x.bucket.sales[date]=rec;x.db[x.k]=x.bucket;saveSalesStore(x.db);
+  renderSalesModuleLocal();
+  try{
+    setSalesSyncStatus('Ventas: guardando venta diaria…');
+    await apiPost({action:'saveDailySale',sucursal:branch,fecha:date,planDiario:plan,ventaTotal:rec.gross,netSales:rec.net,transacciones:rec.transactions});
+    setSalesSyncStatus('Ventas: venta diaria guardada en Sheets ✅');
+    showToast('Venta diaria guardada');
+  }catch(e){
+    setSalesSyncStatus('Ventas: venta guardada en copia local; pendiente de sincronizar');
+    showToast('Venta guardada localmente; no se pudo sincronizar');
+  }
+}
+function loadDailySaleIntoForm(){
+  const {branch,month}=salesSelected(),date=el('salesDate').value;
+  const {bucket}=getSalesBucket(branch,month,false),r=bucket.sales?.[date]||{};
+  el('salesDailyPlan').value=bucket.dailyPlans?.[date]||'';
+  el('salesGross').value=r.gross||'';
+  el('salesNet').value=r.gross?(salesNum(r.gross)/1.18).toFixed(2):'';
+  el('salesTransactions').value=r.transactions||'';
+  updateDailySalesPreview();
+}
+function clearDailySaleForm(){
+  ['salesDailyPlan','salesGross','salesNet','salesTransactions'].forEach(id=>el(id).value='');
+  el('salesDate').value=salesToday();updateDailySalesPreview();
+}
+function recalcNetSalesFromGross(){
+  const gross=salesNum(el('salesGross')?.value);
+  const net=gross>0?gross/1.18:0;
+  if(el('salesNet'))el('salesNet').value=net?net.toFixed(2):'';
+  return {gross,net};
+}
+function updateDailySalesPreview(){
+  const calc=recalcNetSalesFromGross();
+  const plan=salesNum(el('salesDailyPlan')?.value),net=calc.net,tx=salesNum(el('salesTransactions')?.value);
+  const ticket=tx?net/tx:0,pct=plan?net/plan*100:0;
+  el('salesDailyPreview').textContent=`Ticket promedio: ${salesMoney(ticket)} · Cumplimiento: ${plan?pct.toFixed(1)+'%':'sin plan diario'}`;
+}
+async function saveAllDailyPlans(){
+  const {branch,month}=salesSelected();
+  if(!branch){showToast('Selecciona una sucursal');return}
+  const x=getSalesBucket(branch,month,true),records=[];
+  document.querySelectorAll('[data-sales-plan-date]').forEach(inp=>{
+    const v=Math.trunc(salesNum(inp.value)),date=inp.dataset.salesPlanDate;
+    if(v>0){x.bucket.dailyPlans[date]=v;records.push({fecha:date,plan:v})}
+    else delete x.bucket.dailyPlans[date];
+  });
+  x.db[x.k]=x.bucket;saveSalesStore(x.db);
+  renderSalesModuleLocal();
+  try{
+    setSalesSyncStatus('Ventas: guardando planes diarios…');
+    await apiPost({action:'saveSalesDailyPlans',sucursal:branch,records});
+    setSalesSyncStatus('Ventas: planes diarios guardados en Sheets ✅');
+    showToast('Planes diarios guardados');
+  }catch(e){
+    setSalesSyncStatus('Ventas: planes guardados localmente; pendiente de sincronizar');
+    showToast('Planes guardados localmente; no se pudo sincronizar');
+  }
+}
+async function deleteDailySale(date){
+  const {branch,month}=salesSelected(),x=getSalesBucket(branch,month,true);
+  delete x.bucket.sales[date];x.db[x.k]=x.bucket;saveSalesStore(x.db);
+  renderSalesModuleLocal();
+  try{
+    await apiPost({action:'deleteDailySale',sucursal:branch,fecha:date});
+    showToast('Registro eliminado');
+  }catch(e){showToast('Eliminado localmente; no se pudo sincronizar')}
+}
+function renderSalesModuleLocal(){
+  const {branch,month}=salesSelected();
+  if(!branch){
+    el('salesKpis').innerHTML='<div class="beta-card" style="grid-column:1/-1"><div class="sales-note">Selecciona una sucursal para comenzar.</div></div>';
+    return;
+  }
+  const {bucket}=getSalesBucket(branch,month,false);
+  el('salesMonthlyPlan').value=bucket.monthlyPlan||'';
+
+  const records=Object.values(bucket.sales||{}).filter(r=>r.date?.slice(0,7)===month).sort((a,b)=>a.date.localeCompare(b.date));
+  const net=records.reduce((a,r)=>a+salesNum(r.net),0);
+  const gross=records.reduce((a,r)=>a+salesNum(r.gross),0);
+  const tx=records.reduce((a,r)=>a+salesNum(r.transactions),0);
+  const plan=salesNum(bucket.monthlyPlan),pct=plan?net/plan*100:0,remaining=Math.max(0,plan-net);
+  const ticket=tx?net/tx:0;
+  const daysRecorded=records.filter(r=>salesNum(r.net)>0).length;
+  const dim=daysInSalesMonth(month);
+  const projection=daysRecorded?net/daysRecorded*dim:0;
+  const remainingCalendar=Math.max(0,dim-daysRecorded);
+  const needed=remainingCalendar?remaining/remainingCalendar:remaining;
+  const hits=records.filter(r=>{const p=salesNum(bucket.dailyPlans?.[r.date]);return p>0&&salesNum(r.net)>=p}).length;
+
+  el('salesKpis').innerHTML=[
+    [salesMoney(plan),'Plan mensual',`${pct.toFixed(1)}% alcanzado`],
+    [salesMoney(net),'Net Sales acumulado',`Venta total: ${salesMoney(gross)}`],
+    [salesMoney(remaining),'Faltante para meta',remaining?`${salesMoney(needed)} por día restante`:'Meta alcanzada'],
+    [salesMoney(ticket),'Ticket promedio',`${Math.round(tx).toLocaleString('es-DO')} transacciones`],
+    [daysRecorded,'Días registrados',`${hits} días cumplieron su meta`],
+    [salesMoney(projection),'Proyección simple',`${dim} días en el mes`],
+    [pct.toFixed(1)+'%','Cumplimiento mensual',plan?'Basado en Net Sales':'Sin plan mensual'],
+    [records.length?((hits/Math.max(1,records.filter(r=>salesNum(bucket.dailyPlans?.[r.date])>0).length))*100).toFixed(0)+'%':'—','Cumplimiento de días','Días con plan alcanzado']
+  ].map(x=>`<div class="sales-kpi"><strong>${x[0]}</strong><span>${x[1]}</span><small>${x[2]}</small></div>`).join('');
+
+  const proj=el('salesProjection');
+  proj.innerHTML=`<small>Proyección de cierre del mes</small><strong>${salesMoney(projection)}</strong><small>${plan?`Equivale aproximadamente al ${(projection/plan*100).toFixed(1)}% del plan mensual.`:'Define el plan mensual para comparar la proyección.'}</small><div class="sales-progress"><div style="width:${Math.min(100,pct)}%"></div></div>`;
+
+  renderSalesPlanTable(bucket,month);
+  renderSalesHistory(bucket,records);
+  loadDailySaleIntoForm();
+}
+function renderSalesPlanTable(bucket,month){
+  const days=daysInSalesMonth(month),body=el('salesPlanBody');
+  let rows='';
+  for(let d=1;d<=days;d++){
+    const date=`${month}-${salesPad(d)}`,p=salesNum(bucket.dailyPlans?.[date]),r=bucket.sales?.[date],net=salesNum(r?.net),pct=p?net/p*100:0;
+    const status=!p?'<span class="sales-pill pending">Sin plan</span>':!r?'<span class="sales-pill pending">Pendiente</span>':net>=p?`<span class="sales-pill ok">${pct.toFixed(1)}%</span>`:`<span class="sales-pill bad">${pct.toFixed(1)}%</span>`;
+    rows+=`<tr><td>${date}</td><td>${dayNameES(date)}</td><td><input type="number" min="0" step="1" data-sales-plan-date="${date}" value="${Math.trunc(p)||''}" placeholder="0"></td><td>${r?salesMoney(net):'—'}</td><td>${status}</td></tr>`;
+  }
+  body.innerHTML=rows;
+}
+function renderSalesHistory(bucket,records){
+  const body=el('salesHistoryBody');
+  if(!records.length){body.innerHTML='<tr><td colspan="8">No hay ventas registradas para este mes.</td></tr>';return}
+  body.innerHTML=records.slice().reverse().map(r=>{
+    const p=salesNum(bucket.dailyPlans?.[r.date]),net=salesNum(r.net),tx=salesNum(r.transactions),ticket=tx?net/tx:0,pct=p?net/p*100:0;
+    const stat=!p?'<span class="sales-pill pending">Sin plan</span>':net>=p?`<span class="sales-pill ok">${pct.toFixed(1)}%</span>`:`<span class="sales-pill bad">${pct.toFixed(1)}%</span>`;
+    return `<tr><td>${r.date}</td><td>${p?salesMoney(p):'—'}</td><td>${salesMoney(r.gross)}</td><td><b>${salesMoney(net)}</b></td><td>${Math.round(tx)}</td><td>${salesMoney(ticket)}</td><td>${stat}</td><td><button class="btn btn-secondary" type="button" onclick="editDailySale('${r.date}')">Editar</button> <button class="btn btn-secondary" type="button" onclick="deleteDailySale('${r.date}')">×</button></td></tr>`;
+  }).join('');
+}
+function editDailySale(date){
+  el('salesDate').value=date;loadDailySaleIntoForm();
+  el('salesDate').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+
+function salesDateArray(from,to){
+  const out=[],a=new Date(from+'T12:00:00'),b=new Date(to+'T12:00:00');
+  if(isNaN(a)||isNaN(b)||a>b)return out;
+  for(let d=new Date(a);d<=b;d.setDate(d.getDate()+1)){
+    out.push(`${d.getFullYear()}-${salesPad(d.getMonth()+1)}-${salesPad(d.getDate())}`);
+  }
+  return out;
+}
+function setNextSalesWeek(){
+  const now=new Date(),day=now.getDay(),add=((8-day)%7)||7;
+  const monday=new Date(now);monday.setDate(now.getDate()+add);
+  const sunday=new Date(monday);sunday.setDate(monday.getDate()+6);
+  const iso=d=>`${d.getFullYear()}-${salesPad(d.getMonth()+1)}-${salesPad(d.getDate())}`;
+  el('salesRangeFrom').value=iso(monday);el('salesRangeTo').value=iso(sunday);
+  analyzeSalesRange();
+}
+function analyzeSalesRange(){
+  const branch=el('salesBranch')?.value||'',from=el('salesRangeFrom')?.value||'',to=el('salesRangeTo')?.value||'';
+  if(!branch){showToast('Selecciona una sucursal');return}
+  if(!from||!to){showToast('Selecciona Desde y Hasta');return}
+  if(from>to){showToast('La fecha Desde no puede ser mayor que Hasta');return}
+  const dates=salesDateArray(from,to),db=loadSalesStore();
+  let plan=0,net=0,gross=0,tx=0,plannedDays=0,actualDays=0,remainingDays=0;
+  const today=salesToday();
+  dates.forEach(date=>{
+    const bucket=db[salesKey(branch,date.slice(0,7))]||{},p=salesNum(bucket.dailyPlans?.[date]),r=bucket.sales?.[date];
+    if(p>0){plan+=p;plannedDays++}
+    if(r){net+=salesNum(r.net);gross+=salesNum(r.gross);tx+=salesNum(r.transactions);if(salesNum(r.net)>0)actualDays++}
+    if(date>=today && p>0 && !salesNum(r?.net))remainingDays++;
+  });
+  const gap=Math.max(0,plan-net),over=Math.max(0,net-plan),pct=plan?net/plan*100:0;
+  const avgNeeded=remainingDays?gap/remainingDays:0,ticket=tx?net/tx:0;
+  el('salesRangeStats').innerHTML=[
+    [salesMoney(plan),'Plan del período'],
+    [salesMoney(net),'Net Sales registrado'],
+    [gap?salesMoney(gap):salesMoney(over),gap?'Faltante':'Sobre plan'],
+    [remainingDays?salesMoney(avgNeeded):'—','Promedio necesario / día']
+  ].map(x=>`<div class="sales-range-stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join('');
+  el('salesRangeDetail').innerHTML=
+    `<b>${from} → ${to}</b><br>${plannedDays} día(s) con plan · ${actualDays} día(s) con ventas · ${remainingDays} día(s) planificados aún sin venta.<br>`+
+    `Cumplimiento: <b>${plan?pct.toFixed(1)+'%':'sin plan'}</b> · Venta total: <b>${salesMoney(gross)}</b> · `+
+    `Transacciones: <b>${Math.round(tx).toLocaleString('es-DO')}</b> · Ticket promedio: <b>${salesMoney(ticket)}</b>.`;
+  el('salesRangeResults').style.display='block';
+}
+
 const V10_STATE_KEY='inventory_state_v10';
 const V10_MOVES_KEY='independent_movements_v10_fallback';
 const V10_LAST_TRANSFER_PDF_KEY='last_transfer_pdf_v10';
@@ -1000,8 +2223,13 @@ function setInventoryState(state){
 }
 
 function showBetaPanel(name){
-  ['movementCenterPanel','catalogPanel','morePanel'].forEach(id=>el(id)?.classList.remove('show'));
-  if(name==='movements'){el('movementCenterPanel').classList.add('show');populateBetaMovementForm()}
+  ['salesPanel','reportsOfficialPanel','backupOfficialPanel','versionOfficialPanel','theoryPanel','movementCenterPanel','catalogPanel','morePanel'].forEach(id=>el(id)?.classList.remove('show'));
+  if(name==='sales'){el('salesPanel').classList.add('show');initSalesModule()}
+  if(name==='reports107')el('reportsOfficialPanel').classList.add('show');
+  if(name==='backup107')el('backupOfficialPanel').classList.add('show');
+  if(name==='version107')el('versionOfficialPanel').classList.add('show');
+  if(name==='theory'){el('theoryPanel').classList.add('show');calculateComparison()}
+  if(name==='movements'){el('movementCenterPanel').classList.add('show');populateBetaMovementForm();initMovementReportDates()}
   if(name==='catalog'){el('catalogPanel').classList.add('show');renderBetaCatalog()}
   if(name==='more')el('morePanel').classList.add('show');
 }
@@ -1016,13 +2244,27 @@ function v10Navigate(name,btn){
   if(name==='home'){goHome();return}
   if(name==='inventory'){
     if(inventoryApp.classList.contains('is-hidden')){
-      const t=tipoSelect?.value||'Diario';
-      openInventoryFromHome(t);
+      const existing=latestEmergencySnapshot();
+      if(existing?.data?.sucursal){
+        homeScreen.classList.add('is-hidden');
+        inventoryApp.classList.remove('is-hidden');
+        applyRecord(existing.data);
+      }else{
+        const t=tipoSelect?.value||'Diario';
+        openInventoryFromHome(t);
+      }
     }
     setInventoryState(inventoryState);
     return;
   }
-  if(name==='movements'){showBetaPanel('movements');return}
+  if(name==='theory'){
+    if(!sucursalSelect.value){showToast('Abre o carga un inventario primero');setV10Nav('inventory');return}
+    showBetaPanel('theory');
+    loadPreviousBaseline(true).then(()=>calculateComparison()).catch(()=>calculateComparison());
+    return;
+  }
+  if(name==='sales'){showBetaPanel('sales');return}
+  if(name==='movements'){saveEmergencySnapshot('antes de abrir movimientos');showBetaPanel('movements');return}
   if(name==='catalog'){showBetaPanel('catalog');return}
   if(name==='more'){showBetaPanel('more');return}
 }
@@ -1036,6 +2278,7 @@ function allBetaProducts(type='Mensual'){
 }
 function populateBetaMovementForm(){
   const prod=el('betaMoveProduct'),branch=el('betaMoveBranch');
+  const md=el('betaMoveDate');if(md&&!md.value)md.value=isoToday();
   if(prod){
     prod.innerHTML=allBetaProducts('Mensual').map(x=>`<option value="${x.item.code}">${x.item.code} · ${x.item.name}</option>`).join('');
   }
@@ -1056,6 +2299,7 @@ async function saveIndependentMovement(){
   const p=allBetaProducts('Mensual').find(x=>x.item.code===code);
   const data={
     action:'saveMovement',tipo:type,sucursal:sucursalSelect.value||homeSucursal.value||'',
+    fechaMovimiento:el('betaMoveDate')?.value||isoToday(),
     sucursalRelacionada:el('betaMoveBranch').value,codigo:code,producto:p?.item.name||code,
     cantidad:Number(qty),unidad:el('betaMoveUnit').value,observacion:el('betaMoveNote').value.trim(),
     responsable:el('contadoPor')?.value||getUserProfile?.().name||''
@@ -1067,6 +2311,7 @@ async function saveIndependentMovement(){
     if(o.id)localStorage.setItem(V10_LAST_MOVEMENT_ID_KEY,o.id);
     localStorage.removeItem(V10_LAST_TRANSFER_PDF_KEY);
     el('betaMoveQty').value='';el('betaMoveNote').value='';
+    if(el('betaMoveDate'))el('betaMoveDate').value=isoToday();
     await renderIndependentMovements();
     showToast('Movimiento guardado en Sheets');
     return {response:o,data};
@@ -1131,6 +2376,185 @@ async function generateTransferReceipt(){
     showToast('No se pudo generar PDF: '+String(e?.message||e).slice(0,95));
   }finally{hideV10Loading()}
 }
+
+let movementReportRows=[];
+
+function isoToday(){
+  const d=new Date(),pad=n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
+function movementDirection(m){
+  const type=String(m.tipo||'');
+  const branch=String(m.sucursal||'');
+  const related=String(m.sucursalRelacionada||'');
+  if(type.includes('Transferencia enviada'))return {origin:branch||'—',dest:related||'—'};
+  if(type.includes('Transferencia recibida'))return {origin:related||'—',dest:branch||'—'};
+  if(type.includes('Recepción'))return {origin:related||'Proveedor / origen',dest:branch||'—'};
+  return {origin:branch||'—',dest:related||'—'};
+}
+function reportTypeTag(type){
+  const t=String(type||'');
+  if(t.includes('Transferencia enviada'))return '<span class="mov-tag sent">Enviada</span>';
+  if(t.includes('Transferencia recibida'))return '<span class="mov-tag received">Recibida</span>';
+  return `<span class="mov-tag other">${t||'Movimiento'}</span>`;
+}
+function parseMovementDateValue(s){
+  const m=String(s||'').match(/^(\d{4})-(\d{2})-(\d{2})/);
+  return m?`${m[1]}-${m[2]}-${m[3]}`:'';
+}
+function initMovementReportDates(){
+  const to=el('movReportTo'),from=el('movReportFrom');
+  if(!to||!from)return;
+  if(!to.value)to.value=isoToday();
+  if(!from.value){
+    const d=new Date();d.setDate(d.getDate()-30);
+    const pad=n=>String(n).padStart(2,'0');
+    from.value=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  }
+}
+async function loadMovementReport(){
+  initMovementReportDates();
+  const from=el('movReportFrom').value,to=el('movReportTo').value;
+  if(from&&to&&from>to){showToast('La fecha Desde no puede ser mayor que Hasta');return}
+  const branch=sucursalSelect.value||homeSucursal.value||'';
+  if(!branch){showToast('Selecciona una sucursal');return}
+  const type=el('movReportType').value;
+  const product=(el('movReportProduct').value||'').trim().toLowerCase();
+  el('movReportStatus').textContent='Consultando movimientos…';
+  try{
+    const d=await apiGet({action:'movements',sucursal:branch,desde:from,hasta:to,tipo:type});
+    let rows=d.records||[];
+    if(product){
+      rows=rows.filter(m=>(`${m.codigo||''} ${m.producto||''}`).toLowerCase().includes(product));
+    }
+    movementReportRows=rows;
+    renderMovementReport();
+  }catch(e){
+    movementReportRows=[];
+    el('movReportStatus').textContent='No se pudo consultar: '+String(e.message||e);
+    el('movReportResults').style.display='none';
+    el('movReportSummary').style.display='none';
+  }
+}
+function renderMovementReport(){
+  const rows=movementReportRows;
+  const body=el('movReportBody');
+  body.innerHTML=rows.map(m=>{
+    const dir=movementDirection(m);
+    return `<tr>
+      <td>${m.fechaMovimiento||m.fecha||'—'}</td>
+      <td>${reportTypeTag(m.tipo)}</td>
+      <td><b>${m.producto||'—'}</b><div class="pmix-map">${m.codigo||''}</div></td>
+      <td>${Number(m.cantidad||0).toLocaleString('es-DO',{maximumFractionDigits:2})} ${m.unidad||''}</td>
+      <td>${dir.origin}</td><td>${dir.dest}</td>
+      <td>${m.responsable||'—'}</td><td>${m.observacion||'—'}</td>
+    </tr>`;
+  }).join('');
+  const sent=rows.filter(m=>String(m.tipo).includes('Transferencia enviada')).length;
+  const received=rows.filter(m=>String(m.tipo).includes('Transferencia recibida')).length;
+  const other=rows.length-sent-received;
+  el('movReportSummary').innerHTML=[
+    [rows.length,'Movimientos'],
+    [sent,'Transferencias enviadas'],
+    [received,'Transferencias recibidas'],
+    [other,'Otros movimientos']
+  ].map(x=>`<div class="mov-report-stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join('');
+  el('movReportSummary').style.display='grid';
+  el('movReportResults').style.display=rows.length?'block':'none';
+  const from=el('movReportFrom').value||'inicio',to=el('movReportTo').value||'hoy';
+  el('movReportStatus').textContent=rows.length?`${rows.length} movimiento(s) encontrados · ${from} → ${to}`:'No se encontraron movimientos con esos filtros.';
+}
+function clearMovementReportFilters(){
+  el('movReportFrom').value='';el('movReportTo').value='';
+  el('movReportType').value='';el('movReportProduct').value='';
+  movementReportRows=[];el('movReportResults').style.display='none';el('movReportSummary').style.display='none';
+  el('movReportStatus').textContent='Selecciona un rango de fechas para consultar.';
+  initMovementReportDates();
+}
+function generateMovementReportPDF(){
+  if(!movementReportRows.length){showToast('Primero busca los movimientos que quieres incluir');return}
+  if(!window.jspdf?.jsPDF){showToast('No se pudo cargar el generador PDF');return}
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'mm',format:'a4',orientation:'landscape'});
+  const green=[18,75,55], red=[184,52,45], cream=[248,245,235], dark=[35,42,38], gray=[100,108,103];
+  const pageW=297,pageH=210,margin=12;
+  let y=12;
+
+  function header(){
+    doc.setFillColor(...green);doc.roundedRect(margin,y,pageW-margin*2,24,3,3,'F');
+    doc.setFillColor(...red);doc.rect(margin,y,4,24,'F');
+    doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(14);
+    doc.text('INVERSIONES BLUMARO, S.A.',margin+9,y+9);
+    doc.setFontSize(9);doc.setFont('helvetica','normal');
+    doc.text('REPORTE DE MOVIMIENTOS',margin+9,y+16);
+    doc.setFontSize(7);doc.text(`Generado: ${new Date().toLocaleString('es-DO')}`,pageW-margin-55,y+16);
+    y+=30;
+  }
+  function tableHeader(){
+    doc.setFillColor(...cream);doc.roundedRect(margin,y,pageW-margin*2,8,1,1,'F');
+    doc.setTextColor(...green);doc.setFont('helvetica','bold');doc.setFontSize(6.7);
+    const xs=[margin+2,margin+31,margin+72,margin+127,margin+158,margin+193,margin+228,margin+257];
+    ['Fecha mov.','Tipo','Producto','Cantidad','Origen','Destino','Responsable','Observación'].forEach((t,i)=>doc.text(t,xs[i],y+5.2));
+    y+=9;
+  }
+  header();
+
+  const branch=sucursalSelect.value||homeSucursal.value||'—';
+  const from=el('movReportFrom').value||'Sin límite',to=el('movReportTo').value||'Sin límite';
+  const type=el('movReportType').value||'Todos';
+  doc.setTextColor(...dark);doc.setFont('helvetica','bold');doc.setFontSize(8);
+  doc.text(`Sucursal consultada: ${branch}`,margin,y);
+  doc.setFont('helvetica','normal');doc.setTextColor(...gray);
+  doc.text(`Período: ${from} hasta ${to}   ·   Tipo: ${type}`,margin+70,y);
+  y+=7;
+
+  const sent=movementReportRows.filter(m=>String(m.tipo).includes('Transferencia enviada')).length;
+  const received=movementReportRows.filter(m=>String(m.tipo).includes('Transferencia recibida')).length;
+  doc.setFillColor(...cream);doc.roundedRect(margin,y,84,15,2,2,'F');
+  doc.setTextColor(...green);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text(String(movementReportRows.length),margin+5,y+7);
+  doc.setFontSize(6);doc.text('MOVIMIENTOS',margin+5,y+12);
+  doc.setFillColor(255,244,239);doc.roundedRect(margin+89,y,84,15,2,2,'F');
+  doc.setTextColor(...red);doc.setFontSize(11);doc.text(String(sent),margin+94,y+7);
+  doc.setFontSize(6);doc.text('TRANSFERENCIAS ENVIADAS',margin+94,y+12);
+  doc.setFillColor(237,247,239);doc.roundedRect(margin+178,y,84,15,2,2,'F');
+  doc.setTextColor(...green);doc.setFontSize(11);doc.text(String(received),margin+183,y+7);
+  doc.setFontSize(6);doc.text('TRANSFERENCIAS RECIBIDAS',margin+183,y+12);
+  y+=20;
+
+  tableHeader();
+  doc.setFontSize(6.2);doc.setFont('helvetica','normal');
+  movementReportRows.forEach((m,idx)=>{
+    const dir=movementDirection(m);
+    const cells=[
+      String(m.fechaMovimiento||m.fecha||''),
+      String(m.tipo||''),
+      `${m.producto||''}${m.codigo?' ('+m.codigo+')':''}`,
+      `${Number(m.cantidad||0).toLocaleString('es-DO',{maximumFractionDigits:2})} ${m.unidad||''}`,
+      dir.origin,dir.dest,String(m.responsable||''),String(m.observacion||'')
+    ];
+    const widths=[28,40,54,30,34,34,28,30];
+    const heights=cells.map((c,i)=>doc.splitTextToSize(c,widths[i]-2).length*3.2);
+    const rowH=Math.max(7,...heights)+1;
+    if(y+rowH>pageH-14){
+      doc.addPage();y=12;header();tableHeader();
+    }
+    if(idx%2===0){doc.setFillColor(250,251,250);doc.rect(margin,y,pageW-margin*2,rowH,'F')}
+    const xs=[margin+2,margin+31,margin+72,margin+127,margin+158,margin+193,margin+228,margin+257];
+    doc.setTextColor(...dark);
+    cells.forEach((c,i)=>doc.text(doc.splitTextToSize(c,widths[i]-2),xs[i],y+4));
+    doc.setDrawColor(225,230,227);doc.line(margin,y+rowH,pageW-margin,y+rowH);
+    y+=rowH;
+  });
+
+  const pages=doc.getNumberOfPages();
+  for(let p=1;p<=pages;p++){
+    doc.setPage(p);doc.setFontSize(6);doc.setTextColor(...gray);
+    doc.text(`Reporte de movimientos · Página ${p} de ${pages}`,margin,pageH-6);
+  }
+  const safeBranch=branch.replace(/[^\w-]+/g,'_');
+  doc.save(`Movimientos_${safeBranch}_${from}_${to}.pdf`);
+}
+
 function factorSummary(item,cat){
   const vals=[];
   (cat.fields||[]).forEach(f=>{
@@ -1169,8 +2593,16 @@ function buildDatasetsFromCatalog(records){
   });
   ['Mensual','Diario'].forEach(t=>{if(grouped[t].length){DATASETS[t].splice(0,DATASETS[t].length,...grouped[t])}});
 }
-async function loadCatalogFromSheets(){
-  if(!navigator.onLine)return false;
+let catalogReadyPromise=null;
+let catalogLoaded=false;
+let catalogLastRefresh='';
+
+async function loadCatalogFromSheets(force=false){
+  if(catalogLoaded && !force)return true;
+  if(!navigator.onLine){
+    if(!catalogLoaded)catalogLoaded=true;
+    return false;
+  }
   try{
     let d=await apiGet({action:'catalog'});
     if(!(d.records||[]).length){
@@ -1178,13 +2610,58 @@ async function loadCatalogFromSheets(){
       d=await apiGet({action:'catalog'});
     }
     if((d.records||[]).length){
+      // Actualiza solo la fuente de datos. Nunca borra ni redibuja
+      // un inventario que ya está abierto.
       buildDatasetsFromCatalog(d.records);
-      switchType(currentType(),false);
+      catalogLoaded=true;
+      catalogLastRefresh=new Date().toISOString();
       renderBetaCatalog();
       return true;
     }
-  }catch(e){console.warn('Catálogo Sheets no disponible; usando respaldo embebido.',e)}
+  }catch(e){
+    console.warn('Catálogo Sheets no disponible; usando respaldo embebido.',e);
+    if(!catalogLoaded)catalogLoaded=true;
+    return false;
+  }
+  catalogLoaded=true;
   return false;
+}
+
+async function ensureCatalogReady(force=false){
+  if(force){
+    catalogReadyPromise=loadCatalogFromSheets(true);
+  }else if(!catalogReadyPromise){
+    catalogReadyPromise=loadCatalogFromSheets(false);
+  }
+  try{
+    await Promise.race([
+      catalogReadyPromise,
+      new Promise(resolve=>setTimeout(resolve,4500))
+    ]);
+  }catch(_){}
+  return true;
+}
+
+async function refreshCatalogManual(){
+  if(!navigator.onLine){
+    showToast('No hay conexión para actualizar el catálogo');
+    return;
+  }
+  saveEmergencySnapshot('antes de actualizar catálogo');
+  showV10Loading('Actualizando catálogo…','Leyendo productos y equivalencias desde Google Sheets.');
+  try{
+    const ok=await loadCatalogFromSheets(true);
+    if(!ok)throw new Error('No se pudo leer el catálogo desde Sheets.');
+    const activeCount=allBetaProducts('Mensual').length;
+    renderBetaCatalog();
+    showToast(`Catálogo actualizado · ${activeCount} productos mensuales`);
+    const s=el('catalogRefreshStatus');
+    if(s)s.textContent=`Última actualización: ${new Date().toLocaleString('es-DO')}`;
+  }catch(e){
+    showToast(e.message||'No se pudo actualizar el catálogo');
+  }finally{
+    hideV10Loading();
+  }
 }
 function showV10Loading(title='Cargando…',text='Preparando la información.'){
   const overlay=el('v10Loading');
@@ -1212,10 +2689,11 @@ function showPwaDemo(){
   el('homeModalActions').innerHTML='<button class="btn btn-primary" type="button" onclick="closeHomeModal()">Entendido</button>';
   homeModal.classList.add('show');
 }
-document.addEventListener('DOMContentLoaded',async()=>{
+document.addEventListener('DOMContentLoaded',()=>{
   setInventoryState(inventoryState);
-  await loadCatalogFromSheets();
-  await renderIndependentMovements();
+  applyV107Permissions();
+  catalogReadyPromise=loadCatalogFromSheets();
+  renderIndependentMovements();
 });
 
 </script><script>
