@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title>V10.22 Oficial · Inventario + SAP + Product Mix</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title>V10.25 Oficial · Inventario + SAP + Product Mix + Aloha en vivo</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 :root{--green:#00653E;--green-dark:#004A2D;--green-pale:#E7F1EC;--red:#C8102E;--bg:#F6F6F3;--card:#fff;--ink:#1E2420;--ink-soft:#5B655F;--line:#E3E5E0}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:96px}header{background:var(--green);color:#fff;padding:16px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08)}header h1{margin:0;font-size:1.2rem}header p{margin:2px 0 0;font-size:.8rem;color:#CFE6DA}.progress-wrap{margin-top:10px;background:rgba(255,255,255,.18);border-radius:999px;height:6px;overflow:hidden}.progress-bar{height:100%;background:#fff;width:0;transition:.2s}.progress-label{font-size:.72rem;color:#CFE6DA;margin-top:5px}main{padding:14px;max-width:560px;margin:auto}.card,details.section{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px}.card{padding:14px}.card h2{margin:0 0 10px;font-size:.95rem;color:var(--green-dark)}.field{margin-bottom:10px}.field label{display:block;font-size:.75rem;color:var(--ink-soft);margin-bottom:4px}.field input,.field select,.search-card input{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;font-size:.95rem;background:#fff;color:var(--ink)}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-card{border:2px solid var(--green)}.type-card select{font-weight:700;color:var(--green-dark)}details.section{overflow:hidden}details.section summary{list-style:none;padding:13px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:.9rem}details.section summary::-webkit-details-marker{display:none}summary .cat-name{flex:1}summary .badge{font-size:.72rem;color:var(--green-dark);background:var(--green-pale);padding:3px 9px;border-radius:999px}.items{border-top:1px solid var(--line)}.item{padding:11px 14px;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.item-name{font-size:.86rem;font-weight:600}.item-code,.item-note,.equiv{font-size:.7rem;color:var(--ink-soft);margin-top:2px}.item-note{color:#8a5b00}.qty-grid{display:grid;gap:6px;margin-top:8px}.qty-grid label{display:block;font-size:.65rem;color:var(--ink-soft);text-align:center;margin-bottom:3px}.qty-grid input{width:100%;padding:8px 4px;border:1px solid var(--line);border-radius:8px;text-align:center;font-size:.88rem;background:#FAFAF8}.qty-grid input.filled{border-color:var(--green);background:var(--green-pale);font-weight:700}.item-total{margin-top:6px;font-size:12.5px;font-weight:700;color:var(--green);text-align:right;min-height:16px}.btn{border:0;border-radius:11px;padding:12px 9px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit}.btn-primary{background:var(--green);color:#fff}.btn-secondary{background:var(--green-pale);color:var(--green-dark)}.cloud-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cloud-status{font-size:.74rem;color:var(--ink-soft);margin-top:8px;line-height:1.4}.cloud-status.ok{color:var(--green-dark);font-weight:600}.cloud-status.error{color:var(--red);font-weight:600}.history-list{margin-top:10px;display:none;border-top:1px solid var(--line);padding-top:8px;max-height:260px;overflow:auto}.history-list.show{display:block}.history-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.history-meta,.search-count{font-size:.72rem;color:var(--ink-soft)}.history-load{border:1px solid var(--line);background:#fff;color:var(--green-dark);border-radius:8px;padding:7px 10px;font-weight:700}footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:15}.footer-inner{display:flex;gap:8px;max-width:560px;margin:auto}.footer-inner .btn{flex:1}.footer-inner .btn-primary{flex:1.4}.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:999px;font-size:.82rem;opacity:0;pointer-events:none;transition:.2s;z-index:30}.toast.show{opacity:1}@media(max-width:390px){.row2{grid-template-columns:1fr}}
@@ -293,6 +293,14 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 .sales-pmix-placeholder{border:1px dashed #b8cfc2;background:#f8fbf9;border-radius:14px;padding:14px}
 .sales-pmix-placeholder b{display:block;font-size:.76rem;color:var(--corp)}
 .sales-pmix-placeholder p{font-size:.62rem;color:var(--corp-muted);margin:5px 0 0;line-height:1.45}
+.sales-history-query{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.sales-history-detail{overflow:auto;border:1px solid var(--corp-line);border-radius:12px;background:#fff;margin-top:10px;max-height:42vh}
+.sales-history-detail table{width:100%;border-collapse:collapse;min-width:760px;font-size:.63rem}
+.sales-history-detail th,.sales-history-detail td{padding:8px;border-bottom:1px solid var(--corp-line);text-align:right}
+.sales-history-detail th{position:sticky;top:0;background:var(--corp-soft);color:var(--corp);z-index:2}
+.sales-history-detail th:first-child,.sales-history-detail td:first-child{text-align:left}
+@media(max-width:700px){.sales-history-query{grid-template-columns:1fr}}
+
 @media(min-width:760px){
   .sales-kpis{grid-template-columns:repeat(4,1fr)}
   .sales-daily-grid{grid-template-columns:repeat(4,1fr)}
@@ -305,7 +313,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 }
 
 
-/* ===== V10.22 OFICIAL · CONSUMO TEÓRICO SAP + PMIX ===== */
+/* ===== V10.25 OFICIAL · CONSUMO TEÓRICO SAP + PMIX ===== */
 .theory-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
 .theory-tab{border:1px solid var(--corp-line);background:#fff;color:var(--corp-muted);border-radius:999px;padding:8px 12px;font-size:.65rem;font-weight:800;cursor:pointer}
 .theory-tab.active{background:var(--corp);border-color:var(--corp);color:#fff}
@@ -316,6 +324,19 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 .sap-import-grid{display:grid;grid-template-columns:1fr;gap:10px}
 .sap-card{background:#fff;border:1px solid var(--corp-line);border-radius:15px;padding:13px}
 .sap-card h3{font-size:.76rem;margin:0 0 5px}.sap-card p{font-size:.59rem;color:var(--corp-muted);line-height:1.45;margin:0 0 10px}
+.aloha-live-card{background:#fff;border:1px solid var(--corp-line);border-radius:16px;padding:13px;margin:0 0 12px}
+.aloha-live-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.aloha-live-title{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:800;color:var(--corp)}
+.aloha-dot{width:9px;height:9px;border-radius:50%;background:#9aa5a0;box-shadow:0 0 0 4px rgba(80,100,90,.08)}
+.aloha-dot.on{background:#20a464;box-shadow:0 0 0 4px rgba(32,164,100,.12)}
+.aloha-live-sub{font-size:.56rem;color:var(--corp-muted);margin-top:2px}
+.aloha-live-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.aloha-live-stat{background:#f7faf8;border:1px solid var(--corp-line);border-radius:11px;padding:9px;min-width:0}
+.aloha-live-stat strong{display:block;font-size:.78rem;color:var(--corp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aloha-live-stat span{display:block;font-size:.52rem;color:var(--corp-muted);margin-top:2px}
+.aloha-live-foot{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:.55rem;color:var(--corp-muted)}
+@media(max-width:760px){.aloha-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aloha-live-stat:last-child{grid-column:1/-1}}
+
 .sap-file-btn{width:100%;padding:12px;border-radius:11px}
 .sap-file-status{margin-top:7px;font-size:.57rem;color:var(--corp-muted);line-height:1.4}
 .sap-period{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -445,7 +466,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 <div id="salesPanel" class="beta-panel">
   <div class="beta-shell">
     <div class="beta-top">
-      <div><h2>Ventas y metas</h2><small>V10.22 Oficial · Inventario + SAP + Product Mix</small></div>
+      <div><h2>Ventas y metas</h2><small>V10.25 Oficial · Inventario + SAP + Product Mix + Aloha en vivo</small></div>
       <button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button>
     </div>
 
@@ -517,22 +538,40 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 
 
     <div class="beta-card">
-      <h3>Analizar período específico</h3>
-      <div class="sales-note" style="margin-bottom:9px">
-        Revisa una semana, varios días específicos o cuánto tienes planificado vender en un período futuro.
+      <h3>Consultar ventas históricas</h3>
+      <div class="sales-note" style="margin-bottom:10px">
+        Consulta un día específico o cualquier período guardado en Sheets, incluso si abarca varios meses.
+        Los históricos importados desde el servidor Aloha aparecen aquí igual que las ventas actuales.
       </div>
-      <div class="sales-range-grid">
+
+      <div class="sales-history-query">
+        <div class="beta-field"><label>Día específico</label><input id="salesSpecificDate" type="date"></div>
+        <div class="beta-field" style="display:flex;align-items:end">
+          <button class="btn btn-secondary" style="width:100%" type="button" onclick="analyzeSpecificSalesDay()">Ver este día</button>
+        </div>
+        <div class="beta-field" style="display:flex;align-items:end">
+          <button class="btn btn-secondary" style="width:100%" type="button" onclick="setCurrentSalesMonthRange()">Mes seleccionado</button>
+        </div>
+      </div>
+
+      <div class="sales-range-grid" style="margin-top:8px">
         <div class="beta-field"><label>Desde</label><input id="salesRangeFrom" type="date"></div>
         <div class="beta-field"><label>Hasta</label><input id="salesRangeTo" type="date"></div>
         <div class="beta-field" style="display:flex;align-items:end"><button class="btn btn-primary" style="width:100%" type="button" onclick="analyzeSalesRange()">Analizar período</button></div>
         <div class="beta-field" style="display:flex;align-items:end"><button class="btn btn-secondary" style="width:100%" type="button" onclick="setNextSalesWeek()">Próxima semana</button></div>
       </div>
+
       <div id="salesRangeResults" style="display:none">
         <div class="sales-range-results" id="salesRangeStats"></div>
         <div class="sales-range-detail" id="salesRangeDetail"></div>
+        <div class="sales-history-detail" id="salesHistoricalTable"></div>
+      </div>
+
+      <div class="sales-note" style="margin-top:10px">
+        Para cargar meses anteriores que todavía no están en Sheets, usa <b>Importar_Historico_Aloha.bat</b>
+        en la PC del servidor. El importador no modifica Aloha: solo lee sus carpetas históricas y sincroniza los resultados.
       </div>
     </div>
-
     <div class="beta-card">
       <h3>Registrar venta diaria</h3>
       <div class="sales-daily-grid">
@@ -569,10 +608,10 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
       </table>
     </div>
 
-    <div class="section"><h2>Product Mix</h2><small>Siguiente etapa</small></div>
+    <div class="section"><h2>Product Mix</h2><small>Sincronizado desde Aloha</small></div>
     <div class="sales-pmix-placeholder">
-      <b>📄 Product Mix del día</b>
-      <p>La sección queda reservada para asociar el PMIX a cada fecha. Primero vamos a pulir ventas y metas; después conectaremos el lector del Product Mix y, más adelante, el consumo teórico de inventario.</p>
+      <b>🟢 Product Mix automático</b>
+      <p>El conector de Aloha guarda el Product Mix por sucursal y fecha en Google Sheets. Para ver productos vendidos y consumo SAP entra a <b>Teórico → SAP + Product Mix</b>.</p>
     </div>
   </div>
 </div>
@@ -647,14 +686,36 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 
     <div class="theory-view" id="sapTheoryView">
       <div class="sap-theory-banner">
-        <div><b>Consumo Teórico SAP + Product Mix Aloha</b><small>Esta beta no modifica Apps Script ni Google Sheets. Las recetas quedan guardadas localmente para no cargarlas todos los días.</small></div>
-        <span class="sap-beta-badge">V10.22 OFICIAL</span>
+        <div><b>Consumo Teórico SAP + Product Mix Aloha</b><small>Las recetas, equivalencias y Product Mix quedan sincronizados con Google Sheets. Si el conector local de Aloha está activo, ventas y Product Mix se actualizan automáticamente.</small></div>
+        <span class="sap-beta-badge">V10.25 OFICIAL</span>
+      </div>
+
+
+      <div class="aloha-live-card" id="alohaLiveCard">
+        <div class="aloha-live-head">
+          <div>
+            <div class="aloha-live-title"><span class="aloha-dot" id="alohaLiveDot"></span> ALOHA EN VIVO</div>
+            <div class="aloha-live-sub" id="alohaLiveState">Esperando la primera sincronización…</div>
+          </div>
+          <button class="btn btn-secondary" type="button" onclick="autoAlohaTheoryRefresh(true)">Actualizar ahora</button>
+        </div>
+        <div class="aloha-live-grid">
+          <div class="aloha-live-stat"><strong id="alohaLiveSync">—</strong><span>Última actualización</span></div>
+          <div class="aloha-live-stat"><strong id="alohaLiveVenta">RD$0.00</strong><span>Venta actual</span></div>
+          <div class="aloha-live-stat"><strong id="alohaLiveNet">RD$0.00</strong><span>Net Sales</span></div>
+          <div class="aloha-live-stat"><strong id="alohaLiveTx">0</strong><span>Transacciones</span></div>
+          <div class="aloha-live-stat"><strong id="alohaLivePmix">0</strong><span>Códigos Product Mix</span></div>
+        </div>
+        <div class="aloha-live-foot">
+          <span id="alohaLiveTheory">Consumo SAP: esperando datos.</span>
+          <span>El servidor Aloha sincroniza aunque esta página esté cerrada.</span>
+        </div>
       </div>
 
       <div class="sap-import-grid">
         <div class="sap-card">
           <h3>1. Biblioteca de recetas SAP</h3>
-          <p>Importa el Excel cuando cambien las recetas. En esta beta queda guardado en este navegador y se reutiliza en los cálculos diarios.</p>
+          <p>Importa el Excel cuando cambien las recetas. La biblioteca queda guardada en Google Sheets y se reutiliza en los cálculos diarios.</p>
           <button class="btn btn-primary sap-file-btn" type="button" onclick="el('sapRecipeFile').click()">📗 Importar / actualizar recetas SAP</button>
           <input id="sapRecipeFile" type="file" accept=".xlsx,.xls" style="display:none" onchange="handleSapRecipeFile(this.files[0])">
           <div class="sap-file-status" id="sapRecipeStatus">Preparando biblioteca…</div><div class="sales-sync-note" id="sapRecipeCloudStatus">Recetas: preparando sincronización con Google Sheets…</div>
@@ -669,7 +730,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
             <div style="display:flex;align-items:end"><button class="btn btn-primary sap-file-btn" style="width:100%" type="button" onclick="el('sapPmixFile').click()">📄 Cargar y guardar Product Mix</button></div>
           </div>
           <input id="sapPmixFile" type="file" accept="application/pdf,.pdf" style="display:none" onchange="handleSapPmixFile(this.files[0])">
-          <div class="sap-file-status" id="sapPmixStatus">Ningún PMIX cargado todavía.</div><div class="sales-sync-note" id="sapPmixCloudStatus">Product Mix: preparando sincronización con Google Sheets…</div>
+          <div class="sap-file-status" id="sapPmixStatus">Ningún PMIX cargado todavía.</div><div class="sales-sync-note" id="sapPmixCloudStatus">Product Mix: preparando sincronización con Google Sheets…</div><div class="sales-sync-note" id="sapAlohaSyncStatus">Aloha: comprobando conexión automática…</div>
           <div class="sap-continuous-note">
             El PMIX queda guardado por <b>Sucursal + Fecha</b>. No necesitas tener inventario físico ese mismo día:
             el consumo se acumula hasta el próximo conteo disponible.
@@ -2269,6 +2330,7 @@ function initSalesModule(){
   }
   if(!el('salesMonth').value)el('salesMonth').value=salesCurrentMonth();
   if(!el('salesDate').value)el('salesDate').value=salesToday();
+  if(el('salesSpecificDate')&&!el('salesSpecificDate').value)el('salesSpecificDate').value=salesToday();
   if(!el('salesMonth').dataset.bound){
     el('salesMonth').addEventListener('change',()=>{renderSalesModuleLocal();syncSalesFromCloud({silent:true})});
     el('salesMonth').dataset.bound='1';
@@ -2467,33 +2529,66 @@ function setNextSalesWeek(){
   el('salesRangeFrom').value=iso(monday);el('salesRangeTo').value=iso(sunday);
   analyzeSalesRange();
 }
-function analyzeSalesRange(){
+function analyzeSpecificSalesDay(){
+  const d=el('salesSpecificDate')?.value||'';
+  if(!d){showToast('Selecciona una fecha');return}
+  el('salesRangeFrom').value=d;
+  el('salesRangeTo').value=d;
+  analyzeSalesRange();
+}
+function setCurrentSalesMonthRange(){
+  const m=el('salesMonth')?.value||salesCurrentMonth();
+  const [y,mo]=m.split('-').map(Number);
+  const last=new Date(y,mo,0).getDate();
+  el('salesRangeFrom').value=`${m}-01`;
+  el('salesRangeTo').value=`${m}-${salesPad(last)}`;
+  analyzeSalesRange();
+}
+
+async function analyzeSalesRange(){
   const branch=el('salesBranch')?.value||'',from=el('salesRangeFrom')?.value||'',to=el('salesRangeTo')?.value||'';
   if(!branch){showToast('Selecciona una sucursal');return}
   if(!from||!to){showToast('Selecciona Desde y Hasta');return}
   if(from>to){showToast('La fecha Desde no puede ser mayor que Hasta');return}
-  const dates=salesDateArray(from,to),db=loadSalesStore();
-  let plan=0,net=0,gross=0,tx=0,plannedDays=0,actualDays=0,remainingDays=0;
-  const today=salesToday();
-  dates.forEach(date=>{
-    const bucket=db[salesKey(branch,date.slice(0,7))]||{},p=salesNum(bucket.dailyPlans?.[date]),r=bucket.sales?.[date];
-    if(p>0){plan+=p;plannedDays++}
-    if(r){net+=salesNum(r.net);gross+=salesNum(r.gross);tx+=salesNum(r.transactions);if(salesNum(r.net)>0)actualDays++}
-    if(date>=today && p>0 && !salesNum(r?.net))remainingDays++;
-  });
-  const gap=Math.max(0,plan-net),over=Math.max(0,net-plan),pct=plan?net/plan*100:0;
-  const avgNeeded=remainingDays?gap/remainingDays:0,ticket=tx?net/tx:0;
-  el('salesRangeStats').innerHTML=[
-    [salesMoney(plan),'Plan del período'],
-    [salesMoney(net),'Net Sales registrado'],
-    [gap?salesMoney(gap):salesMoney(over),gap?'Faltante':'Sobre plan'],
-    [remainingDays?salesMoney(avgNeeded):'—','Promedio necesario / día']
-  ].map(x=>`<div class="sales-range-stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join('');
-  el('salesRangeDetail').innerHTML=
-    `<b>${from} → ${to}</b><br>${plannedDays} día(s) con plan · ${actualDays} día(s) con ventas · ${remainingDays} día(s) planificados aún sin venta.<br>`+
-    `Cumplimiento: <b>${plan?pct.toFixed(1)+'%':'sin plan'}</b> · Venta total: <b>${salesMoney(gross)}</b> · `+
-    `Transacciones: <b>${Math.round(tx).toLocaleString('es-DO')}</b> · Ticket promedio: <b>${salesMoney(ticket)}</b>.`;
-  el('salesRangeResults').style.display='block';
+
+  const results=el('salesRangeResults'),detail=el('salesRangeDetail'),table=el('salesHistoricalTable');
+  results.style.display='block';
+  detail.innerHTML='Consultando Google Sheets…';
+  table.innerHTML='';
+
+  try{
+    const d=await apiGet({action:'salesRange',sucursal:branch,desde:from,hasta:to});
+    const records=d.records||[],s=d.summary||{};
+    const plan=salesNum(s.planDiarioTotal),net=salesNum(s.netSales),gross=salesNum(s.ventaTotal),tx=salesNum(s.transacciones);
+    const pct=plan?net/plan*100:0,ticket=tx?net/tx:0,gap=Math.max(0,plan-net),over=Math.max(0,net-plan);
+
+    el('salesRangeStats').innerHTML=[
+      [salesMoney(plan),'Plan del período'],
+      [salesMoney(net),'Net Sales'],
+      [salesMoney(gross),'Venta total'],
+      [Math.round(tx).toLocaleString('es-DO'),'Transacciones'],
+      [salesMoney(ticket),'Ticket promedio'],
+      [plan?pct.toFixed(1)+'%':'—','Cumplimiento']
+    ].map(x=>`<div class="sales-range-stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join('');
+
+    detail.innerHTML=
+      `<b>${from} → ${to}</b><br>${records.length} día(s) con información guardada. `+
+      (plan?`${gap?`Faltan <b>${salesMoney(gap)}</b> para el plan del período.`:`Supera el plan por <b>${salesMoney(over)}</b>.`}`:'No hay planes diarios en este período.');
+
+    if(!records.length){
+      table.innerHTML='<div class="sales-note" style="padding:12px">No hay ventas guardadas para este período. Si son fechas antiguas, impórtalas desde el servidor Aloha.</div>';
+      return;
+    }
+
+    table.innerHTML=`<table><thead><tr>
+      <th>Fecha</th><th>Plan</th><th>Venta total</th><th>Net Sales</th><th>Trans.</th><th>Ticket</th><th>% Meta</th>
+    </tr></thead><tbody>${records.map(r=>{
+      const p=salesNum(r.planDiario),n=salesNum(r.netSales),t=salesNum(r.transacciones),tk=t?n/t:0,pc=p?n/p*100:0;
+      return `<tr><td>${r.fecha}</td><td>${p?salesMoney(p):'—'}</td><td>${salesMoney(r.ventaTotal)}</td><td><b>${salesMoney(n)}</b></td><td>${Math.round(t)}</td><td>${salesMoney(tk)}</td><td>${p?pc.toFixed(1)+'%':'—'}</td></tr>`;
+    }).join('')}</tbody></table>`;
+  }catch(e){
+    detail.innerHTML='No se pudo consultar el período: '+sapEsc(String(e.message||e));
+  }
 }
 
 const V10_STATE_KEY='inventory_state_v10';
@@ -2579,9 +2674,68 @@ async function sapSyncPmixFromCloud(){
     renderSapPmixStatus();renderLoadedPmixList();renderSapSalesReport();
   }catch(e){sapSetCloudStatus('sapPmixCloudStatus','Product Mix: usando copia local · '+String(e.message||e))}
 }
+let alohaLastSyncSeen='';
+let alohaLiveTimer=null;
+function alohaMoney(v){return 'RD$'+Number(v||0).toLocaleString('es-DO',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function alohaTimeLabel(v){
+  const s=String(v||''); if(!s)return '—';
+  const t=s.includes('T')?s.split('T')[1]:s.split(' ').at(-1);
+  return String(t||s).slice(0,8);
+}
+function paintAlohaLive(d){
+  const connected=!!d?.connected;
+  el('alohaLiveDot')?.classList.toggle('on',connected);
+  if(el('alohaLiveState'))el('alohaLiveState').textContent=connected?`Conectado · Fecha negocio ${d.fecha||'—'} · Unidad ${d.unidadAloha||'—'}`:'Todavía no hay sincronizaciones automáticas registradas.';
+  if(el('alohaLiveSync'))el('alohaLiveSync').textContent=connected?alohaTimeLabel(d.syncedAt):'—';
+  if(el('alohaLiveVenta'))el('alohaLiveVenta').textContent=alohaMoney(d.ventaTotal);
+  if(el('alohaLiveNet'))el('alohaLiveNet').textContent=alohaMoney(d.netSales);
+  if(el('alohaLiveTx'))el('alohaLiveTx').textContent=String(Math.round(Number(d.transacciones||0)));
+  if(el('alohaLivePmix'))el('alohaLivePmix').textContent=String(Math.round(Number(d.productos||0)));
+}
+async function refreshAlohaSyncStatus(){
+  const branch=el('sapTheoryBranch')?.value||'';
+  const box=el('sapAlohaSyncStatus');
+  if(!branch){if(box)box.textContent='Aloha: selecciona una sucursal para consultar el conector.';paintAlohaLive({connected:false});return null}
+  try{
+    const d=await apiGet({action:'alohaStatus',sucursal:branch});
+    paintAlohaLive(d);
+    if(!d.connected){if(box)box.textContent='Aloha: todavía no hay sincronizaciones automáticas registradas.';return d}
+    const when=String(d.syncedAt||'').replace('T',' ');
+    if(box)box.textContent=`Aloha conectado ✅ · Última sync ${when} · ${d.productos||0} códigos PMIX · ${d.transacciones||0} transacciones · Net ${Number(d.netSales||0).toLocaleString('es-DO',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+    return d;
+  }catch(e){
+    if(box)box.textContent='Aloha: no se pudo consultar el estado · '+String(e.message||e);
+    if(el('alohaLiveState'))el('alohaLiveState').textContent='No se pudo consultar el conector: '+String(e.message||e);
+    return null;
+  }
+}
+async function autoAlohaTheoryRefresh(force=false){
+  const branch=el('sapTheoryBranch')?.value||''; if(!branch)return;
+  const d=await refreshAlohaSyncStatus(); if(!d?.connected)return;
+  const syncKey=String(d.syncedAt||'')+'|'+String(d.fecha||'');
+  const changed=force||(!alohaLastSyncSeen)||syncKey!==alohaLastSyncSeen;
+  if(!changed)return;
+  alohaLastSyncSeen=syncKey;
+  if(el('alohaLiveTheory'))el('alohaLiveTheory').textContent='Consumo SAP: actualizando Product Mix…';
+  await sapSyncPmixFromCloud();
+  renderSapSalesReport();
+  await refreshSapTimeline();
+  const from=el('sapTheoryFrom')?.value||'',to=el('sapTheoryTo')?.value||'',day=String(d.fecha||'');
+  if(day&&from&&to&&day>=from&&day<=to){
+    const ok=await runSapTheoryCalculation(true);
+    if(el('alohaLiveTheory'))el('alohaLiveTheory').textContent=ok?'Consumo SAP e inventario teórico: actualizados ✅':'Consumo SAP: pendiente de datos/validación.';
+  }else if(el('alohaLiveTheory')){
+    el('alohaLiveTheory').textContent='Product Mix actualizado · cambia el período para recalcular el teórico.';
+  }
+}
+function startAlohaLivePolling(){
+  if(alohaLiveTimer)return;
+  alohaLiveTimer=setInterval(()=>{if(el('sapTheoryView')?.classList.contains('active'))autoAlohaTheoryRefresh(false)},60000);
+}
+
 async function sapSyncCloudAll(){
-  await Promise.allSettled([sapSyncAliasesFromCloud(),sapSyncRecipesFromCloud(),sapSyncPmixFromCloud()]);
-  renderSapRecipeStatus();renderSapRecipeDatalist();renderSapPmixStatus();renderLoadedPmixList();renderSapSalesReport();refreshSapTimeline();
+  await Promise.allSettled([sapSyncAliasesFromCloud(),sapSyncRecipesFromCloud(),sapSyncPmixFromCloud(),refreshAlohaSyncStatus()]);
+  renderSapRecipeStatus();renderSapRecipeDatalist();renderSapPmixStatus();renderLoadedPmixList();renderSapSalesReport();refreshSapTimeline();refreshAlohaSyncStatus();
 }
 
 function sapLoadJSON(key,fb){try{return JSON.parse(localStorage.getItem(key)||'')||fb}catch(_){return fb}}
@@ -2676,12 +2830,12 @@ function initSapTheoryPanel(){
     el('sapTheoryTo').dataset.v1020='1';
   }
   if(b&&!b.dataset.v1020){
-    b.addEventListener('change',()=>{renderSapPmixStatus();renderLoadedPmixList();renderSapSalesReport();refreshSapTimeline();sapSyncPmixFromCloud()});
+    b.addEventListener('change',()=>{alohaLastSyncSeen='';renderSapPmixStatus();renderLoadedPmixList();renderSapSalesReport();refreshSapTimeline();sapSyncPmixFromCloud();autoAlohaTheoryRefresh(true)});
     b.dataset.v1020='1';
   }
   renderSapPmixStatus();renderLoadedPmixList();renderSapSalesReport();
   refreshSapTimeline();
-  sapSyncCloudAll();
+  sapSyncCloudAll();startAlohaLivePolling();setTimeout(()=>autoAlohaTheoryRefresh(true),1200);
 }
 
 function pmixDateToIso(s){const m=String(s||'').match(/\b(\d{2})\/(\d{2})\/(\d{4})\b/);return m?`${m[3]}-${m[1]}-${m[2]}`:''}
@@ -2903,18 +3057,18 @@ async function sapLoadMovementMap(branch,from,to){
   for(const m of d.records||[]){const item=inv[String(m.codigo||'')];if(!item){pending.push(`Movimiento sin producto comparable: ${m.producto||m.codigo||'—'}`);continue}const fac=sapMovementFactor(m,item),sign=sapMovementSignForBranch(m,branch),q=Math.abs(Number(m.cantidad||0));if(!Number.isFinite(fac)||!sign){pending.push(`Movimiento pendiente: ${m.tipo} · ${m.producto} · ${m.cantidad} ${m.unidad||''}`);continue}out[item.code]=(out[item.code]||0)+(q*fac*sign)}return {map:out,pending,records:d.records||[]};
 }
 
-async function runSapTheoryCalculation(){
-  const branch=el('sapTheoryBranch')?.value||'',from=el('sapTheoryFrom')?.value||'',to=el('sapTheoryTo')?.value||'';if(!branch||!from||!to){showToast('Selecciona sucursal y período');return}if(from>to){showToast('Desde no puede ser mayor que Hasta');return}
-  const pmix=sapRowsForPeriod(branch,from,to);if(!pmix.length){showToast('No hay Product Mix guardado en ese período');return}
-  showV10Loading('Calculando consumo teórico…','Cruce de SAP, Aloha, inventarios y movimientos.');
+async function runSapTheoryCalculation(silent=false){
+  const branch=el('sapTheoryBranch')?.value||'',from=el('sapTheoryFrom')?.value||'',to=el('sapTheoryTo')?.value||'';if(!branch||!from||!to){if(!silent)showToast('Selecciona sucursal y período');return false}if(from>to){if(!silent)showToast('Desde no puede ser mayor que Hasta');return false}
+  const pmix=sapRowsForPeriod(branch,from,to);if(!pmix.length){if(!silent)showToast('No hay Product Mix guardado en ese período');return false}
+  if(!silent)showV10Loading('Calculando consumo teórico…','Cruce de SAP, Aloha, inventarios y movimientos.');
   try{
     const calc=sapBuildConsumption(branch,from,to),ctx=await sapLoadPeriodInventory(branch,from,to),moves=await sapLoadMovementMap(branch,from,to),inv=sapInventoryMap(),initial=sapQtyMapFromRecord(ctx.initialRecord),final=sapQtyMapFromRecord(ctx.finalRecord),codes=new Set([...Object.keys(inv),...Object.keys(calc.consumption),...Object.keys(moves.map)]),rows=[];
     codes.forEach(code=>{const item=inv[code];if(!item)return;const ini=initial[code],fin=final[code],movement=Number(moves.map[code]||0),cons=Number(calc.consumption[code]||0),hasIni=!!ini?.known,hasFin=!!fin?.known;const expected=hasIni?ini.value+movement-cons:null,diff=hasIni&&hasFin?fin.value-expected:null,pct=diff!==null&&Math.abs(expected)>1e-9?diff/Math.abs(expected)*100:null,real=hasIni&&hasFin?ini.value+movement-fin.value:null;rows.push({code,name:item.name,unit:item.unit,category:item.category||'',initial:hasIni?ini.value:null,movement,consumption:cons,expected,final:hasFin?fin.value:null,diff,pct,real})});
     rows.sort((a,b)=>Math.abs(b.diff??-Infinity)-Math.abs(a.diff??-Infinity)||b.consumption-a.consumption);
     sapTheoryRows=rows;sapTheoryPendingProducts=calc.pendingProducts;sapTheoryPendingIngredients=calc.pendingIngredients;sapTheoryValidation=calc.validation;sapTheoryLastContext={branch,from,to,ctx,moves,pmixCount:calc.sets.length,pmixRows:calc.rows.length};
     el('sapTheoryResults').style.display='block';renderSapTheorySummary();renderSapValidations();renderSapTheoryTable();renderSapPending();renderLoadedPmixList();renderSapSalesReport();refreshSapTimeline();
-    el('sapPeriodStatus').innerHTML=`Inicial: <b>${sapEsc(ctx.initialLabel)}</b> · Final: <b>${sapEsc(ctx.finalLabel)}</b> · ${sapEsc(ctx.source)} · ${calc.sets.length} PMIX`;showToast('Consumo teórico calculado');
-  }catch(e){showToast(e.message||'No se pudo calcular')}finally{hideV10Loading()}
+    el('sapPeriodStatus').innerHTML=`Inicial: <b>${sapEsc(ctx.initialLabel)}</b> · Final: <b>${sapEsc(ctx.finalLabel)}</b> · ${sapEsc(ctx.source)} · ${calc.sets.length} PMIX`;if(!silent)showToast('Consumo teórico calculado');return true;
+  }catch(e){if(!silent)showToast(e.message||'No se pudo calcular');return false}finally{if(!silent)hideV10Loading()}
 }
 function renderSapTheorySummary(){
   const comparable=sapTheoryRows.filter(r=>r.diff!==null),short=comparable.filter(r=>r.diff<-.0001),over=comparable.filter(r=>r.diff>.0001),pending=sapTheoryPendingProducts.length+sapTheoryPendingIngredients.length,totalCons=sapTheoryRows.reduce((a,r)=>a+Math.abs(r.consumption||0),0);
