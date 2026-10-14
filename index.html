@@ -1098,7 +1098,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
   <div class="inv-status-wrap">
     <button class="inv-status active" type="button" data-state="Borrador" onclick="setInventoryState('Borrador')">Borrador</button>
     <button class="inv-status" type="button" data-state="En progreso" onclick="setInventoryState('En progreso')">En progreso</button>
-    <button class="inv-status" type="button" data-state="Cerrado" onclick="setInventoryState('Cerrado')">Cerrado</button>
+    <button class="inv-status" type="button" data-state="Cerrado" onclick="closeInventoryAndSyncTeams()">Cerrado</button>
     <button class="inv-status" type="button" data-state="Revisado" onclick="setInventoryState('Revisado')">Revisado</button>
   </div>
   <div class="OFICIAL-note" id="inventoryStateNote" style="margin-top:9px">Borrador: puedes editar el conteo normalmente.</div>
@@ -1919,6 +1919,8 @@ const SAP_INGREDIENT_ALIASES_DEFAULT={
 const SAP_COMPOSITE_HEADERS=new Set(['15153','40015','40016','40025','40026','40028']);
 
 const el=id=>document.getElementById(id), sectionsEl=el('sections'), searchInput=el('searchInput'), tipoSelect=el('tipoInventario'), sucursalSelect=el('sucursal'), conteoInput=el('conteo'), fechaInput=el('fecha'), diaSelect=el('dia');
+const LEGACY_CATALOG_POSITIONS=JSON.parse(JSON.stringify({Mensual:DATASETS.Mensual,Diario:DATASETS.Diario}));
+let catalogStatusRecords=[];
 let categories=DATASETS.Diario,totalItems=0,movements=[],previousBaseline=null,comparisonRows=[]; const horaInicio=new Date();
 function formatHora(d){return d.toLocaleTimeString('es-DO',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true})}
 function fmtNum(v){const n=Number(v);return Number.isFinite(n)?(Number.isInteger(n)?String(n):n.toFixed(2).replace(/0+$/,'').replace(/\.$/,'')):''}
@@ -1937,8 +1939,29 @@ searchInput.addEventListener('input',()=>{const v=captureValues();renderSections
 function switchType(type,clear=true){if(clear)saveEmergencySnapshot('antes de cambiar tipo');categories=DATASETS[type];el('pageTitle').textContent=`Control de inventario ${type.toLowerCase()}`;searchInput.value='';if(clear){conteoInput.value='';movements=[];previousBaseline=null;comparisonRows=[];renderMovements();renderTheory()}historyList.classList.remove('show');renderSections();setCloudStatus(`Modo ${type}. Selecciona una sucursal para sugerir el próximo número.`);if(sucursalSelect.value)suggestNextNumber()}
 tipoSelect.addEventListener('change',()=>switchType(currentType(),true));
 const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],today=new Date();fechaInput.value=today.toISOString().slice(0,10);diaSelect.value=dias[today.getDay()];fechaInput.addEventListener('change',()=>{if(fechaInput.value){const[y,m,d]=fechaInput.value.split('-').map(Number);diaSelect.value=dias[new Date(y,m-1,d).getDay()]}});el('horaInicioLabel').textContent=`🕒 Inventario iniciado: ${formatHora(horaInicio)}`;
-function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,estado:inventoryState||'Borrador',qty:{},movimientos:movements.map(x=>({...x})),comparacion:{base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows.map(x=>({...x}))}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));return d}
-function applyRecord(d){saveEmergencySnapshot('antes de cargar otro inventario');if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(d.qty||{});window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];if(d.estado)setInventoryState(d.estado);previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
+function buildSaveData(){const d={tipo:currentType(),sucursal:sucursalSelect.value,conteo:conteoInput.value,fecha:fechaInput.value,dia:diaSelect.value,contadoPor:el('contadoPor').value,estado:inventoryState||'Borrador',qty:{},movimientos:movements.map(x=>({...x})),comparacion:{base:previousBaseline?{tipo:previousBaseline.tipo,conteo:previousBaseline.conteo,fecha:previousBaseline.fecha}:null,filas:comparisonRows.map(x=>({...x}))}};categories.forEach((cat,ci)=>cat.items.forEach((_,ii)=>cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')d.qty[`${ci}-${ii}-${f.key}`]=e.value})));d.qtyByCode=inventoryQtyByCode(d.qty,categories);
+  d.catalogSnapshot=JSON.parse(JSON.stringify(categories));
+  return d}
+function inventoryQtyByCode(qty,sourceCats){
+  const byCode={};
+  Object.entries(qty||{}).forEach(([key,value])=>{
+    const m=key.match(/^(\d+)-(\d+)-(.+)$/);if(!m)return;
+    const cat=sourceCats?.[+m[1]],item=cat?.items?.[+m[2]];
+    if(!item||!item.code)return;
+    byCode[`${item.code}|${m[3]}`]=value;
+  });
+  return byCode;
+}
+function inventoryQtyForCurrentCatalog(d){
+  const source=d.qtyByCode||(d.catalogSnapshot?inventoryQtyByCode(d.qty,d.catalogSnapshot):inventoryQtyByCode(d.qty,LEGACY_CATALOG_POSITIONS[d.tipo||currentType()]));
+  const result={};
+  categories.forEach((cat,ci)=>cat.items.forEach((item,ii)=>cat.fields.forEach(f=>{
+    const key=`${item.code}|${f.key}`;
+    if(Object.prototype.hasOwnProperty.call(source,key))result[`${ci}-${ii}-${f.key}`]=source[key];
+  })));
+  return result;
+}
+function applyRecord(d){saveEmergencySnapshot('antes de cargar otro inventario');if(d.tipo&&DATASETS[d.tipo]){tipoSelect.value=d.tipo;switchType(d.tipo,false)}sucursalSelect.value=d.sucursal||'';conteoInput.value=d.conteo||'';fechaInput.value=d.fecha||'';diaSelect.value=d.dia||'';el('contadoPor').value=d.contadoPor||'';searchInput.value='';renderSections();restoreValues(inventoryQtyForCurrentCatalog(d));window.scrollTo({top:0,behavior:'smooth'});movements=Array.isArray(d.movimientos)?d.movimientos.map(x=>({...x})):[];if(d.estado)setInventoryState(d.estado);previousBaseline=null;comparisonRows=[];renderMovements();renderTheory();}
 el('saveBtn').addEventListener('click',()=>{const d=buildSaveData(),u=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=`Borrador_${d.tipo}_${(d.sucursal||'sucursal').replace(/\s+/g,'_')}_${d.fecha||'hoy'}.json`;a.click();URL.revokeObjectURL(u);showToast('Borrador guardado')});el('loadBtn').addEventListener('click',()=>el('loadFile').click());el('loadFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{applyRecord(JSON.parse(r.result));showToast('Borrador cargado')}catch(err){showToast('Archivo no válido')}};r.readAsText(f);e.target.value=''});
 
 function allInventoryProducts(){
@@ -2584,6 +2607,7 @@ async function openInventoryFromHome(type){
   showV10Loading('Preparando inventario…','Actualizando el catálogo desde Google Sheets.');
   await ensureCatalogReady(true);
   hideV10Loading();
+  if(!catalogLastRefresh)showToast('Aviso: no se pudo verificar el catálogo actual de Sheets.');
   sucursalSelect.value=suc;tipoSelect.value=type;switchType(type,true);
   applyProfileToCountedBy(true);
   setInventoryState('Borrador');
@@ -3601,6 +3625,33 @@ const V10_LAST_TRANSFER_PDF_KEY='last_transfer_pdf_v10';
 const V10_LAST_MOVEMENT_ID_KEY='last_movement_id_v10';
 let inventoryState=localStorage.getItem(V10_STATE_KEY)||'Borrador';
 
+async function closeInventoryAndSyncTeams(){
+  const d=buildSaveData();
+  if(!d.sucursal||!d.fecha){showToast('Indica sucursal y fecha antes de cerrar.');return;}
+  if(!d.conteo){showToast('Antes de cerrar, asigna un número de inventario.');return;}
+  if(!navigator.onLine){showToast('Sin conexión: no se puede confirmar la sincronización con Teams.');return;}
+  const closeBtn=document.querySelector('.inv-status[data-state="Cerrado"]');
+  if(closeBtn?.disabled)return;
+  if(closeBtn)closeBtn.disabled=true;
+  const previous=inventoryState;
+  setInventoryState('Cerrado');
+  try{
+    const result=await saveCloud(false);
+    if(!result||result.queued){setInventoryState(previous);showToast('Inventario pendiente: Teams no fue actualizado.');return;}
+    const t=result.teams;
+    if(d.tipo==='Diario'&&teamsIsOccidentalClient_(d.sucursal)){
+      if(t?.status==='ok'){
+        showToast('Teams actualizado: '+t.sheet);
+        setCloudStatus('Inventario CERRADO · Teams '+t.sheet+' · '+t.codigos+' artículos coincidentes'+(t.noCoinciden?.length?' · verificar códigos: '+t.noCoinciden.join(', '):''),'ok');
+      }else{
+        setCloudStatus('Inventario CERRADO, pero NO se actualizó Teams. '+(t?.message||'Revisa la versión de Apps Script.'),'error');
+        showToast('Aviso: Teams no se actualizó');
+      }
+    }
+  }catch(e){setInventoryState(previous);showToast('No se pudo confirmar el cierre: '+String(e.message||e));}
+  finally{if(closeBtn)closeBtn.disabled=false;}
+}
+function teamsIsOccidentalClient_(s){return ['occidentalmall','occidetalmall'].includes(String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/gi,'').toLowerCase());}
 function setInventoryState(state){
   inventoryState=state;
   localStorage.setItem(V10_STATE_KEY,state);
@@ -4745,8 +4796,12 @@ function factorSummary(item,cat){
 }
 function renderBetaCatalog(){
   const type=el('catalogType')?.value||'Mensual',q=(el('catalogSearch')?.value||'').trim().toLowerCase();
-  const rows=allBetaProducts(type).filter(x=>!q||(x.item.code+' '+x.item.name+' '+x.cat).toLowerCase().includes(q));
-  el('catalogBody').innerHTML=rows.map(x=>`<tr><td>${x.item.code||''}</td><td>${x.item.name}</td><td>${x.cat}</td><td>${factorSummary(x.item,x.catObj)||'—'}</td><td><span class="OFICIAL-chip">Activo</span></td></tr>`).join('');
+  const rows=catalogStatusRecords.length?catalogStatusRecords.filter(r=>(r.tipo==='Diario'?'Diario':'Mensual')===type).map(r=>({
+    code:r.codigo||'',name:r.producto||'',cat:r.categoria||'',active:r.activo===true,
+    eq:Object.entries(r.factors||{}).map(([k,v])=>`${k} ${v}`).slice(0,2).join(' · ')
+  })):allBetaProducts(type).map(x=>({code:x.item.code||'',name:x.item.name,cat:x.cat,active:true,eq:factorSummary(x.item,x.catObj)}));
+  const filtered=rows.filter(x=>!q||(x.code+' '+x.name+' '+x.cat).toLowerCase().includes(q));
+  el('catalogBody').innerHTML=filtered.map(x=>`<tr><td>${sapEsc(x.code)}</td><td>${sapEsc(x.name)}</td><td>${sapEsc(x.cat)}</td><td>${sapEsc(x.eq||'—')}</td><td><span class="OFICIAL-chip">${x.active?'TRUE · Visible':'FALSE · Oculto'}</span></td></tr>`).join('');
 }
 
 function flattenEmbeddedCatalog(){
@@ -4759,9 +4814,22 @@ function flattenEmbeddedCatalog(){
   });
   return rows;
 }
+function restoreActiveInventoryAfterCatalogRefresh(oldCatalog, previousQty){
+  // El catálogo nuevo puede alterar posiciones. Recuperar cantidades por código,
+  // nunca por índice, para evitar asignarlas al artículo equivocado.
+  if(!oldCatalog || !previousQty)return;
+  const byCode=inventoryQtyByCode(previousQty,oldCatalog);
+  categories=DATASETS[currentType()]||DATASETS.Diario;
+  const restored={};
+  categories.forEach((cat,ci)=>(cat.items||[]).forEach((item,ii)=>(cat.fields||[]).forEach(f=>{
+    const k=`${item.code}|${f.key}`;
+    if(Object.prototype.hasOwnProperty.call(byCode,k)) restored[`${ci}-${ii}-${f.key}`]=byCode[k];
+  })));
+  renderSections(restored);
+}
 function buildDatasetsFromCatalog(records){
   const grouped={Mensual:[],Diario:[]},maps={Mensual:{},Diario:{}};
-  (records||[]).filter(r=>r.activo!==false).forEach(r=>{
+  (records||[]).filter(r=>r.activo===true || String(r.activo).trim().toLowerCase()==='true' || String(r.activo).trim()==='1').forEach(r=>{
     const tipo=r.tipo==='Diario'?'Diario':'Mensual';
     const key=r.categoria||'Sin categoría';
     let cat=maps[tipo][key];
@@ -4771,7 +4839,7 @@ function buildDatasetsFromCatalog(records){
     }
     cat.items.push({code:r.codigo||'',name:r.producto||'',factors:r.factors||{}});
   });
-  ['Mensual','Diario'].forEach(t=>{if(grouped[t].length){DATASETS[t].splice(0,DATASETS[t].length,...grouped[t])}});DATASETS.Semanal=DATASETS.Mensual;
+  ['Mensual','Diario'].forEach(t=>{DATASETS[t].splice(0,DATASETS[t].length,...grouped[t])});DATASETS.Semanal=DATASETS.Mensual;
 }
 let catalogReadyPromise=null;
 let catalogLoaded=false;
@@ -4792,7 +4860,14 @@ async function loadCatalogFromSheets(force=false){
     if((d.records||[]).length){
       // Actualiza solo la fuente de datos. Nunca borra ni redibuja
       // un inventario que ya está abierto.
+      // Capturar antes de regenerar el catálogo, para no desordenar los conteos.
+      const inventoryVisible=!inventoryApp.classList.contains('is-hidden');
+      const oldCatalog=inventoryVisible?JSON.parse(JSON.stringify(categories)):null;
+      const oldQty=inventoryVisible?captureValues():null;
+      catalogStatusRecords=d.records;
       buildDatasetsFromCatalog(d.records);
+      if(inventoryVisible)restoreActiveInventoryAfterCatalogRefresh(oldCatalog,oldQty);
+      else categories=DATASETS[currentType()]||DATASETS.Diario;
       catalogLoaded=true;
       catalogLastRefresh=new Date().toISOString();
       renderBetaCatalog();
@@ -4834,7 +4909,7 @@ async function refreshCatalogManual(){
     if(!ok)throw new Error('No se pudo leer el catálogo desde Sheets.');
     const activeCount=allBetaProducts('Mensual').length;
     renderBetaCatalog();
-    showToast(`Catálogo actualizado · ${activeCount} productos mensuales`);
+    showToast(`Catálogo actualizado · ${activeCount} productos mensuales. Artículos FALSE ocultos.`);
     const s=el('catalogRefreshStatus');
     if(s)s.textContent=`Última actualización: ${new Date().toLocaleString('es-DO')}`;
   }catch(e){
