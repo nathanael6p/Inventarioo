@@ -313,7 +313,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 }
 
 
-/* ===== V10.37 OFICIAL OFICIAL · CONSUMO TEÓRICO SAP + PMIX ===== */
+/* ===== V10.41 OFICIAL · CONSUMO TEÓRICO SAP + PMIX ===== */
 .theory-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
 .theory-tab{border:1px solid var(--corp-line);background:#fff;color:var(--corp-muted);border-radius:999px;padding:8px 12px;font-size:.65rem;font-weight:800;cursor:pointer}
 .theory-tab.active{background:var(--corp);border-color:var(--corp);color:#fff}
@@ -377,7 +377,7 @@ header{background:linear-gradient(145deg,var(--corp),#06482f)}
 @media(max-width:700px){.sap-rule-grid{grid-template-columns:1fr}.sap-rule-component{grid-template-columns:1fr 1fr}.sap-rule-component .wide{grid-column:1/-1}}
 
 
-/* ===== V10.37 OFICIAL RESPONSIVE AUTO ===== */
+/* ===== V10.41 RESPONSIVE AUTO ===== */
 html[data-device="mobile"] body{padding-bottom:96px}
 html[data-device="desktop"] body{padding-bottom:24px}
 html[data-device="desktop"] main{max-width:1180px;padding:22px 28px 40px}
@@ -423,7 +423,7 @@ html[data-device="tablet"] .OFICIAL-grid{grid-template-columns:repeat(2,minmax(0
 }
 
 
-/* ===== V10.37 OFICIAL INTELIGENCIA OPERATIVA OFICIAL ===== */
+/* ===== V10.41 INTELIGENCIA OPERATIVA OFICIAL ===== */
 .ai-official-wrap{max-width:1180px;margin:0 auto;padding:12px 16px 110px}
 .ai-official-hero{background:linear-gradient(135deg,#103f35,#1d5948);color:#fff;border-radius:20px;padding:17px;margin-bottom:12px;box-shadow:0 14px 38px rgba(0,0,0,.12)}
 .ai-official-hero h2{margin:0 0 5px;font-size:1.08rem}.ai-official-hero p{margin:0;font-size:.68rem;line-height:1.5;color:rgba(255,255,255,.82)}
@@ -442,7 +442,7 @@ html[data-device="tablet"] .OFICIAL-grid{grid-template-columns:repeat(2,minmax(0
 @media(max-width:850px){.ai-grid{grid-template-columns:1fr}.ai-card{grid-column:1/-1!important}.ai-kpis{grid-template-columns:repeat(2,1fr)}.ai-config{grid-template-columns:repeat(2,1fr)}.ai-compare{grid-template-columns:repeat(2,1fr)}}
 
 
-/* ===== V10.37 OFICIAL PAPA JOHNS ===== */
+/* ===== V10.41 PAPA JOHNS ===== */
 :root{--pj-green:#006432;--pj-green-dark:#004d27;--pj-green-soft:#eaf4ee;--pj-red:#c8102e;--pj-red-dark:#a80d27;--pj-cream:#f8f5ef;--pj-ink:#1f2a25;--pj-muted:#6d756f;--pj-line:#dfe5e1;--pj-white:#fff;--pj-shadow:0 12px 30px rgba(0,55,30,.08)}
 body{background:linear-gradient(180deg,#fff 0,#f7f8f6 180px,#f3f5f3 100%);color:var(--pj-ink);font-family:"Open Sans","Segoe UI",Arial,sans-serif}
 body::before{content:"";position:fixed;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--pj-green) 0 72%,var(--pj-red) 72%);z-index:99999}
@@ -472,7 +472,7 @@ footer{background:var(--pj-green-dark)!important;color:#fff!important}footer *{c
 main,.OFICIAL-shell,.ai-official-wrap{padding-top:16px!important}.section h2{color:var(--pj-green-dark)!important}
 
 
-/* ===== V10.37 ACCENT #CDDC29 ===== */
+/* ===== V10.41 ACCENT #CDDC29 ===== */
 :root{
   --pj-lime:#CDDC29;
   --pj-lime-soft:#F4F8C7;
@@ -598,7 +598,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 }
 
 
-/* ===== V10.37 FIX VISUAL MOVIL ===== */
+/* ===== V10.41 FIX VISUAL MOVIL ===== */
 @media(max-width:768px){
   body{
     background:#f5f7f4!important;
@@ -825,7 +825,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 }
 
 
-/* ===== V10.37 OFICIAL · SELECTOR DE MES EN PLANES DIARIOS ===== */
+/* ===== V10.41 · SELECTOR DE MES EN PLANES DIARIOS ===== */
 .sales-plan-card{position:relative}
 .sales-plan-card-head{
   display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
@@ -904,7 +904,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 }
 
 
-/* ===== V10.37 OFICIAL · CENTRO DE OPERACIÓN PROFESIONAL ===== */
+/* ===== V10.41 · CENTRO DE OPERACIÓN PROFESIONAL ===== */
 .ops-wrap{max-width:1180px;margin:0 auto;padding:14px 16px 110px}
 .ops-hero{
   background:linear-gradient(135deg,var(--pj-green-dark,#004d27),var(--pj-green,#006432));
@@ -1108,8 +1108,15 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 <div class="card" id="movementsCard">
   <h2>🔄 Movimientos del inventario</h2>
   <div class="movement-actions"><button class="btn btn-primary" id="addMovementBtn" type="button">+ Registrar movimiento</button></div>
-  <div class="movement-help">Registra pedidos recibidos, transferencias, descartes/mermas o ajustes. En esta primera etapa solo se documentan; todavía no alteran automáticamente el conteo.</div>
+  <div class="movement-help">Registra pedidos recibidos, transferencias, descartes/mermas o ajustes. Los movimientos no alteran lo contado; se reflejan al calcular el saldo operativo.</div>
   <div class="movement-list" id="movementList"><div class="movement-empty">No hay movimientos registrados.</div></div>
+</div>
+<div class="card" id="pjOperationalBalanceCard" style="border:1px solid #bdd7c3">
+ <h2>📊 Saldo operativo · desde el conteo de la mañana</h2>
+ <div class="movement-help">Las recepciones y transferencias actualizan el saldo estimado, no cambian lo contado. Product Mix descuenta únicamente recetas/ingredientes validados. El reporte Teams continúa recibiendo el conteo físico del cierre.</div>
+ <div class="row2" style="margin-top:10px"><div class="field"><label>Proyectar hasta el día (inclusive)</label><input type="date" id="pjBalanceThrough"></div><div class="field"><label>Hora del conteo (referencia informativa)</label><input type="time" id="pjBalanceCountTime" value="09:00"></div></div>
+ <button type="button" class="btn btn-primary" onclick="pjCalculateOperationalBalance()">🔄 Calcular saldo actualizado</button>
+ <div id="pjOperationalBalanceResult" class="movement-help" style="margin-top:10px">Realiza el conteo de la mañana y consulta el saldo cuando registres recepciones, movimientos o Product Mix.</div>
 </div>
 <div class="card search-card"><h2>Buscar artículo</h2><input id="searchInput" type="search" placeholder="Escribe nombre o código..."><div class="search-count" id="searchCount"></div></div>
 <div id="sections"></div>
@@ -1120,7 +1127,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 <div id="salesPanel" class="OFICIAL-panel">
   <div class="OFICIAL-shell">
     <div class="OFICIAL-top">
-      <div><h2>Ventas y metas</h2><small>V10.37 OFICIAL Oficial · Inventario + SAP + Product Mix + Aloha en vivo</small></div>
+      <div><h2>Ventas y metas</h2><small>V10.41 Oficial · Inventario + SAP + Product Mix + Aloha en vivo</small></div>
       <button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button>
     </div>
 
@@ -1370,7 +1377,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
     <div class="theory-view" id="sapTheoryView">
       <div class="sap-theory-banner">
         <div><b>Consumo Teórico SAP + Product Mix Aloha</b><small>Las recetas, equivalencias y Product Mix quedan sincronizados con Google Sheets. Si el conector local de Aloha está activo, ventas y Product Mix se actualizan automáticamente.</small></div>
-        <span class="sap-OFICIAL-badge">V10.37 OFICIAL OFICIAL</span>
+        <span class="sap-OFICIAL-badge">V10.41 OFICIAL</span>
       </div>
 
 
@@ -1874,7 +1881,7 @@ const DATASETS={Mensual:[{"name":"PRODUCTOS FRIOS","icon":"🧊","fields":[{"key
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyk3e35qzu4CuK7qbI_m7d0A7WFBHsP0upKHIogYGLugvBL4icIGrQ6gwxKYLpw-p2zAw/exec';
 const APPS_SCRIPT_KEY='#Esperanza2026';
 const SAP_RECIPE_STORAGE_KEY='blumaro_sap_recipe_library_v1019';
-// V10.37 OFICIAL: el inventario semanal usa exactamente el mismo catálogo completo que Mensual.
+// V10.41: el inventario semanal usa exactamente el mismo catálogo completo que Mensual.
 DATASETS.Semanal=DATASETS.Mensual;
 
 const SAP_RECIPE_META_KEY='blumaro_sap_recipe_meta_v1019';
@@ -4956,7 +4963,7 @@ if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
 }
 
-/* ===== V10.37 OFICIAL INTELIGENCIA OPERATIVA REAL ===== */
+/* ===== V10.41 INTELIGENCIA OPERATIVA REAL ===== */
 let aiState={branch:'',config:null,current:null,history:null,auditRows:[],pendingProducts:[],traceFrom:'',traceTo:'',pmixDays:0};
 function aiDateAdd(iso,days){const [y,m,d]=String(iso).split('-').map(Number),x=new Date(y,m-1,d,12);x.setDate(x.getDate()+days);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`}
 function aiPct(now,prev){now=Number(now||0);prev=Number(prev||0);if(Math.abs(prev)<1e-9)return now?null:0;return (now-prev)/Math.abs(prev)*100}
@@ -5181,7 +5188,7 @@ async function initIntelligenceOfficial(){
 }
 
 
-/* ===== V10.37 OFICIAL CENTRO DE OPERACIÓN ===== */
+/* ===== V10.41 CENTRO DE OPERACIÓN ===== */
 function openOpsCenter(){
   showBetaPanel('');
   document.getElementById('opsCenterPanel')?.classList.add('show');
@@ -5270,11 +5277,54 @@ function generateFormalReportDemo(){
   let y=72;doc.setFillColor(234,244,238);doc.rect(14,y-6,182,8,'F');doc.setTextColor(...green);doc.setFont('helvetica','bold');doc.text('Indicador',17,y);doc.text('Resultado',105,y);doc.text('Estado',160,y);y+=9;
   doc.setFont('helvetica','normal');doc.setTextColor(...dark);
   rows.forEach((r,i)=>{if(i%2){doc.setFillColor(248,249,248);doc.rect(14,y-5,182,8,'F')}doc.text(r[0],17,y);doc.text(String(r[1]),105,y);doc.text(r[2],160,y);y+=9});
-  doc.setDrawColor(...green);doc.line(14,270,196,270);doc.setFontSize(6.5);doc.setTextColor(...gray);doc.text(`V10.37 OFICIAL · Reporte generado ${new Date().toLocaleString('es-DO')}`,14,277);
+  doc.setDrawColor(...green);doc.line(14,270,196,270);doc.setFontSize(6.5);doc.setTextColor(...gray);doc.text(`V10.41 · Reporte generado ${new Date().toLocaleString('es-DO')}`,14,277);
   doc.save(`Reporte_Operativo_${branch.replace(/[^\w-]+/g,'_')}_${new Date().toISOString().slice(0,10)}.pdf`);
 }
 
 </script>
 
-<div class="pj-official-version">V10.37 · OFICIAL</div>
+<div class="pj-official-version">V10.41 · OFICIAL</div>
+<script>
+/* V10.41: Saldo operativo informativo; nunca sobrescribe conteo ni Teams. */
+async function pjCalculateOperationalBalance(){
+ const elResult=document.getElementById('pjOperationalBalanceResult');
+ const branch=document.getElementById('sucursal')?.value||'';
+ const start=document.getElementById('fecha')?.value||'';
+ const end=document.getElementById('pjBalanceThrough')?.value||start;
+ if(currentType()!=='Diario'){elResult.textContent='Esta proyección usa el conteo diario como punto de partida.';return}
+ if(!branch||!start||!end||end<start){elResult.textContent='Selecciona sucursal, fecha inicial y una fecha final válida.';return}
+ elResult.textContent='Calculando movimientos y consumo verificado…';
+ try{
+   // La base se lee del formulario del día del conteo: no se reescribe automáticamente.
+   const base={}; const items={};
+   (categories||[]).forEach((cat,ci)=>(cat.items||[]).forEach((item,ii)=>{
+     if(!item.code)return;let found=false,qty=0;
+     (cat.fields||[]).forEach(f=>{const input=document.getElementById(`q-${ci}-${ii}-${f.key}`);if(!input||input.value.trim()==='')return;const n=Number(input.value),factor=Number(item.factors?.[f.key]);if(Number.isFinite(n)&&Number.isFinite(factor)){qty+=n*factor;found=true}});
+     if(found){base[item.code]=qty;items[item.code]={name:item.name,unit:cat.unit||'unidad base'}};
+   }));
+   if(!Object.keys(base).length){elResult.textContent='Primero introduce cantidades en el inventario diario de la mañana.';return}
+   const movement=await sapLoadMovementMap(branch,start,end);
+   const pmix=sapRowsForPeriod(branch,start,end);
+   const calc=pmix.length?sapBuildConsumption(branch,start,end):{consumption:{},pendingProducts:[],pendingIngredients:[],validation:[]};
+   const all=new Set([...Object.keys(base),...Object.keys(movement.map||{}),...Object.keys(calc.consumption||{})]);
+   const rows=[...all].filter(code=>Object.hasOwn(base,code)).map(code=>({code,name:items[code].name,unit:items[code].unit,physical:base[code],moves:Number(movement.map?.[code]||0),consumption:Number(calc.consumption?.[code]||0)}));
+   rows.forEach(x=>x.expected=x.physical+x.moves-x.consumption);
+   rows.sort((a,b)=>Math.abs(b.moves)+Math.abs(b.consumption)-Math.abs(a.moves)-Math.abs(a.consumption));
+   const fmt=n=>Number(n).toLocaleString('es-DO',{maximumFractionDigits:2});
+   const warning=[];
+   if(end===start)warning.push('Los movimientos del mismo día se aplican suponiendo que ocurrieron después del conteo de la mañana. No hay hora real del movimiento registrada para comprobarlo.');
+   else warning.push('Movimientos en la fecha inicial: se asumen posteriores al conteo matutino. Confirma que no estaban incluidos en el conteo.');
+   if(!pmix.length)warning.push('Sin Product Mix disponible para este período: todavía NO se descontaron ventas.');
+   if(calc.pendingProducts?.length||calc.pendingIngredients?.length)warning.push('Hay ventas o ingredientes sin receta/equivalencia validada: el saldo puede estar sobreestimado.');
+   if(movement.pending?.length)warning.push('Hay '+movement.pending.length+' movimientos sin conversión validada; no fueron incluidos.');
+   if((movement.records||[]).length>=2000)warning.push('El servicio limita la consulta a 2,000 movimientos: el resultado puede ser incompleto.');
+   elResult.innerHTML=`<div style="margin:8px 0"><b>${sapEsc(branch)}</b> · desde ${sapEsc(start)} hasta ${sapEsc(end)} · ${pmix.length} PMIX encontrado(s)</div>`+
+     `<div style="max-height:360px;overflow:auto"><table><thead><tr><th>Artículo</th><th>Físico mañana</th><th>Movimientos</th><th>Ventas SAP/PMIX</th><th>Saldo estimado</th></tr></thead><tbody>`+
+     rows.map(x=>`<tr><td>${sapEsc(x.code)} · ${sapEsc(x.name)} <small>${sapEsc(x.unit)}</small></td><td>${fmt(x.physical)}</td><td>${fmt(x.moves)}</td><td>−${fmt(x.consumption)}</td><td><b>${fmt(x.expected)}</b></td></tr>`).join('')+
+     `</tbody></table></div><div style="margin-top:10px"><b>Validaciones:</b> ${warning.map(sapEsc).join(' · ')||'Sin incidencias.'}</div>`+
+     `<p style="margin-top:8px">Este saldo es una proyección operativa. No modifica el conteo físico ni la hoja Teams; Teams conserva las cantidades originales del inventario cerrado. Para conciliar faltantes, compara con el próximo conteo físico.</p>`;
+ }catch(err){elResult.textContent='No se pudo calcular: '+String(err?.message||err)}
+}
+(function(){const d=document.getElementById('pjBalanceThrough'),f=document.getElementById('fecha');if(d&&f){d.value=f.value;f.addEventListener('change',()=>{if(!d.dataset.userChanged)d.value=f.value});d.addEventListener('change',()=>d.dataset.userChanged='1')}})();
+</script>
 </body></html>
