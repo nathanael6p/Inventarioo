@@ -1016,7 +1016,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 }
 
 
-/* ===== V10.46.3 OFICIAL CONTROL ===== */
+/* ===== V10.46.6 OFICIAL CONTROL ===== */
 .teams-visible{margin-top:9px;border:1px solid #dce881;background:#fbfce9;border-radius:12px;padding:10px;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}
 .teams-visible b{font-size:.68rem;color:var(--green-dark)}.teams-visible small{display:block;font-size:.56rem;color:var(--ink-soft);margin-top:2px}.teams-visible .teams-dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:#aaa;margin-right:5px}.teams-visible .teams-dot.ok{background:#78a913}.teams-visible .teams-dot.bad{background:var(--red)}.teams-visible .teams-dot.warn{background:#e2a922}
 .beta-control-list{display:grid;gap:7px;margin-top:9px}.beta-control-row{border:1px solid var(--corp-line,#dfe5e1);border-radius:11px;padding:9px;background:#fff;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.beta-control-row b{display:block;font-size:.63rem;color:var(--corp,#006432)}.beta-control-row small{display:block;font-size:.54rem;color:var(--pj-muted,#6d756f);margin-top:2px;line-height:1.35}.beta-control-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.mini-action{border:1px solid var(--corp-line,#dfe5e1);background:#fff;color:var(--corp,#006432);border-radius:8px;padding:6px 8px;font-size:.52rem;font-weight:900;cursor:pointer}.mini-action.danger{border-color:#efc3ca;color:#a62d3e;background:#fff7f8}
@@ -1024,7 +1024,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 @media(max-width:760px){.minmax-editor{grid-template-columns:1fr 1fr}.minmax-editor .wide{grid-column:1/-1}.beta-control-row{grid-template-columns:1fr}.beta-control-actions{justify-content:flex-start}}
 
 
-/* ===== V10.46.3 OFICIAL · INNOVACIÓN OPERATIVA ===== */
+/* ===== V10.46.6 OFICIAL · INNOVACIÓN OPERATIVA ===== */
 .innov-card{background:#fff;border:1px solid var(--corp-line,#dfe5e1);border-radius:16px;padding:13px;box-shadow:0 6px 20px rgba(0,70,35,.045)}
 .innov-card h3{margin:0 0 4px;color:var(--corp,#006432);font-size:.78rem}.innov-card small{font-size:.57rem;color:var(--ink-soft,#6d756f);line-height:1.45}
 .innov-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}.innov-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:9px}
@@ -1038,7 +1038,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 @media(max-width:760px){.innov-form,.innov-metrics{grid-template-columns:1fr}.innov-card{grid-column:1/-1!important}.command-overlay{padding-top:3vh}}
 
 
-/* ===== V10.46.3 OFICIAL · PRODUCTO 360 SIN RECORTAR MÓDULOS EXISTENTES ===== */
+/* ===== V10.46.6 OFICIAL · PRODUCTO 360 SIN RECORTAR MÓDULOS EXISTENTES ===== */
 .product360-card h4{font-size:.63rem;margin:0;color:var(--green-dark,#004d27)}
 .product360-controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin-top:10px}
 .product360-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:10px}
@@ -1051,7 +1051,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 @media(max-width:760px){.product360-controls,.product360-grid{grid-template-columns:1fr}.product360-metrics{grid-template-columns:repeat(2,1fr)}.product360-metric:last-child{grid-column:1/-1}}
 
 
-/* ===== V10.46.3 · Operación visible en móvil ===== */
+/* ===== V10.46.6 · Operación visible en móvil ===== */
 @media (max-width:520px){
   html[data-device="mobile"] body{padding-bottom:142px!important}
   html[data-device="mobile"] .app-bottom-nav{
@@ -1073,6 +1073,54 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
     grid-template-columns:repeat(8,minmax(0,1fr))!important;
   }
 }
+
+/* ===== V10.46.6 · Teórico vs contado por período manual ===== */
+.basic-theory-filter{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr auto;
+  gap:9px;
+  align-items:end;
+  background:#f8fbf9;
+  border:1px solid var(--corp-line);
+  border-radius:14px;
+  padding:11px;
+  margin:0 0 11px;
+}
+.basic-theory-filter .OFICIAL-field{margin:0}
+.basic-theory-branch{
+  min-height:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8px 10px;
+  background:#fff;
+  border:1px solid var(--corp-line);
+  border-radius:10px;
+}
+.basic-theory-branch b{font-size:.7rem;color:var(--corp)}
+.basic-theory-branch small{font-size:.55rem;color:var(--corp-muted);margin-top:2px}
+.basic-theory-audit{
+  margin:9px 0 11px;
+  padding:10px 11px;
+  border:1px solid #d9e8df;
+  border-radius:12px;
+  background:#f7fbf8;
+  color:#52635a;
+  font-size:.61rem;
+  line-height:1.55;
+}
+.basic-theory-audit b{color:var(--corp)}
+@media(max-width:760px){
+  .basic-theory-filter{grid-template-columns:1fr 1fr}
+  .basic-theory-filter .basic-theory-branch{grid-column:1/-1}
+  .basic-theory-filter .basic-theory-calc{grid-column:1/-1;width:100%}
+}
+@media(max-width:420px){
+  .basic-theory-filter{grid-template-columns:1fr}
+  .basic-theory-filter .basic-theory-branch,
+  .basic-theory-filter .basic-theory-calc{grid-column:auto}
+}
+
 </style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwMDY0MzIiLz4KICA8Y2lyY2xlIGN4PSI1MyIgY3k9IjExIiByPSI3IiBmaWxsPSIjQ0REQzI5Ii8+CiAgPHRleHQgeD0iMzIiIHk9IjQxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIgogICAgICAgIGZvbnQtc2l6ZT0iMjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNmZmZmZmYiPlBKPC90ZXh0Pgo8L3N2Zz4=">
@@ -1209,7 +1257,7 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
 <div id="salesPanel" class="OFICIAL-panel">
   <div class="OFICIAL-shell">
     <div class="OFICIAL-top">
-      <div><h2>Ventas y metas</h2><small>V10.46.3 Beta Control · Inventario + SAP + Product Mix + Aloha en vivo</small></div>
+      <div><h2>Ventas y metas</h2><small>V10.46.6 Beta Control · Inventario + SAP + Product Mix + Aloha en vivo</small></div>
       <button class="btn btn-secondary" type="button" onclick="showBetaPanel('')">Cerrar</button>
     </div>
 
@@ -1430,23 +1478,46 @@ progress::-moz-progress-bar{background:var(--pj-lime)!important}
     <div class="theory-view" id="basicTheoryView">
       <div class="OFICIAL-hero">
         <h3>Teórico vs. contado</h3>
-        <p>La comparación que ya tenías se mantiene igual: inventario anterior, movimientos y conteo actual.</p>
+        <p>Selecciona dos fechas. El sistema compara el inventario físico guardado del día inicial contra el del día final e incluye movimientos y consumo SAP / Product Mix del período.</p>
       </div>
       <div class="card theory-card" id="theoryCard">
-  <div class="theory-head">
-    <div>
-      <h2>📊 Inventario teórico y diferencias</h2>
-      <div class="theory-status" id="theoryStatus">Base: Diario · Inventario 9 · 2026-10-19</div>
-    </div>
-    <button class="theory-btn" id="refreshTheoryBtn" type="button">Actualizar</button>
-  </div>
-  <div class="theory-summary">
-    <div class="theory-stat"><strong id="theoryCompared">1</strong><span>Comparados</span></div>
-    <div class="theory-stat"><strong id="theoryShort">1</strong><span>Faltantes</span></div>
-    <div class="theory-stat"><strong id="theoryOver">0</strong><span>Sobrantes</span></div>
-  </div>
-  <div class="theory-table-wrap"><div class="theory-empty" id="theoryEmpty" style="display: none;">Todavía no hay una base cargada.</div><table class="theory-table" id="theoryTable" style="display: table;"><thead><tr><th>Producto</th><th>Anterior</th><th>Mov.</th><th>Teórico</th><th>Contado</th><th>Diferencia</th></tr></thead><tbody id="theoryBody"><tr><td>Caja pizza 16" locales <small>(I0670)</small></td><td>46 unid.</td><td>+0 unid.</td><td>46 unid.</td><td>1 unid.</td><td class="diff-neg">-45 unid.</td></tr></tbody></table></div>
-</div>
+        <div class="basic-theory-filter">
+          <div class="basic-theory-branch">
+            <b id="basicTheoryBranchLabel">Sucursal: —</b>
+            <small>Inventarios diarios guardados</small>
+          </div>
+          <div class="OFICIAL-field">
+            <label>Desde · físico inicial</label>
+            <input id="basicTheoryFrom" type="date">
+          </div>
+          <div class="OFICIAL-field">
+            <label>Hasta · físico final</label>
+            <input id="basicTheoryTo" type="date">
+          </div>
+          <button class="btn btn-primary basic-theory-calc" id="refreshTheoryBtn" type="button">Calcular comparación</button>
+        </div>
+        <div class="theory-head">
+          <div>
+            <h2>📊 Inventario teórico y diferencias</h2>
+            <div class="theory-status" id="theoryStatus">Selecciona Desde y Hasta para comparar.</div>
+          </div>
+        </div>
+        <div class="basic-theory-audit" id="theoryAuditInfo">
+          Se respetará la operación de la mañana: para llegar al conteo final se aplican movimientos y Product Mix desde la fecha inicial hasta el día anterior a la fecha final.
+        </div>
+        <div class="theory-summary">
+          <div class="theory-stat"><strong id="theoryCompared">0</strong><span>Comparados</span></div>
+          <div class="theory-stat"><strong id="theoryShort">0</strong><span>Faltantes</span></div>
+          <div class="theory-stat"><strong id="theoryOver">0</strong><span>Sobrantes</span></div>
+        </div>
+        <div class="theory-table-wrap">
+          <div class="theory-empty" id="theoryEmpty">Selecciona el período y pulsa Calcular comparación.</div>
+          <table class="theory-table" id="theoryTable" style="display:none">
+            <thead><tr><th>Producto</th><th>Inicial</th><th>Mov.</th><th>Consumo SAP/PMIX</th><th>Esperado</th><th>Contado final</th><th>Diferencia</th></tr></thead>
+            <tbody id="theoryBody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="theory-view active" id="sapTheoryView">
@@ -2536,6 +2607,210 @@ function movementDeltaForItem(ci,ii){
     return same?sum+movementDeltaBase(m):sum;
   },0);
 }
+
+/* ===== V10.46.6 · COMPARACIÓN MANUAL SIN ALTERAR EL MOTOR PMIX DE V10.46.3 ===== */
+let basicTheoryManualState={active:false,from:'',to:'',activityTo:'',initial:null,final:null,rows:[],moves:null,pmix:null};
+
+function basicTheoryIsoAdd(iso,days){
+  const m=String(iso||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(!m)return '';
+  const d=new Date(Number(m[1]),Number(m[2])-1,Number(m[3]),12,0,0);
+  d.setDate(d.getDate()+Number(days||0));
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function basicTheoryResetManualView(){
+  basicTheoryManualState.active=false;
+  if(el('theoryStatus'))el('theoryStatus').textContent='Selecciona Desde y Hasta para comparar.';
+  if(el('theoryAuditInfo'))el('theoryAuditInfo').textContent='Se respetará la operación de la mañana: para llegar al conteo final se aplican movimientos y Product Mix desde la fecha inicial hasta el día anterior a la fecha final.';
+  if(el('theoryBody'))el('theoryBody').innerHTML='';
+  if(el('theoryTable'))el('theoryTable').style.display='none';
+  if(el('theoryEmpty')){el('theoryEmpty').style.display='block';el('theoryEmpty').textContent='Selecciona el período y pulsa Calcular comparación.'}
+  if(el('theoryCompared'))el('theoryCompared').textContent='0';
+  if(el('theoryShort'))el('theoryShort').textContent='0';
+  if(el('theoryOver'))el('theoryOver').textContent='0';
+}
+function basicTheoryInitFilter(force=false){
+  const from=el('basicTheoryFrom'),to=el('basicTheoryTo'),branch=el('basicTheoryBranchLabel');
+  if(branch)branch.textContent=`Sucursal: ${sucursalSelect.value||el('homeSucursal')?.value||'—'}`;
+  const today=String(fechaInput?.value||'').slice(0,10)||sapIsoToday();
+  if(to&&(force||!to.value))to.value=today;
+  if(from&&(force||!from.value))from.value=basicTheoryIsoAdd(today,-1);
+  [from,to].forEach(input=>{
+    if(input&&!input.dataset.basicTheoryBound){
+      input.addEventListener('change',basicTheoryResetManualView);
+      input.dataset.basicTheoryBound='1';
+    }
+  });
+  if(!basicTheoryManualState.active)basicTheoryResetManualView();
+}
+function basicTheoryPickDateRecord(records,date){
+  const exact=(records||[]).filter(r=>String(r.fecha||'').slice(0,10)===date);
+  if(!exact.length)return null;
+  return exact.sort((a,b)=>{
+    const score=x=>['Revisado','Cerrado'].includes(String(x.estado||''))?2:1;
+    const s=score(b)-score(a);if(s)return s;
+    const u=String(b.actualizado||'').localeCompare(String(a.actualizado||''));if(u)return u;
+    const bn=Number(String(b.conteo||'').match(/\d+/)?.[0]||0),an=Number(String(a.conteo||'').match(/\d+/)?.[0]||0);
+    return bn-an;
+  })[0];
+}
+async function basicTheoryLoadSavedRecord(branch,meta){
+  if(!meta)return null;
+  const d=await apiGet({action:'load',sucursal:branch,tipo:'Diario',conteo:String(meta.conteo||'')});
+  return d.record||null;
+}
+function basicTheoryLiveFinal(branch,date){
+  try{
+    if(currentType()!=='Diario'||sucursalSelect.value!==branch||String(fechaInput.value||'').slice(0,10)!==date)return null;
+    const d=buildSaveData();
+    const realKeys=Object.keys(d.qty||{}).filter(k=>/^\d+-\d+-/.test(k));
+    return realKeys.length?d:null;
+  }catch(_){return null}
+}
+function basicTheoryPhysicalMap(record){
+  const result={};
+  const cats=DATASETS.Diario||[];
+  const byCode=record?.qtyByCode||record?.qty?.qtyByCode||{};
+  cats.forEach((cat,ci)=>(cat.items||[]).forEach((item,ii)=>{
+    if(!item.code)return;
+    let total=0,known=false;
+    (cat.fields||[]).forEach(f=>{
+      const keyed=`${item.code}|${f.key}`;
+      const raw=Object.prototype.hasOwnProperty.call(byCode,keyed)?byCode[keyed]:record?.qty?.[`${ci}-${ii}-${f.key}`];
+      const v=Number(raw),fac=Number(item.factors?.[f.key]);
+      if(raw!==''&&raw!==null&&raw!==undefined&&Number.isFinite(v)&&Number.isFinite(fac)){total+=v*fac;known=true}
+    });
+    result[item.code]={value:total,known,name:item.name,unit:cat.unit||'unidad base',ci,ii};
+  }));
+  return result;
+}
+async function basicTheoryMergePmixAdditive(branch,from,to){
+  let cloudSets=null,error='';
+  try{
+    const d=await apiGet({action:'pmixData',sucursal:branch,desde:from,hasta:to});
+    cloudSets=Array.isArray(d.sets)?d.sets:[];
+    const store=sapPmixStore();
+    cloudSets.forEach(set=>{
+      if(set?.meta?.date)store[branch+'|'+set.meta.date]=set;
+    });
+    // Importante: igual que V10.46.3, solo agregamos/actualizamos. Nunca borramos históricos locales.
+    sapSaveJSON(SAP_PMIX_STORAGE_KEY,store);
+  }catch(e){error=String(e?.message||e)}
+  const available=typeof sapRowsForPeriod==='function'?sapRowsForPeriod(branch,from,to):[];
+  return {cloudSets,available,error};
+}
+function basicTheoryMovementSummary(records){
+  const active=(records||[]).filter(x=>!['Anulado','Corregido'].includes(String(x.estado||'')));
+  const count={recepciones:0,recibidas:0,enviadas:0,descartes:0,ajustes:0,total:active.length};
+  active.forEach(x=>{
+    const t=String(x.tipo||'');
+    if(t==='Recepción de pedido')count.recepciones++;
+    else if(t==='Transferencia recibida')count.recibidas++;
+    else if(t==='Transferencia enviada')count.enviadas++;
+    else if(/Descarte|merma/i.test(t))count.descartes++;
+    else if(/Ajuste/i.test(t))count.ajustes++;
+  });
+  return count;
+}
+function renderBasicTheoryManual(){
+  const state=basicTheoryManualState,status=el('theoryStatus'),audit=el('theoryAuditInfo'),body=el('theoryBody'),table=el('theoryTable'),empty=el('theoryEmpty');
+  if(!state.active||!state.initial||!state.final){return}
+  const ini=state.initial,fin=state.final,mc=basicTheoryMovementSummary(state.moves?.records||[]);
+  status.textContent=`${state.from} · Inv. ${ini.conteo||'—'} → ${state.to} · ${fin.conteo||'abierto'}`;
+  const pmixDays=new Set((state.pmix?.available||[]).map(x=>String(x?.meta?.date||'')).filter(Boolean)).size;
+  const moveParts=[];
+  if(mc.recepciones)moveParts.push(`${mc.recepciones} recepción(es)`);
+  if(mc.recibidas)moveParts.push(`${mc.recibidas} transferencia(s) recibida(s)`);
+  if(mc.enviadas)moveParts.push(`${mc.enviadas} transferencia(s) enviada(s)`);
+  if(mc.descartes)moveParts.push(`${mc.descartes} descarte(s)/merma(s)`);
+  if(mc.ajustes)moveParts.push(`${mc.ajustes} ajuste(s)`);
+  if(audit){
+    const cloudNote=state.pmix?.cloudSets===null
+      ?`No se pudo verificar Sheets para PMIX${state.pmix?.error?' ('+sapEsc(state.pmix.error).slice(0,90)+')':''}; se conservaron y usaron los PMIX históricos ya disponibles en V10.46.3.`
+      :`${state.pmix.cloudSets.length} día(s) llegaron desde Sheets; ${pmixDays} día(s) PMIX están disponibles en total para el cálculo después de combinar con los históricos locales.`;
+    audit.innerHTML=`<b>Actividad aplicada:</b> ${sapEsc(state.from)} → ${sapEsc(state.activityTo)} · <b>Movimientos:</b> ${moveParts.length?sapEsc(moveParts.join(' · ')):'ninguno'} · <b>PMIX usados:</b> ${pmixDays} día(s).<br><span>${cloudNote}</span><br><span>El día ${sapEsc(state.to)} no se descuenta porque corresponde al conteo físico final de la mañana.</span>`;
+  }
+  body.innerHTML='';
+  let compared=0,short=0,over=0;
+  state.rows.forEach(r=>{
+    if(r.final!==null){compared++;if(r.diff<-.000001)short++;else if(r.diff>.000001)over++}
+    const diff=r.diff===null?'—':`${r.diff>0?'+':''}${fmtNum(r.diff)}`;
+    const cls=r.diff===null?'':r.diff<-.000001?'diff-neg':r.diff>.000001?'diff-pos':'diff-zero';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${sapEsc(r.name)}${r.code?' <small>('+sapEsc(r.code)+')</small>':''}</td>
+      <td>${r.initial===null?'—':fmtNum(r.initial)+' '+sapEsc(r.unit)}</td>
+      <td>${r.movement>=0?'+':''}${fmtNum(r.movement)} ${sapEsc(r.unit)}</td>
+      <td>${r.consumption?'-'+fmtNum(r.consumption):'0'} ${sapEsc(r.unit)}</td>
+      <td>${r.expected===null?'—':fmtNum(r.expected)+' '+sapEsc(r.unit)}</td>
+      <td>${r.final===null?'—':fmtNum(r.final)+' '+sapEsc(r.unit)}</td>
+      <td class="${cls}">${diff==='—'?diff:diff+' '+sapEsc(r.unit)}</td>`;
+    body.appendChild(tr);
+  });
+  el('theoryCompared').textContent=String(compared);
+  el('theoryShort').textContent=String(short);
+  el('theoryOver').textContent=String(over);
+  if(state.rows.length){table.style.display='table';empty.style.display='none'}
+  else{table.style.display='none';empty.style.display='block';empty.textContent='No encontré productos comparables entre ambos inventarios.'}
+}
+async function calculateBasicTheoryRange(){
+  const branch=sucursalSelect.value.trim()||el('homeSucursal')?.value||'';
+  const from=el('basicTheoryFrom')?.value||'',to=el('basicTheoryTo')?.value||'';
+  if(!branch){showToast('Selecciona una sucursal primero');return}
+  if(!from||!to){showToast('Selecciona Desde y Hasta');return}
+  if(from>=to){showToast('Hasta debe ser posterior a Desde');return}
+  showV10Loading('Comparando inventarios…','Cargando físicos, movimientos y Product Mix sin alterar tus históricos.');
+  try{
+    const list=await apiGet({action:'list',sucursal:branch,tipo:'Diario'});
+    const records=list.records||[];
+    const iniMeta=basicTheoryPickDateRecord(records,from);
+    const finMeta=basicTheoryPickDateRecord(records,to);
+    if(!iniMeta)throw new Error(`No hay inventario diario guardado para ${from}.`);
+    const initial=await basicTheoryLoadSavedRecord(branch,iniMeta);
+    let final=basicTheoryLiveFinal(branch,to);
+    if(!final){
+      if(!finMeta)throw new Error(`No hay inventario diario guardado para ${to}.`);
+      final=await basicTheoryLoadSavedRecord(branch,finMeta);
+    }
+    const activityTo=basicTheoryIsoAdd(to,-1);
+    const [moves,pmix] = await Promise.all([
+      sapLoadMovementMap(branch,from,activityTo),
+      basicTheoryMergePmixAdditive(branch,from,activityTo)
+    ]);
+    const syncs=[];
+    if(typeof sapSyncAliasesFromCloud==='function')syncs.push(sapSyncAliasesFromCloud());
+    if(typeof sapSyncRecipesFromCloud==='function')syncs.push(sapSyncRecipesFromCloud());
+    if(syncs.length)await Promise.allSettled(syncs);
+    const calc=(pmix.available||[]).length&&typeof sapBuildConsumption==='function'
+      ?sapBuildConsumption(branch,from,activityTo)
+      :{consumption:{},pendingProducts:[],pendingIngredients:[]};
+    const im=basicTheoryPhysicalMap(initial),fm=basicTheoryPhysicalMap(final);
+    const inv=sapInventoryMap(),rows=[];
+    const codes=new Set([...Object.keys(im),...Object.keys(fm),...Object.keys(moves.map||{}),...Object.keys(calc.consumption||{})]);
+    codes.forEach(code=>{
+      const item=inv?.[code]||im[code]||fm[code];if(!item)return;
+      const a=im[code],b=fm[code],initialValue=a?.known?Number(a.value):null,finalValue=b?.known?Number(b.value):null;
+      const movement=Number(moves.map?.[code]||0),consumption=Number(calc.consumption?.[code]||0);
+      if(initialValue===null&&finalValue===null&&!movement&&!consumption)return;
+      const expected=initialValue===null?null:initialValue+movement-consumption;
+      const diff=expected===null||finalValue===null?null:finalValue-expected;
+      rows.push({code,name:item.name||a?.name||b?.name||code,unit:item.unit||a?.unit||b?.unit||'',initial:initialValue,movement,consumption,expected,final:finalValue,diff});
+    });
+    rows.sort((a,b)=>{const ad=Number.isFinite(a.diff)?Math.abs(a.diff):-1,bd=Number.isFinite(b.diff)?Math.abs(b.diff):-1;return bd-ad||String(a.name).localeCompare(String(b.name))});
+    basicTheoryManualState={active:true,from,to,activityTo,initial,final,rows,moves,pmix};
+    comparisonRows=rows.map(r=>({producto:r.name,codigo:r.code,unidad:r.unit,anterior:r.initial??0,mov:r.movement,consumo:r.consumption,teorico:r.expected,contado:r.final,diferencia:r.diff}));
+    renderBasicTheoryManual();
+    showToast(`Comparación lista · ${new Set((pmix.available||[]).map(x=>x?.meta?.date).filter(Boolean)).size} día(s) PMIX`);
+  }catch(e){
+    basicTheoryManualState={active:false,from,to,activityTo:'',initial:null,final:null,rows:[],moves:null,pmix:null};
+    el('theoryStatus').textContent='No se pudo completar la comparación.';
+    if(el('theoryAuditInfo'))el('theoryAuditInfo').textContent=String(e?.message||e);
+    el('theoryTable').style.display='none';el('theoryEmpty').style.display='block';el('theoryEmpty').textContent=String(e?.message||e);
+    el('theoryCompared').textContent='0';el('theoryShort').textContent='0';el('theoryOver').textContent='0';
+    showToast(e?.message||'No se pudo comparar');
+  }finally{hideV10Loading()}
+}
+
+
 function calculateComparison(){
   comparisonRows=[];
   if(!previousBaseline?.qty){renderTheory();return comparisonRows}
@@ -2569,7 +2844,7 @@ function renderTheory(){
     const tr=document.createElement('tr');
     const diff=r.diferencia===null?'—':fmtNum(r.diferencia);
     const cls=r.diferencia===null?'':r.diferencia<-.000001?'diff-neg':r.diferencia>.000001?'diff-pos':'diff-zero';
-    tr.innerHTML=`<td>${r.producto}${r.codigo?' <small>('+r.codigo+')</small>':''}</td><td>${fmtNum(r.anterior)} ${r.unidad}</td><td>${r.mov>=0?'+':''}${fmtNum(r.mov)} ${r.unidad}</td><td>${fmtNum(r.teorico)} ${r.unidad}</td><td>${r.contado===null?'—':fmtNum(r.contado)+' '+r.unidad}</td><td class="${cls}">${diff==='—'?diff:diff+' '+r.unidad}</td>`;
+    tr.innerHTML=`<td>${r.producto}${r.codigo?' <small>('+r.codigo+')</small>':''}</td><td>${fmtNum(r.anterior)} ${r.unidad}</td><td>${r.mov>=0?'+':''}${fmtNum(r.mov)} ${r.unidad}</td><td>0 ${r.unidad}</td><td>${fmtNum(r.teorico)} ${r.unidad}</td><td>${r.contado===null?'—':fmtNum(r.contado)+' '+r.unidad}</td><td class="${cls}">${diff==='—'?diff:diff+' '+r.unidad}</td>`;
     body.appendChild(tr);
   });
   el('theoryCompared').textContent=String(compared);el('theoryShort').textContent=String(short);el('theoryOver').textContent=String(over);
@@ -2635,7 +2910,7 @@ function saveMovement(){
 el('addMovementBtn').addEventListener('click',openMovementModal);
 el('movementProduct').addEventListener('change',updateMovementUnits);
 el('movementType').addEventListener('change',updateMovementTypeUI);
-el('saveMovementBtn').addEventListener('click',saveMovement);el('refreshTheoryBtn').addEventListener('click',()=>loadPreviousBaseline(false));
+el('saveMovementBtn').addEventListener('click',saveMovement);el('refreshTheoryBtn').addEventListener('click',calculateBasicTheoryRange);
 
 function buildMessage(){const d=buildSaveData(),lines=[`📋 *Inventario ${d.tipo.toLowerCase()}*`,`Sucursal: ${d.sucursal||'—'}`,`Fecha: ${d.fecha||'—'}${d.dia?' ('+d.dia+')':''}`,`N° de conteo: ${d.conteo||'—'}`,`Hora de inicio: ${formatHora(horaInicio)}`,''];categories.forEach((cat,ci)=>{const ls=[];cat.items.forEach((item,ii)=>{if(!itemHasData(ci,ii))return;const p=[];cat.fields.forEach(f=>{const e=el(`q-${ci}-${ii}-${f.key}`);if(e&&e.value.trim()!=='')p.push(`${f.label} ${e.value}`)});const t=getItemTotal(ci,ii);if(t.hasKnown)p.push(`Total ${fmtNum(t.total)} ${cat.unit}`);ls.push(`• ${item.name}${item.code?' ('+item.code+')':''}: ${p.join(', ')}`)});if(ls.length)lines.push(`*${cat.icon} ${cat.name}*`,...ls,'')});if(previousBaseline&&comparisonRows.some(r=>r.contado!==null)){const diffs=comparisonRows.filter(r=>r.contado!==null&&Math.abs(r.diferencia)>.000001);lines.push(`*📊 Comparación vs. inventario ${previousBaseline.conteo}*`);if(diffs.length){diffs.forEach(r=>lines.push(`• ${r.producto}: teórico ${fmtNum(r.teorico)} ${r.unidad}, contado ${fmtNum(r.contado)} ${r.unidad}, diferencia ${r.diferencia>0?'+':''}${fmtNum(r.diferencia)} ${r.unidad}`))}else lines.push('• Sin diferencias en los artículos comparados.');lines.push('')}if(d.movimientos.length){lines.push('*🔄 MOVIMIENTOS REGISTRADOS*');d.movimientos.forEach(m=>lines.push(`• ${movementSign(m)} ${m.tipo}: ${m.producto} — ${m.cantidad} ${m.presentacion}${m.sucursalRelacionada?' · '+m.sucursalRelacionada:''}${m.observacion?' · '+m.observacion:''}`));lines.push('')}lines.push(`Contado por: ${d.contadoPor||'—'}`);return lines.join('\n')}
 el('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(buildMessage());showToast('Texto copiado')}catch(e){showToast('No se pudo copiar')}});el('sendBtn').addEventListener('click',()=>{const d=buildSaveData();location.href=`mailto:?subject=${encodeURIComponent(`Inventario ${d.tipo.toLowerCase()} - ${d.sucursal||'sucursal'} - ${d.fecha||''}`)}&body=${encodeURIComponent(buildMessage())}`});
@@ -2866,7 +3141,7 @@ async function saveCloud(asNew=false,fromPending=false){
     }
   }finally{setCloudSaveBusy(false);}
 }
-el('cloudSaveBtn').onclick=()=>saveCloud(false);el('cloudNewBtn').onclick=()=>saveCloud(true);el('historyBtn').onclick=()=>getHistory(true).catch(e=>setCloudStatus(e.message,'error'));el('cloudLoadBtn').onclick=()=>loadCloud();sucursalSelect.addEventListener('change',()=>{suggestNextNumber();syncHomeSucursal()});
+el('cloudSaveBtn').onclick=()=>saveCloud(false);el('cloudNewBtn').onclick=()=>saveCloud(true);el('historyBtn').onclick=()=>getHistory(true).catch(e=>setCloudStatus(e.message,'error'));el('cloudLoadBtn').onclick=()=>loadCloud();sucursalSelect.addEventListener('change',()=>{suggestNextNumber();syncHomeSucursal();basicTheoryResetManualView();basicTheoryInitFilter(false)});
 
 
 
@@ -3110,7 +3385,7 @@ document.addEventListener('change',e=>{if(inventoryApp&&!inventoryApp.classList.
 
 const homeScreen=el('homeScreen'),inventoryApp=el('inventoryApp'),homeSucursal=el('homeSucursal'),homeModal=el('homeModal');
 function initHome(){
-  renderUserProfile();updateDraftUI();updatePendingUI();updateConnectionUI();
+  renderUserProfile();updateDraftUI();updatePendingUI();updateConnectionUI();basicTheoryInitFilter(false);
   homeSucursal.innerHTML=sucursalSelect.innerHTML;
   homeSucursal.value=sucursalSelect.value||'';
   homeSucursal.addEventListener('change',()=>{sucursalSelect.value=homeSucursal.value;refreshHomeSummary()});
@@ -4396,6 +4671,7 @@ async function handleSapRecipeFile(file){
 function switchTheorySubView(name){
   el('basicTheoryView')?.classList.toggle('active',name==='basic');el('sapTheoryView')?.classList.toggle('active',name==='sap');
   el('theoryTabBasic')?.classList.toggle('active',name==='basic');el('theoryTabSap')?.classList.toggle('active',name==='sap');
+  if(name==='basic')basicTheoryInitFilter(false);
   if(name==='sap')initSapTheoryPanel();
 }
 function initSapTheoryPanel(){
@@ -4922,7 +5198,7 @@ function v10Navigate(name,btn){
   if(name==='theory'){
     if(!sucursalSelect.value){showToast('Abre o carga un inventario primero');setV10Nav('inventory');return}
     showBetaPanel('theory');
-    loadPreviousBaseline(true).then(()=>calculateComparison()).catch(()=>calculateComparison());
+    basicTheoryInitFilter(false);
     return;
   }
   if(name==='sales'){showBetaPanel('sales');return}
@@ -5760,7 +6036,7 @@ async function initIntelligenceOfficial(){
 }
 
 
-/* ===== V10.46.3 OFICIAL · CONTROLES PROFESIONALES ===== */
+/* ===== V10.46.6 OFICIAL · CONTROLES PROFESIONALES ===== */
 let minMaxBetaRecords=[];
 function betaCurrentUser(){return el('contadoPor')?.value||getUserProfile?.().name||el('profileNameLabel')?.textContent||'Sistema'}
 function renderTeamsStatusVisible(data){
@@ -5884,13 +6160,13 @@ function generateFormalReportDemo(){
   let y=72;doc.setFillColor(234,244,238);doc.rect(14,y-6,182,8,'F');doc.setTextColor(...green);doc.setFont('helvetica','bold');doc.text('Indicador',17,y);doc.text('Resultado',105,y);doc.text('Estado',160,y);y+=9;
   doc.setFont('helvetica','normal');doc.setTextColor(...dark);
   rows.forEach((r,i)=>{if(i%2){doc.setFillColor(248,249,248);doc.rect(14,y-5,182,8,'F')}doc.text(r[0],17,y);doc.text(String(r[1]),105,y);doc.text(r[2],160,y);y+=9});
-  doc.setDrawColor(...green);doc.line(14,270,196,270);doc.setFontSize(6.5);doc.setTextColor(...gray);doc.text(`V10.46.3 OFICIAL · Reporte generado ${new Date().toLocaleString('es-DO')}`,14,277);
+  doc.setDrawColor(...green);doc.line(14,270,196,270);doc.setFontSize(6.5);doc.setTextColor(...gray);doc.text(`V10.46.6 OFICIAL · Reporte generado ${new Date().toLocaleString('es-DO')}`,14,277);
   doc.save(`Reporte_Operativo_${branch.replace(/[^\w-]+/g,'_')}_${new Date().toISOString().slice(0,10)}.pdf`);
 }
 
 </script>
 
-<div class="pj-official-version">V10.46.3</div>
+<div class="pj-official-version">V10.46.6</div>
 <script>
 /* V10.42: Saldo operativo informativo; nunca sobrescribe conteo ni Teams. */
 async function pjCalculateOperationalBalance(){
@@ -5936,7 +6212,7 @@ async function pjCalculateOperationalBalance(){
 
 window.addEventListener('load',()=>{setTimeout(()=>{refreshTeamsStatusVisible();},900)});
 
-/* ===== V10.46.3 OFICIAL · INNOVACIÓN OPERATIVA ===== */
+/* ===== V10.46.6 OFICIAL · INNOVACIÓN OPERATIVA ===== */
 let innovationState={branch:'',today:'',historyDays:14,current:null,audit:null,historicalConsumption:{},pmixDays:0,aloha:null,teams:null,movements:[]};
 function innovItems(){return Object.values(sapInventoryMap()||{}).filter(x=>x?.code&&x?.name).sort((a,b)=>String(a.name).localeCompare(String(b.name),'es'))}
 function innovPopulate(id,prefer=''){const s=el(id);if(!s)return;const items=innovItems(),cur=s.value;s.innerHTML=items.map(x=>`<option value="${sapEsc(x.code)}">${sapEsc(x.code)} · ${sapEsc(x.name)}</option>`).join('');let v=cur||prefer||items.find(x=>/masa.*12|masa de 12/i.test(x.name))?.code||items[0]?.code||'';if([...s.options].some(o=>o.value===v))s.value=v}
@@ -5981,7 +6257,7 @@ async function refreshInnovationSuite(force=false){
     await refreshManagerBriefing(false);
     await renderProduct360Restored();
     renderActionRecommendationsRestored();
-  }catch(e){console.error('V10.46.3 innovación:',e);if(el('product360Formula'))el('product360Formula').innerHTML=`<span style="color:#a62d3e">No se pudo completar Producto 360°: ${sapEsc(String(e?.message||e).slice(0,120))}</span>`}
+  }catch(e){console.error('V10.46.6 innovación:',e);if(el('product360Formula'))el('product360Formula').innerHTML=`<span style="color:#a62d3e">No se pudo completar Producto 360°: ${sapEsc(String(e?.message||e).slice(0,120))}</span>`}
 }
 async function renderLiveInventoryBeta(){const box=el('liveInventoryResult');if(!box)return;const code=el('liveInventoryProduct')?.value||'',item=sapInventoryMap()?.[code],st=innovationState.current,base=st?.baselineByCode?.[code],cur=st?.stock?.[code];if(!item||!base||cur===undefined){box.className='innov-note warn';box.textContent='No hay base física válida para este producto.';return}const from=base.from||aiDateAdd(base.date,1),to=innovationState.today;try{const calc=from<=to?sapBuildConsumption(innovationState.branch,from,to):{consumption:{}},moves=from<=to?await sapLoadMovementMap(innovationState.branch,from,to):{map:{}};const mv=Number(moves.map?.[code]||0),cons=Number(calc.consumption?.[code]||0);box.className='innov-note good';box.innerHTML=`<div class="innov-metrics"><div class="innov-metric"><strong>${aiStockLabel(code,base.value)}</strong><span>Último físico · ${sapEsc(aiPhysicalSourceLabel(base))}</span></div><div class="innov-metric"><strong>${mv>=0?'+':''}${aiNum(mv,1)}</strong><span>Movimientos</span></div><div class="innov-metric"><strong>-${aiNum(cons,1)}</strong><span>Consumo SAP/PMIX</span></div></div><div class="live-formula"><b>Saldo en vivo:</b> ${aiStockLabel(code,cur)}<br>${aiNum(base.value,1)} físico ${mv>=0?'+':'−'} ${aiNum(Math.abs(mv),1)} movimientos − ${aiNum(cons,1)} consumo = <b>${aiNum(cur,1)} ${sapEsc(item.unit||'')}</b>.</div><div style="margin-top:7px">El físico permanece intacto; este saldo es solo una estimación operativa.</div>`}catch(e){box.className='innov-note bad';box.textContent=String(e.message||e)}}
 function renderCoverageProjection(){const box=el('coverageProjectionResult');if(!box)return;const code=el('coverageProduct')?.value||'',item=sapInventoryMap()?.[code],today=innovationState.today||isoToday(),target=el('coverageTargetDate')?.value||aiDateAdd(today,3),stock=Number(innovationState.current?.stock?.[code]),avg=innovAvg(code);if(!item||!Number.isFinite(stock)){box.className='innov-note warn';box.textContent='No hay saldo teórico para este producto.';return}if(avg===null||!Number.isFinite(avg)||avg<=0){box.className='innov-note warn';box.innerHTML=`Saldo actual: <b>${aiStockLabel(code,stock)}</b>. Faltan días de PMIX/recetas validadas para calcular cobertura.`;return}const nd=aiDaysBetween(today,target),proj=stock-avg*nd,cov=Math.max(0,stock/avg),agot=aiDateAdd(today,Math.floor(cov));box.className='innov-note '+(proj<0?'bad':proj<avg?'warn':'good');box.innerHTML=`<div class="innov-metrics"><div class="innov-metric"><strong>${aiStockLabel(code,stock)}</strong><span>Saldo actual</span></div><div class="innov-metric"><strong>${aiNum(avg,1)} ${sapEsc(item.unit||'')}/día</strong><span>Promedio · ${innovationState.pmixDays} días PMIX</span></div><div class="innov-metric"><strong>${cov.toFixed(1)} días</strong><span>Cobertura estimada</span></div></div><div style="margin-top:8px">Hasta <b>${sapEsc(target)}</b> quedarían aprox. <b>${aiStockLabel(code,proj)}</b>. A este ritmo alcanzaría alrededor de <b>${sapEsc(agot)}</b>.</div>`}
@@ -5990,7 +6266,7 @@ function renderDifferenceExplanations(){const box=el('differenceExplanationList'
 async function renderAutomaticWeekComparison(force=false){const box=el('automaticWeekComparison');if(!box)return;const b=innovationState.branch||opsBranch(),today=innovationState.today||isoToday();try{const d=new Date(today+'T12:00:00'),off=(d.getDay()+6)%7,cf=aiDateAdd(today,-off),n=off+1,pf=aiDateAdd(cf,-7),pt=aiDateAdd(pf,n-1),[cs,ps,cm,pm]=await Promise.all([apiGet({action:'salesRange',sucursal:b,desde:cf,hasta:today}),apiGet({action:'salesRange',sucursal:b,desde:pf,hasta:pt}),apiGet({action:'movements',sucursal:b,desde:cf,hasta:today}),apiGet({action:'movements',sucursal:b,desde:pf,hasta:pt})]);await aiEnsurePmix(b,pf,today);const cc=sapBuildConsumption(b,cf,today),pc=sapBuildConsumption(b,pf,pt),inv=sapInventoryMap(),q=Object.values(inv).find(x=>/queso.*pizza/i.test(x.name||'')),pep=Object.values(inv).find(x=>/pepperoni/i.test(x.name||''));const rows=[['Net Sales',aiMoney(cs.summary?.netSales||0),aiMoney(ps.summary?.netSales||0),innovPct(cs.summary?.netSales||0,ps.summary?.netSales||0)],['Transacciones',String(cs.summary?.transacciones||0),String(ps.summary?.transacciones||0),innovPct(cs.summary?.transacciones||0,ps.summary?.transacciones||0)],['Movimientos',String((cm.records||[]).filter(x=>String(x.estado||'Activo')==='Activo').length),String((pm.records||[]).filter(x=>String(x.estado||'Activo')==='Activo').length),innovPct((cm.records||[]).length,(pm.records||[]).length)]];if(q)rows.push(['Consumo queso',aiNum(cc.consumption?.[q.code]||0,1)+' '+q.unit,aiNum(pc.consumption?.[q.code]||0,1)+' '+q.unit,innovPct(cc.consumption?.[q.code]||0,pc.consumption?.[q.code]||0)]);if(pep)rows.push(['Consumo pepperoni',aiNum(cc.consumption?.[pep.code]||0,1)+' '+pep.unit,aiNum(pc.consumption?.[pep.code]||0,1)+' '+pep.unit,innovPct(cc.consumption?.[pep.code]||0,pc.consumption?.[pep.code]||0)]);box.className='innov-note good';box.innerHTML=`<b>${cf} → ${today}</b> vs <b>${pf} → ${pt}</b><table class="week-compare-table"><thead><tr><th>Indicador</th><th>Esta semana</th><th>Anterior</th><th>Cambio</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${sapEsc(r[0])}</td><td>${sapEsc(r[1])}</td><td>${sapEsc(r[2])}</td><td><b>${sapEsc(r[3])}</b></td></tr>`).join('')}</tbody></table>`}catch(e){box.className='innov-note bad';box.textContent='No se pudo comparar: '+String(e.message||e).slice(0,100)}}
 async function refreshManagerBriefing(force=false){const box=el('managerBriefingList');if(!box)return;box.innerHTML='<div class="ops-muted">Preparando briefing…</div>';const b=innovationState.branch||opsBranch(),today=innovationState.today||isoToday();try{const [a,s,t,m]=await Promise.all([apiGet({action:'alohaStatus',sucursal:b}),apiGet({action:'salesRange',sucursal:b,desde:today,hasta:today}),apiGet({action:'teamsStatus'}),apiGet({action:'movements',sucursal:b,desde:today,hasta:today})]),plan=Number(s.summary?.planDiarioTotal||0),net=Number(a.netSales||s.summary?.netSales||0),last=t?.last||t,tk=last?.status==='ok',moves=(m.records||[]).filter(x=>String(x.estado||'Activo')==='Activo'),top=(innovationState.audit?.rows||[]).slice().sort((x,y)=>Math.abs(y.diff)-Math.abs(x.diff))[0];const lines=[['💰',plan?`Ventas al ${((net/plan)*100).toFixed(0)}% de la meta`:`Net Sales ${aiMoney(net)}`,`${aiMoney(net)} · ${Number(a.transacciones||s.summary?.transacciones||0)} transacciones`],[a.connected?'🟢':'🟠',a.connected?'Aloha sincronizado':'Aloha requiere revisión',a.connected?`Fecha negocio ${a.fecha||today} · ${a.productos||0} productos PMIX`:'Sin sincronización reciente'],[tk?'🟩':'⬜',tk?'Teams actualizado':'Teams sin envío confirmado reciente',tk?`${last.sheet||'Teams_Occidental_Mall'} · ${last.fecha||'—'} · ${last.codigos||0} códigos`:'Se actualiza al cerrar Diario de Occidental Mall'],['🔄',`${moves.length} movimiento(s) activo(s) hoy`,moves.length?moves.slice(0,3).map(x=>x.tipo+' · '+x.producto).join(' | '):'Sin movimientos registrados']];if(top)lines.push(['🧠',`Mayor diferencia: ${top.name}`,`${top.diff>=0?'+':''}${aiNum(top.diff,1)} ${top.unit||''}`]);box.innerHTML=lines.map(x=>`<div class="brief-row"><div class="brief-ico">${x[0]}</div><div><b>${sapEsc(x[1])}</b><small>${sapEsc(x[2])}</small></div></div>`).join('')}catch(e){box.innerHTML='<div class="innov-note bad">No se pudo generar el briefing.</div>'}}
 
-/* ===== V10.46.3 · PRODUCTO 360 Y RECOMENDACIONES, SIN ELIMINAR MÓDULOS ===== */
+/* ===== V10.46.6 · PRODUCTO 360 Y RECOMENDACIONES, SIN ELIMINAR MÓDULOS ===== */
 function syncInnovationHistoryRestored(v){
   const n=String(v||'14');if(el('coverageHistoryDays'))el('coverageHistoryDays').value=n;refreshInnovationSuite(true);
 }
@@ -6035,7 +6311,7 @@ let globalCommandItems=[],globalCommandActive=0;function commandNorm(s){return S
 </script>
 
 <script>
-/* ===== V10.46.3 OFICIAL RESTAURADA · PRUEBA DE CONEXIÓN ===== */
+/* ===== V10.46.6 OFICIAL RESTAURADA · PRUEBA DE CONEXIÓN ===== */
 window.__pjSheetConnected=false;
 function setSheetConnectionStateOfficial(state,title,detail){
   const dot=document.getElementById('sheetConnectionDot'),t=document.getElementById('sheetConnectionTitle'),d=document.getElementById('sheetConnectionDetail');
